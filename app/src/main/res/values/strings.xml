@@ -62,7 +62,30 @@ Prohibited Use. Any commercial or promotional distribution, publishing or exploi
 Trademarks. The trademarks, logos, service marks and trade names (collectively the "Trademarks") displayed on the Web Site or on content available through the Web Site are registered and unregistered Trademarks of Time Inc. and others and may not be used in connection with products and/or services that are not related to, associated with, or sponsored by their rights holders that are likely to cause customer confusion, or in any manner that disparages or discredits their rights holders. All Trademarks not owned by Time Inc. that appear on the Web Site or on or through the Web Site’s services, if any, are the property of their respective owners. Nothing contained on the Web Site should be construed as granting, by implication, estoppel, or otherwise, any license or right to use any Trademark displayed on the Web Site without the written permission of Time Inc. or the third party that may own the applicable Trademark. Your misuse of the Trademarks displayed on the Web Site or on or through any of the Web Site’s services is strictly prohibited.
 User Information. In the course of your use of the Web Site and/or the services made available on or through the Web Site, you may be asked to provide certain personalized information to us (such information referred to hereinafter as “User Information”). Time Inc.’s information collection and use policies with respect to the privacy of such User Information are set forth in the Web Site’s Privacy Policy which is incorporated herein by reference for all purposes. You acknowledge and agree that you are solely responsible for the accuracy and content of User Information.</string>
 
+    <!--Self assessment -->
+    <string name="old">Old</string>
+    <string name="current">Current</string>
+    <string name="add">Add</string>
+    <string name="title_activity_self_assess_detail">SelfAssessDetailActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--Body Parts-->
+    <string name="neck_throat">neck_throat</string>
+    <string name="chest">chest</string>
+    <string name="upper_arm">upper_arm</string>
+    <string name="upper_abdomen">upper_abdomen</string>
+    <string name="forearm">forearm</string>
+    <string name="middle_abdomen">middle_abdomen</string>
+    <string name="lower_abdomen">lower_abdomen</string>
+    <string name="hand">hand</string>
+    <string name="sexual_organ">sexual_organ</string>
+    <string name="thigh">thigh</string>
+    <string name="knee">knee</string>
+    <string name="lower_leg">lower_leg</string>
+    <string name="foot">foot</string>
+    <string name="head">head</string>
 </resources>

@@ -16,6 +16,7 @@ import com.example.healthwareapplication.adapter.home.HomeMenuAdapter
 import com.example.healthwareapplication.app_utils.AppSessions
 import com.example.healthwareapplication.app_utils.AppSettings
 import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
+import com.example.healthwareapplication.fragment.self_assessment.SAListFragment
 import com.example.healthwareapplication.model.menu.MenuModel
 import com.example.healthwareapplication.model.user.UserDetailModel
 import com.google.gson.Gson
@@ -88,6 +89,7 @@ class HomeFragment : Fragment(), RecyclerItemClickListener.OnItemClickListener {
                 //For Dr Doctor Patient module
             }
             "5" -> {
+                addFragment(SAListFragment())
             }
             "6" -> {
             }
@@ -96,7 +98,13 @@ class HomeFragment : Fragment(), RecyclerItemClickListener.OnItemClickListener {
             }
         }
     }
-
+    private fun addFragment(fragment: Fragment) {
+        fragmentManager!!
+            .beginTransaction()
+            .setCustomAnimations(R.anim.design_bottom_sheet_slide_in, R.anim.design_bottom_sheet_slide_out)
+            .replace(R.id.containerLayout, fragment, fragment.javaClass.simpleName)
+            .commit()
+    }
     private fun logout() {
         AppSettings.clearMyPreference(activity!!)
         val intent = Intent(activity, LoginAsActivity::class.java)

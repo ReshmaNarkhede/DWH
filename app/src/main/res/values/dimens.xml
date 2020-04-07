@@ -115,6 +115,9 @@
     <dimen name="p17">17dp</dimen>
     <dimen name="h129">129dp</dimen>
     <dimen name="h125">125dp</dimen>
+    <dimen name="appbar_padding">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
 
 
 </resources>

@@ -4,10 +4,17 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <color name="body_outline">#677895</color>
+    <color name="body_def_fill">#677895</color>
+    <color name="body_fill">#3A79E6</color>
+
 
     <color name="gray">#949393</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="transparent_gradient">#59000000</color>
     <color name="pink">#ec6492</color>
+    <color name="old_btn_color">#CF4238</color>
+    <color name="curent_btn_color">#2A95E7</color>
+    <color name="add_btn_color">#46E434</color>
 </resources>

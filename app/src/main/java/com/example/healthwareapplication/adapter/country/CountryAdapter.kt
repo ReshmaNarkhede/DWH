@@ -1,4 +1,4 @@
-package com.example.healthwareapplication.adapter
+package com.example.healthwareapplication.adapter.country
 
 import android.view.LayoutInflater
 import android.view.View

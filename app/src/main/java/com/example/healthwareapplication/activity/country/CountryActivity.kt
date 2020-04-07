@@ -11,7 +11,7 @@ import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.activity.account.login.LoginActivity
 import com.example.healthwareapplication.activity.account.register.RegisterMobNoActivity
-import com.example.healthwareapplication.adapter.CountryAdapter
+import com.example.healthwareapplication.adapter.country.CountryAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
@@ -104,25 +104,35 @@ class CountryActivity : AppCompatActivity() {
     private fun bindCountryData(dataArray: JSONArray?) {
         countryList.layoutManager =
             StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.HORIZONTAL)
-        adapter = CountryAdapter(
-            dataArray!!,
-            RecyclerItemClickListener.OnItemClickListener { view, position ->
+        adapter =
+            CountryAdapter(
+                dataArray!!,
+                RecyclerItemClickListener.OnItemClickListener { view, position ->
 
-                val model = CountryData(dataArray.getJSONObject(position))
+                    val model = CountryData(dataArray.getJSONObject(position))
 
-                if (intent.getIntExtra(IntentConstants.kUSER_TYPE, 0) == 1) {
-                    AppSettings.setJsonObjectValue(this, AppConstants.kCOUNTRY, dataArray.getJSONObject(position).toString())
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
-                } else {
-                    val userDetailModel = intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
-                    userDetailModel.countryId = model.getId()
-                    val intent = Intent(this, RegisterMobNoActivity::class.java)
-                    AppSettings.setJsonObjectValue(this, AppConstants.kCOUNTRY, dataArray.getJSONObject(position).toString())
-                    intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
-                    startActivity(intent)
-                }
-            })
+                    if (intent.getIntExtra(IntentConstants.kUSER_TYPE, 0) == 1) {
+                        AppSettings.setJsonObjectValue(
+                            this,
+                            AppConstants.kCOUNTRY,
+                            dataArray.getJSONObject(position).toString()
+                        )
+                        val intent = Intent(this, LoginActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        val userDetailModel =
+                            intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
+                        userDetailModel.countryId = model.getId()
+                        val intent = Intent(this, RegisterMobNoActivity::class.java)
+                        AppSettings.setJsonObjectValue(
+                            this,
+                            AppConstants.kCOUNTRY,
+                            dataArray.getJSONObject(position).toString()
+                        )
+                        intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
+                        startActivity(intent)
+                    }
+                })
         countryList.adapter = adapter
     }
 }
