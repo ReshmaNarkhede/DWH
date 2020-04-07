@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">DWH</string>
+
+    <string name="login_as">Login As</string>
+    <string name="doctor">Doctor</string>
+    <string name="user">User</string>
+    <string name="please_check_internet_connection">Please check internet connection and try again.</string>
+    <string name="welcome_message">Hi, This is DWH. I can digitalis your health.</string>
+    <string name="welcome_message_dr">Hi, This is DWH. Would you like to see people as well as digitalis your health?</string>
+    <string name="okeh">Okeh</string>
+    <string name="errormessage">This field required !</string>
+
+    <string name="have_we_met">Have we ever met.... ?</string>
+    <string name="no">No</string>
+    <string name="yeah">Yeah</string>
+
+    <string name="choose_your_nation">Choose your nation...!</string>
+
+    <string name="register_intro_msg">Finally we met 🙂. I am very excited to digitalis your health. Let me create your account.</string>
+    <string name="register_intro_msg_dr">Finally we met 🙂. I am very excited to digitalis your health and will help to see people.</string>
+
+    <string name="hmm">Hmm</string>
+
+    <string name="gender_msg">What is your gender?</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="eunuch">Third Gender</string>
+
+    <string name="acha">Achha</string>
+    <string name="enter_password">Enter password</string>
+    <string name="forgot_or_new_password">Forgot or new password ?</string>
+    <string name="lets_start">let\'s start</string>
+    <string name="thanks">Thanks</string>
+    <string name="enter_your_mobile_no">Enter Your Mobile No</string>
+    <string name="got_it">Got It</string>
+
+
+    <string name="age_msg">What is your age...?</string>
+    <string name="dd_mm_yy">dd/mm/yy</string>
+    <string name="day_1">Day-1</string>
+    <string name="_00_00_am">00:00 AM</string>
+    <string name="sup">Super</string>
+
+    <string name="what_is_your_namewa">What is your name...?</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="email">Email</string>
+    <string name="signupwaa">Signupwaa</string>
+    <string name="term_condition_msg">We are almost done with your digital health account.</string>
+    <string name="term_condition_msg2"><![CDATA[I have read and accept the term & conditions !]]></string>
+
+    <string name="create_your_password">Let\'s create your password!</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="change_your_password">Let\'s change your password!</string>
+    <string name="done">Done</string>
+
+    <string name="term_condition">EPT AND AGREE TO THESE TERMS AND CONDITIONS AS APPLIED TO YOUR USE OF THE WEB SITE. If you do not agree to these Terms and Conditions, you may not access or otherwise use the Web Site.
+Medical Advice Disclaimer. The content of the Web Site, including without limitation, text, copy, audio, video, photographs, illustrations, graphics and other visuals, is for informational purposes only and does not constitute professional medical advice, diagnosis, treatment or recommendations of any kind. You should always seek the advice of your qualified heath care professionals with any questions or concerns you may have regarding your individual needs and any medical conditions. None of Time Inc. or its content or service providers recommend or endorse any specific tests, physicians, products, procedures, opinions or other information that may be included on the Web Site. Reliance on any information appearing on the Web Site, whether provided by Time Inc., its content provides, visitors to the Web Site or others, is solely at your own risk.
+Proprietary Rights. As between you and Time Inc., Time Inc. owns, solely and exclusively, all rights, title and interest in and to the Web Site, all the content (including, for example, audio, photographs, illustrations, graphics, other visuals, video, copy, text, software, titles, Shockwave files, etc.), code, data and materials thereon, the look and feel, design and organization of the Web Site, and the compilation of the content, code, data and materials on the Web Site, including but not limited to any copyrights, trademark rights, patent rights, database rights, moral rights, sui generis rights and other intellectual property and proprietary rights therein. Your use of the Web Site does not grant to you ownership of any content, code, data or materials you may access on or through the Web Site.
+Limited License. You may access and view the content on the Web Site on your computer or other device and, unless otherwise indicated in these Terms and Conditions or on the Web Site, make single copies or prints of the content on the Web Site for your personal, internal use only. Use of the Web Site and the services offered on or through the Web Site, are only for your personal, non-commercial use.
+Prohibited Use. Any commercial or promotional distribution, publishing or exploitation of the Web Site, or any content, code, data or materials on the Web Site, is strictly prohibited unless you have received the express prior written permission from authorized personnel of Time Inc. or the otherwise applicable rights holder. Other than as expressly allowed herein, you may not download, post, display, publish, copy, reproduce, distribute, transmit, modify, perform, broadcast, transfer, create derivative works from, sell or otherwise exploit any content, code, data or materials on or available through the Web Site. You further agree that you may not alter, edit, delete, remove, otherwise change the meaning or appearance of, or repurpose, any of the content, code, data, or other materials on or available through the Web Site, including, without limitation, the alteration or removal of any trademarks, trade names, logos, service marks, or any other proprietary content or proprietary rights notices. You acknowledge that you do not acquire any ownership rights by downloading any copyrighted material from or through the Web Site. If you make other use of the Web Site, or the content, code, data or materials thereon or available through the Web Site, except as otherwise provided above, you may violate copyright and other laws of the United States, other countries, as well as applicable state laws and may be subject to liability for such unauthorized use.
+Trademarks. The trademarks, logos, service marks and trade names (collectively the "Trademarks") displayed on the Web Site or on content available through the Web Site are registered and unregistered Trademarks of Time Inc. and others and may not be used in connection with products and/or services that are not related to, associated with, or sponsored by their rights holders that are likely to cause customer confusion, or in any manner that disparages or discredits their rights holders. All Trademarks not owned by Time Inc. that appear on the Web Site or on or through the Web Site’s services, if any, are the property of their respective owners. Nothing contained on the Web Site should be construed as granting, by implication, estoppel, or otherwise, any license or right to use any Trademark displayed on the Web Site without the written permission of Time Inc. or the third party that may own the applicable Trademark. Your misuse of the Trademarks displayed on the Web Site or on or through any of the Web Site’s services is strictly prohibited.
+User Information. In the course of your use of the Web Site and/or the services made available on or through the Web Site, you may be asked to provide certain personalized information to us (such information referred to hereinafter as “User Information”). Time Inc.’s information collection and use policies with respect to the privacy of such User Information are set forth in the Web Site’s Privacy Policy which is incorporated herein by reference for all purposes. You acknowledge and agree that you are solely responsible for the accuracy and content of User Information.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.healthwareapplication">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activity.account.register.RegisterTermsActivity"></activity>
+        <activity
+            android:name=".activity.account.register.RegisterPasswordActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.account.register.RegisterNameActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.account.register.RegisterAgeActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.dashboard.DashboardActivity" />
+        <activity
+            android:name=".activity.account.login.LoginActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.account.register.GenderActivity" />
+        <activity android:name=".activity.account.register.RegisterIntroActivity" />
+        <activity
+            android:name=".activity.country.CountryActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.account.login.HaveWeMetActivity" />
+        <activity android:name=".activity.account.login.IntroActivity" />
+        <activity android:name=".activity.account.login.LoginAsActivity" />
+        <activity
+            android:name=".activity.account.register.RegisterMobNoActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+    </application>
+
+</manifest>

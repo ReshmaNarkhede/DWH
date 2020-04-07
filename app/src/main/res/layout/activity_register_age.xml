@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout    android:id="@+id/parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="@dimen/p5">
+
+        <ImageView
+            android:layout_width="@dimen/h100"
+            android:layout_height="@dimen/h100"
+            android:layout_margin="@dimen/m10"
+            android:background="@drawable/dwh_logo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/age_msg"
+            android:layout_margin="@dimen/m10"
+            android:textSize="@dimen/t16" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:hint="@string/dd_mm_yy"
+            android:onClick="dateClick"
+            android:layout_margin="@dimen/m5"
+            android:textSize="@dimen/t16" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_margin="@dimen/m5"
+            android:hint="@string/_00_00_am"
+            android:onClick="timeClick"
+            android:textSize="@dimen/t16" />
+
+        <Button
+            android:id="@+id/okey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="@dimen/m10"
+            style="@style/CustomButtonTheme"
+            android:onClick="okeyClick"
+            android:text="@string/got_it" />
+
+        <include layout="@layout/logo_on_bottom" />
+    </LinearLayout>
+</ScrollView>

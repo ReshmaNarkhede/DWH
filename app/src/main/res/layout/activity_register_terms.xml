@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/p10"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/h100"
+                android:layout_height="@dimen/h100"
+                android:layout_margin="@dimen/m10"
+                android:background="@drawable/dwh_logo" />
+
+            <LinearLayout
+                android:id="@+id/termAndConditionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/m50"
+                    android:layout_marginStart="@dimen/m10"
+                    android:layout_marginTop="@dimen/m10"
+                    android:text="@string/term_condition_msg"
+                    android:textSize="@dimen/t16" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingEnd="@dimen/p50"
+                        android:paddingStart="@dimen/p10"
+                        android:text="@string/term_condition_msg2"
+                        android:textSize="@dimen/t16"/>
+
+                    <ImageView
+                        android:id="@+id/termAndCondition"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="end"
+                        android:background="@drawable/ic_term_and_condition"
+                        android:onClick="termAndConditionClick" />
+                </FrameLayout>
+
+                <Switch
+                    android:id="@+id/termAndConditionSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_margin="@dimen/m10"/>
+
+                <Button
+                    android:id="@+id/signupwaa"
+                    android:layout_width="wrap_content"
+                    style="@style/CustomButtonTheme"
+                    android:padding="@dimen/p15"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_margin="@dimen/m10"
+                    android:onClick="signupwaaClick"
+                    android:text="@string/signupwaa" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/termAndConditionDetailLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/term_condition"
+                            android:textSize="@dimen/t16" />
+
+                        <ImageView
+                            android:id="@+id/termAndConditionRead"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="end"
+                            android:background="@drawable/ic_term_and_condition"
+                            android:onClick="termAndConditionReadClick" />
+
+                    </LinearLayout>
+
+
+                </ScrollView>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/logo_on_bottom" />
+</LinearLayout>

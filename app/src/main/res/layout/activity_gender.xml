@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="bottom"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/h100"
+        android:layout_height="@dimen/h100"
+        android:layout_margin="@dimen/m10"
+        android:background="@drawable/dwh_logo" />
+
+    <TextView
+        android:id="@+id/welcomeMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/m10"
+        android:text="@string/gender_msg"
+        android:textSize="@dimen/t18" />
+
+    <Button
+        android:id="@+id/maleBtn"
+        style="@style/CustomButtonTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="@dimen/m5"
+        android:padding="@dimen/p15"
+        android:onClick="maleClick"
+        android:text="@string/male" />
+
+    <Button
+        android:id="@+id/femaleBtn"
+        style="@style/CustomButtonTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="@dimen/m5"
+        android:padding="@dimen/p15"
+        android:onClick="femaleClick"
+        android:text="@string/female" />
+
+    <Button
+        android:id="@+id/transBtn"
+        style="@style/CustomButtonTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:padding="@dimen/p15"
+        android:layout_margin="@dimen/m5"
+        android:onClick="transClick"
+        android:text="@string/eunuch" />
+
+    <include layout="@layout/logo_on_bottom" />
+
+</LinearLayout>
