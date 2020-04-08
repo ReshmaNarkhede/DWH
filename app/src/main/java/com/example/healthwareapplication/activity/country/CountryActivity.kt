@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import app.frats.android.models.response.ResponseModel
@@ -80,6 +81,7 @@ class CountryActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
 
+                Log.d("COUNTRY: ",": "+response.raw().request().url())
                 if (response.isSuccessful) {
                     DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())

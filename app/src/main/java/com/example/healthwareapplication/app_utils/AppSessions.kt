@@ -3,6 +3,8 @@ package com.example.healthwareapplication.app_utils
 import android.content.Context
 import com.example.healthwareapplication.constants.AppConstants
 import com.example.healthwareapplication.model.country.CountryData
+import com.example.healthwareapplication.model.user.UserDetailModel
+import com.google.gson.Gson
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -28,6 +30,11 @@ class AppSessions {
 
         fun getLoginData(context: Context): String? {
             return AppSettings.getJsonObjectValue(context,AppConstants.kLOGIN)
+        }
+
+        fun getLoginModel(context: Context): UserDetailModel? {
+            val gson = Gson()
+            return gson.fromJson(AppSessions.getLoginData(context), UserDetailModel::class.java)
         }
     }
 }

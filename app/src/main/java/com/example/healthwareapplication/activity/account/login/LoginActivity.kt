@@ -3,6 +3,7 @@ package com.example.healthwareapplication.activity.account.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -82,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
-
+                Log.e("LOGIN: $param",": "+response.raw().request().url())
                 if (response.isSuccessful) {
                     DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())

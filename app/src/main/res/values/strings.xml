@@ -74,18 +74,27 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--Body Parts-->
-    <string name="neck_throat">neck_throat</string>
-    <string name="chest">chest</string>
-    <string name="upper_arm">upper_arm</string>
-    <string name="upper_abdomen">upper_abdomen</string>
-    <string name="forearm">forearm</string>
-    <string name="middle_abdomen">middle_abdomen</string>
-    <string name="lower_abdomen">lower_abdomen</string>
-    <string name="hand">hand</string>
-    <string name="sexual_organ">sexual_organ</string>
-    <string name="thigh">thigh</string>
-    <string name="knee">knee</string>
-    <string name="lower_leg">lower_leg</string>
-    <string name="foot">foot</string>
-    <string name="head">head</string>
+    <string name="neck_throat">Neck or Throat</string>
+    <string name="chest">Chest</string>
+    <string name="upper_arm">Upper Arm</string>
+    <string name="upper_abdomen">Upper Abdomen</string>
+    <string name="forearm">Forearm</string>
+    <string name="middle_abdomen">Middle Abdomen</string>
+    <string name="lower_abdomen">Lower Abdomen</string>
+    <string name="hand">Hand</string>
+    <string name="sexual_organ">Sexual Organs</string>
+    <string name="thigh">Thigh</string>
+    <string name="knee">Knee</string>
+    <string name="lower_leg">Lower Leg</string>
+    <string name="foot">Foot</string>
+    <string name="head">Head</string>
+    <string name="rotate_model">Rotate model</string>
+    <string name="ear">Ear</string>
+    <string name="nape_of_neck">Nape of Neck</string>
+    <string name="back">Back</string>
+    <string name="elbow">Elbow</string>
+    <string name="buttocks">Buttocks</string>
+    <string name="anus">Anus</string>
+    <string name="lower_back">Lower Back</string>
+    <string name="breasts">Breasts</string>
 </resources>

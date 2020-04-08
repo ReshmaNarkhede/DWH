@@ -51,14 +51,13 @@ class HomeFragment : Fragment(), RecyclerItemClickListener.OnItemClickListener {
     }
 
     fun loadMenu(): ArrayList<MenuModel> {
-        val gson = Gson()
-        val user = gson.fromJson(AppSessions.getLoginData(activity!!), UserDetailModel::class.java)
+        val user = AppSessions.getLoginModel(context!!)
 
         val menuList = ArrayList<MenuModel>()
         menuList.add(MenuModel("1", "Family", R.drawable.ic_family, R.drawable.t1))
         menuList.add(MenuModel("2", "Emergency", R.drawable.ic_emergency, R.drawable.t2))
         menuList.add(MenuModel("3", "Drug", R.drawable.ic_drug, R.drawable.t3))
-        if (user.userType == 3) {
+        if (user!!.userType == 3) {
             menuList.add(MenuModel("4", "Doctor Patient", R.drawable.ic_patient, R.drawable.t4))
         }
         menuList.add(MenuModel("5", "Self Assessment", R.drawable.ic_self_assisment, R.drawable.t4))

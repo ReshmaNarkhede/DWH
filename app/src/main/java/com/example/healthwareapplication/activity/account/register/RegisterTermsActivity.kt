@@ -98,13 +98,14 @@ class RegisterTermsActivity : AppCompatActivity() {
         }
         fieldsmap["mciNo"] = RequestBody.create(MediaType.parse("text/plain"), userDetailModel.mciNo)
 
-        Log.e("map: ",": $fieldsmap")
+        Log.d("map: ",": $fieldsmap")
         val call: Call<JsonObject> = apiService.registration(fieldsmap)
         DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
 
+                Log.e("REGISTER: ",": "+response.raw().request().url())
                 if (response.isSuccessful) {
                     DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())

@@ -2,12 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <com.richpath.RichPathView
-        android:id="@+id/bodyImg"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
+    <TextView
+        android:id="@+id/rotate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:vector="@drawable/body_front" />
+        android:layout_margin="@dimen/m10"
+        android:drawableStart="@android:drawable/ic_menu_rotate"
+        android:drawablePadding="@dimen/p8"
+        android:gravity="center"
+        android:text="@string/rotate_model"
+        android:textSize="@dimen/t18" />
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content">-->
+
+        <com.richpath.RichPathView
+            android:id="@+id/bodyImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            app:vector="@drawable/male_body_front" />
+<!--    </LinearLayout>-->
 </LinearLayout>
