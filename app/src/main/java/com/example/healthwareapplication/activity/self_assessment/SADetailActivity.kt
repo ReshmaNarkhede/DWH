@@ -32,11 +32,13 @@ class SADetailActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 2) {
-            val message = data!!.getStringExtra("MESSAGE")
-            symptom.text = message
-            symptom.setBackgroundColor(resources.getColor(R.color.body_outline))
-            val img = resources.getDrawable(android.R.drawable.ic_menu_close_clear_cancel)
-            symptom.setCompoundDrawables(null,null,img,null)
+            if(data!=null) {
+                val message = data!!.getStringExtra("MESSAGE")
+                symptom.text = message
+                symptom.setBackgroundColor(resources.getColor(R.color.body_outline))
+                val img = resources.getDrawable(android.R.drawable.ic_menu_close_clear_cancel)
+                symptom.setCompoundDrawables(null, null, img, null)
+            }
         }
     }
 
