@@ -1,29 +1,35 @@
 package com.example.healthwareapplication.fragment.self_assessment
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.adapter.self_assessment.SymptomAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
-import com.example.healthwareapplication.app_utils.AppHelper
-import com.example.healthwareapplication.app_utils.AppSessions
-import com.example.healthwareapplication.app_utils.DialogUtility
-import com.example.healthwareapplication.app_utils.NoConnectivityException
-import com.example.healthwareapplication.model.BodyParts
+import com.example.healthwareapplication.app_utils.*
+import com.example.healthwareapplication.model.self_assessment.BodyParts
+import com.example.healthwareapplication.model.self_assessment.SymptomModel
 import com.example.healthwareapplication.model.user.UserDetailModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.richpath.RichPath
 import com.richpath.RichPathView
+import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -83,8 +89,10 @@ class BodyFragment : Fragment(), View.OnClickListener {
 
     private fun getIDFromBodyPart(obj: RichPath) {
         for (i in 0 until bodyPartLists.size) {
-            if (bodyPartLists[i].name!!.equals(obj.name, true)) {
-                AppHelper.showToast(context!!, bodyPartLists[i].name.toString())
+            val bodyParts = bodyPartLists[i]
+            if (bodyParts.name!!.equals(obj.name, true)) {
+//
+                fetchSymptom(bodyParts)
             }
         }
     }
@@ -135,7 +143,9 @@ class BodyFragment : Fragment(), View.OnClickListener {
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
-                Log.d("BODY PARTS: $param", ": " + response.raw().request().url())
+
+                AppHelper.printUrl("BODY PARTS:",param,response)
+
                 if (response.isSuccessful) {
                     DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
@@ -157,5 +167,71 @@ class BodyFragment : Fragment(), View.OnClickListener {
                 }
             }
         })
+    }
+
+    private fun fetchSymptom(bodyParts: BodyParts) {
+        val apiService: ApiInterface = ApiClient.getRetrofitClient(context)!!.create(ApiInterface::class.java)
+
+        val param = JsonObject()
+        param.addProperty("body_id", bodyParts.id)
+        param.addProperty("body_type", bodyParts.side)
+
+        val call: Call<JsonObject> = apiService.getSymptom(param)
+        DialogUtility.showProgressDialog(context!!)
+        call.enqueue(object : Callback<JsonObject?> {
+
+            override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
+                Log.d("SYMPTOMS: $param", ": " + response.raw().request().url())
+                if (response.isSuccessful) {
+                    DialogUtility.hideProgressDialog()
+                    val json = JSONObject(response.body().toString())
+                    val responseModel = ResponseModel(json)
+                    if (responseModel.isCode()) {
+                        val symptomAry = responseModel.getDataArray()
+                         openSymptomDialog(bodyParts,symptomAry!!)
+//                        val listType: Type = object : TypeToken<List<BodyParts?>?>() {}.type
+//                        bodyPartLists = gson.fromJson(symptomAry.toString(), listType)
+                    } else {
+                        AppHelper.showToast(context!!, responseModel.getMessage().toString())
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
+                if (t is NoConnectivityException) {
+                    DialogUtility.hideProgressDialog()
+                    AppHelper.showNetNotAvailable(context!!)
+                }
+            }
+        })
+    }
+    private fun openSymptomDialog(bodyParts: BodyParts, symptomAry: JSONArray) {
+
+        val view = layoutInflater.inflate(R.layout.symptom_list, null)
+        val dialog = BottomSheetDialog(context!!)
+        dialog.setContentView(view)
+        val bodyPartName: TextView = view.findViewById(R.id.bodyPartName)
+        val symptmList: RecyclerView = view.findViewById(R.id.symptmList)
+        val cncleImg: ImageView = view.findViewById(R.id.cncleImg)
+
+        cncleImg.setOnClickListener(View.OnClickListener {
+            dialog.dismiss()
+        })
+
+        symptmList.layoutManager = LinearLayoutManager(context)
+        val adapter = SymptomAdapter(symptomAry!!,
+            RecyclerItemClickListener.OnItemClickListener { view, position ->
+                val model = SymptomModel(symptomAry.getJSONObject(position))
+                AppHelper.showToast(context!!,""+ model.getId())
+
+                val resultIntent = Intent()
+                resultIntent.putExtra("MESSAGE", model.getName())
+                activity!!.setResult(Activity.RESULT_OK, resultIntent)
+                activity!!.finish()
+            })
+        symptmList.adapter = adapter
+        bodyPartName.text = bodyParts.name
+
+        dialog.show()
     }
 }

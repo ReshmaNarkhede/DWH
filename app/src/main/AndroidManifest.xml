@@ -13,11 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".activity.self_assessment.SelfAssessDetailActivity"
-            android:label="@string/title_activity_self_assess_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activity.question.QuestionActivity"></activity>
         <activity android:name=".activity.self_assessment.SADetailActivity" />
+        <activity android:name=".activity.self_assessment.AddSymptomActivity" />
         <activity android:name=".activity.account.register.RegisterTermsActivity" />
         <activity
             android:name=".activity.account.register.RegisterPasswordActivity"

@@ -9,10 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.activity.account.login.HaveWeMetActivity
 import com.example.healthwareapplication.activity.self_assessment.SADetailActivity
-import com.example.healthwareapplication.app_utils.AppHelper
-import com.example.healthwareapplication.app_utils.AppSessions
 
 class SAListFragment : Fragment(), View.OnClickListener {
     private lateinit var addBtn: Button

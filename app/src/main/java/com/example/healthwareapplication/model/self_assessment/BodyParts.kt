@@ -1,4 +1,4 @@
-package com.example.healthwareapplication.model
+package com.example.healthwareapplication.model.self_assessment
 
 class BodyParts {
     var id: String? = ""

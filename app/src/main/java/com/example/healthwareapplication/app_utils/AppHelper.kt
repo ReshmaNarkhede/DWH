@@ -3,11 +3,14 @@ package com.example.healthwareapplication.app_utils
 import android.app.Activity
 import android.content.Context
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import com.example.healthwareapplication.R
+import com.google.gson.JsonObject
+import retrofit2.Response
 
 class AppHelper {
     companion object{
@@ -31,6 +34,10 @@ class AppHelper {
         }
         fun isValidEmail(email: String): Boolean {
             return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        }
+
+        fun printUrl(msg: String, param: JsonObject, response: Response<JsonObject?>) {
+            Log.d(msg + ": $param",": "+response.raw().request().url())
         }
     }
 }

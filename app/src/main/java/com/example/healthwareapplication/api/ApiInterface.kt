@@ -22,4 +22,7 @@ interface ApiInterface {
     @POST("/v1/api/getBodyParts")
     fun getBodyPart(@Body jsonObject: JsonObject?): Call<JsonObject>
 
+    @POST("/v1/api/getSymptoms")
+    fun getSymptom(@Body jsonObject: JsonObject?): Call<JsonObject>
+
 }

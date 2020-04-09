@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!--    <androidx.core.widget.NestedScrollView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/m10"
+        android:orientation="horizontal"
+        android:padding="@dimen/p5">
+
+
+        <TextView
+            android:id="@+id/assessmentDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/dd_mm_yy"
+            android:textSize="@dimen/t16" />
+
+        <TextView
+            android:id="@+id/dayNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/day_1"
+            android:textSize="@dimen/t16" />
+
+        <TextView
+            android:id="@+id/assessmentTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/_00_00_am"
+            android:textSize="@dimen/t16" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/m5"
+        android:padding="@dimen/p5"
+        android:text="@string/what_do_you_feel"
+        android:textSize="@dimen/t20" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/searchBtn"
+            style="@style/CustomButtonTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/m10"
+            android:layout_weight="1"
+            android:onClick="addSymptom"
+            android:padding="@dimen/p10"
+            android:text="Search" />
+
+        <Button
+            android:id="@+id/addSymptomBtn"
+            style="@style/CustomButtonTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/m10"
+            android:layout_weight="1"
+            android:onClick="addSymptom"
+            android:padding="@dimen/p10"
+            android:text="@string/add_symptoms" />
+    </LinearLayout>
+
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/m5"
+        android:hint="Search..."
+        android:padding="@dimen/p10"
+        android:textSize="@dimen/t20" />
+
+    <TextView
+        android:id="@+id/symptom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/m5"
+        android:padding="@dimen/p5"
+        android:text="@string/label"
+        android:textSize="@dimen/t20" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/symptomList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/m10" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/when_did_it_start"
+            android:textSize="@dimen/t18" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/assessmentStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:text="@string/dd_mm_yy"
+                android:textSize="@dimen/t16" />
+
+
+            <TextView
+                android:id="@+id/assessmentStartTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:text="@string/_00_00_am"
+                android:textSize="@dimen/t16" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/nextBtn"
+        style="@style/CustomButtonTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/m10"
+        android:onClick="clickNext"
+        android:text="@string/next" />
+</LinearLayout>
