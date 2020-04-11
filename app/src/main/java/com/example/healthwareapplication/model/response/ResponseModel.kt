@@ -23,11 +23,9 @@ class ResponseModel(response: JSONObject) {
     }
 
     fun getDataArray() : JSONArray? {
-        return this.resJSONObj!!.optJSONArray("detail")
+        return this.resJSONObj!!.optJSONArray("data")
     }
     fun getDataObj() : JSONObject? {
-        return this.resJSONObj!!.optJSONObject("detail")!!
+        return this.resJSONObj!!.optJSONObject("data")!!
     }
-
-
 }

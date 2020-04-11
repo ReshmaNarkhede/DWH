@@ -2,12 +2,11 @@ package com.example.healthwareapplication.activity.self_assessment
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,8 +16,8 @@ import com.example.healthwareapplication.adapter.self_assessment.SymptomAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
+import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.self_assessment.BodyParts
-import com.example.healthwareapplication.model.self_assessment.SymptomModel
 import com.example.healthwareapplication.model.user.UserDetailModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
@@ -82,8 +81,13 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
         for (i in 0 until bodyPartLists.size) {
             val bodyParts = bodyPartLists[i]
             if (bodyParts.name!!.equals(obj.name, true)) {
-//
-                fetchSymptom(bodyParts)
+                if (image_front_back_flag && (bodyParts.side=="front")) {
+                    fetchSymptom(bodyParts)
+                    break
+                } else if(!image_front_back_flag && bodyParts.side.equals("back",true)){
+                    fetchSymptom(bodyParts)
+                    break
+                }
             }
         }
     }
@@ -129,15 +133,18 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
         val param = JsonObject()
         param.addProperty("gender", sex)
 
+        AppHelper.printParam("BODY PARTS Param:",param)
+
         val call: Call<JsonObject> = apiService.getBodyPart(param)
         DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
 
-                AppHelper.printUrl("BODY PARTS:",param,response)
+                AppHelper.printUrl("BODY PARTS:",response)
 
                 if (response.isSuccessful) {
+                    AppHelper.printResponse("BODY PARTS REs:",response)
                     DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
@@ -164,24 +171,26 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
         val apiService: ApiInterface = ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
 
         val param = JsonObject()
-        param.addProperty("body_id", bodyParts.id)
-        param.addProperty("body_type", bodyParts.side)
+        param.addProperty("body_part_id", bodyParts.id)
+        AppHelper.printParam("SYMPTOMS PAram:",param)
 
-        val call: Call<JsonObject> = apiService.getSymptom(param)
+
+        val call: Call<JsonObject> = apiService.getSymptomsByBodyPartId(param)
         DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
-                Log.d("SYMPTOMS: $param", ": " + response.raw().request().url())
+                AppHelper.printUrl("SYMPTOMS URL:",response)
+
                 if (response.isSuccessful) {
+                    AppHelper.printResponse("SYMPTOMS REs:",response)
+
                     DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val symptomAry = responseModel.getDataArray()
                         openSymptomDialog(bodyParts,symptomAry!!)
-//                        val listType: Type = object : TypeToken<List<BodyParts?>?>() {}.type
-//                        bodyPartLists = gson.fromJson(symptomAry.toString(), listType)
                     } else {
                         AppHelper.showToast(this@AddSymptomActivity, responseModel.getMessage().toString())
                     }
@@ -212,13 +221,13 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
         symptmList.layoutManager = LinearLayoutManager(this)
         val adapter = SymptomAdapter(symptomAry!!,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
-                val model = SymptomModel(symptomAry.getJSONObject(position))
-                AppHelper.showToast(this,""+ model.getId())
-
+                val modelObj = symptomAry.getJSONObject(position)
                 val resultIntent = Intent()
-                resultIntent.putExtra("MESSAGE", model.getName())
+                resultIntent.putExtra(IntentConstants.kSYMPTOM_SELECTED,modelObj.toString())
                 setResult(Activity.RESULT_OK, resultIntent)
+                dialog.dismiss()
                 finish()
+
             })
         symptmList.adapter = adapter
         bodyPartName.text = bodyParts.name

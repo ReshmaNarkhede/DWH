@@ -3,6 +3,7 @@ package com.example.healthwareapplication.app_utils
 import android.content.Context
 import com.example.healthwareapplication.constants.AppConstants
 import com.example.healthwareapplication.model.country.CountryData
+import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.example.healthwareapplication.model.user.UserDetailModel
 import com.google.gson.Gson
 import org.json.JSONArray
@@ -34,7 +35,16 @@ class AppSessions {
 
         fun getLoginModel(context: Context): UserDetailModel? {
             val gson = Gson()
-            return gson.fromJson(AppSessions.getLoginData(context), UserDetailModel::class.java)
+            return gson.fromJson(getLoginData(context), UserDetailModel::class.java)
+        }
+
+        fun getSymptomData(context: Context): JSONArray? {
+            return AppSettings.getArrayValue(context,AppConstants.kSYMPTOM_DATA)
+        }
+
+        fun getSymptomModel(context: Context):SymptomJsonModel?{
+            val gson = Gson()
+            return gson.fromJson(getSymptomData(context).toString(), SymptomJsonModel::class.java)
         }
     }
 }

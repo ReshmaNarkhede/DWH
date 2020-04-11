@@ -7,10 +7,6 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <!--    <androidx.core.widget.NestedScrollView-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content">-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,7 +63,7 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/m10"
             android:layout_weight="1"
-            android:onClick="addSymptom"
+            android:onClick="searchClick"
             android:padding="@dimen/p10"
             android:text="Search" />
 
@@ -85,21 +81,21 @@
     </LinearLayout>
 
     <AutoCompleteTextView
+        android:id="@+id/searchTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/m5"
         android:hint="Search..."
+        android:visibility="gone"
         android:padding="@dimen/p10"
         android:textSize="@dimen/t20" />
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/symptom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m5"
-        android:padding="@dimen/p5"
-        android:text="@string/label"
-        android:textSize="@dimen/t20" />
+        android:visibility="gone"
+        android:layout_margin="@dimen/m5" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/symptomList"
@@ -108,10 +104,12 @@
         android:layout_margin="@dimen/m10" />
 
     <LinearLayout
+        android:id="@+id/timeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp"
+        android:visibility="gone"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
@@ -148,6 +146,7 @@
 
     <Button
         android:id="@+id/nextBtn"
+        android:visibility="gone"
         style="@style/CustomButtonTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -17,12 +17,14 @@ interface ApiInterface {
 
     @POST("/v1/api/registration")
     @Multipart
-    fun registration(@PartMap fieldMap: Map<String, @JvmSuppressWildcards RequestBody?>):  Call<JsonObject>
+    fun registration(@PartMap fieldMap: Map<String, @JvmSuppressWildcards RequestBody?>): Call<JsonObject>
 
     @POST("/v1/api/getBodyParts")
     fun getBodyPart(@Body jsonObject: JsonObject?): Call<JsonObject>
 
-    @POST("/v1/api/getSymptoms")
-    fun getSymptom(@Body jsonObject: JsonObject?): Call<JsonObject>
+    @POST("/v1/api/getSymptomsByBodyPartId")
+    fun getSymptomsByBodyPartId(@Body jsonObject: JsonObject?): Call<JsonObject>
 
+    @POST("/v1/api/getSearchSymptomsByName")
+    fun getSearchSymptomsByName(@Body jsonObject: JsonObject?): Call<JsonObject>
 }

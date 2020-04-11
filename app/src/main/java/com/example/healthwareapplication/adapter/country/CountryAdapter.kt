@@ -17,7 +17,7 @@ import org.json.JSONObject
 
 class CountryAdapter(
     private var dataArr: JSONArray,
-    private val itemClickListener: RecyclerItemClickListener.OnItemClickListener
+private val itemClickListener: RecyclerItemClickListener.OnItemClickListener
 ) : RecyclerView.Adapter<CountryAdapter.ViewHolder>() {
     var mFilter: ItemFilter = ItemFilter()
 

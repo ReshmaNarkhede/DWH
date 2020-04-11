@@ -1,9 +1,8 @@
 package com.example.healthwareapplication.model.self_assessment
 
-import app.frats.android.api.APIRequests
 import org.json.JSONObject
 
-class SymptomModel(json: JSONObject){
+class SymptomJsonModel(json: JSONObject){
 
     private var dataJSONObj: JSONObject? = json
 

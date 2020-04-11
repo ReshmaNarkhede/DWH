@@ -36,8 +36,14 @@ class AppHelper {
             return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
         }
 
-        fun printUrl(msg: String, param: JsonObject, response: Response<JsonObject?>) {
-            Log.d(msg + ": $param",": "+response.raw().request().url())
+        fun printParam(msg: String, param:JsonObject) {
+            Log.d(msg,": $param")
+        }
+        fun printUrl(msg: String, response: Response<JsonObject?>) {
+            Log.d(msg,": "+response.raw().request().url())
+        }
+        fun printResponse(msg: String, response: Response<JsonObject?>) {
+            Log.d(msg," : " + response.body().toString())
         }
     }
 }
