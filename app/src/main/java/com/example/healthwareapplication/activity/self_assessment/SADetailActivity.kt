@@ -1,55 +1,54 @@
 package com.example.healthwareapplication.activity.self_assessment
 
-import android.annotation.SuppressLint
-import android.app.Activity
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.MotionEvent
 import android.view.View
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.activity.question.QuestionActivity
-import com.example.healthwareapplication.adapter.self_assessment.SearchSymptomAdapter
 import com.example.healthwareapplication.adapter.self_assessment.SelectedSymptomAdapter
 import com.example.healthwareapplication.adapter.self_assessment.SymptomAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
-import com.example.healthwareapplication.constants.AppConstants
 import com.example.healthwareapplication.constants.IntentConstants
-import com.example.healthwareapplication.model.self_assessment.SymptomDataModel
 import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_dashboard.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.reflect.Type
+import java.text.SimpleDateFormat
+import java.util.*
 
 class SADetailActivity : AppCompatActivity() {
-//    private lateinit var adapter: SearchSymptomAdapter
     private lateinit var gson: Gson
-
-    //    private lateinit var searchAdapter: SearchSymptomAdapter
     private lateinit var timeLayout: LinearLayout
     private lateinit var symptomList: RecyclerView
     private lateinit var symptom: RecyclerView
     private lateinit var nextBtn: Button
     private lateinit var searchTxt: AutoCompleteTextView
     val symptmJsonAry: JSONArray = JSONArray()
+
+    private lateinit var assessmentDate: TextView
+    private lateinit var assessmentTime: TextView
+
+    private lateinit var whenStartTime: TextView
+    private lateinit var whenStartDate: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +64,12 @@ class SADetailActivity : AppCompatActivity() {
         symptom = findViewById(R.id.symptom)
         nextBtn = findViewById(R.id.nextBtn)
         searchTxt = findViewById(R.id.searchTxt)
+
+        assessmentDate = findViewById(R.id.assessmentDate)
+        assessmentTime = findViewById(R.id.assessmentTime)
+
+        whenStartTime = findViewById(R.id.assessmentStartTime)
+        whenStartDate = findViewById(R.id.assessmentStartDate)
 
         gson = Gson()
         dataBind()
@@ -92,6 +97,16 @@ class SADetailActivity : AppCompatActivity() {
         symptomList.layoutManager = LinearLayoutManager(this)
         val addAdapter = SelectedSymptomAdapter(symptmJsonAry!!)
         symptomList.adapter = addAdapter
+
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        assessmentDate.text = "$day/${month + 1}/$year"
+        val sdf = SimpleDateFormat("hh:mm aa")
+        val result = sdf.format(Calendar.getInstance().time)
+        assessmentTime.text = result
     }
 
     fun searchClick(view: View) {
@@ -177,5 +192,22 @@ class SADetailActivity : AppCompatActivity() {
         Log.e("next: ", " " + symptmJsonAry.length())
         val intent = Intent(this, QuestionActivity::class.java)
         startActivity(intent)
+    }
+
+
+    fun whenDateClick(view: View) {
+        val listner = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            whenStartDate.text = "$dayOfMonth/$monthOfYear/$year"
+            DialogUtility.hideProgressDialog()
+        }
+        DialogUtility.showDatePickerDialog(this, listner).show()
+    }
+
+    fun whenTimeClick(view: View) {
+        val listner = TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
+            whenStartTime.text = "${SimpleDateFormat("hh:mm a").format(SimpleDateFormat("hh:mm").parse("${selectedHour}:${selectedMinute}"))}"
+            DialogUtility.hideProgressDialog()
+        }
+        DialogUtility.showTimePickerDialog(this, listner).show()
     }
 }

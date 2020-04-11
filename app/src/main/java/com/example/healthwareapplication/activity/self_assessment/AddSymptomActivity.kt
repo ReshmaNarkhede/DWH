@@ -3,6 +3,7 @@ package com.example.healthwareapplication.activity.self_assessment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -59,23 +60,24 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private fun defaultConfiguration() {
-        val array = bodyImg.findAllRichPaths()
+//        val array = bodyImg.findAllRichPaths()
         rotate.setOnClickListener(this)
 
         setDefaultImage(user)
 
-        bodyImg.setOnPathClickListener(RichPath.OnPathClickListener { richPath ->
-            for (i in array.indices) {
-                val obj: RichPath = bodyImg.findRichPathByIndex(i)!!
-                if (richPath.name == obj.name) {
-                    getIDFromBodyPart(obj)
-                    obj.fillColor = ContextCompat.getColor(this, R.color.body_fill)
-                } else {
-                    obj.fillColor = ContextCompat.getColor(this, R.color.white)
-                    obj.strokeColor = ContextCompat.getColor(this, R.color.body_outline)
-                }
-            }
-        })
+//        bodyImg.setOnPathClickListener(RichPath.OnPathClickListener { richPath ->
+//            for (i in array.indices) {
+//                val obj: RichPath = bodyImg.findRichPathByIndex(i)!!
+//                if (richPath.name == obj.name) {
+//                    Log.e("check: ",obj.name)
+////                    getIDFromBodyPart(obj)
+//                    obj.fillColor = ContextCompat.getColor(this, R.color.body_fill)
+//                } else {
+//                    obj.fillColor = ContextCompat.getColor(this, R.color.white)
+//                    obj.strokeColor = ContextCompat.getColor(this, R.color.body_outline)
+//                }
+//            }
+//        })
     }
     private fun getIDFromBodyPart(obj: RichPath) {
         for (i in 0 until bodyPartLists.size) {
@@ -98,6 +100,7 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
         } else {
             bodyImg.setVectorDrawable(R.drawable.male_body_front)
         }
+        fetchImageClick()
     }
 
     override fun onClick(v: View?) {
@@ -124,6 +127,24 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
             }
             image_front_back_flag = true
         }
+        fetchImageClick()
+    }
+
+    private fun fetchImageClick() {
+        val array = bodyImg.findAllRichPaths()
+        bodyImg.setOnPathClickListener(RichPath.OnPathClickListener { richPath ->
+            for (i in array.indices) {
+                val obj: RichPath = bodyImg.findRichPathByIndex(i)!!
+                if (richPath.name == obj.name) {
+                    Log.e("check: ",obj.name)
+                    getIDFromBodyPart(obj)
+                    obj.fillColor = ContextCompat.getColor(this, R.color.body_fill)
+                } else {
+                    obj.fillColor = ContextCompat.getColor(this, R.color.white)
+                    obj.strokeColor = ContextCompat.getColor(this, R.color.body_outline)
+                }
+            }
+        })
     }
 
     private fun fetchBodyParts(sex: String?) {
@@ -144,12 +165,13 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
                 AppHelper.printUrl("BODY PARTS:",response)
 
                 if (response.isSuccessful) {
-                    AppHelper.printResponse("BODY PARTS REs:",response)
+
                     DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val bodyAry = responseModel.getDataArray()
+                        Log.e("Size: ",""+bodyAry!!.length())
                         val listType: Type = object : TypeToken<List<BodyParts?>?>() {}.type
                         bodyPartLists = gson.fromJson(bodyAry.toString(), listType)
                     } else {

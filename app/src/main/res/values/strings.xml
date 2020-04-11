@@ -88,7 +88,7 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="foot">Foot</string>
     <string name="head">Head</string>
     <string name="rotate_model">Rotate model</string>
-    <string name="ear">Ear</string>
+    <string name="ear">Ears</string>
     <string name="nape_of_neck">Nape of Neck</string>
     <string name="back">Back</string>
     <string name="elbow">Elbow</string>
@@ -96,6 +96,9 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="anus">Anus</string>
     <string name="lower_back">Lower Back</string>
     <string name="breasts">Breasts</string>
+    <string name="eyes">Eyes</string>
+    <string name="nose">Nose</string>
+    <string name="oral_cavity">Oral cavity</string>
 
     <string name="what_do_you_feel">What do you feel?</string>
     <string name="when_did_it_start">When did it start</string>

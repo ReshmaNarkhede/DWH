@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:padding="@dimen/p2"
     android:layout_marginTop="@dimen/m5"
-    android:background="@drawable/pink_border"
+    android:background="@drawable/selected_symptom_drawable"
     android:layout_height="wrap_content">
 
     <TextView

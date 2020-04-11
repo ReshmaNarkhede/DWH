@@ -130,6 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
+                android:onClick="whenDateClick"
                 android:text="@string/dd_mm_yy"
                 android:textSize="@dimen/t16" />
 
@@ -139,6 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|end"
+                android:onClick="whenTimeClick"
                 android:text="@string/_00_00_am"
                 android:textSize="@dimen/t16" />
         </FrameLayout>
