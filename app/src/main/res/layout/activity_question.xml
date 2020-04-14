@@ -1,11 +1,27 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/headingView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <LinearLayout
+            android:id="@+id/questionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+    </LinearLayout>
+   <!-- <RelativeLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,35 +48,5 @@
                 android:padding="@dimen/p5"/>
         </androidx.cardview.widget.CardView>
 
-<!--        <Button-->
-<!--            android:id="@+id/signup"-->
-<!--            android:layout_width="160dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@+id/customOptionLLOuter"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:background="@color/colorPrimaryDark"-->
-<!--            android:onClick="getDataFromDynamicViews"-->
-<!--            android:padding="10dp"-->
-<!--            android:text="Get Data"-->
-<!--            android:textColor="#FFFFFF"-->
-<!--            android:textStyle="bold" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/text"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@+id/signup"-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:text="Output:"-->
-<!--            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/showData"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@+id/text"-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:textAppearance="@style/TextAppearance.AppCompat.Large" />-->
-    </RelativeLayout>
+    </RelativeLayout>-->
 </ScrollView>

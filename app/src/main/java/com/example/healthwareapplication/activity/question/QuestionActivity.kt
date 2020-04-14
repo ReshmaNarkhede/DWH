@@ -1,25 +1,23 @@
 package com.example.healthwareapplication.activity.question
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.adapter.self_assessment.QuestionStepperAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.app_utils.NoConnectivityException
-import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.self_assessment.QuestionData
-import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.google.gson.JsonObject
+import com.stepstone.stepper.StepperLayout
+import com.stepstone.stepper.VerificationError
 import org.json.JSONArray
-import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,8 +26,9 @@ import retrofit2.Response
 
 class QuestionActivity : AppCompatActivity() {
 
-    private lateinit var viewProductLayout: LinearLayout
-    var allViewInstance: MutableList<View> = ArrayList()
+    //    private lateinit var viewProductLayout: LinearLayout
+    private lateinit var questionView: LinearLayout
+//    var allViewInstance: MutableList<View> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,26 +41,27 @@ class QuestionActivity : AppCompatActivity() {
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
 
-        viewProductLayout = findViewById(R.id.customOptionLL)
+        questionView = findViewById(R.id.questionView)
+//        viewProductLayout = findViewById(R.id.customOptionLL)
     }
 
     private fun defaultConfiguration() {
-
-        val symptomJsonAry = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
-        try {
-
-            val ids: MutableList<String> = ArrayList()
-            val array = JSONArray(symptomJsonAry)
-            for (i in 0 until array.length()) {
-                val model = SymptomJsonModel(array.getJSONObject(i))
-                ids.add(model.getId()!!)
-            }
-            val idStr = android.text.TextUtils.join(",", ids)
-            fetchQuestionData(idStr)
-            Log.e("next: ", " $idStr")
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
+        fetchQuestionData("4")
+//        val symptomJsonAry = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
+//        try {
+//
+//            val ids: MutableList<String> = ArrayList()
+//            val array = JSONArray(symptomJsonAry)
+//            for (i in 0 until array.length()) {
+//                val model = SymptomJsonModel(array.getJSONObject(i))
+//                ids.add(model.getId()!!)
+//            }
+//            val idStr = android.text.TextUtils.join(",", ids)
+//            fetchQuestionData(idStr)
+//            Log.e("next: ", " $idStr")
+//        } catch (e: JSONException) {
+//            e.printStackTrace()
+//        }
     }
 
     private fun fetchQuestionData(idStr: String) {
@@ -69,7 +69,7 @@ class QuestionActivity : AppCompatActivity() {
             ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
 
         val param = JsonObject()
-        param.addProperty("symptoms_id", 4)
+        param.addProperty("symptoms_id", idStr)
         AppHelper.printParam("QUESTION PAram:", param)
 
         val call: Call<JsonObject> = apiService.getQuestions(param)
@@ -107,76 +107,72 @@ class QuestionActivity : AppCompatActivity() {
         })
     }
 
+
+
     private fun setDynamicData(questionAry: JSONArray) {
         for (i in 0 until questionAry.length()) {
             val questionData = QuestionData(questionAry.getJSONObject(i))
-            val customOptionsName = TextView(this)
-            customOptionsName.textSize = 18f
-            customOptionsName.setPadding(0, 15, 0, 15)
-            customOptionsName.text = questionData.getQuestion()
-            viewProductLayout.addView(customOptionsName)
-
-            /***************************Radio*****************************************************/
-            if (questionData.getQuestionType() == "SS") {
-                val params = LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.FILL_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-                )
-                params.topMargin = 3
-                params.bottomMargin = 3
-                val radioButtonJSONOpt = questionData.getAnswers()
-                val rg = RadioGroup(this) //create the RadioGroup
-                allViewInstance.add(rg)
-                for (j in 0 until radioButtonJSONOpt!!.length()) {
-                    val answerData = QuestionData.AnswerData(radioButtonJSONOpt.getJSONObject(j))
-                    val rb = RadioButton(this)
-                    rg.addView(rb, params)
-                    if (j == 0) rb.isChecked = true
-                    rb.layoutParams = params
-                    rb.tag = answerData.getAnswerId()
-                    rb.setBackgroundColor(Color.parseColor("#FFFFFF"))
-                    val ansStr = answerData.getAnswerValue()
-                    rb.text = ansStr
-                    rg.setOnCheckedChangeListener { group, checkedId ->
-                        val radioButton = group.findViewById<View>(checkedId)
-                        val variant_name = radioButton.tag.toString()
-                        Toast.makeText(applicationContext, variant_name + "", Toast.LENGTH_LONG)
-                            .show()
-                    }
-                }
-                viewProductLayout.addView(rg, params)
-            }
-
-//                    /***********************************CheckBox ***********************************************/
-//            if (eachData.getString("option_type") == "C") {
-//                val checkBoxJSONOpt = eachData.getJSONArray("variants")
-//                for (j in 0 until checkBoxJSONOpt.length()) {
-//                    if (!checkBoxJSONOpt.getJSONObject(j).getString("variant_name").equals("NO", ignoreCase = true)) {
-//                        val chk = CheckBox(this)
-//                        chk.setBackgroundColor(Color.parseColor("#FFFFFF"))
-//                        allViewInstance.add(chk)
-//                        chk.tag = checkBoxJSONOpt.getJSONObject(j).getString("variant_name")
-//                        val params = LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-//                        params.topMargin = 3
-//                        params.bottomMargin = 3
-//                        val optionString = checkBoxJSONOpt.getJSONObject(j).getString("variant_name")
-//                        chk.setOnClickListener { v ->
-//                            val variant_name = v.tag.toString()
-//                            Toast.makeText(applicationContext, variant_name + "", Toast.LENGTH_LONG).show()
-//                        }
-//                        chk.text = optionString
-//                        viewProductLayout.addView(chk, params)
-//                    }
-//                }
-//            }
-//            if (eachData.getString("option_type") == "T") {
-//                val til = TextInputLayout(this)
-//                til.setHint("test hint")
-//                val et = EditText(this)
-//                til.addView(et)
-//                allViewInstance.add(et)
-//                viewProductLayout.addView(til)
-//            }
+            val view: View = getQuestionView(questionData)
+            questionView.addView(view)
         }
+    }
+
+    private fun getQuestionView(questionData: QuestionData): View {
+        var view: View? = null
+        if (questionData.getQuestionType() == "SS") // yes no option
+        {
+            view = layoutInflater.inflate(R.layout.survay_radio_button_view, null)
+            val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
+            val question = view.findViewById<TextView>(R.id.question)
+            val comment = view.findViewById<EditText>(R.id.comment)
+            radioGroup.removeAllViews()
+            question.text = questionData.getQuestion()
+            val answerArray = questionData.getAnswers()
+            for (j in 0 until answerArray!!.length()) {
+                val answerData = QuestionData.AnswerData(answerArray.getJSONObject(j))
+                val radio =
+                    layoutInflater.inflate(R.layout.survay_radio_button, null) as RadioButton
+                radio.id = j + 1001
+                radio.text = answerData.getAnswerValue()
+                radio.tag = answerData.getAnswerId()
+                radioGroup.addView(radio)
+            }
+        }
+        if (questionData.getQuestionType() == "CB") // CrossBar
+        {
+            view = layoutInflater.inflate(R.layout.survay_radio_button_view, null)
+            val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
+            val question = view.findViewById<TextView>(R.id.question)
+            val comment = view.findViewById<EditText>(R.id.comment)
+            radioGroup.removeAllViews()
+            question.text = questionData.getQuestion()
+            val answerArray = questionData.getAnswers()
+            for (j in 0 until answerArray!!.length()) {
+                val answerData = QuestionData.AnswerData(answerArray.getJSONObject(j))
+                val radio =
+                    layoutInflater.inflate(R.layout.survay_radio_button, null) as RadioButton
+                radio.id = j + 1001
+                radio.text = answerData.getAnswerValue()
+                radio.tag = answerData.getAnswerId()
+                radioGroup.addView(radio)
+            }
+        }
+        if (questionData.getQuestionType() == "MS") // Checkbox
+        {
+            view = layoutInflater.inflate(R.layout.survay_check_box_view, null)
+            val checkboxGroup = view.findViewById<LinearLayout>(R.id.checkboxGroup)
+            val question = view.findViewById<TextView>(R.id.question)
+            question.text = questionData.getQuestion()
+            val answerArray = questionData.getAnswers()
+            for (j in 0 until answerArray!!.length()) {
+                val answerData = QuestionData.AnswerData(answerArray.getJSONObject(j))
+                val checkbox = layoutInflater.inflate(R.layout.survay_check_box, null) as CheckBox
+                checkbox.id = j + 1001
+                checkbox.text = answerData.getAnswerValue()
+                checkbox.tag = answerData.getAnswerId()
+                checkboxGroup.addView(checkbox)
+            }
+        }
+        return view!!
     }
 }

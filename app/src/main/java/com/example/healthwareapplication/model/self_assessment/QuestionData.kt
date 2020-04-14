@@ -5,8 +5,15 @@ import org.json.JSONObject
 
 class QuestionData (json: JSONObject){
 
+    private var selected = false
     private var dataJSONObj: JSONObject? = json
+    fun isSelected(): Boolean {
+        return selected
+    }
 
+    fun setSelected(selected: Boolean) {
+        this.selected = selected
+    }
     fun getId(): String? {
         return dataJSONObj!!.optString("id")
     }
