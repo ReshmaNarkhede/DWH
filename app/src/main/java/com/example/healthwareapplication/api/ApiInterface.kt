@@ -27,4 +27,7 @@ interface ApiInterface {
 
     @POST("/v1/api/getSearchSymptomsByName")
     fun getSearchSymptomsByName(@Body jsonObject: JsonObject?): Call<JsonObject>
+
+    @POST("/v1/api/getQuestions")
+    fun getQuestions(@Body jsonObject: JsonObject?): Call<JsonObject>
 }

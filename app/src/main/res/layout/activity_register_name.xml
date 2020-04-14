@@ -48,7 +48,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/gray"
+                    android:textColorHint="@color/grey"
                     android:layout_weight=".5">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -64,7 +64,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/gray"
+                    android:textColorHint="@color/grey"
                     android:layout_weight=".5">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -83,7 +83,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/gray"
+            android:textColorHint="@color/grey"
             android:layout_margin="@dimen/m5">
 
             <com.google.android.material.textfield.TextInputEditText

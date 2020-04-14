@@ -143,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/m10"
                 android:orientation="horizontal"
-                android:textColorHint="@color/gray">
+                android:textColorHint="@color/grey">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/mobileNo"

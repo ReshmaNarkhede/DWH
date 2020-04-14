@@ -8,10 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.AutoCompleteTextView
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,7 +38,7 @@ class SADetailActivity : AppCompatActivity() {
     private lateinit var symptomList: RecyclerView
     private lateinit var symptom: RecyclerView
     private lateinit var nextBtn: Button
-    private lateinit var searchTxt: AutoCompleteTextView
+    private lateinit var searchTxt: EditText
     val symptmJsonAry: JSONArray = JSONArray()
 
     private lateinit var assessmentDate: TextView
@@ -121,7 +118,8 @@ class SADetailActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                fetchSymptomBySearch(s.toString().trim())
+
+                fetchSymptomBySearch(s.toString())
             }
         })
     }
@@ -149,19 +147,7 @@ class SADetailActivity : AppCompatActivity() {
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val symptomListAry = responseModel.getDataArray()!!
-                        symptom.layoutManager = LinearLayoutManager(this@SADetailActivity)
-                        val adapter = SymptomAdapter(symptomListAry!!,
-                            RecyclerItemClickListener.OnItemClickListener { view, position ->
-                                val modelObj = JSONObject(symptomListAry.getJSONObject(position).toString())
-                                symptmJsonAry.put(modelObj)
-                                AppHelper.showToast(this@SADetailActivity,SymptomJsonModel(modelObj).getId()+"")
-                                searchTxt.setText("")
-                                symptom.visibility = View.GONE
-                                searchTxt.visibility = View.GONE
-
-                                showBottom()
-                            })
-                        symptom.adapter = adapter
+                       bindSymptomSearchName(symptomListAry)
 
                     } else {
                         AppHelper.showToast(
@@ -181,6 +167,22 @@ class SADetailActivity : AppCompatActivity() {
         })
     }
 
+    private fun bindSymptomSearchName(symptomListAry: JSONArray) {
+        symptom.layoutManager = LinearLayoutManager(this@SADetailActivity)
+        val adapter = SymptomAdapter(symptomListAry!!,
+            RecyclerItemClickListener.OnItemClickListener { view, position ->
+                val modelObj = JSONObject(symptomListAry.getJSONObject(position).toString())
+                symptmJsonAry.put(modelObj)
+                AppHelper.showToast(this@SADetailActivity,SymptomJsonModel(modelObj).getId()+"")
+                searchTxt.setText("")
+                symptom.visibility = View.GONE
+                searchTxt.visibility = View.GONE
+
+                showBottom()
+            })
+        symptom.adapter = adapter
+    }
+
     private fun showBottom() {
         Log.e("Show bottom: ", " " + symptmJsonAry.length())
         nextBtn.visibility = View.VISIBLE
@@ -189,8 +191,8 @@ class SADetailActivity : AppCompatActivity() {
 
 
     fun clickNext(view: View) {
-        Log.e("next: ", " " + symptmJsonAry.length())
         val intent = Intent(this, QuestionActivity::class.java)
+        intent.putExtra(IntentConstants.kSYMPTOM_DATA,symptmJsonAry.toString())
         startActivity(intent)
     }
 

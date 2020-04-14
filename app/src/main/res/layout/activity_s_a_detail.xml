@@ -79,8 +79,7 @@
             android:padding="@dimen/p10"
             android:text="@string/add_symptoms" />
     </LinearLayout>
-
-    <AutoCompleteTextView
+    <EditText
         android:id="@+id/searchTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
