@@ -1,10 +1,10 @@
-package com.example.healthwareapplication.adapter.self_assessment
+package com.example.healthwareapplication.adapter.self_assessment.question
 
 import android.content.Context
 import android.os.Bundle
 import androidx.annotation.IntRange
 import androidx.fragment.app.FragmentManager
-import com.example.healthwareapplication.fragment.self_assessment.QuestionFragment
+import com.example.healthwareapplication.fragment.self_assessment.question.QuestionFragment
 import com.stepstone.stepper.Step
 import com.stepstone.stepper.adapter.AbstractFragmentStepAdapter
 import com.stepstone.stepper.viewmodel.StepViewModel
@@ -16,7 +16,8 @@ class QuestionStepperAdapter(fm: FragmentManager, context: Context, private var 
     }
 
     override fun createStep(position: Int): Step {
-        val step1 = QuestionFragment()
+        val step1 =
+            QuestionFragment()
         val b1 = Bundle()
         b1.putInt("Position", position)
         b1.putString("Array", questionAry.toString())

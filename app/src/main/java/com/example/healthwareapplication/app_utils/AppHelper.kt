@@ -2,6 +2,8 @@ package com.example.healthwareapplication.app_utils
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Color
+import android.os.Build
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
@@ -17,11 +19,12 @@ class AppHelper {
         fun transparentStatusBar(activity: Activity) {
             val window: Window = activity.window
             val winParams: WindowManager.LayoutParams = window.attributes
-            winParams.flags =
-                winParams.flags and WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS.inv()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                window.statusBarColor = Color.TRANSPARENT
+            }
+            winParams.flags = winParams.flags and WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS.inv()
             window.attributes = winParams
-            window.decorView.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         }
 
         fun showNetNotAvailable(context: Context) {

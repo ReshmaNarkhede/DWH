@@ -7,7 +7,6 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.adapter.self_assessment.QuestionStepperAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.AppHelper
@@ -15,8 +14,6 @@ import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.app_utils.NoConnectivityException
 import com.example.healthwareapplication.model.self_assessment.QuestionData
 import com.google.gson.JsonObject
-import com.stepstone.stepper.StepperLayout
-import com.stepstone.stepper.VerificationError
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -107,8 +104,6 @@ class QuestionActivity : AppCompatActivity() {
         })
     }
 
-
-
     private fun setDynamicData(questionAry: JSONArray) {
         for (i in 0 until questionAry.length()) {
             val questionData = QuestionData(questionAry.getJSONObject(i))
@@ -143,14 +138,12 @@ class QuestionActivity : AppCompatActivity() {
             view = layoutInflater.inflate(R.layout.survay_radio_button_view, null)
             val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
             val question = view.findViewById<TextView>(R.id.question)
-            val comment = view.findViewById<EditText>(R.id.comment)
             radioGroup.removeAllViews()
             question.text = questionData.getQuestion()
             val answerArray = questionData.getAnswers()
             for (j in 0 until answerArray!!.length()) {
                 val answerData = QuestionData.AnswerData(answerArray.getJSONObject(j))
-                val radio =
-                    layoutInflater.inflate(R.layout.survay_radio_button, null) as RadioButton
+                val radio = layoutInflater.inflate(R.layout.survay_radio_button, null) as RadioButton
                 radio.id = j + 1001
                 radio.text = answerData.getAnswerValue()
                 radio.tag = answerData.getAnswerId()

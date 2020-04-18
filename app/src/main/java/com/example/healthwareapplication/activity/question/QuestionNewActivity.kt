@@ -4,10 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.adapter.self_assessment.QuestionStepperAdapter
+import com.example.healthwareapplication.adapter.self_assessment.question.QuestionStepperAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.AppHelper
@@ -98,7 +97,12 @@ class QuestionNewActivity : AppCompatActivity(), StepperLayout.StepperListener {
         })
     }
     private fun setDynamicData(questionAry: JSONArray) {
-        val mStepperAdapter = QuestionStepperAdapter(supportFragmentManager, this, questionAry)
+        val mStepperAdapter =
+            QuestionStepperAdapter(
+                supportFragmentManager,
+                this,
+                questionAry
+            )
         mStepperLayout.adapter = mStepperAdapter
         mStepperLayout.setListener(this)
     }
