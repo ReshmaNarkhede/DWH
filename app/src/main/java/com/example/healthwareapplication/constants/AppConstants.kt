@@ -14,5 +14,7 @@ class AppConstants {
         const val kCOUNTRY_DATA: String = "kCOUNTRY_DATA"
 
         const val kSYMPTOM_DATA: String = "kSYMPTOM_DATA"
+        const val kQUESTION_ARY: String = "kQUESTION_ARY"
+        const val kINDEX: String = "kINDEX"
     }
 }

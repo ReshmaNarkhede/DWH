@@ -48,4 +48,5 @@ dependencies {
 
     implementation 'com.stepstone.stepper:material-stepper:3.2.3'
     implementation 'com.github.tarek360.RichPath:animator:0.1.1'
+    implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
 }

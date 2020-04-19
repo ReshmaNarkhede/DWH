@@ -1,19 +1,24 @@
 package com.example.healthwareapplication.activity.question
 
+import android.drm.DrmRights
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.adapter.self_assessment.question.PagerAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.app_utils.NoConnectivityException
-import com.example.healthwareapplication.model.self_assessment.QuestionData
+import com.example.healthwareapplication.fragment.self_assessment.question.QFragment
 import com.google.gson.JsonObject
+import com.stepstone.stepper.internal.widget.RightNavigationButton
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -21,11 +26,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class QuestionActivity : AppCompatActivity() {
+class QuestionActivity : AppCompatActivity(), QFragment.OnButtonClickListener {
 
-    //    private lateinit var viewProductLayout: LinearLayout
-    private lateinit var questionView: LinearLayout
-//    var allViewInstance: MutableList<View> = ArrayList()
+    private lateinit var viewpager: ViewPager
+    private lateinit var leftNavigation: ImageView
+    private lateinit var rightNavigation: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,11 +40,15 @@ class QuestionActivity : AppCompatActivity() {
         defaultConfiguration()
     }
 
+
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
+        viewpager = findViewById(R.id.pager)
+//        leftNavigation = findViewById(R.id.leftNavigation)
+//        rightNavigation = findViewById(R.id.rightNavigation)
 
-        questionView = findViewById(R.id.questionView)
-//        viewProductLayout = findViewById(R.id.customOptionLL)
+//        leftNavigation.(this)
+//        rightNavigation.setOnClickListener(this)
     }
 
     private fun defaultConfiguration() {
@@ -105,67 +114,51 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     private fun setDynamicData(questionAry: JSONArray) {
+        setupViewPager(questionAry)
+//        val questionData = QuestionData(questionAry.getJSONObject(i))
+//            val view: View = getQuestionView(questionData)
+//            questionView.addView(view)
+    }
+
+    private fun setupViewPager(questionAry: JSONArray) {
+        val adapter = PagerAdapter(
+            supportFragmentManager
+        )
         for (i in 0 until questionAry.length()) {
-            val questionData = QuestionData(questionAry.getJSONObject(i))
-            val view: View = getQuestionView(questionData)
-            questionView.addView(view)
+            val firstFragment: QFragment = QFragment.newInstance(questionAry,i)
+            adapter.addFragment(firstFragment)
+        }
+
+        viewpager.adapter = adapter
+        viewpager.addOnPageChangeListener(viewPagerPageChangeListener)
+
+    }
+
+    private var viewPagerPageChangeListener: ViewPager.OnPageChangeListener =
+        object : ViewPager.OnPageChangeListener {
+
+            override fun onPageSelected(position: Int) {
+            }
+
+            override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {
+
+            }
+
+            override fun onPageScrollStateChanged(arg0: Int) {
+
+            }
+        }
+
+    override fun onButtonClicked(view: View?) {
+        val currPos: Int = viewpager.currentItem
+
+        when (view!!.id) {
+//            R.id.nextBtn ->             //handle currPos is zero
+//                viewpager.currentItem = currPos - 1
+            R.id.nextBtn ->             //handle currPos is reached last item
+                viewpager.currentItem = currPos + 1
         }
     }
 
-    private fun getQuestionView(questionData: QuestionData): View {
-        var view: View? = null
-        if (questionData.getQuestionType() == "SS") // yes no option
-        {
-            view = layoutInflater.inflate(R.layout.survay_radio_button_view, null)
-            val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
-            val question = view.findViewById<TextView>(R.id.question)
-            val comment = view.findViewById<EditText>(R.id.comment)
-            radioGroup.removeAllViews()
-            question.text = questionData.getQuestion()
-            val answerArray = questionData.getAnswers()
-            for (j in 0 until answerArray!!.length()) {
-                val answerData = QuestionData.AnswerData(answerArray.getJSONObject(j))
-                val radio =
-                    layoutInflater.inflate(R.layout.survay_radio_button, null) as RadioButton
-                radio.id = j + 1001
-                radio.text = answerData.getAnswerValue()
-                radio.tag = answerData.getAnswerId()
-                radioGroup.addView(radio)
-            }
-        }
-        if (questionData.getQuestionType() == "CB") // CrossBar
-        {
-            view = layoutInflater.inflate(R.layout.survay_radio_button_view, null)
-            val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
-            val question = view.findViewById<TextView>(R.id.question)
-            radioGroup.removeAllViews()
-            question.text = questionData.getQuestion()
-            val answerArray = questionData.getAnswers()
-            for (j in 0 until answerArray!!.length()) {
-                val answerData = QuestionData.AnswerData(answerArray.getJSONObject(j))
-                val radio = layoutInflater.inflate(R.layout.survay_radio_button, null) as RadioButton
-                radio.id = j + 1001
-                radio.text = answerData.getAnswerValue()
-                radio.tag = answerData.getAnswerId()
-                radioGroup.addView(radio)
-            }
-        }
-        if (questionData.getQuestionType() == "MS") // Checkbox
-        {
-            view = layoutInflater.inflate(R.layout.survay_check_box_view, null)
-            val checkboxGroup = view.findViewById<LinearLayout>(R.id.checkboxGroup)
-            val question = view.findViewById<TextView>(R.id.question)
-            question.text = questionData.getQuestion()
-            val answerArray = questionData.getAnswers()
-            for (j in 0 until answerArray!!.length()) {
-                val answerData = QuestionData.AnswerData(answerArray.getJSONObject(j))
-                val checkbox = layoutInflater.inflate(R.layout.survay_check_box, null) as CheckBox
-                checkbox.id = j + 1001
-                checkbox.text = answerData.getAnswerValue()
-                checkbox.tag = answerData.getAnswerId()
-                checkboxGroup.addView(checkbox)
-            }
-        }
-        return view!!
-    }
+
 }

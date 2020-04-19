@@ -52,7 +52,9 @@ class QuestionData(json: JSONObject) {
     }
 
     class AnswerData(json: JSONObject?) {
+        private var selected = false
         private var dataObj: JSONObject? = json
+
         fun getAnswerId(): String? {
             return dataObj!!.optString("id")
         }
@@ -64,7 +66,9 @@ class QuestionData(json: JSONObject) {
         fun getAnswerValue(): String? {
             return dataObj!!.optString("name")
         }
-
+        fun isSubQuestion(): String? {
+            return dataObj!!.optString("is_sub_question")
+        }
         fun getStatus(): String? {
             return dataObj!!.optString("status")
         }
@@ -75,6 +79,14 @@ class QuestionData(json: JSONObject) {
 
         fun getCreatedAt(): String? {
             return dataObj!!.optString("created_at")
+        }
+
+        fun isSelected(): Boolean {
+            return selected
+        }
+
+        fun setSelected(selected: Boolean) {
+            this.selected = selected
         }
     }
 

@@ -12,7 +12,9 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.example.healthwareapplication.R
 import com.google.gson.JsonObject
+import org.json.JSONArray
 import retrofit2.Response
+
 
 class AppHelper {
     companion object{
@@ -47,6 +49,14 @@ class AppHelper {
         }
         fun printResponse(msg: String, response: Response<JsonObject?>) {
             Log.d(msg," : " + response.body().toString())
+        }
+        fun toStringArray(array: JSONArray?): Array<String?>? {
+            if (array == null) return null
+            val arr = arrayOfNulls<String>(array.length())
+            for (i in arr.indices) {
+                arr[i] = array.optString(i)
+            }
+            return arr
         }
     }
 }

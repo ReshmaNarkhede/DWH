@@ -1,52 +1,48 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:orientation="vertical">-->
+
+<!--    <androidx.viewpager.widget.ViewPager-->
+<!--        android:id="@+id/pager"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_margin="@dimen/m20" />-->
+<!--</LinearLayout>-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:layout_weight="1">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-        <LinearLayout
-            android:id="@+id/headingView"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"/>
-
-        <LinearLayout
-            android:id="@+id/questionView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            android:layout_margin="@dimen/m10"
+            android:layout_height="match_parent"/>
     </LinearLayout>
-   <!-- <RelativeLayout
-        android:id="@+id/layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".MainActivity">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/customOptionLLOuter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:background="#FFFFFF"
-            android:padding="5dp"
-            card_view:cardCornerRadius="5dp"
-            card_view:cardElevation="5dp"
-            card_view:cardUseCompatPadding="true">
+<!--    <ImageView-->
+<!--        android:id="@+id/leftNavigation"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="1"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="10dp"-->
+<!--        android:src="@android:drawable/arrow_down_float"-->
+<!--        android:visibility="gone" />-->
 
-
-            <LinearLayout
-                android:id="@+id/customOptionLL"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:orientation="vertical"
-                android:padding="@dimen/p5"/>
-        </androidx.cardview.widget.CardView>
-
-    </RelativeLayout>-->
-</ScrollView>
+<!--    <ImageView-->
+<!--        android:id="@+id/rightNavigation"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="end"-->
+<!--        android:layout_weight="0"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="10dp"-->
+<!--        android:src="@android:drawable/arrow_up_float" />-->
+</FrameLayout><!--</ScrollView>-->

@@ -41,7 +41,14 @@ class AppSessions {
         fun getSymptomData(context: Context): JSONArray? {
             return AppSettings.getArrayValue(context,AppConstants.kSYMPTOM_DATA)
         }
-
+        fun getQuestionData(context: Context): JSONArray? {
+            val array = AppSettings.getArrayValue(context!!, AppConstants.kQUESTION_ARY)
+            return if (array.length() > 0) {
+                array
+            } else {
+                JSONArray()
+            }
+        }
         fun getSymptomModel(context: Context):SymptomJsonModel?{
             val gson = Gson()
             return gson.fromJson(getSymptomData(context).toString(), SymptomJsonModel::class.java)
