@@ -1,15 +1,16 @@
 package com.example.healthwareapplication.activity.question
 
+import android.content.ClipData.Item
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
@@ -30,10 +31,14 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class QuestionDemoActivity : AppCompatActivity() {
+class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener{
+    private lateinit var chkRecyclerAdapter: CheckRecyclerViewAdapter
+    var fnlAnsArray: JSONArray = JSONArray()
+//    var ansObj: JSONObject = JSONObject()
     private lateinit var questionAry: JSONArray
     var index: Int? = 0
     private lateinit var questionTxt: TextView
+    private lateinit var answerTxt: TextView
     private lateinit var checkBoxList: RecyclerView
     private lateinit var radioList: RecyclerView
     private lateinit var seekbarParent: LinearLayout
@@ -50,6 +55,7 @@ class QuestionDemoActivity : AppCompatActivity() {
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
         questionTxt = findViewById(R.id.questionTxt)
+        answerTxt = findViewById(R.id.answerTxt)
         checkBoxList = findViewById(R.id.checkBoxList)
         radioList = findViewById(R.id.radioList)
         seekbarParent = findViewById(R.id.seekbarParent)
@@ -63,7 +69,7 @@ class QuestionDemoActivity : AppCompatActivity() {
         if (questionAry.length() == 0) {
             fetchQuestionData("4")
         } else {
-            setDynamicData(index)
+            setDynamicData(index,  fnlAnsArray)
         }
     }
 
@@ -96,12 +102,9 @@ class QuestionDemoActivity : AppCompatActivity() {
                             questionAry.toString()
                         )
                         Log.e("QArySize: ", " " + questionAry.length())
-                        setDynamicData(index)
+                        setDynamicData(index, fnlAnsArray)
                     } else {
-                        AppHelper.showToast(
-                            this@QuestionDemoActivity,
-                            responseModel.getMessage().toString()
-                        )
+                        AppHelper.showToast(this@QuestionDemoActivity, responseModel.getMessage().toString())
                     }
                 }
             }
@@ -115,14 +118,20 @@ class QuestionDemoActivity : AppCompatActivity() {
         })
     }
 
-    private fun setDynamicData(index: Int?) {
-        Log.e("Index: ", " $index")
+    private fun setDynamicData(index: Int?, fnlAnsArray: JSONArray) {
+        val ansList:MutableList<String> = ArrayList<String>()
+        for (i in 0 until fnlAnsArray.length()){
+            val obj = QuestionData.AnswerData(fnlAnsArray.getJSONObject(i))
+            ansList.add(obj.getAnswerValue()!!)
+        }
+        Log.e("ansList", " " + TextUtils.join( "--",ansList))
         val qObj = QuestionData(questionAry.getJSONObject(index!!))
         questionTxt.text = qObj.getQuestion()
+        answerTxt.text = TextUtils.join( ",",ansList)
+        answerTxt.setOnClickListener(this)
         if (qObj.getQuestionType() == "CB") // CrossBar
         {
             seekbarParent.visibility = View.VISIBLE
-//            seekBar.visibility = View.VISIBLE
             radioList.visibility = View.GONE
             checkBoxList.visibility = View.GONE
 
@@ -150,11 +159,10 @@ class QuestionDemoActivity : AppCompatActivity() {
     private fun showSeekData(qObj: QuestionData) {
         seekbarParent.removeAllViews()
         val arr = toStringArray(qObj.getAnswers())
-        Log.e("ary: ", "arr: " + arr!!.size)
         val seekBar: IndicatorSeekBar = IndicatorSeekBar
             .with(this)
             .progress(0f)
-            .tickCount(qObj.getAnswers()!!.length())
+            .tickCount(qObj.getAnswers()!!.length() + 1)
             .showTickMarksType(TickMarkType.OVAL)
             .tickTextsArray(arr)
             .showTickTexts(true)
@@ -172,22 +180,41 @@ class QuestionDemoActivity : AppCompatActivity() {
             .trackBackgroundSize(2)
             .build()
         seekbarParent.addView(seekBar)
-        seekBar.setOnSeekChangeListener(object : OnSeekChangeListener {
+        seekBar.onSeekChangeListener = object : OnSeekChangeListener {
             override fun onSeeking(seekParams: SeekParams) {
-                Log.e("selected seek", seekParams.tickText)
+                val ansObj = getAnsObj(seekParams.tickText, qObj)
+                fnlAnsArray.put(ansObj)
+                if (QuestionData.AnswerData(ansObj).isSubQuestion() == "1") {
+                    val intent = Intent(this@QuestionDemoActivity, SubQuestionActivity::class.java)
+                    intent.putExtra("SubQArray", qObj.getSubQuestions().toString())
+                    intent.putExtra("AnsObj", ansObj.toString())
+                    startActivity(intent)
+                }
             }
 
             override fun onStartTrackingTouch(seekBar: IndicatorSeekBar) {}
             override fun onStopTrackingTouch(seekBar: IndicatorSeekBar) {}
-        })
+        }
+    }
+
+    private fun getAnsObj(tickText: String?, qObj: QuestionData): JSONObject {
+        var ansObj: JSONObject = JSONObject()
+        for (i in 0 until qObj.getAnswers()!!.length()) {
+            ansObj = qObj.getAnswers()!!.getJSONObject(i)
+            val ansData = QuestionData.AnswerData(ansObj)
+            if (ansData.getAnswerValue() == tickText) {
+                return ansObj
+            }
+        }
+        return ansObj
     }
 
     fun toStringArray(array: JSONArray?): Array<String?>? {
         if (array == null) return null
-        val arr = arrayOfNulls<String>(array.length())
-        for (i in arr.indices) {
-//            arr[i] = array.optString(i)
-            val obj = QuestionData.AnswerData(array.optJSONObject(i)).getAnswerValue()
+        val arr = arrayOfNulls<String>(array.length() + 1)
+        arr[0] = "0"
+        for (i in 1 until arr.size) {
+            val obj = QuestionData.AnswerData(array.optJSONObject(i - 1)).getAnswerValue()
             arr[i] = obj
         }
         return arr
@@ -202,49 +229,73 @@ class QuestionDemoActivity : AppCompatActivity() {
         val radioRecyclerAdapter = RadioRecyclerViewAdapter(
             qObj.getAnswers(),
             RecyclerItemClickListener.OnItemClickListener { view, position ->
-                val obj = QuestionData.AnswerData(qObj.getAnswers()!!.getJSONObject(position))
-                Log.e("radio act: ", " " + obj.getAnswerValue())
-                if (obj.isSubQuestion() == "1") {
-                    val intent = Intent(this, SubQuestionActivity::class.java)
-                    intent.putExtra("SubQArray", qObj.getSubQuestions().toString())
-                    startActivity(intent)
-                }
+                val ansObj = qObj.getAnswers()!!.getJSONObject(position)
+                fnlAnsArray.put(ansObj)
+                val radioObj = QuestionData.AnswerData(qObj.getAnswers()!!.getJSONObject(position))
+//                Log.e("radio act: ", " " + radioObj.getAnswerValue())
+//                if (radioObj.isSubQuestion() == "1") {
+//                    val intent = Intent(this, SubQuestionActivity::class.java)
+//                    intent.putExtra("SubQArray", qObj.getSubQuestions().toString())
+//                    startActivity(intent)
+//                }
             })
 
         radioList.adapter = radioRecyclerAdapter
     }
 
     private fun showCheckData(qObj: QuestionData) {
+
         val recyclerLayoutManager = LinearLayoutManager(this)
         checkBoxList.layoutManager = recyclerLayoutManager
 
-        val chkRecyclerAdapter = CheckRecyclerViewAdapter(
+        chkRecyclerAdapter = CheckRecyclerViewAdapter(
             qObj.getAnswers(),
+
             RecyclerItemClickListener.OnItemClickListener { view, position ->
-                val chkObj = QuestionData.AnswerData(qObj.getAnswers()!!.getJSONObject(position))
-                AppHelper.showToast(this, chkObj.getAnswerValue() + "")
-                Log.e("check act: " + qObj.getQuestion(), " " + chkObj.getAnswerValue())
+                val selected = chkRecyclerAdapter.getSelected()!!
+                fnlAnsArray = selected
+//                if (chkObj.isSubQuestion() == "1") {
+//                    val intent = Intent(this, SubQuestionActivity::class.java)
+//                    intent.putExtra("SubQArray", qObj.getSubQuestions().toString())
+//                    startActivity(intent)
+//                }
             })
+
         checkBoxList.adapter = chkRecyclerAdapter
+
     }
 
     fun nextClick(view: View) {
-        if (index!! < (questionAry.length() - 1)) {
+        Log.e("next Index", " $index")
+        if (fnlAnsArray.length() > 0) {
+            if (index!! < (questionAry.length() - 1)) {
                 index = index!!.plus(1)
-                setDynamicData(index)
+                setDynamicData(index, fnlAnsArray)
+            }
+            fnlAnsArray = JSONArray()
+        } else {
+            AppHelper.showToast(this, "Please select answer first")
         }
+
     }
 
     fun backClick(view: View) {
         if (index!! < questionAry.length() && index!! > 0) {
-//            if (index == 0) {
-//                backBtn.visibility = View.GONE
-//            } else {
-                index = index!!.minus(1)
-                setDynamicData(index)
-//                backBtn.visibility = View.VISIBLE
-//            }
+            index = index!!.minus(1)
+            setDynamicData(index, fnlAnsArray)
         }
     }
 
+    override fun onClick(v: View?) {
+        when (v!!.id) {
+            R.id.answerTxt -> {
+                Log.e("ONCLICK: ",":${fnlAnsArray.length()}")
+                if (index!! < questionAry.length() && index!! > 0) {
+                    index = index!!.minus(1)
+                    setDynamicData(index, fnlAnsArray)
+                }
+            }
+        }
+
+    }
 }

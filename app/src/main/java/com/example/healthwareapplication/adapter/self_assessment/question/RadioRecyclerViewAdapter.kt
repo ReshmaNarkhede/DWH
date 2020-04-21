@@ -42,7 +42,7 @@ class RadioRecyclerViewAdapter(ansAry: JSONArray?, private val itemClickListener
                 selectedIndex = adapterPosition
                 clickListener.onItemClick(itemView,position)
                 notifyDataSetChanged()
-                Log.e("radio button click: " ," " + model.getAnswerValue())
+//                Log.e("radio button click: " ," " + model.getAnswerValue())
             })
         }
     }

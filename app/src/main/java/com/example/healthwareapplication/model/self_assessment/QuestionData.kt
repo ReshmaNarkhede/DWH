@@ -52,7 +52,7 @@ class QuestionData(json: JSONObject) {
     }
 
     class AnswerData(json: JSONObject?) {
-        private var selected = false
+
         private var dataObj: JSONObject? = json
 
         fun getAnswerId(): String? {
@@ -81,12 +81,14 @@ class QuestionData(json: JSONObject) {
             return dataObj!!.optString("created_at")
         }
 
-        fun isSelected(): Boolean {
-            return selected
-        }
+        private var isSelected = false
 
+        fun getIsSelected() : Boolean {
+            isSelected = dataObj!!.optBoolean("is_selected")
+            return isSelected
+        }
         fun setSelected(selected: Boolean) {
-            this.selected = selected
+            isSelected = selected
         }
     }
 

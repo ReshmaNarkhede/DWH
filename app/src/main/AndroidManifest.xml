@@ -15,14 +15,8 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".activity.question.SubQuestionActivity"></activity>
         <activity android:name=".activity.question.QuestionDemoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".activity.question.QuestionNewActivity"></activity>
-        <activity android:name=".activity.question.QuestionActivity"></activity>
         <activity android:name=".activity.self_assessment.SADetailActivity" />
         <activity android:name=".activity.self_assessment.AddSymptomActivity" />
         <activity android:name=".activity.account.register.RegisterTermsActivity" />
@@ -51,13 +45,11 @@
             android:name=".activity.account.register.RegisterMobNoActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
     </application>

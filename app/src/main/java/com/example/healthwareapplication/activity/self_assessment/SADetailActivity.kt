@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.activity.question.QuestionActivity
+import com.example.healthwareapplication.activity.question.QuestionDemoActivity
 import com.example.healthwareapplication.adapter.self_assessment.SelectedSymptomAdapter
 import com.example.healthwareapplication.adapter.self_assessment.SymptomAdapter
 import com.example.healthwareapplication.api.ApiClient
@@ -191,7 +191,7 @@ class SADetailActivity : AppCompatActivity() {
 
 
     fun clickNext(view: View) {
-        val intent = Intent(this, QuestionActivity::class.java)
+        val intent = Intent(this, QuestionDemoActivity::class.java)
         intent.putExtra(IntentConstants.kSYMPTOM_DATA,symptmJsonAry.toString())
         startActivity(intent)
     }
