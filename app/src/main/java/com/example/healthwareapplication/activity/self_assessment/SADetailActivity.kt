@@ -8,7 +8,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,9 +21,11 @@ import com.example.healthwareapplication.adapter.self_assessment.SelectedSymptom
 import com.example.healthwareapplication.adapter.self_assessment.SymptomAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
-import com.example.healthwareapplication.app_utils.*
+import com.example.healthwareapplication.app_utils.AppHelper
+import com.example.healthwareapplication.app_utils.DialogUtility
+import com.example.healthwareapplication.app_utils.NoConnectivityException
+import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
 import com.example.healthwareapplication.constants.IntentConstants
-import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import org.json.JSONArray
@@ -33,11 +37,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class SADetailActivity : AppCompatActivity() {
+     var adapter: SymptomAdapter? = null
     private lateinit var gson: Gson
     private lateinit var timeLayout: LinearLayout
     private lateinit var symptomList: RecyclerView
     private lateinit var symptom: RecyclerView
-    private lateinit var nextBtn: Button
+//    private lateinit var nextBtn: Button
     private lateinit var searchTxt: EditText
     val symptmJsonAry: JSONArray = JSONArray()
 
@@ -59,7 +64,7 @@ class SADetailActivity : AppCompatActivity() {
         timeLayout = findViewById(R.id.timeLayout)
         symptomList = findViewById(R.id.symptomList)
         symptom = findViewById(R.id.symptom)
-        nextBtn = findViewById(R.id.nextBtn)
+//        nextBtn = findViewById(R.id.nextBtn)
         searchTxt = findViewById(R.id.searchTxt)
 
         assessmentDate = findViewById(R.id.assessmentDate)
@@ -82,6 +87,8 @@ class SADetailActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 2) {
             if (data != null) {
+                symptom.visibility = View.GONE
+                searchTxt.visibility = View.GONE
                 val modelObj = data!!.getStringExtra(IntentConstants.kSYMPTOM_SELECTED)
                 symptmJsonAry.put(JSONObject(modelObj!!))
                 symptomList.adapter!!.notifyDataSetChanged()
@@ -91,8 +98,15 @@ class SADetailActivity : AppCompatActivity() {
     }
 
     private fun dataBind() {
+        val showDeleted: ShowDeleted = object : ShowDeleted{
+            override fun showDeleted(size: Int) {
+               if(size==0){
+                   timeLayout.visibility = View.GONE
+               }
+            }
+        }
         symptomList.layoutManager = LinearLayoutManager(this)
-        val addAdapter = SelectedSymptomAdapter(symptmJsonAry!!)
+        val addAdapter = SelectedSymptomAdapter(symptmJsonAry!!,showDeleted)
         symptomList.adapter = addAdapter
 
         val calendar = Calendar.getInstance()
@@ -109,7 +123,7 @@ class SADetailActivity : AppCompatActivity() {
     fun searchClick(view: View) {
         searchTxt.visibility = View.VISIBLE
         symptom.visibility = View.VISIBLE
-
+        bindSymptomSearchName(JSONArray())
         searchTxt.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(s: Editable) {}
@@ -167,17 +181,15 @@ class SADetailActivity : AppCompatActivity() {
         })
     }
 
-    private fun bindSymptomSearchName(symptomListAry: JSONArray) {
+    private fun bindSymptomSearchName( symptomListAry: JSONArray) {
         symptom.layoutManager = LinearLayoutManager(this@SADetailActivity)
-        val adapter = SymptomAdapter(symptomListAry!!,
+        adapter = SymptomAdapter(symptomListAry!!,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val modelObj = JSONObject(symptomListAry.getJSONObject(position).toString())
                 symptmJsonAry.put(modelObj)
-                AppHelper.showToast(this@SADetailActivity,SymptomJsonModel(modelObj).getId()+"")
-                searchTxt.setText("")
+                searchTxt.text.clear()
                 symptom.visibility = View.GONE
                 searchTxt.visibility = View.GONE
-
                 showBottom()
             })
         symptom.adapter = adapter
@@ -185,7 +197,6 @@ class SADetailActivity : AppCompatActivity() {
 
     private fun showBottom() {
         Log.e("Show bottom: ", " " + symptmJsonAry.length())
-        nextBtn.visibility = View.VISIBLE
         timeLayout.visibility = View.VISIBLE
     }
 
@@ -211,5 +222,8 @@ class SADetailActivity : AppCompatActivity() {
             DialogUtility.hideProgressDialog()
         }
         DialogUtility.showTimePickerDialog(this, listner).show()
+    }
+    interface ShowDeleted {
+        fun showDeleted(size: Int)
     }
 }

@@ -18,7 +18,6 @@ import org.json.JSONObject
 class CheckRecyclerViewAdapter(val ansArray: JSONArray?, private val itemClickListener: RecyclerItemClickListener.OnItemClickListener) : RecyclerView.Adapter<CheckRecyclerViewAdapter.ViewHolder>() {
     val ansAry: JSONArray? = ansArray
     private var lastSelectedPosition = RecyclerView.NO_POSITION
-    var itemStateArray = SparseBooleanArray()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.check_item, parent, false))
     }
@@ -40,15 +39,6 @@ class CheckRecyclerViewAdapter(val ansArray: JSONArray?, private val itemClickLi
             itemView.checked_text_view.isChecked = model.getIsSelected()
 
             itemView.checked_text_view.setOnClickListener(View.OnClickListener {
-//                val adapterPosition = adapterPosition
-//                if (!itemStateArray[adapterPosition, false]) {
-//                    itemView.checked_text_view.isChecked = true
-//                    itemStateArray.put(adapterPosition, true)
-//                } else {
-//                    itemView.checked_text_view.isChecked = false
-//                    itemStateArray.put(adapterPosition, false)
-//                }
-//                itemClickListener.onItemClick(itemView,position)
                 if (lastSelectedPosition > 0) {
                     QuestionData.AnswerData(ansAry!!.getJSONObject(lastSelectedPosition)).setSelected(false)
                 }
