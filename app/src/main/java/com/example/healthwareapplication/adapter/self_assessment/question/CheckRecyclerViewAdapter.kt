@@ -1,69 +1,82 @@
 package com.example.healthwareapplication.adapter.self_assessment.question
 
-import android.content.ClipData.Item
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
-import com.example.healthwareapplication.model.self_assessment.QuestionData
 import kotlinx.android.synthetic.main.check_item.view.*
-import org.json.JSONArray
-import org.json.JSONObject
 
 
-class CheckRecyclerViewAdapter(val ansArray: JSONArray?, private val itemClickListener: RecyclerItemClickListener.OnItemClickListener) : RecyclerView.Adapter<CheckRecyclerViewAdapter.ViewHolder>() {
-    val ansAry: JSONArray? = ansArray
+class CheckRecyclerViewAdapter(val ansArray: List<String>, private val itemClickListener: RecyclerItemClickListener.OnItemClickListener) : RecyclerView.Adapter<CheckRecyclerViewAdapter.ViewHolder>() {
+    private val ansAry: List<String> = ansArray!!
     private var lastSelectedPosition = RecyclerView.NO_POSITION
+    private val storeChecked = SparseBooleanArray()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.check_item, parent, false))
     }
 
     override fun getItemCount(): Int {
-        return ansAry!!.length()
+        return ansAry!!.size
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bindView(position,ansAry!!.getJSONObject(position),itemClickListener)
+        viewHolder.bindView(position,ansAry,itemClickListener)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        fun bindView(position: Int, jsonObject: JSONObject,itemClickListener: RecyclerItemClickListener.OnItemClickListener) {
-            val model = QuestionData.AnswerData(jsonObject)
-            itemView.checked_text_view.text = model.getAnswerValue()
+        fun bindView(position: Int, jsonObject: List<String>, itemClickListener: RecyclerItemClickListener.OnItemClickListener) {
+            val model = ansArray[position]
+            itemView.checked_text_view.text = ansArray[position]
 
-            itemView.checked_text_view.isChecked = model.getIsSelected()
+//            itemView.checked_text_view.isChecked = model.getIsSelected()
 
             itemView.checked_text_view.setOnClickListener(View.OnClickListener {
-                if (lastSelectedPosition > 0) {
-                    QuestionData.AnswerData(ansAry!!.getJSONObject(lastSelectedPosition)).setSelected(false)
-                }
-
-                if (model.getIsSelected()) {
-                    jsonObject.put("is_selected", false)
+//                if (lastSelectedPosition > 0) {
+//                    QuestionData.AnswerData(ansAry!!.getJSONObject(lastSelectedPosition)).setSelected(false)
+//                }
+//
+//                if (model.getIsSelected()) {
+//                    jsonObject.put("is_selected", false)
+//                } else {
+//                    jsonObject.put("is_selected", true)
+//                }
+//                ansArray!!.put(position, jsonObject)
+//                lastSelectedPosition = adapterPosition
+//                notifyDataSetChanged()
+                val adapterPosition = adapterPosition
+                if (!storeChecked[adapterPosition, false]) {
+                    itemView.checked_text_view.isChecked = true
+                    storeChecked.put(adapterPosition, true)
                 } else {
-                    jsonObject.put("is_selected", true)
+                    itemView.checked_text_view.isChecked = false
+                    storeChecked.put(adapterPosition, false)
                 }
-                ansArray!!.put(position, jsonObject)
-                lastSelectedPosition = adapterPosition
-                notifyDataSetChanged()
                 itemClickListener.onItemClick(itemView,position)
             })
         }
     }
 
-    fun getSelected(): JSONArray? {
-        val selected: JSONArray = JSONArray()
-        for (i in 0 until ansArray!!.length()) {
-            val model = QuestionData.AnswerData(ansArray.getJSONObject(i))
-            if (model.getIsSelected()) {
-                selected.put(ansArray.getJSONObject(i))
-            }
+//    fun getSelected(): JSONArray? {
+//        val selected: JSONArray = JSONArray()
+//        for (i in 0 until ansArray!!.length()) {
+//            val model = QuestionData.AnswerData(ansArray.getJSONObject(i))
+//            if (model.getIsSelected()) {
+//                selected.put(ansArray.getJSONObject(i))
+//            }
+//        }
+//        return selected
+//    }
+
+    fun getSelectedItems(): List<Int>? {
+        val items: MutableList<Int> = ArrayList(storeChecked.size())
+        for (i in 0 until storeChecked.size()) {
+            items.add(storeChecked.keyAt(i))
         }
-        return selected
+        return items
     }
 }

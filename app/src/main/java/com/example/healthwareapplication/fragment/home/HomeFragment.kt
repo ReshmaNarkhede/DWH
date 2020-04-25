@@ -105,7 +105,7 @@ class HomeFragment : Fragment(), RecyclerItemClickListener.OnItemClickListener {
             .commit()
     }
     private fun logout() {
-        AppSettings.clearMyPreference(activity!!)
+        AppSettings.clearAllData(activity!!)
         val intent = Intent(activity, LoginAsActivity::class.java)
         startActivity(intent)
         activity!!.finish()

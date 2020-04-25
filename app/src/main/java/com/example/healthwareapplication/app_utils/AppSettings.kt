@@ -84,5 +84,7 @@ object AppSettings {
         getPrefs(context).edit()?.clear()
         getPrefs(context).edit()?.apply()
     }
-
+    fun clearAllData(context: Context) {
+        getPrefs(context).edit().clear().commit()
+    }
 }

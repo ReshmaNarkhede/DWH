@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:onClick="backClick"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:text="@string/back" />
 
             <Button

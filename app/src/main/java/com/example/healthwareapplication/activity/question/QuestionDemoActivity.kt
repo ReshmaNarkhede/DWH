@@ -1,10 +1,7 @@
 package com.example.healthwareapplication.activity.question
 
-import android.content.ClipData.Item
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -31,12 +28,15 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener{
+class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
+    private var QArray: JSONArray? = JSONArray()
     private lateinit var chkRecyclerAdapter: CheckRecyclerViewAdapter
-    var fnlAnsArray: JSONArray = JSONArray()
-//    var ansObj: JSONObject = JSONObject()
-    private lateinit var questionAry: JSONArray
-    var index: Int? = 0
+
+    //    var ansObj: JSONObject = JSONObject()
+//    private lateinit var questionAry: JSONArray
+    private lateinit var dataAry: JSONArray
+    var outerIndex: Int? = 0
+    var innerIndex: Int? = 0
     private lateinit var questionTxt: TextView
     private lateinit var answerTxt: TextView
     private lateinit var checkBoxList: RecyclerView
@@ -65,11 +65,11 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener{
 
     private fun defaultConfiguration() {
 
-        questionAry = AppSessions.getQuestionData(this)!!
-        if (questionAry.length() == 0) {
+        dataAry = AppSessions.getQuestionData(this)!!
+        if (dataAry.length() == 0) {
             fetchQuestionData("4")
         } else {
-            setDynamicData(index,  fnlAnsArray)
+            setOuterLoop(outerIndex)
         }
     }
 
@@ -95,16 +95,20 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener{
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
-                        questionAry = responseModel.getDataArray()!!
+                        dataAry = responseModel.getDataArray()!!
+
                         AppSettings.setJsonArrayValue(
                             this@QuestionDemoActivity,
                             AppConstants.kQUESTION_ARY,
-                            questionAry.toString()
+                            dataAry.toString()
                         )
-                        Log.e("QArySize: ", " " + questionAry.length())
-                        setDynamicData(index, fnlAnsArray)
+                        Log.e("QArySize: ", " " + dataAry.length())
+                        setOuterLoop(outerIndex)
                     } else {
-                        AppHelper.showToast(this@QuestionDemoActivity, responseModel.getMessage().toString())
+                        AppHelper.showToast(
+                            this@QuestionDemoActivity,
+                            responseModel.getMessage().toString()
+                        )
                     }
                 }
             }
@@ -118,17 +122,17 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener{
         })
     }
 
-    private fun setDynamicData(index: Int?, fnlAnsArray: JSONArray) {
-        val ansList:MutableList<String> = ArrayList<String>()
-        for (i in 0 until fnlAnsArray.length()){
-            val obj = QuestionData.AnswerData(fnlAnsArray.getJSONObject(i))
-            ansList.add(obj.getAnswerValue()!!)
-        }
-        Log.e("ansList", " " + TextUtils.join( "--",ansList))
-        val qObj = QuestionData(questionAry.getJSONObject(index!!))
+    private fun setOuterLoop(outerIndex: Int?) {
+        QArray = QuestionData(dataAry.getJSONObject(outerIndex!!)).getQuestionAns()
+        Log.e("Qdata: ", ": " + QArray!!.length())
+        setDynamicData(innerIndex)
+    }
+
+    private fun setDynamicData(index: Int?) {
+        Log.e("InnerIndex: ", ": $index")
+
+        val qObj = QuestionData.QuestionAnsModel(QArray!!.getJSONObject(index!!))
         questionTxt.text = qObj.getQuestion()
-        answerTxt.text = TextUtils.join( ",",ansList)
-        answerTxt.setOnClickListener(this)
         if (qObj.getQuestionType() == "CB") // CrossBar
         {
             seekbarParent.visibility = View.VISIBLE
@@ -156,15 +160,15 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener{
         }
     }
 
-    private fun showSeekData(qObj: QuestionData) {
+    private fun showSeekData(qObj: QuestionData.QuestionAnsModel) {
         seekbarParent.removeAllViews()
-        val arr = toStringArray(qObj.getAnswers())
+        val result: Array<String> = qObj.getAnswerOptions().split("#").toTypedArray()
         val seekBar: IndicatorSeekBar = IndicatorSeekBar
             .with(this)
             .progress(0f)
-            .tickCount(qObj.getAnswers()!!.length() + 1)
+            .tickCount(result.size)
             .showTickMarksType(TickMarkType.OVAL)
-            .tickTextsArray(arr)
+            .tickTextsArray(result)
             .showTickTexts(true)
             .tickTextsColorStateList(
                 resources.getColorStateList(R.color.colorPrimary)
@@ -182,13 +186,15 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener{
         seekbarParent.addView(seekBar)
         seekBar.onSeekChangeListener = object : OnSeekChangeListener {
             override fun onSeeking(seekParams: SeekParams) {
-                val ansObj = getAnsObj(seekParams.tickText, qObj)
-                fnlAnsArray.put(ansObj)
-                if (QuestionData.AnswerData(ansObj).isSubQuestion() == "1") {
-                    val intent = Intent(this@QuestionDemoActivity, SubQuestionActivity::class.java)
-                    intent.putExtra("SubQArray", qObj.getSubQuestions().toString())
-                    intent.putExtra("AnsObj", ansObj.toString())
-                    startActivity(intent)
+                val ansObj = seekParams.tickText
+                Log.e("seek ans: ", ": $ansObj")
+                if(ansObj == qObj.getAnswer()){
+//                    innerIndex = innerIndex!!.plus(1)
+//                    val ques = QuestionData.QuestionAnsModel(QArray!!.getJSONObject(innerIndex!!))
+//                    if(qObj.getGroupID()== ques.getGroupID())
+//                    {
+//                        AppHelper.showToast(this@QuestionDemoActivity,"Show sub question")
+//                    }
                 }
             }
 
@@ -197,68 +203,38 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener{
         }
     }
 
-    private fun getAnsObj(tickText: String?, qObj: QuestionData): JSONObject {
-        var ansObj: JSONObject = JSONObject()
-        for (i in 0 until qObj.getAnswers()!!.length()) {
-            ansObj = qObj.getAnswers()!!.getJSONObject(i)
-            val ansData = QuestionData.AnswerData(ansObj)
-            if (ansData.getAnswerValue() == tickText) {
-                return ansObj
-            }
-        }
-        return ansObj
-    }
-
-    fun toStringArray(array: JSONArray?): Array<String?>? {
-        if (array == null) return null
-        val arr = arrayOfNulls<String>(array.length() + 1)
-        arr[0] = "0"
-        for (i in 1 until arr.size) {
-            val obj = QuestionData.AnswerData(array.optJSONObject(i - 1)).getAnswerValue()
-            arr[i] = obj
-        }
-        return arr
-    }
-
     private fun showRadioData(
-        qObj: QuestionData
+        qObj: QuestionData.QuestionAnsModel
     ) {
         val recyclerLayoutManager = LinearLayoutManager(this)
         radioList.layoutManager = recyclerLayoutManager
-
+        val str = qObj.getAnswerOptions()
+        val result: List<String> = str!!.split("#")
         val radioRecyclerAdapter = RadioRecyclerViewAdapter(
-            qObj.getAnswers(),
+            result,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
-                val ansObj = qObj.getAnswers()!!.getJSONObject(position)
-                fnlAnsArray.put(ansObj)
-                val radioObj = QuestionData.AnswerData(qObj.getAnswers()!!.getJSONObject(position))
-//                Log.e("radio act: ", " " + radioObj.getAnswerValue())
-//                if (radioObj.isSubQuestion() == "1") {
-//                    val intent = Intent(this, SubQuestionActivity::class.java)
-//                    intent.putExtra("SubQArray", qObj.getSubQuestions().toString())
-//                    startActivity(intent)
-//                }
+                val ansObj = result[position]
+                Log.e("radio ans: ", ": $ansObj")
+//                fnlAnsArray.put(ansObj)
+//                val radioObj = QuestionData.AnswerData(qObj.getAnswers()!!.getJSONObject(position))
             })
 
         radioList.adapter = radioRecyclerAdapter
     }
 
-    private fun showCheckData(qObj: QuestionData) {
+    private fun showCheckData(qObj: QuestionData.QuestionAnsModel) {
 
         val recyclerLayoutManager = LinearLayoutManager(this)
         checkBoxList.layoutManager = recyclerLayoutManager
-
+        val str = qObj.getAnswerOptions()
+        val result: List<String> = str!!.split("#")
         chkRecyclerAdapter = CheckRecyclerViewAdapter(
-            qObj.getAnswers(),
+           result,
 
             RecyclerItemClickListener.OnItemClickListener { view, position ->
-                val selected = chkRecyclerAdapter.getSelected()!!
-                fnlAnsArray = selected
-//                if (chkObj.isSubQuestion() == "1") {
-//                    val intent = Intent(this, SubQuestionActivity::class.java)
-//                    intent.putExtra("SubQArray", qObj.getSubQuestions().toString())
-//                    startActivity(intent)
-//                }
+                val selected = chkRecyclerAdapter.getSelectedItems()!!
+                Log.e("CheckAns: ", ": " + selected.size)
+//                fnlAnsArray = selected
             })
 
         checkBoxList.adapter = chkRecyclerAdapter
@@ -266,36 +242,51 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener{
     }
 
     fun nextClick(view: View) {
-        Log.e("next Index", " $index")
-        if (fnlAnsArray.length() > 0) {
-            if (index!! < (questionAry.length() - 1)) {
-                index = index!!.plus(1)
-                setDynamicData(index, fnlAnsArray)
-            }
-            fnlAnsArray = JSONArray()
-        } else {
-            AppHelper.showToast(this, "Please select answer first")
+        if (innerIndex!! < (QArray!!.length() - 1)) {
+            innerIndex = innerIndex!!.plus(1)
+            setDynamicData(innerIndex)
         }
-
     }
 
     fun backClick(view: View) {
-        if (index!! < questionAry.length() && index!! > 0) {
-            index = index!!.minus(1)
-            setDynamicData(index, fnlAnsArray)
+        if (innerIndex!! < QArray!!.length() && innerIndex!! > 0) {
+            innerIndex = innerIndex!!.minus(1)
+            setDynamicData(innerIndex)
         }
     }
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.answerTxt -> {
-                Log.e("ONCLICK: ",":${fnlAnsArray.length()}")
-                if (index!! < questionAry.length() && index!! > 0) {
-                    index = index!!.minus(1)
-                    setDynamicData(index, fnlAnsArray)
-                }
-            }
+//            R.id.answerTxt -> {
+//                Log.e("ONCLICK: ",":${fnlAnsArray.length()}")
+//                if (index!! < questionAry.length() && index!! > 0) {
+//                    index = index!!.minus(1)
+//                    setDynamicData(index, fnlAnsArray)
+//                }
+//            }
         }
-
     }
+
+//    private fun getAnsObj(tickText: String?, qObj: QuestionData): JSONObject {
+//        var ansObj: JSONObject = JSONObject()
+//        for (i in 0 until qObj.getAnswers()!!.length()) {
+//            ansObj = qObj.getAnswers()!!.getJSONObject(i)
+//            val ansData = QuestionData.AnswerData(ansObj)
+//            if (ansData.getAnswerValue() == tickText) {
+//                return ansObj
+//            }
+//        }
+//        return ansObj
+//    }
+
+//    fun toStringArray(array: JSONArray?): Array<String?>? {
+//        if (array == null) return null
+//        val arr = arrayOfNulls<String>(array.length() + 1)
+//        arr[0] = "0"
+//        for (i in 1 until arr.size) {
+//            val obj = QuestionData.AnswerData(array.optJSONObject(i - 1)).getAnswerValue()
+//            arr[i] = obj
+//        }
+//        return arr
+//    }
 }
