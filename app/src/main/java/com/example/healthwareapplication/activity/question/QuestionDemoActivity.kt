@@ -29,11 +29,11 @@ import retrofit2.Response
 
 
 class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
+    private var ansJsonObj: JSONObject? = JSONObject()
+    private var sortedArray: JSONArray? = JSONArray()
     private var QArray: JSONArray? = JSONArray()
     private lateinit var chkRecyclerAdapter: CheckRecyclerViewAdapter
 
-    //    var ansObj: JSONObject = JSONObject()
-//    private lateinit var questionAry: JSONArray
     private lateinit var dataAry: JSONArray
     var outerIndex: Int? = 0
     var innerIndex: Int? = 0
@@ -42,7 +42,6 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var checkBoxList: RecyclerView
     private lateinit var radioList: RecyclerView
     private lateinit var seekbarParent: LinearLayout
-    private lateinit var backBtn: Button
     private lateinit var nextBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +58,6 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
         checkBoxList = findViewById(R.id.checkBoxList)
         radioList = findViewById(R.id.radioList)
         seekbarParent = findViewById(R.id.seekbarParent)
-        backBtn = findViewById(R.id.backBtn)
         nextBtn = findViewById(R.id.nextBtn)
     }
 
@@ -71,6 +69,7 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             setOuterLoop(outerIndex)
         }
+        answerTxt.setOnClickListener(this)
     }
 
     private fun fetchQuestionData(idStr: String) {
@@ -124,14 +123,23 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setOuterLoop(outerIndex: Int?) {
         QArray = QuestionData(dataAry.getJSONObject(outerIndex!!)).getQuestionAns()
-        Log.e("Qdata: ", ": " + QArray!!.length())
-        setDynamicData(innerIndex)
+//        Log.e("Qdata: ", ": " + QArray!!.length())
+        setDynamicData(innerIndex,ansJsonObj)
+        sortedArray =
+            QuestionData(dataAry.getJSONObject(outerIndex!!)).parseGroupedQuestionArray(QArray)
+//        Log.e("grp Qdata: ", ": " +sortedArray!!.length())
     }
 
-    private fun setDynamicData(index: Int?) {
-        Log.e("InnerIndex: ", ": $index")
+    private fun setDynamicData(index: Int?, ansJObj: JSONObject?) {
+
+        ansJsonObj = ansJObj
+
+        val ansObj = QuestionData.QuestionAnsModel(ansJsonObj!!)
 
         val qObj = QuestionData.QuestionAnsModel(QArray!!.getJSONObject(index!!))
+        Log.e("Ans: $innerIndex", ": " +  qObj.getSelectedAnswer())
+
+        answerTxt.text = ansObj.getSelectedAnswer()
         questionTxt.text = qObj.getQuestion()
         if (qObj.getQuestionType() == "CB") // CrossBar
         {
@@ -161,6 +169,7 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun showSeekData(qObj: QuestionData.QuestionAnsModel) {
+//        val qObj = QuestionData.QuestionAnsModel(jsonObj)
         seekbarParent.removeAllViews()
         val result: Array<String> = qObj.getAnswerOptions().split("#").toTypedArray()
         val seekBar: IndicatorSeekBar = IndicatorSeekBar
@@ -188,13 +197,18 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
             override fun onSeeking(seekParams: SeekParams) {
                 val ansObj = seekParams.tickText
                 Log.e("seek ans: ", ": $ansObj")
-                if(ansObj == qObj.getAnswer()){
-//                    innerIndex = innerIndex!!.plus(1)
-//                    val ques = QuestionData.QuestionAnsModel(QArray!!.getJSONObject(innerIndex!!))
-//                    if(qObj.getGroupID()== ques.getGroupID())
-//                    {
-//                        AppHelper.showToast(this@QuestionDemoActivity,"Show sub question")
-//                    }
+                ansJsonObj!!.put("selected_answer", ansObj)
+                if (ansObj.toLowerCase() == qObj.getAnswer()!!.toLowerCase()) {
+                    innerIndex = innerIndex!!.plus(1)
+                } else {
+                    AppHelper.showToast(
+                        this@QuestionDemoActivity,
+                        "group id: " + qObj.getGroupID()!!.plus(1)
+                    )
+                    val ary: JSONArray =
+                        sortedArray!!.get(qObj.getGroupID()!!.minus(1)) as JSONArray
+                    Log.e("ArySize: ", ": ${ary.length()}")
+                    innerIndex = innerIndex!!.plus(ary.length())
                 }
             }
 
@@ -203,9 +217,7 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun showRadioData(
-        qObj: QuestionData.QuestionAnsModel
-    ) {
+    private fun showRadioData(qObj: QuestionData.QuestionAnsModel) {
         val recyclerLayoutManager = LinearLayoutManager(this)
         radioList.layoutManager = recyclerLayoutManager
         val str = qObj.getAnswerOptions()
@@ -214,27 +226,55 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
             result,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val ansObj = result[position]
-                Log.e("radio ans: ", ": $ansObj")
-//                fnlAnsArray.put(ansObj)
-//                val radioObj = QuestionData.AnswerData(qObj.getAnswers()!!.getJSONObject(position))
+                ansJsonObj!!.put("selected_answer", ansObj)
+                Log.e("RadioAns: ", ": $ansObj")
+                if (ansObj.trim().toLowerCase() == qObj.getAnswer()!!.trim()
+                        .toLowerCase() || qObj.getAnswer() == "any"
+                ) {
+                    innerIndex = innerIndex!!.plus(1)
+                } else {
+                    AppHelper.showToast(
+                        this@QuestionDemoActivity,
+                        "group id: " + qObj.getGroupID()!!.plus(1)
+                    )
+                    val ary: JSONArray =
+                        sortedArray!!.get(qObj.getGroupID()!!.minus(1)) as JSONArray
+                    Log.e("ArySize: ", ": ${ary.length()}")
+                    innerIndex = innerIndex!!.plus(ary.length())
+                }
             })
 
         radioList.adapter = radioRecyclerAdapter
     }
 
     private fun showCheckData(qObj: QuestionData.QuestionAnsModel) {
-
         val recyclerLayoutManager = LinearLayoutManager(this)
         checkBoxList.layoutManager = recyclerLayoutManager
         val str = qObj.getAnswerOptions()
         val result: List<String> = str!!.split("#")
         chkRecyclerAdapter = CheckRecyclerViewAdapter(
-           result,
+            result,
 
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val selected = chkRecyclerAdapter.getSelectedItems()!!
-                Log.e("CheckAns: ", ": " + selected.size)
-//                fnlAnsArray = selected
+                val commaSeperatedString =
+                    selected.joinToString(separator = "-") { it -> "\'${it}\'" }
+                ansJsonObj!!.put("selected_answer", commaSeperatedString)
+                Log.e("CheckAns: ", ": $commaSeperatedString")
+                if (commaSeperatedString.trim().toLowerCase() == qObj.getAnswer()!!.trim()
+                        .toLowerCase() || qObj.getAnswer() == "all"
+                ) {
+                    innerIndex = innerIndex!!.plus(1)
+                } else {
+                    AppHelper.showToast(
+                        this@QuestionDemoActivity,
+                        "group id: " + qObj.getGroupID()!!.plus(1)
+                    )
+                    val ary: JSONArray =
+                        sortedArray!!.get(qObj.getGroupID()!!.minus(1)) as JSONArray
+                    innerIndex = innerIndex!!.plus(ary.length()) //Did minus 1
+                    Log.e("ArySize: $innerIndex", ": ${ary.length()}")
+                }
             })
 
         checkBoxList.adapter = chkRecyclerAdapter
@@ -242,28 +282,27 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun nextClick(view: View) {
-        if (innerIndex!! < (QArray!!.length() - 1)) {
-            innerIndex = innerIndex!!.plus(1)
-            setDynamicData(innerIndex)
-        }
-    }
+        val ansObj = QuestionData.QuestionAnsModel(ansJsonObj!!)
 
-    fun backClick(view: View) {
-        if (innerIndex!! < QArray!!.length() && innerIndex!! > 0) {
-            innerIndex = innerIndex!!.minus(1)
-            setDynamicData(innerIndex)
+        if (ansObj.getSelectedAnswer()!!.isNotEmpty()) {
+            if (innerIndex!! < (QArray!!.length() - 1)) {
+                setDynamicData(innerIndex,ansJsonObj)
+            }else{
+                AppHelper.showToast(this,"GoTo Report generate")
+            }
+        } else {
+            AppHelper.showToast(this, "Please select answer first")
         }
     }
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-//            R.id.answerTxt -> {
-//                Log.e("ONCLICK: ",":${fnlAnsArray.length()}")
-//                if (index!! < questionAry.length() && index!! > 0) {
-//                    index = index!!.minus(1)
-//                    setDynamicData(index, fnlAnsArray)
+            R.id.answerTxt -> {
+                Log.e("back: ",": $innerIndex")
+//                if (innerIndex!! < QArray!!.length() && innerIndex!! > 0) {
+//                    setDynamicData(innerIndex, ansJsonObj)
 //                }
-//            }
+            }
         }
     }
 
@@ -289,4 +328,6 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
 //        }
 //        return arr
 //    }
+
+
 }

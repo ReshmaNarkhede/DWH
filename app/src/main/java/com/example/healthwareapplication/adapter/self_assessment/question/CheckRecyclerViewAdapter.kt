@@ -1,9 +1,11 @@
 package com.example.healthwareapplication.adapter.self_assessment.question
 
+import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.util.containsValue
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
@@ -72,10 +74,14 @@ class CheckRecyclerViewAdapter(val ansArray: List<String>, private val itemClick
 //        return selected
 //    }
 
-    fun getSelectedItems(): List<Int>? {
-        val items: MutableList<Int> = ArrayList(storeChecked.size())
+    fun getSelectedItems(): List<String>? {
+        val items: MutableList<String> = ArrayList(storeChecked.size())
         for (i in 0 until storeChecked.size()) {
-            items.add(storeChecked.keyAt(i))
+            val key = storeChecked.keyAt(i)
+            if(storeChecked.get(key)) {
+                Log.e("check size: ", ": $key")
+                items.add(ansAry[key])
+            }
         }
         return items
     }
