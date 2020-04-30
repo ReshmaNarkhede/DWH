@@ -256,4 +256,8 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
 
         dialog.show()
     }
+
+    fun backClick(view: View) {
+        finish()
+    }
 }

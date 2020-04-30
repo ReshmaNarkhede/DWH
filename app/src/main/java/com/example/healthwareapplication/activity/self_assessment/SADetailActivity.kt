@@ -226,4 +226,7 @@ class SADetailActivity : AppCompatActivity() {
     interface ShowDeleted {
         fun showDeleted(size: Int)
     }
+    fun backClick(view: View) {
+        finish()
+    }
 }

@@ -2,6 +2,7 @@ package com.example.healthwareapplication.activity.dashboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.example.healthwareapplication.R
@@ -36,5 +37,9 @@ class DashboardActivity : AppCompatActivity() {
             .setCustomAnimations(R.anim.design_bottom_sheet_slide_in, R.anim.design_bottom_sheet_slide_out)
             .replace(R.id.containerLayout, fragment, fragment.javaClass.simpleName)
             .commit()
+    }
+
+    fun backClick(view: View) {
+       onBackPressed()
     }
 }

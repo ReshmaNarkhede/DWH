@@ -102,6 +102,7 @@ class HomeFragment : Fragment(), RecyclerItemClickListener.OnItemClickListener {
             .beginTransaction()
             .setCustomAnimations(R.anim.design_bottom_sheet_slide_in, R.anim.design_bottom_sheet_slide_out)
             .replace(R.id.containerLayout, fragment, fragment.javaClass.simpleName)
+            .addToBackStack(null)
             .commit()
     }
     private fun logout() {

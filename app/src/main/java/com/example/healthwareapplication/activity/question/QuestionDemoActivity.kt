@@ -63,12 +63,12 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun defaultConfiguration() {
 
-        dataAry = AppSessions.getQuestionData(this)!!
-        if (dataAry.length() == 0) {
+//        dataAry = AppSessions.getQuestionData(this)!!
+//        if (dataAry.length() == 0) {
             fetchQuestionData("4")
-        } else {
-            setOuterLoop(outerIndex)
-        }
+//        } else {
+//            setOuterLoop(outerIndex)
+//        }
         answerTxt.setOnClickListener(this)
     }
 
@@ -137,7 +137,7 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
         val ansObj = QuestionData.QuestionAnsModel(ansJsonObj!!)
 
         val qObj = QuestionData.QuestionAnsModel(QArray!!.getJSONObject(index!!))
-        Log.e("Ans: $innerIndex", ": " +  qObj.getSelectedAnswer())
+        Log.e("Ans: $innerIndex", ": " +  qObj.getGroupID())
 
         answerTxt.text = ansObj.getSelectedAnswer()
         questionTxt.text = qObj.getQuestion()
@@ -201,10 +201,7 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
                 if (ansObj.toLowerCase() == qObj.getAnswer()!!.toLowerCase()) {
                     innerIndex = innerIndex!!.plus(1)
                 } else {
-                    AppHelper.showToast(
-                        this@QuestionDemoActivity,
-                        "group id: " + qObj.getGroupID()!!.plus(1)
-                    )
+                    AppHelper.showToast(this@QuestionDemoActivity, "group id: " + qObj.getGroupID()!!.plus(1))
                     val ary: JSONArray =
                         sortedArray!!.get(qObj.getGroupID()!!.minus(1)) as JSONArray
                     Log.e("ArySize: ", ": ${ary.length()}")
@@ -233,12 +230,8 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
                 ) {
                     innerIndex = innerIndex!!.plus(1)
                 } else {
-                    AppHelper.showToast(
-                        this@QuestionDemoActivity,
-                        "group id: " + qObj.getGroupID()!!.plus(1)
-                    )
-                    val ary: JSONArray =
-                        sortedArray!!.get(qObj.getGroupID()!!.minus(1)) as JSONArray
+                    AppHelper.showToast(this@QuestionDemoActivity, "group id: " + qObj.getGroupID()!!.plus(1))
+                    val ary: JSONArray = sortedArray!!.get(qObj.getGroupID()!!.minus(1)) as JSONArray
                     Log.e("ArySize: ", ": ${ary.length()}")
                     innerIndex = innerIndex!!.plus(ary.length())
                 }
@@ -266,10 +259,7 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
                 ) {
                     innerIndex = innerIndex!!.plus(1)
                 } else {
-                    AppHelper.showToast(
-                        this@QuestionDemoActivity,
-                        "group id: " + qObj.getGroupID()!!.plus(1)
-                    )
+                    AppHelper.showToast(this@QuestionDemoActivity, "group id: " + qObj.getGroupID()!!.plus(1))
                     val ary: JSONArray =
                         sortedArray!!.get(qObj.getGroupID()!!.minus(1)) as JSONArray
                     innerIndex = innerIndex!!.plus(ary.length()) //Did minus 1

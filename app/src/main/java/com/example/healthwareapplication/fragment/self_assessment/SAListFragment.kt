@@ -2,14 +2,14 @@ package com.example.healthwareapplication.fragment.self_assessment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-
+import androidx.fragment.app.Fragment
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.activity.self_assessment.SADetailActivity
+
 
 class SAListFragment : Fragment(), View.OnClickListener {
     private lateinit var addBtn: Button
@@ -42,4 +42,5 @@ class SAListFragment : Fragment(), View.OnClickListener {
             }
         }
     }
+
 }

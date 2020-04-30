@@ -185,6 +185,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:padding="5dp"
+            android:onClick="backClick"
             android:src="@drawable/ic_back" />
 
         <ImageView
