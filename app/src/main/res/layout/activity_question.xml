@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="@dimen/p5">
+
+        <TextView
+            android:id="@+id/answerTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m5"
+            android:text="@string/label"
+            android:textSize="@dimen/t16"
+            android:visibility="visible" />
+
+        <ImageView
+            android:layout_width="@dimen/h100"
+            android:layout_height="@dimen/h100"
+            android:layout_margin="@dimen/m10"
+            android:background="@drawable/dwh_logo"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/questionTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m5"
+            android:text="@string/label"
+            android:textSize="@dimen/t18" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/radioList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10" />
+
+
+        <include layout="@layout/logo_on_bottom" />
+    </LinearLayout>
+</ScrollView>

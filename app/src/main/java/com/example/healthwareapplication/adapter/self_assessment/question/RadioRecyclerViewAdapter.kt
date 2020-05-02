@@ -31,15 +31,10 @@ class RadioRecyclerViewAdapter(ansAry: List<String>, private val itemClickListen
         fun bindView(
             position: Int, ansAry: List<String>,
             clickListener: RecyclerItemClickListener.OnItemClickListener) {
-            itemView.radioBtn.text = ansAry[position]
+            itemView.textView.text = ansAry[position]
 
-            itemView.radioBtn.isChecked = position == selectedIndex
-
-            itemView.radioBtn.setOnClickListener(View.OnClickListener {
-                selectedIndex = adapterPosition
+            itemView.textView.setOnClickListener(View.OnClickListener {
                 clickListener.onItemClick(itemView,position)
-                notifyDataSetChanged()
-//                Log.e("radio button click: " ," " + model.getAnswerValue())
             })
         }
     }

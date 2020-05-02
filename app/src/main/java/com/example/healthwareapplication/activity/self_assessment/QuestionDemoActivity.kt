@@ -1,4 +1,4 @@
-package com.example.healthwareapplication.activity.question
+package com.example.healthwareapplication.activity.self_assessment
 
 import android.graphics.Color
 import android.os.Bundle
@@ -65,7 +65,7 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
 
 //        dataAry = AppSessions.getQuestionData(this)!!
 //        if (dataAry.length() == 0) {
-            fetchQuestionData("4")
+            fetchQuestionData("2")
 //        } else {
 //            setOuterLoop(outerIndex)
 //        }

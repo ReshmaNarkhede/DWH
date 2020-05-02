@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <RadioButton
-        android:id="@+id/radioBtn"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m5"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/m7"
+        android:background="@drawable/pink_border"
+        android:paddingStart="@dimen/p15"
+        android:paddingEnd="@dimen/p15"
+        android:paddingTop="@dimen/p7"
+        android:paddingBottom="@dimen/p7"
         android:text="@string/label"
-        android:textSize="@dimen/t16"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textSize="@dimen/t16" />
+</RelativeLayout>
