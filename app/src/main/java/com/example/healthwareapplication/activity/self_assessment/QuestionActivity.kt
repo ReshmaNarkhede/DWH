@@ -65,7 +65,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             finalStr.append(delimiter)
             finalStr.append(obj.getId())
         }
-        Log.e("STr: ", ": " + finalStr.toString().replaceFirst(delimiter,""))
+        Log.e("STr: ", ": " + finalStr.toString().replaceFirst(delimiter, ""))
         dataAry = AppSessions.getQuestionData(this)!!
         if (dataAry.length() == 0) {
             fetchQuestionData("6")
@@ -155,21 +155,21 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val ansObj = result[position]
                 ansJsonObj!!.put("selected_answer", ansObj)
-                if(ansObj=="Don\\\\'t know"){
+                ansJsonAry!!.put(ansJsonObj)
+                if (ansObj.contains("know")) {
+                    val intent = Intent(this, DontKnowActivity::class.java)
+                    startActivityForResult(intent, 201)
+                } else if (qObj.getAnswer() == "any") {
 
                 }
-                ansJsonAry!!.put(ansJsonObj)
-                if (qObj.getAnswer() == "any") {
-                    Log.e("RadioAns: $innerIndex", ": $ansObj")
-                    if (innerIndex!! < (QArray!!.length() - 1)) {
-                        innerIndex = innerIndex!!.plus(1)
-                        setDynamicData(innerIndex, ansJsonObj)
-                    } else {
-                        Log.e("Ans Ary Size:", ": " + ansJsonAry!!.length())
-                        AppHelper.showToast(this, "GoTo Report generate")
-                        val intent = Intent(this, ThankYouActivity::class.java)
-                        startActivity(intent)
-                    }
+                Log.e("RadioAns: $innerIndex", ": $ansObj")
+                if (innerIndex!! < (QArray!!.length() - 1)) {
+                    innerIndex = innerIndex!!.plus(1)
+                    setDynamicData(innerIndex, ansJsonObj)
+                } else {
+                    Log.e("Ans Ary Size:", ": " + ansJsonAry!!.length())
+                    val intent = Intent(this, ThankYouActivity::class.java)
+                    startActivity(intent)
                 }
             })
         radioList.adapter = radioRecyclerAdapter
