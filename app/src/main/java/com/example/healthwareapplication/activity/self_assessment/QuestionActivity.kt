@@ -155,9 +155,11 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val ansObj = result[position]
                 ansJsonObj!!.put("selected_answer", ansObj)
+                if(ansObj=="Don\\\\'t know"){
+
+                }
                 ansJsonAry!!.put(ansJsonObj)
                 if (qObj.getAnswer() == "any") {
-
                     Log.e("RadioAns: $innerIndex", ": $ansObj")
                     if (innerIndex!! < (QArray!!.length() - 1)) {
                         innerIndex = innerIndex!!.plus(1)

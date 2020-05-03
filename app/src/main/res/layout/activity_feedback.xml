@@ -25,19 +25,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/m15"
-            android:text="@string/label"
+            android:padding="@dimen/p5"
+            android:text="@string/is_symtom_assessment_was_helpful"
             android:textSize="@dimen/t20" />
 
         <Button
-            android:id="@+id/okayBtn"
+            android:id="@+id/yesBtn"
             style="@style/CustomButtonTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="@dimen/m20"
             android:layout_marginEnd="@dimen/m5"
-            android:onClick="okClick"
-            android:text="@string/okeh" />
+            android:onClick="yesClick"
+            android:text="@string/yes" />
+        <Button
+            android:id="@+id/noBtn"
+            style="@style/CustomButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/m5"
+            android:layout_marginEnd="@dimen/m5"
+            android:onClick="noClick"
+            android:text="@string/no" />
+        <Button
+            android:id="@+id/notSureBtn"
+            style="@style/CustomButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/m5"
+            android:paddingStart="@dimen/p15"
+            android:paddingEnd="@dimen/p15"
+            android:layout_marginEnd="@dimen/m5"
+            android:onClick="notSureClick"
+            android:text="@string/i_am_not_sure" />
 
         <include layout="@layout/logo_on_bottom" />
 

@@ -106,6 +106,9 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="next">Next</string>
     <string name="label">label</string>
     <string name="thank_you">Thank you %s All done! Your Report is Ready</string>
+    <string name="yes">Yes</string>
+    <string name="i_am_not_sure">I am not sure</string>
+    <string name="is_symtom_assessment_was_helpful">Is symtom assessment was helpful?</string>
 
     <array name="tick_below_text_length_5">
         <item>one</item>
