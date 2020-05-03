@@ -201,7 +201,7 @@ class SADetailActivity : AppCompatActivity() {
 
 
     fun clickNext(view: View) {
-        val intent = Intent(this, QuestionDemoActivity::class.java)
+        val intent = Intent(this, QuestionActivity::class.java)
         intent.putExtra(IntentConstants.kSYMPTOM_DATA,symptmJsonAry.toString())
         startActivity(intent)
     }

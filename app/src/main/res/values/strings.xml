@@ -105,6 +105,7 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="add_symptoms">Add Symptoms</string>
     <string name="next">Next</string>
     <string name="label">label</string>
+    <string name="thank_you">Thank you %s All done! Your Report is Ready</string>
 
     <array name="tick_below_text_length_5">
         <item>one</item>

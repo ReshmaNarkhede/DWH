@@ -13,16 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.question.QuestionActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activity.self_assessment.QuestionDemoActivity">
+        <activity android:name=".activity.self_assessment.ThankYouActivity"></activity>
+        <activity android:name=".activity.self_assessment.QuestionActivity">
 
         </activity>
+        <activity android:name=".activity.self_assessment.QuestionDemoActivity"></activity>
         <activity android:name=".activity.self_assessment.SADetailActivity" />
         <activity android:name=".activity.self_assessment.AddSymptomActivity" />
         <activity android:name=".activity.account.register.RegisterTermsActivity" />
@@ -51,7 +46,11 @@
             android:name=".activity.account.register.RegisterMobNoActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

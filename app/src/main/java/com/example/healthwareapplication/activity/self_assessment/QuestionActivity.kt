@@ -1,36 +1,35 @@
-package com.example.healthwareapplication.activity.question
+package com.example.healthwareapplication.activity.self_assessment
 
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.widget.AppCompatSeekBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.adapter.self_assessment.question.CheckRecyclerViewAdapter
 import com.example.healthwareapplication.adapter.self_assessment.question.RadioRecyclerViewAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.AppConstants
 import com.example.healthwareapplication.model.self_assessment.QuestionData
+import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.google.gson.JsonObject
-import com.warkiz.widget.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     private var ansJsonObj: JSONObject? = JSONObject()
+    private var ansJsonAry: JSONArray? = JSONArray()
     private var QArray: JSONArray? = JSONArray()
 
     private lateinit var dataAry: JSONArray
@@ -40,12 +39,16 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var answerTxt: TextView
     private lateinit var radioList: RecyclerView
 
+    val delimiter = ","
+    val finalStr = SpannableStringBuilder()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
         initComponents()
         defaultConfiguration()
     }
+
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
         questionTxt = findViewById(R.id.questionTxt)
@@ -54,15 +57,24 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun defaultConfiguration() {
-
-//        dataAry = AppSessions.getQuestionData(this)!!
-//        if (dataAry.length() == 0) {
-        fetchQuestionData("2")
-//        } else {
-//            setOuterLoop(outerIndex)
-//        }
+        val symptomStr = intent.getStringExtra(AppConstants.kSYMPTOM_DATA)
+        val ary = JSONArray(symptomStr)
+        for (i in 0 until ary.length()) {
+            val obj = SymptomJsonModel(ary.getJSONObject(i))
+            Log.e("ID: ", ": " + obj.getId())
+            finalStr.append(delimiter)
+            finalStr.append(obj.getId())
+        }
+        Log.e("STr: ", ": " + finalStr.toString().replaceFirst(delimiter,""))
+        dataAry = AppSessions.getQuestionData(this)!!
+        if (dataAry.length() == 0) {
+            fetchQuestionData("6")
+        } else {
+            setOuterLoop(outerIndex)
+        }
         answerTxt.setOnClickListener(this)
     }
+
     private fun fetchQuestionData(idStr: String) {
         val apiService: ApiInterface =
             ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
@@ -110,10 +122,12 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             }
         })
     }
+
     private fun setOuterLoop(outerIndex: Int?) {
         QArray = QuestionData(dataAry.getJSONObject(outerIndex!!)).getQuestionAns()
-        setDynamicData(innerIndex,ansJsonObj)
+        setDynamicData(innerIndex, ansJsonObj)
     }
+
     private fun setDynamicData(index: Int?, ansJObj: JSONObject?) {
 
         ansJsonObj = ansJObj
@@ -130,6 +144,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             showRadioData(qObj)
         }
     }
+
     private fun showRadioData(qObj: QuestionData.QuestionAnsModel) {
         val recyclerLayoutManager = LinearLayoutManager(this)
         radioList.layoutManager = recyclerLayoutManager
@@ -140,14 +155,18 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val ansObj = result[position]
                 ansJsonObj!!.put("selected_answer", ansObj)
-                if ( qObj.getAnswer() == "any") {
+                ansJsonAry!!.put(ansJsonObj)
+                if (qObj.getAnswer() == "any") {
 
                     Log.e("RadioAns: $innerIndex", ": $ansObj")
-                    if (innerIndex!! < (QArray!!.length()-1)) {
+                    if (innerIndex!! < (QArray!!.length() - 1)) {
                         innerIndex = innerIndex!!.plus(1)
-                        setDynamicData(innerIndex,ansJsonObj)
-                    }else{
-                        AppHelper.showToast(this,"GoTo Report generate")
+                        setDynamicData(innerIndex, ansJsonObj)
+                    } else {
+                        Log.e("Ans Ary Size:", ": " + ansJsonAry!!.length())
+                        AppHelper.showToast(this, "GoTo Report generate")
+                        val intent = Intent(this, ThankYouActivity::class.java)
+                        startActivity(intent)
                     }
                 }
             })
@@ -159,8 +178,9 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             R.id.answerTxt -> {
                 if (innerIndex!! < QArray!!.length() && innerIndex!! > 0) {
                     innerIndex = innerIndex!!.minus(1)
-                    Log.e("back: ",": $innerIndex")
+                    Log.e("back: ", ": $innerIndex")
                     ansJsonObj = JSONObject()
+                    ansJsonAry!!.remove(innerIndex!!)
                     setDynamicData(innerIndex, ansJsonObj)
                 }
             }
