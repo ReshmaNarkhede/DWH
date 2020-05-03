@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/username"
+            android:text="@string/label"
             android:textSize="@dimen/t16"
             android:textColor="@color/black"
             android:padding="@dimen/m2"
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/age"
+            android:text="@string/label"
             android:textSize="@dimen/t16"
             android:textColor="@color/black"
             android:padding="@dimen/m2"
@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/gender"
+            android:text="@string/label"
             android:textSize="@dimen/t16"
             android:textColor="@color/black"
             android:padding="@dimen/m2"
@@ -105,7 +105,7 @@
                 android:layout_marginTop="@dimen/m20"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/desc"
+                android:text="@string/label"
                 android:textSize="@dimen/t16"/>
 
             <Button
