@@ -34,5 +34,6 @@ class SymptomReportActivity : AppCompatActivity() {
     fun okClick(view: View) {
         val intent = Intent(this, FeedbackActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }

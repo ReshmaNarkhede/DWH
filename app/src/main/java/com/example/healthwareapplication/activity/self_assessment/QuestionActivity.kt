@@ -170,6 +170,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     Log.e("Ans Ary Size:", ": " + ansJsonAry!!.length())
                     val intent = Intent(this, ThankYouActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }
             })
         radioList.adapter = radioRecyclerAdapter

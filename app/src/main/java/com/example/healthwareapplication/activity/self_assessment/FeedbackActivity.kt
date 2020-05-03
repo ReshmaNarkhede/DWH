@@ -1,5 +1,6 @@
 package com.example.healthwareapplication.activity.self_assessment
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,12 +15,19 @@ class FeedbackActivity : AppCompatActivity() {
     }
 
     fun yesClick(view: View) {
-        AppHelper.showToast(this,"Go to Current tab")
+        openNEW()
     }
     fun noClick(view: View) {
-        AppHelper.showToast(this,"Go to Current tab")
+        openNEW()
     }
     fun notSureClick(view: View) {
+        openNEW()
+    }
+
+    private fun openNEW() {
+
         AppHelper.showToast(this,"Go to Current tab")
+//        val intent = Intent(this,SADetailActivity::class.java)
+//        startActivity(intent)
     }
 }

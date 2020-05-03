@@ -37,5 +37,6 @@ class ThankYouActivity : AppCompatActivity() {
     fun okClick(view: View) {
         val intent = Intent(this, SymptomReportActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }
