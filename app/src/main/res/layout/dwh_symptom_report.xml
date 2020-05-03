@@ -17,8 +17,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/username"
-            android:textSize="15sp"
+            android:textSize="@dimen/t16"
             android:textColor="@color/black"
+            android:padding="@dimen/m2"
+            android:gravity="center"
             />
 
         <TextView
@@ -26,8 +28,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/age"
-            android:textSize="15sp"
+            android:textSize="@dimen/t16"
             android:textColor="@color/black"
+            android:padding="@dimen/m2"
+            android:gravity="center"
+
             />
 
         <TextView
@@ -35,27 +40,33 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/gender"
-            android:textSize="15sp"
+            android:textSize="@dimen/t16"
             android:textColor="@color/black"
+            android:padding="@dimen/m2"
+            android:gravity="center"
             />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/label"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            />
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/symptomTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/label"
+        android:textSize="@dimen/t16"
+        android:textColor="@color/black"
+        android:layout_below="@+id/userDetail"
+        android:padding="@dimen/m2"
+
+        />
 
     <ScrollView
         android:id="@+id/answerSurvey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/userDetail">
+        android:layout_below="@+id/symptomTxt">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,7 +82,7 @@
                 android:gravity="center"
                 android:text="@string/dwh_thought"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="@dimen/t20" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -81,12 +92,12 @@
                 android:gravity="center"
                 android:text="@string/assesment"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="@dimen/t20" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp" />
+                android:layout_margin="@dimen/m10" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -94,7 +105,8 @@
                 android:layout_marginTop="@dimen/m20"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/desc" />
+                android:text="@string/desc"
+                android:textSize="@dimen/t16"/>
 
             <Button
                 android:id="@+id/okayBtn"
@@ -105,7 +117,7 @@
                 android:layout_margin="@dimen/m20"
                 android:onClick="okClick"
                 android:text="Done"
-                android:textSize="20sp"
+                android:textSize="@dimen/t20"
                 />
 
 
