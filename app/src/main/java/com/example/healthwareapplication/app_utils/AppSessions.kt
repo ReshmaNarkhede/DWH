@@ -2,6 +2,7 @@ package com.example.healthwareapplication.app_utils
 
 import android.content.Context
 import com.example.healthwareapplication.constants.AppConstants
+import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.country.CountryData
 import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.example.healthwareapplication.model.user.UserDetailModel
@@ -39,7 +40,7 @@ class AppSessions {
         }
 
         fun getSymptomData(context: Context): JSONArray? {
-            return AppSettings.getArrayValue(context,AppConstants.kSYMPTOM_DATA)
+            return AppSettings.getArrayValue(context,IntentConstants.kSYMPTOM_DATA)
         }
         fun getQuestionData(context: Context): JSONArray? {
             val array = AppSettings.getArrayValue(context!!, AppConstants.kQUESTION_ARY)

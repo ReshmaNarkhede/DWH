@@ -62,6 +62,18 @@ class AppHelper {
             }
             return arr
         }
-       
+        fun getAge(year: String, month: String, day: String): String? {
+            Log.e("Date: ", "$year, $month, $day")
+            val dob: Calendar = Calendar.getInstance()
+            val today: Calendar = Calendar.getInstance()
+            dob.set(year.toInt(), month.toInt(), day.toInt())
+            var age: Int = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR)
+            if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)) {
+                age--
+            }
+            val ageInt = age
+            return ageInt.toString()
+        }
+
     }
 }

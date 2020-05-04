@@ -16,6 +16,7 @@ import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.AppConstants
+import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.self_assessment.QuestionData
 import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.google.gson.JsonObject
@@ -24,10 +25,10 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
+    private lateinit var symptmJsonAry: JSONArray
     private var ansJsonObj: JSONObject? = JSONObject()
     private var ansJsonAry: JSONArray? = JSONArray()
     private var QArray: JSONArray? = JSONArray()
@@ -57,10 +58,10 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun defaultConfiguration() {
-        val symptomStr = intent.getStringExtra(AppConstants.kSYMPTOM_DATA)
-        val ary = JSONArray(symptomStr)
-        for (i in 0 until ary.length()) {
-            val obj = SymptomJsonModel(ary.getJSONObject(i))
+        val symptomStr = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
+        symptmJsonAry = JSONArray(symptomStr)
+        for (i in 0 until symptmJsonAry.length()) {
+            val obj = SymptomJsonModel(symptmJsonAry.getJSONObject(i))
             Log.e("ID: ", ": " + obj.getId())
             finalStr.append(delimiter)
             finalStr.append(obj.getId())
@@ -141,25 +142,27 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
         if (qObj.getQuestionType() == "SS") //radio button
         {
-            showRadioData(qObj)
+            showRadioData(QArray!!.getJSONObject(index!!))
         }
     }
 
-    private fun showRadioData(qObj: QuestionData.QuestionAnsModel) {
+    private fun showRadioData(qObj: JSONObject) {
+        val qModel = QuestionData.QuestionAnsModel(qObj)
         val recyclerLayoutManager = LinearLayoutManager(this)
         radioList.layoutManager = recyclerLayoutManager
-        val str = qObj.getAnswerOptions()
+        val str = qModel.getAnswerOptions()
         val result: List<String> = str!!.split("#")
         val radioRecyclerAdapter = RadioRecyclerViewAdapter(
             result,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val ansObj = result[position]
                 ansJsonObj!!.put("selected_answer", ansObj)
+                qObj!!.put("selected_answer", ansObj)
                 ansJsonAry!!.put(ansJsonObj)
                 if (ansObj.contains("know")) {
                     val intent = Intent(this, DontKnowActivity::class.java)
                     startActivityForResult(intent, 201)
-                } else if (qObj.getAnswer() == "any") {
+                } else if (qModel.getAnswer() == "any") {
 
                 }
                 Log.e("RadioAns: $innerIndex", ": $ansObj")
@@ -169,6 +172,8 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                 } else {
                     Log.e("Ans Ary Size:", ": " + ansJsonAry!!.length())
                     val intent = Intent(this, ThankYouActivity::class.java)
+                    intent.putExtra(IntentConstants.kSYMPTOM_DATA,symptmJsonAry.toString())
+                    intent.putExtra(IntentConstants.kANSWER_DATA,ansJsonAry.toString())
                     startActivity(intent)
                     finish()
                 }
