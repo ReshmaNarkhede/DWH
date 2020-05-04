@@ -114,15 +114,16 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="yes">Yes</string>
     <string name="i_am_not_sure">I am not sure</string>
     <string name="is_symtom_assessment_was_helpful">Is symtom assessment was helpful?</string>
-    <string name="feedback_msg">Please tell me what you dont like about this question, so I can improve! Choose all options that apply to you and provide further information if necessary.</string>
-    <string name="give_feedback">Give Feedback</string>
+    <string name="feedback_msg">Please tell me what you don’t know about this question, So we can improve! Write and choose all the option that apply to you.
+</string>
+    <string name="give_feedback">   Improve us....</string>
     <string name="type_to_give_more_details">Type to give more details</string>
-    <string name="done_back_to_question">Done, Back to question</string>
+    <string name="next_question">Next Question</string>
     <string name="the_question_is_repetitive">The question is repetitive.</string>
-    <string name="i_want_to_choose_multiple_answers">I want to choose multiple answers.</string>
-    <string name="the_answer_don_t_apply_to_me">The answer don\'t apply to me.</string>
-    <string name="the_question_doesn_t_feel_relevant_to_me">The question doesn\'t feel relevant to me.</string>
-    <string name="i_don_t_understand_the_question">I don\'t understand the question.</string>
+    <string name="i_want_to_choose_multiple_answers">I want to choose multiple answer.</string>
+    <string name="need_improve_answer">Need to improve in answer.</string>
+    <string name="the_question_doesn_t_feel_relevant_to_me">Question does not relevant to my symptom .</string>
+    <string name="i_don_t_understand_the_question"> I don\'t understand this question.</string>
 
     <array name="tick_below_text_length_5">
         <item>one</item>

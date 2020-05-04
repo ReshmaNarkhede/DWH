@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/m10"
-            android:text="@string/the_answer_don_t_apply_to_me"
+            android:text="@string/need_improve_answer"
             android:textSize="@dimen/t16" />
 
         <CheckBox
@@ -67,12 +67,6 @@
             android:text="@string/i_want_to_choose_multiple_answers"
             android:textSize="@dimen/t16" />
 
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/m10"
-            android:text="@string/the_question_is_repetitive"
-            android:textSize="@dimen/t16" />
 
         <EditText
             android:id="@+id/yourselfDescriptionEditText"
@@ -103,6 +97,6 @@
             android:onClick="okClick"
             android:paddingStart="@dimen/p15"
             android:paddingEnd="@dimen/p15"
-            android:text="@string/done_back_to_question" />
+            android:text="@string/next_question" />
     </LinearLayout>
 </ScrollView>
