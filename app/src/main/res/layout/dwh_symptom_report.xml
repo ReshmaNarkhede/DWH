@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/userDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/m10"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/m20">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/label"
+            android:textSize="@dimen/t16"
+            android:textColor="@color/black"
+            android:padding="@dimen/m2"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/label"
+            android:textSize="@dimen/t16"
+            android:textColor="@color/black"
+            android:padding="@dimen/m2"
+            android:gravity="center"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/label"
+            android:textSize="@dimen/t16"
+            android:textColor="@color/black"
+            android:padding="@dimen/m2"
+            android:gravity="center"
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/symptomTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/label"
+        android:textSize="@dimen/t16"
+        android:textColor="@color/black"
+        android:layout_below="@+id/userDetail"
+        android:padding="@dimen/m2"
+
+        />
+
+    <ScrollView
+        android:id="@+id/answerSurvey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/symptomTxt">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/m20"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/dwh_thought"
+                android:textColor="@color/black"
+                android:textSize="@dimen/t20" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/assesment"
+                android:textColor="@color/black"
+                android:textSize="@dimen/t20" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/m10" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/m20"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/label"
+                android:textSize="@dimen/t16"/>
+
+            <Button
+                android:id="@+id/okayBtn"
+                style="@style/CustomButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/m20"
+                android:onClick="okClick"
+                android:text="Done"
+                android:textSize="@dimen/t20"
+                />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/m5"
+        android:background="@drawable/ic_dwh"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

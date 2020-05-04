@@ -4,6 +4,7 @@
     <string name="login_as">Login As</string>
     <string name="doctor">Doctor</string>
     <string name="user">User</string>
+
     <string name="please_check_internet_connection">Please check internet connection and try again.</string>
     <string name="welcome_message">Hi, This is DWH. I can digitalis your health.</string>
     <string name="welcome_message_dr">Hi, This is DWH. Would you like to see people as well as digitalis your health?</string>
@@ -106,6 +107,10 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="next">Next</string>
     <string name="label">label</string>
     <string name="thank_you">Thank you %s All done! Your Report is Ready</string>
+
+    <string name="dwh_thought">DWH Thought</string>
+    <string name="assesment">Your Assesment</string>
+
     <string name="yes">Yes</string>
     <string name="i_am_not_sure">I am not sure</string>
     <string name="is_symtom_assessment_was_helpful">Is symtom assessment was helpful?</string>
