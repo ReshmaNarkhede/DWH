@@ -1,11 +1,9 @@
 package com.example.healthwareapplication.activity.self_assessment
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.app_utils.AppHelper
 
 class FeedbackActivity : AppCompatActivity() {
 
@@ -26,7 +24,7 @@ class FeedbackActivity : AppCompatActivity() {
 
     private fun openNEW() {
 
-        AppHelper.showToast(this,"Go to Current tab")
+        finish()
 //        val intent = Intent(this,SADetailActivity::class.java)
 //        startActivity(intent)
     }

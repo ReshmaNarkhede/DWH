@@ -20,7 +20,7 @@
             android:padding="@dimen/m2"
             android:text="@string/label"
             android:textColor="@color/black"
-            android:textSize="@dimen/t16" />
+            android:textSize="@dimen/t20" />
 
         <TextView
             android:id="@+id/userGenderTxt"
@@ -31,7 +31,7 @@
             android:padding="@dimen/m2"
             android:text="@string/label"
             android:textColor="@color/black"
-            android:textSize="@dimen/t16" />
+            android:textSize="@dimen/t20" />
 
         <TextView
 
@@ -43,7 +43,7 @@
             android:padding="@dimen/m2"
             android:text="@string/label"
             android:textColor="@color/black"
-            android:textSize="@dimen/t16" />
+            android:textSize="@dimen/t20" />
 
 
     </LinearLayout>
@@ -57,9 +57,9 @@
         android:padding="@dimen/m5"
         android:text="@string/label"
         android:textColor="@color/black"
-        android:textSize="@dimen/t16" />
+        android:textSize="@dimen/t20" />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/answerSurvey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -103,7 +103,6 @@
                 android:id="@+id/assesmentList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
                 android:layout_margin="@dimen/m10" />
 
             <TextView
@@ -130,7 +129,7 @@
         </LinearLayout>
 
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <ImageView
         android:layout_width="wrap_content"

@@ -100,11 +100,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     if (responseModel.isCode()) {
                         dataAry = responseModel.getDataArray()!!
 
-                        AppSettings.setJsonArrayValue(
-                            this@QuestionActivity,
-                            AppConstants.kQUESTION_ARY,
-                            dataAry.toString()
-                        )
+                        AppSettings.setJsonArrayValue(this@QuestionActivity, AppConstants.kQUESTION_ARY, dataAry.toString())
                         setOuterLoop(outerIndex)
                     } else {
                         AppHelper.showToast(
@@ -126,13 +122,12 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setOuterLoop(outerIndex: Int?) {
         QArray = QuestionData(dataAry.getJSONObject(outerIndex!!)).getQuestionAns()
-        setDynamicData(innerIndex, ansJsonObj)
+        setDynamicData(innerIndex, ansJsonObj!!)
     }
 
-    private fun setDynamicData(index: Int?, ansJObj: JSONObject?) {
+    private fun setDynamicData(index: Int?, ansJObj: JSONObject) {
 
         ansJsonObj = ansJObj
-
         val ansObj = QuestionData.QuestionAnsModel(ansJsonObj!!)
 
         val qObj = QuestionData.QuestionAnsModel(QArray!!.getJSONObject(index!!))
@@ -156,9 +151,9 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             result,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val ansObj = result[position]
-                ansJsonObj!!.put("selected_answer", ansObj)
+//                ansJsonObj!!.put("selected_answer", ansObj)
                 qObj!!.put("selected_answer", ansObj)
-                ansJsonAry!!.put(ansJsonObj)
+                ansJsonAry!!.put(qObj)
                 if (ansObj.contains("know")) {
                     val intent = Intent(this, DontKnowActivity::class.java)
                     startActivityForResult(intent, 201)
@@ -168,7 +163,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                 Log.e("RadioAns: $innerIndex", ": $ansObj")
                 if (innerIndex!! < (QArray!!.length() - 1)) {
                     innerIndex = innerIndex!!.plus(1)
-                    setDynamicData(innerIndex, ansJsonObj)
+                    setDynamicData(innerIndex,qObj)
                 } else {
                     Log.e("Ans Ary Size:", ": " + ansJsonAry!!.length())
                     val intent = Intent(this, ThankYouActivity::class.java)
@@ -189,7 +184,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     Log.e("back: ", ": $innerIndex")
                     ansJsonObj = JSONObject()
                     ansJsonAry!!.remove(innerIndex!!)
-                    setDynamicData(innerIndex, ansJsonObj)
+                    setDynamicData(innerIndex, ansJsonObj!!)
                 }
             }
         }
