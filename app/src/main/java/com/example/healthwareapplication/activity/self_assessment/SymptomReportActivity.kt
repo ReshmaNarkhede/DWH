@@ -8,11 +8,8 @@ import android.widget.TextView
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.AppSessions
-import com.example.healthwareapplication.app_utils.AppSettings
-import com.example.healthwareapplication.constants.IntentConstants
-import com.google.gson.Gson
 
-class ThankYouActivity : AppCompatActivity() {
+class SymptomReportActivity : AppCompatActivity() {
 
     private lateinit var thankYouText: TextView
 
@@ -31,11 +28,11 @@ class ThankYouActivity : AppCompatActivity() {
 
     private fun defaultConfiguration() {
         val user = AppSessions.getLoginModel(this)
-        thankYouText.text = "Thank you ${user!!.firstName} All done! Your Report is Ready"
+        thankYouText.text = "Report Generate"
     }
 
     fun okClick(view: View) {
-        val intent = Intent(this, SymptomReportActivity::class.java)
+        val intent = Intent(this, FeedbackActivity::class.java)
         startActivity(intent)
         finish()
     }

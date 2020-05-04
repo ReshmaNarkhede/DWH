@@ -204,6 +204,7 @@ class SADetailActivity : AppCompatActivity() {
         val intent = Intent(this, QuestionActivity::class.java)
         intent.putExtra(IntentConstants.kSYMPTOM_DATA,symptmJsonAry.toString())
         startActivity(intent)
+        finish()
     }
 
 

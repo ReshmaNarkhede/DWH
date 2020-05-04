@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/cancleImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="@dimen/p10"
+            android:onClick="cancelClick"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:padding="@dimen/p10"
+            android:text="@string/give_feedback"
+            android:textColor="@color/black"
+            android:textSize="@dimen/t20"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:padding="@dimen/p10"
+            android:text="@string/feedback_msg"
+            android:textColor="@color/black"
+            android:textSize="@dimen/t16" />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:text="@string/i_don_t_understand_the_question"
+            android:textSize="@dimen/t16" />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:text="@string/the_question_doesn_t_feel_relevant_to_me"
+            android:textSize="@dimen/t16" />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:text="@string/the_answer_don_t_apply_to_me"
+            android:textSize="@dimen/t16" />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:text="@string/i_want_to_choose_multiple_answers"
+            android:textSize="@dimen/t16" />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:text="@string/the_question_is_repetitive"
+            android:textSize="@dimen/t16" />
+
+        <EditText
+            android:id="@+id/yourselfDescriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:layout_marginTop="@dimen/m10"
+            android:background="@drawable/black_border"
+            android:gravity="top|start"
+            android:hint="@string/type_to_give_more_details"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:maxLength="300"
+            android:maxLines="10"
+            android:minLines="6"
+            android:padding="@dimen/p5"
+            android:scrollbars="vertical"
+            android:textSize="@dimen/t18" />
+
+        <Button
+            android:id="@+id/okayBtn"
+            style="@style/CustomButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/m20"
+            android:layout_marginEnd="@dimen/m5"
+            android:onClick="okClick"
+            android:paddingStart="@dimen/p15"
+            android:paddingEnd="@dimen/p15"
+            android:text="@string/done_back_to_question" />
+    </LinearLayout>
+</ScrollView>
