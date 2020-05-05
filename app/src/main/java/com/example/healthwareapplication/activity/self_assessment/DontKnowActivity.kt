@@ -15,4 +15,8 @@ class DontKnowActivity : AppCompatActivity() {
     fun cancelClick(view: View) {
         finish()
     }
+
+    fun okClick(view: View) {
+        finish()
+    }
 }

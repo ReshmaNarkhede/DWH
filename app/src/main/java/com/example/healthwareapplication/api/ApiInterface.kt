@@ -9,27 +9,27 @@ import retrofit2.http.*
 
 interface ApiInterface {
 
-    @GET("/v1/api/getCountryList")
+    @GET("getCountryList")
     fun getCountry(): Call<JsonObject>
 
-    @POST("/v1/api/login")
+    @POST("login")
     fun fetchLogin(@Body jsonObject: JsonObject?): Call<JsonObject>
 
-    @POST("/v1/api/registration")
+    @POST("registration")
     @Multipart
     fun registration(@PartMap fieldMap: Map<String, @JvmSuppressWildcards RequestBody?>): Call<JsonObject>
 
-    @POST("/v1/api/getBodyParts")
+    @POST("getBodyParts")
     fun getBodyPart(@Body jsonObject: JsonObject?): Call<JsonObject>
 
-    @POST("/v1/api/getSymptomsByBodyPartId")
+    @POST("getSymptomsByBodyPartId")
     fun getSymptomsByBodyPartId(@Body jsonObject: JsonObject?): Call<JsonObject>
 
-    @POST("/v1/api/getSearchSymptomsByName")
+    @POST("getSearchSymptomsByName")
     fun getSearchSymptomsByName(@Body jsonObject: JsonObject?): Call<JsonObject>
 
 //    @POST("/v1/api/getQuestions")
 //    @POST("/v1/api/getQsBySymptomsIds")
-    @POST("/v1/api/getQuestionsAns")
+    @POST("getQuestionsAns")
     fun getQuestions(@Body jsonObject: JsonObject?): Call<JsonObject>
 }
