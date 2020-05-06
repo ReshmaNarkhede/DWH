@@ -13,18 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".activity.self_assessment.DontKnowActivity"></activity>
-
+        <activity android:name=".activity.self_assessment.AddTestActivity"></activity>
+        <activity android:name=".activity.self_assessment.AddMedicineActivity" />
+        <activity android:name=".activity.self_assessment.DontKnowActivity" />
         <activity android:name=".activity.self_assessment.FeedbackActivity" />
-
         <activity android:name=".activity.self_assessment.SymptomReportActivity" />
-
         <activity android:name=".activity.self_assessment.ThankYouActivity" />
-
-        <activity android:name=".activity.self_assessment.QuestionActivity" >
-
-        </activity>
+        <activity android:name=".activity.self_assessment.QuestionActivity" />
         <activity android:name=".activity.self_assessment.QuestionDemoActivity" />
         <activity android:name=".activity.self_assessment.SADetailActivity" />
         <activity android:name=".activity.self_assessment.AddSymptomActivity" />
