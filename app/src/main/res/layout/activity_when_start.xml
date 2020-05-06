@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/h100"
+            android:layout_height="@dimen/h100"
+            android:layout_margin="@dimen/m10"
+            android:background="@drawable/dwh_logo"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/timeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/p10"
+            android:paddingBottom="@dimen/p10"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/when_did_it_start"
+                android:textSize="@dimen/t20" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/assessmentStartDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:onClick="whenDateClick"
+                    android:layout_weight="1"
+                    android:text="@string/dd_mm_yy"
+                    android:textSize="@dimen/t16" />
+
+
+                <TextView
+                    android:id="@+id/assessmentStartTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/m15"
+                    android:onClick="whenTimeClick"
+                    android:layout_weight="1"
+                    android:text="@string/_00_00_am"
+                    android:textSize="@dimen/t16" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/nextBtn"
+                style="@style/CustomButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/m10"
+                android:onClick="clickNext"
+                android:text="@string/next" />
+        </LinearLayout>
+
+        <include layout="@layout/logo_on_bottom" />
+
+    </LinearLayout>
+</ScrollView>

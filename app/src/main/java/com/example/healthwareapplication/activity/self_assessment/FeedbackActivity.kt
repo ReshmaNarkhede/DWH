@@ -15,15 +15,17 @@ class FeedbackActivity : AppCompatActivity() {
     fun yesClick(view: View) {
         openNEW()
     }
+
     fun noClick(view: View) {
         openNEW()
     }
+
     fun notSureClick(view: View) {
         openNEW()
     }
 
     private fun openNEW() {
-     finishAffinity()
+        finish()
 //        val intent = Intent(this,SADetailActivity::class.java)
 //        startActivity(intent)
     }

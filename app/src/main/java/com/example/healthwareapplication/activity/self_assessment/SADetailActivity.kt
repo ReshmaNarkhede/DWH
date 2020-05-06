@@ -8,6 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -38,18 +39,16 @@ import java.util.*
 class SADetailActivity : AppCompatActivity() {
      var adapter: SymptomAdapter? = null
     private lateinit var gson: Gson
-    private lateinit var timeLayout: LinearLayout
+//    private lateinit var timeLayout: LinearLayout
     private lateinit var symptomList: RecyclerView
     private lateinit var symptom: RecyclerView
-//    private lateinit var nextBtn: Button
+    private lateinit var nextBtn: Button
     private lateinit var searchTxt: EditText
     val symptmJsonAry: JSONArray = JSONArray()
 
     private lateinit var assessmentDate: TextView
     private lateinit var assessmentTime: TextView
 
-    private lateinit var whenStartTime: TextView
-    private lateinit var whenStartDate: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,17 +59,15 @@ class SADetailActivity : AppCompatActivity() {
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-        timeLayout = findViewById(R.id.timeLayout)
+//        timeLayout = findViewById(R.id.timeLayout)
         symptomList = findViewById(R.id.symptomList)
         symptom = findViewById(R.id.symptom)
-//        nextBtn = findViewById(R.id.nextBtn)
+        nextBtn = findViewById(R.id.nextBtn)
         searchTxt = findViewById(R.id.searchTxt)
 
         assessmentDate = findViewById(R.id.assessmentDate)
         assessmentTime = findViewById(R.id.assessmentTime)
 
-        whenStartTime = findViewById(R.id.assessmentStartTime)
-        whenStartDate = findViewById(R.id.assessmentStartDate)
 
         gson = Gson()
         dataBind()
@@ -100,7 +97,7 @@ class SADetailActivity : AppCompatActivity() {
         val showDeleted: ShowDeleted = object : ShowDeleted{
             override fun showDeleted(size: Int) {
                if(size==0){
-                   timeLayout.visibility = View.GONE
+                   nextBtn.visibility = View.GONE
                }
             }
         }
@@ -196,33 +193,34 @@ class SADetailActivity : AppCompatActivity() {
 
     private fun showBottom() {
         Log.e("Show bottom: ", " " + symptmJsonAry.length())
-        timeLayout.visibility = View.VISIBLE
+        nextBtn.visibility = View.VISIBLE
     }
 
 
     fun clickNext(view: View) {
-        val intent = Intent(this, QuestionActivity::class.java)
+        val intent = Intent(this, WhenStartActivity::class.java)
         intent.putExtra(IntentConstants.kSYMPTOM_DATA,symptmJsonAry.toString())
         startActivity(intent)
         finish()
     }
 
 
-    fun whenDateClick(view: View) {
-        val listner = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            whenStartDate.text = "$dayOfMonth/$monthOfYear/$year"
-            DialogUtility.hideProgressDialog()
-        }
-        DialogUtility.showDatePickerDialog(this, listner).show()
-    }
+//    fun whenDateClick(view: View) {
+//        val listner = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+//            whenStartDate.text = "$dayOfMonth/$monthOfYear/$year"
+//            DialogUtility.hideProgressDialog()
+//        }
+//        DialogUtility.showDatePickerDialog(this, listner).show()
+//    }
+//
+//    fun whenTimeClick(view: View) {
+//        val listner = TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
+//            whenStartTime.text = "${SimpleDateFormat("hh:mm a").format(SimpleDateFormat("hh:mm").parse("${selectedHour}:${selectedMinute}"))}"
+//            DialogUtility.hideProgressDialog()
+//        }
+//        DialogUtility.showTimePickerDialog(this, listner).show()
+//    }
 
-    fun whenTimeClick(view: View) {
-        val listner = TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
-            whenStartTime.text = "${SimpleDateFormat("hh:mm a").format(SimpleDateFormat("hh:mm").parse("${selectedHour}:${selectedMinute}"))}"
-            DialogUtility.hideProgressDialog()
-        }
-        DialogUtility.showTimePickerDialog(this, listner).show()
-    }
     interface ShowDeleted {
         fun showDeleted(size: Int)
     }

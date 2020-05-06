@@ -64,8 +64,7 @@ class SymptomReportActivity : AppCompatActivity() {
         userNameTxt.text = user!!.firstName + " " + user.lastName
         userGenderTxt.text = user!!.sex
 
-        val date = "30/2/2016".split("/")
-//        val date = user!!.dob.split("/")
+        val date = user!!.dob.split("/")
         userAgeTxt.text = AppHelper.getAge(date[2], date[1], date[0]) + "years"
 
         symptomTxt.text = finalStr.toString().replaceFirst(delimiter, "")
