@@ -112,8 +112,14 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="assesment">Your Assesment</string>
 
     <string name="yes">Yes</string>
+    <string name="ok">Okay</string>
+    <string name="add">Add</string>
     <string name="i_am_not_sure">I am not sure</string>
     <string name="is_symtom_assessment_was_helpful">Is symtom assessment was helpful?</string>
+    <string name="have_you_taken_medicine">If you have taken any medicine, please add 😀 </string>
+    <string name="have_you_taken_test">If have have taken any test, please add 😀 </string>
+
+
     <string name="feedback_msg">Please tell me what you don’t know about this question, So we can improve! Write and choose all the option that apply to you.
 </string>
     <string name="give_feedback">   Improve us....</string>
