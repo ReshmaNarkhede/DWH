@@ -28,10 +28,12 @@
             android:padding="@dimen/p5"
             android:text="@string/have_you_taken_test"
             android:textSize="@dimen/t20" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/m15">
 
             <EditText
                 android:layout_width="wrap_content"
@@ -45,14 +47,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/dd_mm_yy"
-                android:textSize="@dimen/t20"/>
+                android:textSize="@dimen/t20"
+                android:gravity="center"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/_00_00_am"
-                android:textSize="@dimen/t20"/>
+                android:textSize="@dimen/t20"
+                android:gravity="center"/>
 
             <ImageView
                 android:id="@+id/addMedicine"
@@ -60,7 +64,8 @@
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/ic_menu_add"
                 android:layout_weight="1"
-                android:text="@string/add" />
+                android:text="@string/add"
+                android:layout_gravity="center"/>
 
 
         </LinearLayout>
@@ -71,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="@dimen/m20"
-            android:layout_marginEnd="@dimen/m5"
+            android:layout_marginEnd="@dimen/m10"
             android:onClick="yesClick"
             android:text="@string/okeh" />
         <Button
@@ -81,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="@dimen/m5"
-            android:layout_marginEnd="@dimen/m5"
+            android:layout_marginEnd="@dimen/m10"
             android:onClick="noClick"
             android:text="@string/no" />
 
