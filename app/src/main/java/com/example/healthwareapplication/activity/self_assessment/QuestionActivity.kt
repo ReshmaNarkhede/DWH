@@ -211,7 +211,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                 ansJsonAry!!.put(qObj)
 
                 if (innerIndex!! < (QArray!!.length() - 1)) {
-
                      innerIndex = innerIndex!!.plus(1)
                     setDynamicData(innerIndex, qObj)
                 }
