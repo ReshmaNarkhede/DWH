@@ -1,5 +1,7 @@
 package com.example.healthwareapplication.activity.self_assessment
 
+import android.R.id
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableStringBuilder
@@ -26,8 +28,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
+    //    private lateinit var dntKnowObj: JSONObject
     private lateinit var symptmJsonAry: JSONArray
     private var ansJsonObj: JSONObject? = JSONObject()
     private var ansJsonAry: JSONArray? = JSONArray()
@@ -100,7 +104,11 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     if (responseModel.isCode()) {
                         dataAry = responseModel.getDataArray()!!
 
-                        AppSettings.setJsonArrayValue(this@QuestionActivity, AppConstants.kQUESTION_ARY, dataAry.toString())
+                        AppSettings.setJsonArrayValue(
+                            this@QuestionActivity,
+                            AppConstants.kQUESTION_ARY,
+                            dataAry.toString()
+                        )
                         setOuterLoop(outerIndex)
                     } else {
                         AppHelper.showToast(
@@ -151,26 +159,27 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             result,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val ansObj = result[position]
-//                ansJsonObj!!.put("selected_answer", ansObj)
                 qObj!!.put("selected_answer", ansObj)
-                ansJsonAry!!.put(qObj)
+
                 if (ansObj.contains("know")) {
+
                     val intent = Intent(this, DontKnowActivity::class.java)
                     startActivityForResult(intent, 201)
-                } else if (qModel.getAnswer() == "any") {
 
-                }
-                Log.e("RadioAns: $innerIndex", ": $ansObj")
-                if (innerIndex!! < (QArray!!.length() - 1)) {
-                    innerIndex = innerIndex!!.plus(1)
-                    setDynamicData(innerIndex,qObj)
-                } else {
-                    Log.e("Ans Ary Size:", ": " + ansJsonAry!!.length())
-                    val intent = Intent(this, ThankYouActivity::class.java)
-                    intent.putExtra(IntentConstants.kSYMPTOM_DATA,symptmJsonAry.toString())
-                    intent.putExtra(IntentConstants.kANSWER_DATA,ansJsonAry.toString())
-                    startActivity(intent)
-                    finish()
+                } else if (qModel.getAnswer() == "any") {
+                    Log.e("RadioAns: $innerIndex", ": $ansObj")
+                    if (innerIndex!! < (QArray!!.length() - 1)) {
+                        innerIndex = innerIndex!!.plus(1)
+                        setDynamicData(innerIndex, qObj)
+                    } else {
+                        Log.e("Ans Ary Size:", ": " + ansJsonAry!!.length())
+                        val intent = Intent(this, ThankYouActivity::class.java)
+                        intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptmJsonAry.toString())
+                        intent.putExtra(IntentConstants.kANSWER_DATA, ansJsonAry.toString())
+                        startActivity(intent)
+                        finish()
+                    }
+                    ansJsonAry!!.put(qObj)
                 }
             })
         radioList.adapter = radioRecyclerAdapter
@@ -185,6 +194,25 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     ansJsonObj = JSONObject()
                     ansJsonAry!!.remove(innerIndex!!)
                     setDynamicData(innerIndex, ansJsonObj!!)
+                }
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 201) {
+            if (resultCode == RESULT_OK) {
+
+                val feedbackStr = data!!.extras!!.getString("feedback")
+                val dntKnowObj = JSONObject(feedbackStr!!)
+                val qObj = QArray!!.getJSONObject(innerIndex!!)
+                qObj.put("dont_know_feedback", dntKnowObj)
+                ansJsonAry!!.put(qObj)
+
+                if (innerIndex!! < (QArray!!.length() - 1)) {
+                    innerIndex = innerIndex!!.plus(1)
+                    setDynamicData(innerIndex, qObj)
                 }
             }
         }
