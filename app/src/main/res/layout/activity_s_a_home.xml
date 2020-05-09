@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/parentLayout"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
     android:layout_height="match_parent">
 
-<!--    <FrameLayout-->
-<!--        android:id="@+id/containerLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_above="@id/bottomLayout"-->
-<!--        android:layout_marginBottom="0dp"-->
-<!--        android:orientation="vertical" />-->
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/menuList"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/p5"
-        android:layout_above="@id/bottomLayout"/>
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottomLayout"
+        android:layout_margin="@dimen/m10"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/oldBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/m5"
+            android:layout_weight="1"
+            android:background="@color/old_btn_color"
+            android:text="@string/old" />
+
+        <Button
+            android:id="@+id/currentBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/m5"
+            android:layout_weight="1"
+            android:background="@color/curent_btn_color"
+            android:text="@string/current" />
+
+        <Button
+            android:id="@+id/addBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/m5"
+            android:layout_weight="1"
+            android:background="@color/add_btn_color"
+            android:text="@string/add" />
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/bottomLayout"
@@ -41,8 +59,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:padding="5dp"
             android:onClick="backClick"
+            android:padding="5dp"
             android:src="@drawable/ic_back" />
 
         <ImageView

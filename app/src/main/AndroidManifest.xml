@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.self_assessment.WhenStartActivity"></activity>
+        <activity android:name=".activity.self_assessment.SAHomeActivity"></activity>
+        <activity android:name=".activity.self_assessment.WhenStartActivity" />
         <activity android:name=".activity.self_assessment.AddTestActivity" />
         <activity android:name=".activity.self_assessment.AddMedicineActivity" />
         <activity android:name=".activity.self_assessment.DontKnowActivity" />

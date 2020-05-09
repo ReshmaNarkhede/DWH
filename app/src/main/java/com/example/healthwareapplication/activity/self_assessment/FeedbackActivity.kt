@@ -1,5 +1,6 @@
 package com.example.healthwareapplication.activity.self_assessment
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -25,8 +26,8 @@ class FeedbackActivity : AppCompatActivity() {
     }
 
     private fun openNEW() {
+        val intent = Intent(this,SAHomeActivity::class.java)
+        startActivity(intent)
         finish()
-//        val intent = Intent(this,SADetailActivity::class.java)
-//        startActivity(intent)
     }
 }
