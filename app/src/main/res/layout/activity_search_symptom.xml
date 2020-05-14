@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activity.self_assessment.SearchSymptomActivity">
 
-    <TextView
-        android:id="@+id/rotate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/m10"
-        android:drawableStart="@android:drawable/ic_menu_rotate"
-        android:drawablePadding="@dimen/p8"
-        android:gravity="center"
-        android:text="@string/rotate_model"
-        android:textSize="@dimen/t18" />
-
-
-    <com.richpath.RichPathView
-        android:id="@+id/bodyImg"
+    <EditText
+        android:id="@+id/searchTxt"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_below="@+id/rotate"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/m15"
+        android:hint="Search..."
+        android:background="@drawable/round_black_border"
+        android:padding="@dimen/p10"
+        android:textSize="@dimen/t20" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/symptom"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/searchTxt"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/bottomLayout"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        app:vector="@drawable/male_body_front" />
+        android:layout_marginStart="@dimen/m15"
+        android:layout_marginEnd="@dimen/m15"/>
+
     <FrameLayout
         android:id="@+id/bottomLayout"
         android:layout_width="match_parent"

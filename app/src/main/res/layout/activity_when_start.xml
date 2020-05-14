@@ -12,6 +12,15 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/symptomTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_black_border"
+            android:layout_margin="@dimen/m10"
+            android:padding="@dimen/p7"
+            android:text="@string/label" />
+
         <ImageView
             android:layout_width="@dimen/h100"
             android:layout_height="@dimen/h100"
@@ -38,39 +47,44 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:padding="10dp">
 
                 <TextView
                     android:id="@+id/assessmentStartDate"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center|start"
+                    android:layout_margin="@dimen/m5"
+                    android:layout_gravity="end"
                     android:onClick="whenDateClick"
-                    android:layout_weight="1"
+                    android:padding="@dimen/p10"
+                    android:background="@drawable/pink_border"
                     android:text="@string/dd_mm_yy"
                     android:textSize="@dimen/t16" />
 
 
                 <TextView
                     android:id="@+id/assessmentStartTime"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/m15"
+                    android:layout_margin="@dimen/m5"
+                    android:layout_gravity="end"
                     android:onClick="whenTimeClick"
-                    android:layout_weight="1"
+                    android:padding="@dimen/p10"
+                    android:background="@drawable/pink_border"
                     android:text="@string/_00_00_am"
                     android:textSize="@dimen/t16" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/nextBtn"
-                style="@style/CustomButtonTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_margin="@dimen/m10"
-                android:onClick="clickNext"
-                android:text="@string/next" />
+<!--            <Button-->
+<!--                android:id="@+id/nextBtn"-->
+<!--                style="@style/CustomButtonTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:layout_margin="@dimen/m10"-->
+<!--                android:onClick="clickNext"-->
+<!--                android:text="@string/next" />-->
         </LinearLayout>
 
         <include layout="@layout/logo_on_bottom" />

@@ -3,12 +3,14 @@ package com.example.healthwareapplication.activity.self_assessment
 import android.R.id
 import android.app.Activity
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
@@ -30,6 +32,8 @@ import retrofit2.Response
 
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
+
+    private var drawable: Drawable? = null
 
     //    private lateinit var dntKnowObj: JSONObject
     private lateinit var symptmJsonAry: JSONArray
@@ -59,9 +63,15 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         questionTxt = findViewById(R.id.questionTxt)
         answerTxt = findViewById(R.id.answerTxt)
         radioList = findViewById(R.id.radioList)
+
+        drawable = ContextCompat.getDrawable(this, R.drawable.round_black_border)
+
     }
 
     private fun defaultConfiguration() {
+        val assessmentDate = AppSettings.getStringValue(this,IntentConstants.kASSESSMENT_DATE)
+        val assessmentTime = AppSettings.getStringValue(this,IntentConstants.kASSESSMENT_TIME)
+
         val symptomStr = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
         symptmJsonAry = JSONArray(symptomStr)
         for (i in 0 until symptmJsonAry.length()) {
@@ -77,6 +87,10 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             setOuterLoop(outerIndex)
         }
+
+        answerTxt.text = "$assessmentDate, $assessmentTime"
+        answerTxt.background = drawable
+        answerTxt.setPadding(10,8,10,8)
         answerTxt.setOnClickListener(this)
     }
 
@@ -139,7 +153,12 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         val ansObj = QuestionData.QuestionAnsModel(ansJsonObj!!)
 
         val qObj = QuestionData.QuestionAnsModel(QArray!!.getJSONObject(index!!))
-
+        if (ansObj.getSelectedAnswer()!!.isNotEmpty()) {
+            answerTxt.background = drawable
+            answerTxt.setPadding(10,8,10,8)
+        }else{
+            answerTxt.background = null
+        }
         answerTxt.text = ansObj.getSelectedAnswer()
         questionTxt.text = qObj.getQuestion()
 
@@ -177,7 +196,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                         intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptmJsonAry.toString())
                         intent.putExtra(IntentConstants.kANSWER_DATA, ansJsonAry.toString())
                         startActivity(intent)
-                        finish()
+//                        finish()
                     }
                     ansJsonAry!!.put(qObj)
                 }
@@ -211,10 +230,25 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                 ansJsonAry!!.put(qObj)
 
                 if (innerIndex!! < (QArray!!.length() - 1)) {
-                     innerIndex = innerIndex!!.plus(1)
+                    innerIndex = innerIndex!!.plus(1)
                     setDynamicData(innerIndex, qObj)
                 }
             }
+        }
+    }
+
+    override fun onBackPressed() {
+
+        Log.e("backpressed: ", ": $innerIndex")
+        if (innerIndex == 0) {
+            super.onBackPressed()
+        }
+        if (innerIndex!! < QArray!!.length() && innerIndex!! > 0) {
+            innerIndex = innerIndex!!.minus(1)
+            ansJsonObj = JSONObject()
+            ansJsonAry!!.remove(innerIndex!!)
+            setDynamicData(innerIndex, ansJsonObj!!)
+//
         }
     }
 }

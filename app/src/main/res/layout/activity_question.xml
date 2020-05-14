@@ -15,12 +15,12 @@
 
         <TextView
             android:id="@+id/answerTxt"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/m5"
+            android:padding="@dimen/p10"
             android:text="@string/label"
             android:textSize="@dimen/t16"
-            android:padding="@dimen/p10"
             android:visibility="visible" />
 
         <ImageView

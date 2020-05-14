@@ -9,41 +9,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/m20"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/userNameTxt"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center"
             android:padding="@dimen/m2"
             android:text="@string/label"
             android:textColor="@color/black"
+            android:textSize="@dimen/t18" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="@dimen/p2"
+            android:text="-"
+            android:textColor="@color/black"
             android:textSize="@dimen/t20" />
-
         <TextView
             android:id="@+id/userGenderTxt"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center"
             android:padding="@dimen/m2"
             android:text="@string/label"
             android:textColor="@color/black"
+            android:textSize="@dimen/t18" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="@dimen/p2"
+            android:text="-"
+            android:textColor="@color/black"
             android:textSize="@dimen/t20" />
-
         <TextView
 
             android:id="@+id/userAgeTxt"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center"
-            android:padding="@dimen/m2"
+            android:padding="@dimen/p2"
             android:text="@string/label"
             android:textColor="@color/black"
-            android:textSize="@dimen/t20" />
+            android:textSize="@dimen/t18" />
 
 
     </LinearLayout>
@@ -54,10 +66,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/userDetail"
         android:layout_centerHorizontal="true"
-        android:padding="@dimen/m5"
+        android:padding="@dimen/m2"
         android:text="@string/label"
         android:textColor="@color/black"
-        android:textSize="@dimen/t20" />
+        android:textSize="@dimen/t18" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/answerSurvey"
@@ -74,8 +86,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="@dimen/m10"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:text="@string/dwh_thought"
                 android:textColor="@color/black"
                 android:textSize="@dimen/t20" />
@@ -94,7 +106,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:layout_marginStart="@dimen/m10"
                 android:text="@string/assesment"
                 android:textColor="@color/black"
                 android:textSize="@dimen/t20" />

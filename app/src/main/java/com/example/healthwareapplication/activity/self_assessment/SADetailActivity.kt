@@ -37,13 +37,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class SADetailActivity : AppCompatActivity() {
-     var adapter: SymptomAdapter? = null
+    var adapter: SymptomAdapter? = null
     private lateinit var gson: Gson
-//    private lateinit var timeLayout: LinearLayout
     private lateinit var symptomList: RecyclerView
-    private lateinit var symptom: RecyclerView
     private lateinit var nextBtn: Button
-    private lateinit var searchTxt: EditText
     val symptmJsonAry: JSONArray = JSONArray()
 
     private lateinit var assessmentDate: TextView
@@ -59,11 +56,8 @@ class SADetailActivity : AppCompatActivity() {
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-//        timeLayout = findViewById(R.id.timeLayout)
         symptomList = findViewById(R.id.symptomList)
-        symptom = findViewById(R.id.symptom)
         nextBtn = findViewById(R.id.nextBtn)
-        searchTxt = findViewById(R.id.searchTxt)
 
         assessmentDate = findViewById(R.id.assessmentDate)
         assessmentTime = findViewById(R.id.assessmentTime)
@@ -79,30 +73,49 @@ class SADetailActivity : AppCompatActivity() {
         startActivityForResult(intent, 2)
     }
 
+    fun searchClick(view: View) {
+        val intent = Intent(this, SearchSymptomActivity::class.java)
+        startActivityForResult(intent, 3)
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 2) {
             if (data != null) {
-                symptom.visibility = View.GONE
-                searchTxt.visibility = View.GONE
                 val modelObj = data!!.getStringExtra(IntentConstants.kSYMPTOM_SELECTED)
-                symptmJsonAry.put(JSONObject(modelObj!!))
-                symptomList.adapter!!.notifyDataSetChanged()
-                showBottom()
+                if (symptmJsonAry.length() > 3) {
+                    AppHelper.showToast(this, "You are not able to add more symptom")
+                } else {
+                    symptmJsonAry.put(JSONObject(modelObj!!))
+                    symptomList.adapter!!.notifyDataSetChanged()
+                    showBottom()
+                }
+            }
+        }
+        if (requestCode == 3) {
+            if (data != null) {
+                val modelObj = data!!.getStringExtra(IntentConstants.kSYMPTOM_SELECTED)
+                if (symptmJsonAry.length() > 3) {
+                    AppHelper.showToast(this, "You are not able to add more symptom")
+                } else {
+                    symptmJsonAry.put(JSONObject(modelObj!!))
+                    symptomList.adapter!!.notifyDataSetChanged()
+                    showBottom()
+                }
             }
         }
     }
 
     private fun dataBind() {
-        val showDeleted: ShowDeleted = object : ShowDeleted{
+        val showDeleted: ShowDeleted = object : ShowDeleted {
             override fun showDeleted(size: Int) {
-               if(size==0){
-                   nextBtn.visibility = View.GONE
-               }
+                if (size == 0) {
+                    nextBtn.visibility = View.GONE
+                }
             }
         }
         symptomList.layoutManager = LinearLayoutManager(this)
-        val addAdapter = SelectedSymptomAdapter(symptmJsonAry!!,showDeleted)
+        val addAdapter = SelectedSymptomAdapter(symptmJsonAry!!, showDeleted)
         symptomList.adapter = addAdapter
 
         val calendar = Calendar.getInstance()
@@ -116,81 +129,6 @@ class SADetailActivity : AppCompatActivity() {
         assessmentTime.text = result
     }
 
-    fun searchClick(view: View) {
-        searchTxt.visibility = View.VISIBLE
-        symptom.visibility = View.VISIBLE
-        bindSymptomSearchName(JSONArray())
-        searchTxt.addTextChangedListener(object : TextWatcher {
-
-            override fun afterTextChanged(s: Editable) {}
-
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-
-                fetchSymptomBySearch(s.toString())
-            }
-        })
-    }
-
-    private fun fetchSymptomBySearch(search: String?) {
-        val apiService: ApiInterface =
-            ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
-
-        val param = JsonObject()
-        param.addProperty("search", search)
-        AppHelper.printParam("SEARCH PAram:", param)
-
-        val call: Call<JsonObject> = apiService.getSearchSymptomsByName(param)
-        DialogUtility.showProgressDialog(this)
-        call.enqueue(object : Callback<JsonObject?> {
-
-            override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
-                AppHelper.printUrl("SEARCH URL:", response)
-
-                if (response.isSuccessful) {
-                    AppHelper.printResponse("SEARCH REs:", response)
-
-                    DialogUtility.hideProgressDialog()
-                    val json = JSONObject(response.body().toString())
-                    val responseModel = ResponseModel(json)
-                    if (responseModel.isCode()) {
-                        val symptomListAry = responseModel.getDataArray()!!
-                       bindSymptomSearchName(symptomListAry)
-
-                    } else {
-                        AppHelper.showToast(
-                            this@SADetailActivity,
-                            responseModel.getMessage().toString()
-                        )
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
-                if (t is NoConnectivityException) {
-                    DialogUtility.hideProgressDialog()
-                    AppHelper.showNetNotAvailable(this@SADetailActivity)
-                }
-            }
-        })
-    }
-
-    private fun bindSymptomSearchName( symptomListAry: JSONArray) {
-        symptom.layoutManager = LinearLayoutManager(this@SADetailActivity)
-        adapter = SymptomAdapter(symptomListAry!!,
-            RecyclerItemClickListener.OnItemClickListener { view, position ->
-                val modelObj = JSONObject(symptomListAry.getJSONObject(position).toString())
-                symptmJsonAry.put(modelObj)
-                searchTxt.text.clear()
-                symptom.visibility = View.GONE
-                searchTxt.visibility = View.GONE
-                showBottom()
-            })
-        symptom.adapter = adapter
-    }
-
     private fun showBottom() {
         Log.e("Show bottom: ", " " + symptmJsonAry.length())
         nextBtn.visibility = View.VISIBLE
@@ -199,31 +137,15 @@ class SADetailActivity : AppCompatActivity() {
 
     fun clickNext(view: View) {
         val intent = Intent(this, WhenStartActivity::class.java)
-        intent.putExtra(IntentConstants.kSYMPTOM_DATA,symptmJsonAry.toString())
+        intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptmJsonAry.toString())
         startActivity(intent)
-        finish()
+//        finish()
     }
-
-
-//    fun whenDateClick(view: View) {
-//        val listner = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-//            whenStartDate.text = "$dayOfMonth/$monthOfYear/$year"
-//            DialogUtility.hideProgressDialog()
-//        }
-//        DialogUtility.showDatePickerDialog(this, listner).show()
-//    }
-//
-//    fun whenTimeClick(view: View) {
-//        val listner = TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
-//            whenStartTime.text = "${SimpleDateFormat("hh:mm a").format(SimpleDateFormat("hh:mm").parse("${selectedHour}:${selectedMinute}"))}"
-//            DialogUtility.hideProgressDialog()
-//        }
-//        DialogUtility.showTimePickerDialog(this, listner).show()
-//    }
 
     interface ShowDeleted {
         fun showDeleted(size: Int)
     }
+
     fun backClick(view: View) {
         finish()
     }

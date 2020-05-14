@@ -5,11 +5,17 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableStringBuilder
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.app_utils.AppHelper
+import com.example.healthwareapplication.app_utils.AppSessions
+import com.example.healthwareapplication.app_utils.AppSettings
 import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import org.json.JSONArray
 import java.text.SimpleDateFormat
 
@@ -18,6 +24,9 @@ class WhenStartActivity : AppCompatActivity() {
     private var symptomStr: String? = null
     private lateinit var whenStartTime: TextView
     private lateinit var whenStartDate: TextView
+    private lateinit var symptomTxt: TextView
+    val delimiter = ","
+    val finalStr = SpannableStringBuilder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,26 +36,41 @@ class WhenStartActivity : AppCompatActivity() {
         defaultConfiguration()
     }
 
-    private fun defaultConfiguration() {
-        symptomStr = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
-    }
-
     private fun initComponents() {
         whenStartTime = findViewById(R.id.assessmentStartTime)
         whenStartDate = findViewById(R.id.assessmentStartDate)
+        symptomTxt = findViewById(R.id.symptomTxt)
     }
 
-    fun clickNext(view: View) {
-        val intent = Intent(this, QuestionActivity::class.java)
-        intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptomStr)
-        startActivity(intent)
-        finish()
+    private fun defaultConfiguration() {
+        symptomStr = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
+        val symptmJsonAry = JSONArray(symptomStr)
+        for (i in 0 until symptmJsonAry.length()) {
+            val obj = SymptomJsonModel(symptmJsonAry.getJSONObject(i))
+            finalStr.append(delimiter)
+            finalStr.append(obj.getName())
+        }
+        Log.e("STr: ", ": " + finalStr.toString().replaceFirst(delimiter, ""))
+        symptomTxt.text = finalStr.toString().replaceFirst(delimiter, "")
     }
+
+//    fun clickNext(view: View) {
+//        val intent = Intent(this, QuestionActivity::class.java)
+//        intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptomStr)
+//        startActivity(intent)
+//        finish()
+//    }
 
     fun whenDateClick(view: View) {
         val listner = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
             whenStartDate.text = "$dayOfMonth/$monthOfYear/$year"
             DialogUtility.hideProgressDialog()
+            Log.e("Time: ", " : ${whenStartTime.text}")
+            if (whenStartTime.text.toString() == resources.getString(R.string._00_00_am)) {
+                AppHelper.showToast(this, "Please select the time.")
+            } else {
+                openNextActivity()
+            }
         }
         DialogUtility.showDatePickerDialog(this, listner).show()
     }
@@ -57,7 +81,24 @@ class WhenStartActivity : AppCompatActivity() {
                 whenStartTime.text =
                     "${SimpleDateFormat("hh:mm a").format(SimpleDateFormat("hh:mm").parse("${selectedHour}:${selectedMinute}"))}"
                 DialogUtility.hideProgressDialog()
+                Log.e("Time: ", " : ${whenStartDate.text}")
+                if (whenStartDate.text.toString() == resources.getString(R.string.dd_mm_yy)) {
+                    AppHelper.showToast(this, "Please select the date.")
+                } else {
+                    openNextActivity()
+                }
             }
         DialogUtility.showTimePickerDialog(this, listner).show()
+    }
+
+    private fun openNextActivity() {
+        AppSettings.setStringValue(this,IntentConstants.kASSESSMENT_DATE,whenStartDate.text.toString())
+        AppSettings.setStringValue(this,IntentConstants.kASSESSMENT_TIME,whenStartTime.text.toString())
+
+        val intent = Intent(this, QuestionActivity::class.java)
+        intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptomStr)
+//        intent.putExtra(IntentConstants.kASSESSMENT_DATE, whenStartDate.text)
+//        intent.putExtra(IntentConstants.kASSESSMENT_TIME, whenStartTime.text)
+        startActivity(intent)
     }
 }

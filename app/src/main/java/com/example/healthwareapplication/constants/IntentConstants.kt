@@ -9,5 +9,8 @@ class IntentConstants {
         const val kUSER_TYPE: String = "kUSER_TYPE"
         const val kSYMPTOM_DATA: String = "kSYMPTOM_DATA"
         const val kANSWER_DATA: String = "kANSWER_DATA"
+
+        const val kASSESSMENT_DATE: String = "kASSESSMENT_DATE"
+        const val kASSESSMENT_TIME: String = "kASSESSMENT_TIME"
     }
 }

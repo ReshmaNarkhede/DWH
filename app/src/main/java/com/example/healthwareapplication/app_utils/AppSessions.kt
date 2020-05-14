@@ -54,5 +54,10 @@ class AppSessions {
             val gson = Gson()
             return gson.fromJson(getSymptomData(context).toString(), SymptomJsonModel::class.java)
         }
+
+        fun getUserId(context: Context):String?{
+            val user = AppSessions.getLoginModel(context)
+            return user!!.id
+        }
     }
 }
