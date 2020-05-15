@@ -248,7 +248,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             ansJsonObj = JSONObject()
             ansJsonAry!!.remove(innerIndex!!)
             setDynamicData(innerIndex, ansJsonObj!!)
-//
         }
     }
 }

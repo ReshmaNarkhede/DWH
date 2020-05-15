@@ -4,12 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
+import android.widget.ImageView
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.activity.dashboard.DashboardActivity
+import com.example.healthwareapplication.app_utils.AppHelper
 
 class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var addBtn: Button
+    private lateinit var addImg: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,24 +21,25 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initComponents() {
-        addBtn = findViewById(R.id.addBtn)
+        AppHelper.transparentStatusBar(this)
+        addImg = findViewById(R.id.addImg)
     }
 
     private fun defaultConfiguration() {
-        addBtn.setOnClickListener(this)
+        addImg.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.addBtn -> {
+            R.id.addImg -> {
                 val intent = Intent(this, SADetailActivity::class.java)
                 startActivity(intent)
             }
         }
     }
-    fun backClick(view: View) {
-        val intent = Intent(this,DashboardActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
+//    fun backClick(view: View) {
+//        val intent = Intent(this,DashboardActivity::class.java)
+//        startActivity(intent)
+//        finish()
+//    }
 }

@@ -9,7 +9,7 @@
         android:id="@+id/upperLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m5"
+        android:layout_margin="@dimen/m10"
         android:orientation="horizontal"
         android:padding="@dimen/p5">
 
@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:padding="@dimen/p5"
             android:text="@string/dd_mm_yy"
             android:textSize="@dimen/t16" />
 
@@ -28,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:padding="@dimen/p5"
             android:text="@string/day_1"
             android:textSize="@dimen/t16" />
 
@@ -36,6 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:padding="@dimen/p5"
             android:gravity="center"
             android:text="@string/_00_00_am"
             android:textSize="@dimen/t16" />
@@ -44,15 +47,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bottomLayout"
+        android:layout_above="@+id/layout"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/m10"
-            android:layout_marginTop="@dimen/m10"
+            android:layout_margin="@dimen/m10"
             android:gravity="bottom"
             android:padding="@dimen/p5"
             android:text="@string/what_do_you_feel"
@@ -62,8 +64,8 @@
             android:id="@+id/btnLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/m10"
-            android:layout_marginEnd="@dimen/m10">
+            android:layout_margin="@dimen/m10"
+            android:padding="@dimen/p10">
 
             <Button
                 android:id="@+id/searchBtn"
@@ -87,59 +89,30 @@
                 android:layout_weight="1"
                 android:onClick="addSymptom"
                 android:padding="@dimen/p10"
-                android:text="@string/add_symptoms" />
+                android:text="@string/body" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/symptomList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/m10"
-            tools:itemCount="4"
-            android:layout_marginRight="@dimen/m10" />
+            android:layout_marginLeft="@dimen/m15"
+            android:layout_marginRight="@dimen/m15"
+            tools:itemCount="4" />
 
         <Button
             android:id="@+id/nextBtn"
             style="@style/CustomButtonTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/m10"
             android:layout_gravity="end"
+            android:layout_margin="@dimen/m15"
             android:onClick="clickNext"
             android:text="@string/next"
             android:visibility="gone" />
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/bottomLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/p5">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/ic_dwh" />
-
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:onClick="backClick"
-            android:padding="5dp"
-            android:src="@drawable/ic_back" />
-
-        <ImageView
-            android:id="@+id/dashboard"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right|center"
-            android:background="@drawable/ic_dashboard" />
-
-    </FrameLayout>
+    <include
+        android:id="@+id/layout"
+        layout="@layout/bottom_layout" />
 </RelativeLayout>

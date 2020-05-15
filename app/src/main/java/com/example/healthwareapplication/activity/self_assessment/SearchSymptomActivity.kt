@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
@@ -28,10 +29,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SearchSymptomActivity : AppCompatActivity() {
+class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
 
     private lateinit var symptom: RecyclerView
     private lateinit var searchTxt: EditText
+    private lateinit var cncleImg: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,19 +47,28 @@ class SearchSymptomActivity : AppCompatActivity() {
         AppHelper.transparentStatusBar(this)
         symptom = findViewById(R.id.symptom)
         searchTxt = findViewById(R.id.searchTxt)
+        cncleImg = findViewById(R.id.cncleImg)
     }
 
     private fun defaultConfiguration() {
 
         searchTxt.addTextChangedListener(object : TextWatcher {
 
-            override fun afterTextChanged(s: Editable) {}
+            override fun afterTextChanged(s: Editable) {
+                if(s.isNotEmpty()) {
+                    cncleImg.visibility = View.VISIBLE
+                    cncleImg.setOnClickListener(this@SearchSymptomActivity)
+                } else {
+                    cncleImg.visibility = View.GONE
+
+                }
+            }
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-
+                symptom.visibility = View.VISIBLE
                 fetchSymptomBySearch(s.toString())
             }
         })
@@ -127,5 +138,14 @@ class SearchSymptomActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         DialogUtility.hideProgressDialog()
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.cncleImg -> {
+                searchTxt.text.clear()
+                symptom.visibility = View.GONE
+            }
+        }
     }
 }

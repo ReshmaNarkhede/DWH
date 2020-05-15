@@ -103,7 +103,7 @@ User Information. In the course of your use of the Web Site and/or the services 
 
     <string name="what_do_you_feel">What do you feel?</string>
     <string name="when_did_it_start">When did it start</string>
-    <string name="add_symptoms">Add Symptoms</string>
+    <string name="body">Body</string>
     <string name="next">Next</string>
     <string name="label">label</string>
     <string name="thank_you">Thank you %s All done! Your Report is Ready</string>
@@ -129,6 +129,8 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="need_improve_answer">Need to improve in answer.</string>
     <string name="the_question_doesn_t_feel_relevant_to_me">Question does not relevant to my symptom .</string>
     <string name="i_don_t_understand_the_question"> I don\'t understand this question.</string>
+    <string name="self_assessment">Self Assessment</string>
+    <string name="search">Search...</string>
 
     <array name="tick_below_text_length_5">
         <item>one</item>

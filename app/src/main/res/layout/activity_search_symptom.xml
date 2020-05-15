@@ -8,55 +8,45 @@
     android:orientation="vertical"
     tools:context=".activity.self_assessment.SearchSymptomActivity">
 
-    <EditText
-        android:id="@+id/searchTxt"
+
+    <FrameLayout
+        android:id="@+id/searchLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m15"
-        android:hint="Search..."
-        android:background="@drawable/round_black_border"
-        android:padding="@dimen/p10"
-        android:textSize="@dimen/t20" />
+        android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/m15">
+
+        <EditText
+            android:id="@+id/searchTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pink_border"
+            android:hint="@string/search"
+            android:padding="@dimen/p10"
+            android:singleLine="true"
+            android:textSize="@dimen/t20" />
+
+        <ImageView
+            android:id="@+id/cncleImg"
+            android:layout_width="@dimen/h30"
+            android:layout_height="@dimen/h30"
+            android:layout_gravity="center|end"
+            android:layout_marginEnd="@dimen/m10"
+            android:padding="@dimen/p2"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:visibility="gone" />
+    </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/symptom"
         android:layout_width="match_parent"
-        android:layout_below="@+id/searchTxt"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bottomLayout"
+        android:layout_above="@+id/layout"
+        android:layout_below="@+id/searchLayout"
         android:layout_marginStart="@dimen/m15"
-        android:layout_marginEnd="@dimen/m15"/>
+        android:layout_marginEnd="@dimen/m15" />
 
-    <FrameLayout
-        android:id="@+id/bottomLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/p5">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/ic_dwh" />
-
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:onClick="backClick"
-            android:padding="5dp"
-            android:src="@drawable/ic_back" />
-
-        <ImageView
-            android:id="@+id/dashboard"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right|center"
-            android:background="@drawable/ic_dashboard" />
-
-    </FrameLayout>
+    <include
+        android:id="@+id/layout"
+        layout="@layout/bottom_layout" />
 </RelativeLayout>

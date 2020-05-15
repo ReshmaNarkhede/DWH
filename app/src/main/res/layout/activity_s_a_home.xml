@@ -1,73 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/bottomLayout"
-        android:layout_margin="@dimen/m10"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/oldBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/m5"
-            android:layout_weight="1"
-            android:background="@color/old_btn_color"
-            android:text="@string/old" />
-
-        <Button
-            android:id="@+id/currentBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/m5"
-            android:layout_weight="1"
-            android:background="@color/curent_btn_color"
-            android:text="@string/current" />
-
-        <Button
-            android:id="@+id/addBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/m5"
-            android:layout_weight="1"
-            android:background="@color/add_btn_color"
-            android:text="@string/add" />
-    </LinearLayout>
+        android:layout_margin="@dimen/m20"
+        android:gravity="center"
+        android:text="@string/self_assessment"
+        android:textColor="@color/black"
+        android:textSize="@dimen/t20" />
 
     <FrameLayout
-        android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/p5">
+        android:layout_above="@+id/layout"
+        android:layout_below="@+id/title">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/m10"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/ic_dwh" />
-
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:onClick="backClick"
-            android:padding="5dp"
-            android:src="@drawable/ic_back" />
-
-        <ImageView
-            android:id="@+id/dashboard"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right|center"
-            android:background="@drawable/ic_dashboard" />
-
+            android:id="@+id/addImg"
+            android:layout_width="@dimen/h60"
+            android:layout_height="@dimen/h60"
+            android:layout_marginBottom="@dimen/m20"
+            android:padding="@dimen/p10"
+            android:layout_gravity="bottom|right"
+            app:srcCompat="@drawable/ic_add" />
     </FrameLayout>
+
+    <include
+        android:id="@+id/layout"
+        layout="@layout/bottom_layout" />
 </RelativeLayout>
