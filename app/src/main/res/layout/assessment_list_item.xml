@@ -2,21 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/black_border"
-    android:padding="@dimen/p5"
     android:orientation="vertical"
-    android:layout_margin="@dimen/m10">
+    android:padding="@dimen/p5">
 
-    <TextView
-        android:id="@+id/questionTxt"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/p5"
-        android:text="@string/label" />
+        android:layout_marginStart="@dimen/m10"
+        android:layout_marginBottom="@dimen/m5"
+        android:padding="@dimen/p5">
+
+        <ImageView
+            android:layout_width="@dimen/h25"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/p5"
+            android:src="@drawable/ic_dot" />
+
+        <TextView
+            android:id="@+id/questionTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/m10"
+            android:text="@string/label"
+            android:textColor="@color/black"
+            android:textSize="@dimen/t18" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/answerTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/p5"
-        android:text="@string/label" />
+        android:layout_marginStart="@dimen/m10"
+        android:layout_marginBottom="@dimen/m5"
+        android:paddingStart="@dimen/p40"
+        android:paddingTop="@dimen/p5"
+        android:paddingEnd="@dimen/p10"
+        android:paddingBottom="@dimen/p5"
+        android:text="@string/label"
+        android:textColor="@color/black"
+        android:textSize="@dimen/t18" />
 </LinearLayout>

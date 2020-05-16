@@ -4,6 +4,7 @@ import com.google.gson.JsonObject
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -36,4 +37,7 @@ interface ApiInterface {
 
     @POST("selfassessment/get_tests")
     fun getReport(@Body jsonObject: JsonObject?): Call<JsonObject>
+
+    @POST("selfassessment/get_assessments")
+    fun getSAList(@Body jsonObject: JsonObject?): Call<JsonObject>
 }

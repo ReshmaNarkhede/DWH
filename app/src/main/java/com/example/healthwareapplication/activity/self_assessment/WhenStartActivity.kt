@@ -11,7 +11,6 @@ import android.view.View
 import android.widget.TextView
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.app_utils.AppHelper
-import com.example.healthwareapplication.app_utils.AppSessions
 import com.example.healthwareapplication.app_utils.AppSettings
 import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.constants.IntentConstants
@@ -66,7 +65,7 @@ class WhenStartActivity : AppCompatActivity() {
             whenStartDate.text = "$dayOfMonth/$monthOfYear/$year"
             DialogUtility.hideProgressDialog()
             Log.e("Time: ", " : ${whenStartTime.text}")
-            if (whenStartTime.text.toString() == resources.getString(R.string._00_00_am)) {
+            if (whenStartTime.text.toString() == resources.getString(R.string.time)) {
                 AppHelper.showToast(this, "Please select the time.")
             } else {
                 openNextActivity()
@@ -82,7 +81,7 @@ class WhenStartActivity : AppCompatActivity() {
                     "${SimpleDateFormat("hh:mm a").format(SimpleDateFormat("hh:mm").parse("${selectedHour}:${selectedMinute}"))}"
                 DialogUtility.hideProgressDialog()
                 Log.e("Time: ", " : ${whenStartDate.text}")
-                if (whenStartDate.text.toString() == resources.getString(R.string.dd_mm_yy)) {
+                if (whenStartDate.text.toString() == resources.getString(R.string.date)) {
                     AppHelper.showToast(this, "Please select the date.")
                 } else {
                     openNextActivity()

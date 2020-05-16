@@ -42,6 +42,7 @@
         android:layout_margin="@dimen/m10"
         android:layout_width="match_parent"
         android:layout_weight="1"
+        android:buttonTint="@color/pink"
         android:text="@string/i_don_t_understand_the_question"
         android:textSize="@dimen/t16" />
 
@@ -51,6 +52,7 @@
         android:layout_margin="@dimen/m10"
         android:layout_width="match_parent"
         android:layout_weight="1"
+        android:buttonTint="@color/pink"
         android:text="@string/the_question_doesn_t_feel_relevant_to_me"
         android:textSize="@dimen/t16" />
 
@@ -60,6 +62,7 @@
         android:layout_margin="@dimen/m10"
         android:layout_width="match_parent"
         android:layout_weight="1"
+        android:buttonTint="@color/pink"
         android:text="@string/need_improve_answer"
         android:textSize="@dimen/t16" />
 
@@ -69,6 +72,7 @@
         android:layout_margin="@dimen/m10"
         android:layout_width="match_parent"
         android:layout_weight="1"
+        android:buttonTint="@color/pink"
         android:text="@string/i_want_to_choose_multiple_answers"
         android:textSize="@dimen/t16" />
 
@@ -80,14 +84,17 @@
         android:hint="@string/type_to_give_more_details"
         android:inputType="textMultiLine"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m10"
+        android:layout_marginStart="@dimen/m20"
+        android:layout_marginEnd="@dimen/m20"
+        android:layout_marginTop="@dimen/m10"
+        android:layout_marginBottom="@dimen/m10"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:lines="8"
+        android:lines="3"
         android:maxLength="300"
-        android:maxLines="10"
-        android:minLines="6"
-        android:padding="@dimen/p5"
+        android:maxLines="3"
+        android:minLines="3"
+        android:padding="@dimen/p15"
         android:scrollbars="vertical"
         android:textSize="@dimen/t18" />
 
@@ -96,7 +103,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:layout_margin="@dimen/m10"
+        android:layout_marginTop="@dimen/m10"
+        android:layout_marginEnd="@dimen/m10"
+        android:layout_marginBottom="@dimen/m20"
         android:layout_weight="1"
         android:onClick="nxtQueClick"
         android:paddingStart="@dimen/p15"

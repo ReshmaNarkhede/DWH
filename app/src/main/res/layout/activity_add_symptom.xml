@@ -6,11 +6,22 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
+    <com.richpath.RichPathView
+        android:id="@+id/bodyImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rotate"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:vector="@drawable/male_body_front" />
+
     <TextView
         android:id="@+id/rotate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_above="@+id/layout"
+        android:layout_alignParentEnd="true"
         android:layout_margin="@dimen/m10"
         android:drawableStart="@android:drawable/ic_menu_rotate"
         android:drawablePadding="@dimen/p8"
@@ -18,47 +29,7 @@
         android:text="@string/rotate_model"
         android:textSize="@dimen/t18" />
 
-
-    <com.richpath.RichPathView
-        android:id="@+id/bodyImg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_below="@+id/rotate"
-        android:layout_above="@+id/bottomLayout"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        app:vector="@drawable/male_body_front" />
-    <FrameLayout
-        android:id="@+id/bottomLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/p5">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/ic_dwh" />
-
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:onClick="backClick"
-            android:padding="5dp"
-            android:src="@drawable/ic_back" />
-
-        <ImageView
-            android:id="@+id/dashboard"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right|center"
-            android:background="@drawable/ic_dashboard" />
-
-    </FrameLayout>
+    <include
+        android:id="@+id/layout"
+        layout="@layout/bottom_layout" />
 </RelativeLayout>

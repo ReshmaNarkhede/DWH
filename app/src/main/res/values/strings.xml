@@ -37,9 +37,9 @@
 
 
     <string name="age_msg">What is your age...?</string>
-    <string name="dd_mm_yy">dd/mm/yy</string>
+    <string name="date">Date</string>
     <string name="day_1">Day-1</string>
-    <string name="_00_00_am">00:00 AM</string>
+    <string name="time">Time</string>
     <string name="sup">Super</string>
 
     <string name="what_is_your_namewa">What is your name...?</string>

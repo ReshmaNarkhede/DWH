@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/m15"
+            android:textColor="@color/black"
             android:text="@string/label"
             android:textSize="@dimen/t20" />
 
@@ -35,11 +36,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="@dimen/m20"
+            android:layout_marginBottom="@dimen/m20"
             android:layout_marginEnd="@dimen/m5"
             android:onClick="okClick"
             android:text="@string/okeh" />
 
-        <include layout="@layout/logo_on_bottom" />
+        <include
+            android:id="@+id/layout"
+            layout="@layout/bottom_layout" />
 
     </LinearLayout>
 </ScrollView>

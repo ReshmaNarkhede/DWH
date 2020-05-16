@@ -48,7 +48,7 @@ class ThankYouActivity : AppCompatActivity() {
         val user = AppSessions.getLoginModel(this)
         thankYouText.text = "Thank you ${user!!.firstName} All done! Your Report is Ready"
 
-        submitReport(ansStr)
+//        submitReport(ansStr)
     }
 
     fun okClick(view: View) {

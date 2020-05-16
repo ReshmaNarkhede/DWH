@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/dd_mm_yy"
+                android:text="@string/date"
                 android:textSize="@dimen/t20"
                 android:gravity="center"/>
 
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/_00_00_am"
+                android:text="@string/time"
                 android:textSize="@dimen/t20"
                 android:gravity="center"/>
 

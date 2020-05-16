@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
-            android:hint="@string/dd_mm_yy"
+            android:hint="@string/date"
             android:onClick="dateClick"
             android:layout_margin="@dimen/m5"
             android:textSize="@dimen/t16" />
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:layout_margin="@dimen/m5"
-            android:hint="@string/_00_00_am"
+            android:hint="@string/time"
             android:onClick="timeClick"
             android:textSize="@dimen/t16" />
 

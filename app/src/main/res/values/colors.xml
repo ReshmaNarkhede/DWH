@@ -17,4 +17,5 @@
     <color name="old_btn_color">#CF4238</color>
     <color name="curent_btn_color">#2A95E7</color>
     <color name="add_btn_color">#46E434</color>
+    <color name="ans_text_color">#B8A0A8</color>
 </resources>

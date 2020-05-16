@@ -34,7 +34,7 @@ class SymptomReportActivity : AppCompatActivity() {
     private lateinit var userAgeTxt: TextView
     private lateinit var symptomTxt: TextView
     private lateinit var assesmentList: RecyclerView
-    val delimiter = ","
+    val delimiter = "-"
     val finalStr = SpannableStringBuilder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,12 +68,11 @@ class SymptomReportActivity : AppCompatActivity() {
         }
         Log.e("STr: ", ": " + finalStr.toString().replaceFirst(delimiter, ""))
 
-        val user = AppSessions.getLoginModel(this)
-        userNameTxt.text = user!!.firstName + " " + user.lastName
-        userGenderTxt.text = user!!.sex
+        userNameTxt.text = AppSessions.getUserName(this)
+        userGenderTxt.text = AppSessions.getUserSex(this)
 
-        val date = user!!.dob.split("/")
-        userAgeTxt.text = AppHelper.getAge(date[2], date[1], date[0]) + " years"
+
+        userAgeTxt.text = AppSessions.getUserAge(this)
 
         symptomTxt.text = finalStr.toString().replaceFirst(delimiter, "")
 

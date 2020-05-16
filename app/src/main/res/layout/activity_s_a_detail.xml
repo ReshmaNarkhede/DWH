@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:padding="@dimen/p5"
-            android:text="@string/dd_mm_yy"
+            android:text="@string/date"
             android:textSize="@dimen/t16" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_weight="1"
             android:padding="@dimen/p5"
             android:gravity="center"
-            android:text="@string/_00_00_am"
+            android:text="@string/time"
             android:textSize="@dimen/t16" />
     </LinearLayout>
 
@@ -55,6 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/m10"
+            android:textColor="@color/black"
             android:gravity="bottom"
             android:padding="@dimen/p5"
             android:text="@string/what_do_you_feel"
@@ -64,7 +65,10 @@
             android:id="@+id/btnLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/m10"
+            android:layout_marginStart="@dimen/m10"
+            android:layout_marginEnd="@dimen/m10"
+            android:layout_marginTop="@dimen/m10"
+            android:layout_marginBottom="@dimen/m20"
             android:padding="@dimen/p10">
 
             <Button

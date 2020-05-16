@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <LinearLayout
@@ -20,7 +21,7 @@
             android:padding="@dimen/m2"
             android:text="@string/label"
             android:textColor="@color/black"
-            android:textSize="@dimen/t18" />
+            android:textSize="@dimen/t16" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -37,7 +38,7 @@
             android:padding="@dimen/m2"
             android:text="@string/label"
             android:textColor="@color/black"
-            android:textSize="@dimen/t18" />
+            android:textSize="@dimen/t16" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -55,7 +56,7 @@
             android:padding="@dimen/p2"
             android:text="@string/label"
             android:textColor="@color/black"
-            android:textSize="@dimen/t18" />
+            android:textSize="@dimen/t16" />
 
 
     </LinearLayout>
@@ -80,13 +81,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="@dimen/m10"
+                android:layout_margin="@dimen/m10"
                 android:layout_weight="1"
                 android:text="@string/dwh_thought"
                 android:textColor="@color/black"
@@ -97,16 +98,17 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                android:layout_margin="@dimen/m10"
                 android:gravity="center"
                 android:text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups"
-                android:textSize="@dimen/t20" />
+                android:textSize="@dimen/t16" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:layout_marginStart="@dimen/m10"
+                android:layout_margin="@dimen/m10"
                 android:text="@string/assesment"
                 android:textColor="@color/black"
                 android:textSize="@dimen/t20" />
@@ -123,6 +125,7 @@
                 android:layout_marginTop="@dimen/m20"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:layout_margin="@dimen/m10"
                 android:text="You might have condition that is not suggested here. your assessment is ready here. if you have any concern about your health please consult nearest doctor."
                 android:textSize="@dimen/t18" />
 
@@ -143,11 +146,7 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:layout_margin="@dimen/m5"
-        android:background="@drawable/ic_dwh" />
+    <include
+        android:id="@+id/layout"
+        layout="@layout/bottom_layout" />
 </RelativeLayout>

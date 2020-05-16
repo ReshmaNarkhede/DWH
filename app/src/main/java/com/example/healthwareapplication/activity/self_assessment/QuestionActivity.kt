@@ -64,7 +64,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         answerTxt = findViewById(R.id.answerTxt)
         radioList = findViewById(R.id.radioList)
 
-        drawable = ContextCompat.getDrawable(this, R.drawable.round_black_border)
+        drawable = ContextCompat.getDrawable(this, R.drawable.answer_border)
 
     }
 
@@ -90,7 +90,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
         answerTxt.text = "$assessmentDate, $assessmentTime"
         answerTxt.background = drawable
-        answerTxt.setPadding(10,8,10,8)
+        answerTxt.setPadding(30,10,30,10)
         answerTxt.setOnClickListener(this)
     }
 
@@ -155,7 +155,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         val qObj = QuestionData.QuestionAnsModel(QArray!!.getJSONObject(index!!))
         if (ansObj.getSelectedAnswer()!!.isNotEmpty()) {
             answerTxt.background = drawable
-            answerTxt.setPadding(10,8,10,8)
+            answerTxt.setPadding(30,10,30,10)
         }else{
             answerTxt.background = null
         }
