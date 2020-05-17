@@ -69,8 +69,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun defaultConfiguration() {
-        val assessmentDate = AppSettings.getStringValue(this,IntentConstants.kASSESSMENT_DATE)
-        val assessmentTime = AppSettings.getStringValue(this,IntentConstants.kASSESSMENT_TIME)
 
         val symptomStr = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
         symptmJsonAry = JSONArray(symptomStr)
@@ -80,17 +78,25 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             finalStr.append(delimiter)
             finalStr.append(obj.getId())
         }
-        Log.e("STr: ", ": " + finalStr.toString().replaceFirst(delimiter, ""))
-        dataAry = AppSessions.getQuestionData(this)!!
-        if (dataAry.length() == 0) {
-            fetchQuestionData("6")
-        } else {
-            setOuterLoop(outerIndex)
-        }
+        val searchStr = finalStr.toString().replaceFirst(delimiter, "")
+        Log.e("STr: ", ": $searchStr")
+//        dataAry = AppSessions.getQuestionData(this)!!
+//        if (dataAry.length() == 0) {
+            fetchQuestionData(searchStr)
+//        } else {
+//            setOuterLoop(outerIndex)
+//        }
+
+        setDateAnswer()
+    }
+
+    private fun setDateAnswer() {
+        val assessmentDate = AppSettings.getStringValue(this, IntentConstants.kASSESSMENT_DATE)
+        val assessmentTime = AppSettings.getStringValue(this, IntentConstants.kASSESSMENT_TIME)
 
         answerTxt.text = "$assessmentDate, $assessmentTime"
         answerTxt.background = drawable
-        answerTxt.setPadding(30,10,30,10)
+        answerTxt.setPadding(30, 10, 30, 10)
         answerTxt.setOnClickListener(this)
     }
 
@@ -118,17 +124,11 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     if (responseModel.isCode()) {
                         dataAry = responseModel.getDataArray()!!
 
-                        AppSettings.setJsonArrayValue(
-                            this@QuestionActivity,
-                            AppConstants.kQUESTION_ARY,
-                            dataAry.toString()
-                        )
+                        AppSettings.setJsonArrayValue(this@QuestionActivity, AppConstants.kQUESTION_ARY, dataAry.toString())
                         setOuterLoop(outerIndex)
                     } else {
-                        AppHelper.showToast(
-                            this@QuestionActivity,
-                            responseModel.getMessage().toString()
-                        )
+                        questionTxt.text = "No question for this Symptom."
+//                        AppHelper.showToast(this@QuestionActivity, responseModel.getMessage().toString())
                     }
                 }
             }
@@ -148,18 +148,23 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setDynamicData(index: Int?, ansJObj: JSONObject) {
+        Log.e("index: ", " : $index")
 
         ansJsonObj = ansJObj
         val ansObj = QuestionData.QuestionAnsModel(ansJsonObj!!)
-
-        val qObj = QuestionData.QuestionAnsModel(QArray!!.getJSONObject(index!!))
         if (ansObj.getSelectedAnswer()!!.isNotEmpty()) {
             answerTxt.background = drawable
-            answerTxt.setPadding(30,10,30,10)
-        }else{
+            answerTxt.setPadding(30, 10, 30, 10)
+        } else {
             answerTxt.background = null
         }
-        answerTxt.text = ansObj.getSelectedAnswer()
+        if (index!! > 0) {
+            answerTxt.text = ansObj.getSelectedAnswer()
+        } else {
+            setDateAnswer()
+        }
+
+        val qObj = QuestionData.QuestionAnsModel(QArray!!.getJSONObject(index!!))
         questionTxt.text = qObj.getQuestion()
 
         if (qObj.getQuestionType() == "SS") //radio button
@@ -238,14 +243,27 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onBackPressed() {
+//        if (innerIndex!! > 0) {
+//            val test = QuestionData.QuestionAnsModel(ansJsonAry!!.getJSONObject(innerIndex!! - 1))
+//            if (test.getSelectedAnswer()!!.isNotEmpty()) {
+//                answerTxt.background = drawable
+//                answerTxt.setPadding(30, 10, 30, 10)
+//            } else {
+//                answerTxt.background = null
+//            }
+//            answerTxt.text = test.getSelectedAnswer()
+//            Log.e("backpressed: $innerIndex", ": " + test.getSelectedAnswer())
+//        }
 
-        Log.e("backpressed: ", ": $innerIndex")
         if (innerIndex == 0) {
             super.onBackPressed()
         }
         if (innerIndex!! < QArray!!.length() && innerIndex!! > 0) {
             innerIndex = innerIndex!!.minus(1)
-            ansJsonObj = JSONObject()
+            if (innerIndex!! > 0) {
+                ansJsonObj = ansJsonAry!!.getJSONObject(innerIndex!! - 1)
+            }
+//            ansJsonObj = JSONObject()
             ansJsonAry!!.remove(innerIndex!!)
             setDynamicData(innerIndex, ansJsonObj!!)
         }

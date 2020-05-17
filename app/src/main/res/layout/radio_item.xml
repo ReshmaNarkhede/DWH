@@ -8,35 +8,41 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m5"
-        android:background="@drawable/pink_border"
+        android:background="@drawable/btn_selector"
         android:layout_alignParentEnd="true"
         android:gravity="center"
+        android:layout_marginStart="@dimen/m200"
+        android:layout_marginTop="@dimen/m5"
+        android:layout_marginBottom="@dimen/m5"
+        android:layout_marginEnd="@dimen/m5"
         android:paddingStart="@dimen/p40"
         android:paddingTop="@dimen/p10"
         android:paddingEnd="@dimen/p40"
+        android:textColor="@color/pink"
         android:paddingBottom="@dimen/p10"
         android:text="@string/label"
         android:textSize="@dimen/t16" />
 </RelativeLayout>
-    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--    android:layout_width="wrap_content"-->
-    <!--    android:layout_height="wrap_content">-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_gravity="end"-->
+<!--    android:orientation="vertical">-->
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/textView"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_margin="@dimen/m7"-->
-    <!--        android:background="@drawable/pink_border"-->
-    <!--        android:paddingStart="@dimen/p15"-->
-    <!--        android:paddingEnd="@dimen/p15"-->
-    <!--        android:paddingTop="@dimen/p7"-->
-    <!--        android:paddingBottom="@dimen/p7"-->
-    <!--        android:text="@string/label"-->
-    <!--        android:textSize="@dimen/t16" />-->
-    <!--</RelativeLayout>-->
+<!--    <TextView-->
+<!--        android:id="@+id/textView"-->
+<!--        style="@style/CustomButtonTheme"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="end"-->
+<!--        android:layout_margin="@dimen/m8"-->
+<!--        android:onClick="yesClick"-->
+<!--        android:paddingStart="@dimen/p40"-->
+<!--        android:paddingTop="@dimen/p10"-->
+<!--        android:paddingEnd="@dimen/p40"-->
+<!--        android:paddingBottom="@dimen/p10"-->
+<!--        android:text="@string/yes"-->
+<!--        android:textColor="@color/pink" />-->
+<!--</LinearLayout>-->

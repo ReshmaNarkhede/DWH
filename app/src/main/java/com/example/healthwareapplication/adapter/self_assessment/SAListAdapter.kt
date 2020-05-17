@@ -45,7 +45,7 @@ class SAListAdapter(val context: Context,dataArr: JSONArray, private val itemCli
         ) {
             val model = SAListModel(jsonObject)
 
-            itemView.dateTxt.text = "${model.getReportDate()}${model.getReportTime()}"
+            itemView.dateTxt.text = model.getReportDate() + " " + model.getReportTime()
             itemView.symptomTxt.text = model.getSymptom()
 
             val info = AppSessions.getUserName(context) + ", " + AppSessions.getUserSex(context) + ", " + AppSessions.getUserAge(context)

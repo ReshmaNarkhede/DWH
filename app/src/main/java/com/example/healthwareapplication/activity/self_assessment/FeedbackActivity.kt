@@ -28,6 +28,6 @@ class FeedbackActivity : AppCompatActivity() {
     private fun openNEW() {
         val intent = Intent(this,SAHomeActivity::class.java)
         startActivity(intent)
-        finish()
+        finishAffinity()
     }
 }

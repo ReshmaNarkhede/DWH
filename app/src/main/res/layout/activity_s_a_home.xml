@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <TextView
         android:id="@+id/title"
@@ -21,20 +22,41 @@
         android:layout_above="@+id/layout"
         android:layout_below="@+id/title">
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/m10"/>
+            android:layout_margin="@dimen/m10"
+            tools:listitem="@layout/sa_list_item" />
 
-        <ImageView
+        <!--        <ImageView-->
+        <!--            android:id="@+id/addImg"-->
+        <!--            android:layout_width="@dimen/h60"-->
+        <!--            android:layout_height="@dimen/h60"-->
+        <!--            android:layout_gravity="bottom|right"-->
+        <!--            android:layout_marginEnd="@dimen/m8"-->
+        <!--            android:layout_marginBottom="@dimen/m20"-->
+        <!--            android:padding="@dimen/p10"-->
+        <!--            android:tint="@color/pink"-->
+        <!--            android:backgroundTint="@color/pink"-->
+        <!--            app:srcCompat="@drawable/ic_add" />-->
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addImg"
-            android:layout_width="@dimen/h60"
-            android:layout_height="@dimen/h60"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="@dimen/m15"
             android:layout_marginBottom="@dimen/m20"
-            android:padding="@dimen/p10"
-            android:layout_gravity="bottom|right"
-            app:srcCompat="@drawable/ic_add" />
+            android:backgroundTint="@color/pink"
+            app:fabCustomSize="@dimen/h40"
+            android:src="@drawable/ic_add"
+            app:maxImageSize="@dimen/h35"
+            android:tint="@color/white"
+            android:scaleType="center"
+            android:padding="@dimen/p10" />
     </FrameLayout>
 
     <include

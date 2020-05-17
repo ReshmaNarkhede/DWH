@@ -43,8 +43,8 @@ class SADetailActivity : AppCompatActivity() {
     private lateinit var nextBtn: Button
     val symptmJsonAry: JSONArray = JSONArray()
 
-    private lateinit var assessmentDate: TextView
-    private lateinit var assessmentTime: TextView
+//    private lateinit var assessmentDate: TextView
+//    private lateinit var assessmentTime: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,8 +59,8 @@ class SADetailActivity : AppCompatActivity() {
         symptomList = findViewById(R.id.symptomList)
         nextBtn = findViewById(R.id.nextBtn)
 
-        assessmentDate = findViewById(R.id.assessmentDate)
-        assessmentTime = findViewById(R.id.assessmentTime)
+//        assessmentDate = findViewById(R.id.assessmentDate)
+//        assessmentTime = findViewById(R.id.assessmentTime)
 
 
         gson = Gson()
@@ -118,15 +118,15 @@ class SADetailActivity : AppCompatActivity() {
         val addAdapter = SelectedSymptomAdapter(symptmJsonAry!!, showDeleted)
         symptomList.adapter = addAdapter
 
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
+//        val calendar = Calendar.getInstance()
+//        val year = calendar.get(Calendar.YEAR)
+//        val month = calendar.get(Calendar.MONTH)
+//        val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        assessmentDate.text = "$day/${month + 1}/$year"
-        val sdf = SimpleDateFormat("hh:mm aa")
-        val result = sdf.format(Calendar.getInstance().time)
-        assessmentTime.text = result
+//        assessmentDate.text = "$day/${month + 1}/$year"
+//        val sdf = SimpleDateFormat("hh:mm aa")
+//        val result = sdf.format(Calendar.getInstance().time)
+//        assessmentTime.text = result
     }
 
     private fun showBottom() {

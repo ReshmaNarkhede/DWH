@@ -3,6 +3,7 @@ package com.example.healthwareapplication.activity.self_assessment
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import app.frats.android.models.response.ResponseModel
@@ -47,8 +48,8 @@ class ThankYouActivity : AppCompatActivity() {
         ansStr = intent.getStringExtra(IntentConstants.kANSWER_DATA)
         val user = AppSessions.getLoginModel(this)
         thankYouText.text = "Thank you ${user!!.firstName} All done! Your Report is Ready"
-
-//        submitReport(ansStr)
+        Log.e("Ans: ", ":: $ansStr")
+        submitReport(ansStr)
     }
 
     fun okClick(view: View) {
@@ -110,6 +111,4 @@ class ThankYouActivity : AppCompatActivity() {
             }
         })
     }
-
-
 }

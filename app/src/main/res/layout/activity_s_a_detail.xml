@@ -5,44 +5,44 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <LinearLayout
-        android:id="@+id/upperLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m10"
-        android:orientation="horizontal"
-        android:padding="@dimen/p5">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/upperLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="@dimen/m10"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="@dimen/p5">-->
 
-        <TextView
-            android:id="@+id/assessmentDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/p5"
-            android:text="@string/date"
-            android:textSize="@dimen/t16" />
+<!--        <TextView-->
+<!--            android:id="@+id/assessmentDate"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="@dimen/p5"-->
+<!--            android:text="@string/date"-->
+<!--            android:textSize="@dimen/t16" />-->
 
-        <TextView
-            android:id="@+id/dayNo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/p5"
-            android:text="@string/day_1"
-            android:textSize="@dimen/t16" />
+<!--        <TextView-->
+<!--            android:id="@+id/dayNo"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="@dimen/p5"-->
+<!--            android:text="@string/day_1"-->
+<!--            android:textSize="@dimen/t16" />-->
 
-        <TextView
-            android:id="@+id/assessmentTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/p5"
-            android:gravity="center"
-            android:text="@string/time"
-            android:textSize="@dimen/t16" />
-    </LinearLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/assessmentTime"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:padding="@dimen/p5"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/time"-->
+<!--            android:textSize="@dimen/t16" />-->
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,7 +59,7 @@
             android:gravity="bottom"
             android:padding="@dimen/p5"
             android:text="@string/what_do_you_feel"
-            android:textSize="@dimen/t20" />
+            android:textSize="@dimen/t23" />
 
         <LinearLayout
             android:id="@+id/btnLayout"
@@ -79,6 +79,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/m5"
                 android:layout_weight="1"
+                android:textColor="@color/pink"
                 android:onClick="searchClick"
                 android:padding="@dimen/p10"
                 android:text="Search" />
@@ -90,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/m5"
+                android:textColor="@color/pink"
                 android:layout_weight="1"
                 android:onClick="addSymptom"
                 android:padding="@dimen/p10"
@@ -109,6 +111,9 @@
             style="@style/CustomButtonTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingStart="@dimen/p40"
+            android:paddingEnd="@dimen/p40"
+            android:textColor="@color/pink"
             android:layout_gravity="end"
             android:layout_margin="@dimen/m15"
             android:onClick="clickNext"

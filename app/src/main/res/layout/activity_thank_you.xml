@@ -37,6 +37,7 @@
             android:layout_gravity="end"
             android:layout_marginTop="@dimen/m20"
             android:layout_marginBottom="@dimen/m20"
+            android:textColor="@color/pink"
             android:layout_marginEnd="@dimen/m5"
             android:onClick="okClick"
             android:text="@string/okeh" />

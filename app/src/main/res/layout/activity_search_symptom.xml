@@ -20,10 +20,11 @@
             android:id="@+id/searchTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/pink_border"
+            android:background="@drawable/btn_selector"
             android:hint="@string/search"
             android:padding="@dimen/p10"
             android:singleLine="true"
+            android:textColor="@color/pink"
             android:textSize="@dimen/t20" />
 
         <ImageView
@@ -46,7 +47,7 @@
         android:layout_marginStart="@dimen/m15"
         android:layout_marginEnd="@dimen/m15" />
 
-    <include
-        android:id="@+id/layout"
-        layout="@layout/bottom_layout" />
+<!--    <include-->
+<!--        android:id="@+id/layout"-->
+<!--        layout="@layout/bottom_layout" />-->
 </RelativeLayout>
