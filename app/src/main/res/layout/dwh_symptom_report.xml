@@ -20,7 +20,7 @@
             android:gravity="center"
             android:padding="@dimen/m2"
             android:text="@string/label"
-            android:textColor="@color/black"
+            android:textColor="@color/label_text_color"
             android:textSize="@dimen/t16" />
         <TextView
             android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
             android:gravity="center"
             android:padding="@dimen/p2"
             android:text="-"
-            android:textColor="@color/black"
+            android:textColor="@color/label_text_color"
             android:textSize="@dimen/t20" />
         <TextView
             android:id="@+id/userGenderTxt"
@@ -37,7 +37,7 @@
             android:gravity="center"
             android:padding="@dimen/m2"
             android:text="@string/label"
-            android:textColor="@color/black"
+            android:textColor="@color/label_text_color"
             android:textSize="@dimen/t16" />
         <TextView
             android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
             android:gravity="center"
             android:padding="@dimen/p2"
             android:text="-"
-            android:textColor="@color/black"
+            android:textColor="@color/label_text_color"
             android:textSize="@dimen/t20" />
         <TextView
 
@@ -55,7 +55,7 @@
             android:gravity="center"
             android:padding="@dimen/p2"
             android:text="@string/label"
-            android:textColor="@color/black"
+            android:textColor="@color/label_text_color"
             android:textSize="@dimen/t16" />
 
 
@@ -69,7 +69,7 @@
         android:layout_centerHorizontal="true"
         android:padding="@dimen/m2"
         android:text="@string/label"
-        android:textColor="@color/black"
+        android:textColor="@color/label_text_color"
         android:textSize="@dimen/t18" />
 
     <androidx.core.widget.NestedScrollView
@@ -91,7 +91,7 @@
                 android:layout_margin="@dimen/m10"
                 android:layout_weight="1"
                 android:text="@string/dwh_thought"
-                android:textColor="@color/black"
+                android:textColor="@color/label_text_color"
                 android:textSize="@dimen/t20" />
 
             <TextView
@@ -111,7 +111,7 @@
                 android:layout_weight="1"
                 android:layout_margin="@dimen/m10"
                 android:text="@string/assesment"
-                android:textColor="@color/black"
+                android:textColor="@color/label_text_color"
                 android:textSize="@dimen/t20" />
 
             <androidx.recyclerview.widget.RecyclerView

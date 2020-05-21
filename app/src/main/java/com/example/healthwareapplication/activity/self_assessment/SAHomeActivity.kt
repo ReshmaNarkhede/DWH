@@ -1,23 +1,21 @@
 package com.example.healthwareapplication.activity.self_assessment
 
-import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.activity.dashboard.DashboardActivity
+import com.example.healthwareapplication.R.layout.activity_s_a_home
 import com.example.healthwareapplication.adapter.self_assessment.SAListAdapter
-import com.example.healthwareapplication.adapter.self_assessment.SymptomAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
-import com.example.healthwareapplication.constants.IntentConstants
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.activity_s_a_home.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -25,13 +23,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var addImg: ImageView
-    private lateinit var list: RecyclerView
     var pageCount = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_s_a_home)
+        setContentView(activity_s_a_home)
 
         fetchList(pageCount)
 
@@ -41,9 +37,6 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-        addImg = findViewById(R.id.addImg)
-        list = findViewById(R.id.list)
-
     }
 
     private fun defaultConfiguration() {
@@ -111,10 +104,4 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
             })
         list.adapter = adapter
     }
-
-//    fun backClick(view: View) {
-//        val intent = Intent(this,DashboardActivity::class.java)
-//        startActivity(intent)
-//        finish()
-//    }
 }

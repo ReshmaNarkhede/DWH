@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.R.layout.activity_search_symptom
 import com.example.healthwareapplication.adapter.self_assessment.SymptomAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
@@ -23,6 +24,7 @@ import com.example.healthwareapplication.app_utils.NoConnectivityException
 import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
 import com.example.healthwareapplication.constants.IntentConstants
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.activity_search_symptom.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -31,13 +33,13 @@ import retrofit2.Response
 
 class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
 
-    private lateinit var symptom: RecyclerView
-    private lateinit var searchTxt: EditText
-    private lateinit var cncleImg: ImageView
+//    private lateinit var symptom: RecyclerView
+//    private lateinit var searchTxt: EditText
+//    private lateinit var cncleImg: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search_symptom)
+        setContentView(activity_search_symptom)
 
         initComponents()
         defaultConfiguration()
@@ -45,9 +47,6 @@ class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-        symptom = findViewById(R.id.symptom)
-        searchTxt = findViewById(R.id.searchTxt)
-        cncleImg = findViewById(R.id.cncleImg)
     }
 
     private fun defaultConfiguration() {

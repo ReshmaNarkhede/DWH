@@ -12,6 +12,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.example.healthwareapplication.R
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.activity_s_a_home.*
 import org.json.JSONArray
 import retrofit2.Response
 import java.text.DateFormat

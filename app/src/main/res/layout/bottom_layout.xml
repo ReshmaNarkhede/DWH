@@ -14,7 +14,7 @@
         android:layout_marginStart="@dimen/m10"
         android:text="dwh"
         android:textSize="@dimen/t20"
-        android:textColor="@color/black"/>
+        style="@style/TextViewTheme"/>
 
 <!--    <ImageView-->
 <!--        android:id="@+id/back"-->

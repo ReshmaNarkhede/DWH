@@ -10,35 +10,37 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.R.layout.activity_when_start
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.AppSettings
 import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
+import kotlinx.android.synthetic.main.activity_when_start.*
 import org.json.JSONArray
 import java.text.SimpleDateFormat
 
 class WhenStartActivity : AppCompatActivity() {
 
     private var symptomStr: String? = null
-    private lateinit var whenStartTime: TextView
-    private lateinit var whenStartDate: TextView
-    private lateinit var symptomTxt: TextView
+//    private lateinit var whenStartTime: TextView
+//    private lateinit var whenStartDate: TextView
+//    private lateinit var symptomTxt: TextView
     val delimiter = ","
     val finalStr = SpannableStringBuilder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_when_start)
+        setContentView(activity_when_start)
 
         initComponents()
         defaultConfiguration()
     }
 
     private fun initComponents() {
-        whenStartTime = findViewById(R.id.assessmentStartTime)
-        whenStartDate = findViewById(R.id.assessmentStartDate)
-        symptomTxt = findViewById(R.id.symptomTxt)
+//        whenStartTime = findViewById(R.id.assessmentStartTime)
+//        whenStartDate = findViewById(R.id.assessmentStartDate)
+//        symptomTxt = findViewById(R.id.symptomTxt)
     }
 
     private fun defaultConfiguration() {
@@ -52,13 +54,6 @@ class WhenStartActivity : AppCompatActivity() {
         Log.e("STr: ", ": " + finalStr.toString().replaceFirst(delimiter, ""))
         symptomTxt.text = finalStr.toString().replaceFirst(delimiter, "")
     }
-
-//    fun clickNext(view: View) {
-//        val intent = Intent(this, QuestionActivity::class.java)
-//        intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptomStr)
-//        startActivity(intent)
-//        finish()
-//    }
 
     fun whenDateClick(view: View) {
         val listner = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -99,5 +94,9 @@ class WhenStartActivity : AppCompatActivity() {
 //        intent.putExtra(IntentConstants.kASSESSMENT_DATE, whenStartDate.text)
 //        intent.putExtra(IntentConstants.kASSESSMENT_TIME, whenStartTime.text)
         startActivity(intent)
+    }
+
+    fun symptomClick(view: View) {
+        finish()
     }
 }

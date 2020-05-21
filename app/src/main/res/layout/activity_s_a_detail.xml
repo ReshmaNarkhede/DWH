@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/parentLayout"
     android:fitsSystemWindows="true">
 
 <!--    <LinearLayout-->
@@ -55,17 +56,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/m10"
-            android:textColor="@color/black"
             android:gravity="bottom"
             android:padding="@dimen/p5"
             android:text="@string/what_do_you_feel"
-            android:textSize="@dimen/t23" />
+            style="@style/TextViewTheme"/>
 
         <LinearLayout
             android:id="@+id/btnLayout"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/m10"
+            android:orientation="vertical"
+            android:layout_gravity="end"
             android:layout_marginEnd="@dimen/m10"
             android:layout_marginTop="@dimen/m10"
             android:layout_marginBottom="@dimen/m20"
@@ -74,27 +76,26 @@
             <Button
                 android:id="@+id/searchBtn"
                 style="@style/CustomButtonTheme"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/m5"
-                android:layout_weight="1"
                 android:textColor="@color/pink"
                 android:onClick="searchClick"
-                android:padding="@dimen/p10"
+                android:padding="@dimen/p6"
                 android:text="Search" />
 
             <Button
                 android:id="@+id/addSymptomBtn"
                 style="@style/CustomButtonTheme"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/m5"
                 android:textColor="@color/pink"
                 android:layout_weight="1"
                 android:onClick="addSymptom"
-                android:padding="@dimen/p10"
+                android:padding="@dimen/p6"
                 android:text="@string/body" />
         </LinearLayout>
 
@@ -111,12 +112,11 @@
             style="@style/CustomButtonTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/p40"
-            android:paddingEnd="@dimen/p40"
-            android:textColor="@color/pink"
             android:layout_gravity="end"
-            android:layout_margin="@dimen/m15"
+            android:layout_margin="@dimen/m20"
+            android:textColor="@color/pink"
             android:onClick="clickNext"
+            android:padding="@dimen/p10"
             android:text="@string/next"
             android:visibility="gone" />
     </LinearLayout>

@@ -10,5 +10,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/p10"
         android:textSize="@dimen/t20"
+        android:text="@string/label"
+        style="@style/TextViewTheme"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

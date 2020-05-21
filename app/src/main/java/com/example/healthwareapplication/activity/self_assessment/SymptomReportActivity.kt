@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.R.layout.dwh_symptom_report
 import com.example.healthwareapplication.adapter.self_assessment.AssessmentAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
@@ -21,6 +22,7 @@ import com.example.healthwareapplication.app_utils.NoConnectivityException
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.dwh_symptom_report.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -29,17 +31,17 @@ import retrofit2.Response
 
 class SymptomReportActivity : AppCompatActivity() {
 
-    private lateinit var userNameTxt: TextView
-    private lateinit var userGenderTxt: TextView
-    private lateinit var userAgeTxt: TextView
-    private lateinit var symptomTxt: TextView
-    private lateinit var assesmentList: RecyclerView
+//    private lateinit var userNameTxt: TextView
+//    private lateinit var userGenderTxt: TextView
+//    private lateinit var userAgeTxt: TextView
+//    private lateinit var symptomTxt: TextView
+//    private lateinit var assesmentList: RecyclerView
     val delimiter = "-"
     val finalStr = SpannableStringBuilder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.dwh_symptom_report)
+        setContentView(dwh_symptom_report)
 
         initComponents()
         defaultConfiguration()
@@ -48,11 +50,11 @@ class SymptomReportActivity : AppCompatActivity() {
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
 
-        userNameTxt = findViewById(R.id.userNameTxt)
-        userGenderTxt = findViewById(R.id.userGenderTxt)
-        userAgeTxt = findViewById(R.id.userAgeTxt)
-        symptomTxt = findViewById(R.id.symptomTxt)
-        assesmentList = findViewById(R.id.assesmentList)
+//        userNameTxt = findViewById(R.id.userNameTxt)
+//        userGenderTxt = findViewById(R.id.userGenderTxt)
+//        userAgeTxt = findViewById(R.id.userAgeTxt)
+//        symptomTxt = findViewById(R.id.symptomTxt)
+//        assesmentList = findViewById(R.id.assesmentList)
     }
 
     private fun defaultConfiguration() {

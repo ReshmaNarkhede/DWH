@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/parentLayout"
     android:fitsSystemWindows="true">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m20"
         android:gravity="center"
         android:text="@string/self_assessment"
-        android:textColor="@color/black"
-        android:textSize="@dimen/t20" />
+        style="@style/TextViewTheme"/>
 
     <FrameLayout
         android:layout_width="match_parent"

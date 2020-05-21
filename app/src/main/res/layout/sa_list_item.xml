@@ -2,14 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/m10"
+    android:layout_marginTop="@dimen/m10"
+    android:layout_marginStart="@dimen/m10"
+    android:layout_marginEnd="@dimen/m10"
+    android:id="@+id/parentLayout"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:tint="@color/black"
+        android:tint="@color/label_text_color"
         android:src="@android:drawable/ic_input_add"
         android:layout_marginTop="@dimen/m10"/>
 
@@ -23,15 +26,15 @@
         android:layout_marginBottom="@dimen/m10"
         android:padding="@dimen/p5"
         android:paddingStart="@dimen/p15"
-        android:textColor="@color/black"
+        style="@style/TextViewTheme"
         android:paddingEnd="@dimen/p5"
         android:text="@string/label"
         android:textSize="@dimen/t18" />
     <View
         android:layout_width="2dp"
-        android:layout_height="@dimen/h150"
+        android:layout_height="@dimen/h134"
         android:layout_below="@+id/img"
-        android:background="@color/black"
+        android:background="@color/label_text_color"
         android:layout_marginStart="@dimen/m15"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,11 +52,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/m10"
-            android:layout_marginTop="@dimen/m10"
+            android:layout_marginTop="@dimen/m5"
             android:layout_marginEnd="@dimen/m10"
             android:padding="@dimen/p5"
             android:text="@string/label"
-            android:textColor="@color/black"
+            style="@style/TextViewTheme"
             android:textSize="@dimen/t18" />
 
         <TextView
@@ -62,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/m10"
             android:layout_marginTop="@dimen/m10"
-            android:textColor="@color/black"
+            style="@style/TextViewTheme"
             android:layout_marginEnd="@dimen/m10"
             android:padding="@dimen/p5"
             android:text="@string/label"

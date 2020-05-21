@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.R.layout.activity_add_symptom
 import com.example.healthwareapplication.adapter.self_assessment.SymptomAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
@@ -26,6 +27,7 @@ import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.richpath.RichPath
 import com.richpath.RichPathView
+import kotlinx.android.synthetic.main.activity_add_symptom.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -33,17 +35,17 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.lang.reflect.Type
 
-class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
+class BodySymptomActivity : AppCompatActivity(),View.OnClickListener {
     private lateinit var gson: Gson
     private var user: UserDetailModel? = null
-    private lateinit var bodyImg: RichPathView
-    private lateinit var rotate: TextView
+//    private lateinit var bodyImg: RichPathView
+//    private lateinit var rotate: TextView
     var image_front_back_flag = true
     var bodyPartLists = arrayListOf<BodyParts>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_symptom)
+        setContentView(activity_add_symptom)
 
         initComponents()
         defaultConfiguration()
@@ -55,8 +57,8 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
         gson = Gson()
         fetchBodyParts(user!!.sex)
 
-        bodyImg = findViewById(R.id.bodyImg)
-        rotate = findViewById(R.id.rotate)
+//        bodyImg = findViewById(R.id.bodyImg)
+//        rotate = findViewById(R.id.rotate)
     }
 
     private fun defaultConfiguration() {
@@ -175,7 +177,7 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
                         val listType: Type = object : TypeToken<List<BodyParts?>?>() {}.type
                         bodyPartLists = gson.fromJson(bodyAry.toString(), listType)
                     } else {
-                        AppHelper.showToast(this@AddSymptomActivity, responseModel.getMessage().toString())
+                        AppHelper.showToast(this@BodySymptomActivity, responseModel.getMessage().toString())
                     }
                 }
             }
@@ -183,7 +185,7 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
             override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
                 if (t is NoConnectivityException) {
                     DialogUtility.hideProgressDialog()
-                    AppHelper.showNetNotAvailable(this@AddSymptomActivity)
+                    AppHelper.showNetNotAvailable(this@BodySymptomActivity)
                 }
             }
         })
@@ -214,7 +216,7 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
                         val symptomAry = responseModel.getDataArray()
                         openSymptomDialog(bodyParts,symptomAry!!)
                     } else {
-                        AppHelper.showToast(this@AddSymptomActivity, responseModel.getMessage().toString())
+                        AppHelper.showToast(this@BodySymptomActivity, responseModel.getMessage().toString())
                     }
                 }
             }
@@ -222,7 +224,7 @@ class AddSymptomActivity : AppCompatActivity(),View.OnClickListener {
             override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
                 if (t is NoConnectivityException) {
                     DialogUtility.hideProgressDialog()
-                    AppHelper.showNetNotAvailable(this@AddSymptomActivity)
+                    AppHelper.showNetNotAvailable(this@BodySymptomActivity)
                 }
             }
         })

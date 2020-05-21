@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.TextView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.R.layout.activity_thank_you
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
@@ -17,6 +18,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import kotlinx.android.synthetic.main.activity_thank_you.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -27,11 +29,10 @@ class ThankYouActivity : AppCompatActivity() {
 
     private var symptomStr: String? = null
     private var ansStr: String? = null
-    private lateinit var thankYouText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_thank_you)
+        setContentView(activity_thank_you)
 
         initComponents()
         defaultConfiguration()
@@ -39,8 +40,6 @@ class ThankYouActivity : AppCompatActivity() {
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-
-        thankYouText = findViewById(R.id.thankYouText)
     }
 
     private fun defaultConfiguration() {
@@ -49,7 +48,7 @@ class ThankYouActivity : AppCompatActivity() {
         val user = AppSessions.getLoginModel(this)
         thankYouText.text = "Thank you ${user!!.firstName} All done! Your Report is Ready"
         Log.e("Ans: ", ":: $ansStr")
-        submitReport(ansStr)
+//        submitReport(ansStr)
     }
 
     fun okClick(view: View) {

@@ -27,14 +27,14 @@
             android:layout_margin="@dimen/m15"
             android:padding="@dimen/p5"
             android:text="@string/is_symtom_assessment_was_helpful"
-            android:textColor="@color/black"
+            android:textColor="@color/label_text_color"
             android:textSize="@dimen/t23" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_gravity="end"
+            android:orientation="vertical"
             android:layout_margin="@dimen/m10"
             android:padding="10dp">
 
@@ -42,14 +42,14 @@
                 android:id="@+id/yesBtn"
                 style="@style/CustomButtonTheme"
                 android:onClick="yesClick"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
                 android:layout_margin="@dimen/m8"
-                android:paddingStart="@dimen/p40"
+                android:paddingStart="@dimen/p20"
+                android:layout_alignParentEnd="true"
                 android:textColor="@color/pink"
                 android:paddingTop="@dimen/p10"
-                android:paddingEnd="@dimen/p40"
+                android:paddingEnd="@dimen/p20"
                 android:paddingBottom="@dimen/p10"
                 android:text="@string/yes" />
 
@@ -57,14 +57,16 @@
                 android:id="@+id/noBtn"
                 style="@style/CustomButtonTheme"
                 android:onClick="noClick"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_margin="@dimen/m8"
-                android:paddingStart="@dimen/p40"
+                android:layout_below="@+id/yesBtn"
+                android:paddingStart="@dimen/p20"
+                android:layout_alignParentEnd="true"
                 android:textColor="@color/pink"
                 android:paddingTop="@dimen/p10"
-                android:paddingEnd="@dimen/p40"
+                android:paddingEnd="@dimen/p20"
                 android:paddingBottom="@dimen/p10"
                 android:text="@string/no" />
 
@@ -72,17 +74,19 @@
                 android:id="@+id/notSureBtn"
                 style="@style/CustomButtonTheme"
                 android:onClick="notSureClick"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
+                android:layout_below="@+id/noBtn"
                 android:layout_margin="@dimen/m8"
-                android:paddingStart="@dimen/p40"
+                android:paddingStart="@dimen/p20"
+                android:layout_alignParentEnd="true"
                 android:textColor="@color/pink"
                 android:paddingTop="@dimen/p10"
-                android:paddingEnd="@dimen/p40"
+                android:paddingEnd="@dimen/p20"
                 android:paddingBottom="@dimen/p10"
                 android:text="@string/i_am_not_sure" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <include
             android:id="@+id/layout"

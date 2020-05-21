@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.R.layout.activity_question
 import com.example.healthwareapplication.adapter.self_assessment.question.RadioRecyclerViewAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
@@ -24,6 +25,7 @@ import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.self_assessment.QuestionData
 import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.activity_question.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -44,25 +46,25 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var dataAry: JSONArray
     var outerIndex: Int? = 0
     var innerIndex: Int? = 0
-    private lateinit var questionTxt: TextView
-    private lateinit var answerTxt: TextView
-    private lateinit var radioList: RecyclerView
+//    private lateinit var questionTxt: TextView
+//    private lateinit var answerTxt: TextView
+//    private lateinit var radioList: RecyclerView
 
     val delimiter = ","
     val finalStr = SpannableStringBuilder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_question)
+        setContentView(activity_question)
         initComponents()
         defaultConfiguration()
     }
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-        questionTxt = findViewById(R.id.questionTxt)
-        answerTxt = findViewById(R.id.answerTxt)
-        radioList = findViewById(R.id.radioList)
+//        questionTxt = findViewById(R.id.questionTxt)
+//        answerTxt = findViewById(R.id.answerTxt)
+//        radioList = findViewById(R.id.radioList)
 
         drawable = ContextCompat.getDrawable(this, R.drawable.answer_border)
 
@@ -80,12 +82,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         }
         val searchStr = finalStr.toString().replaceFirst(delimiter, "")
         Log.e("STr: ", ": $searchStr")
-//        dataAry = AppSessions.getQuestionData(this)!!
-//        if (dataAry.length() == 0) {
-            fetchQuestionData(searchStr)
-//        } else {
-//            setOuterLoop(outerIndex)
-//        }
+        fetchQuestionData(searchStr)
 
         setDateAnswer()
     }
@@ -124,7 +121,11 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     if (responseModel.isCode()) {
                         dataAry = responseModel.getDataArray()!!
 
-                        AppSettings.setJsonArrayValue(this@QuestionActivity, AppConstants.kQUESTION_ARY, dataAry.toString())
+                        AppSettings.setJsonArrayValue(
+                            this@QuestionActivity,
+                            AppConstants.kQUESTION_ARY,
+                            dataAry.toString()
+                        )
                         setOuterLoop(outerIndex)
                     } else {
                         questionTxt.text = "No question for this Symptom."
@@ -215,9 +216,13 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                 if (innerIndex!! < QArray!!.length() && innerIndex!! > 0) {
                     innerIndex = innerIndex!!.minus(1)
                     Log.e("back: ", ": $innerIndex")
-                    ansJsonObj = JSONObject()
+                    if (innerIndex!! > 0) {
+                        ansJsonObj = ansJsonAry!!.getJSONObject(innerIndex!! - 1)
+                    }
                     ansJsonAry!!.remove(innerIndex!!)
                     setDynamicData(innerIndex, ansJsonObj!!)
+                } else {
+                    finish()
                 }
             }
         }

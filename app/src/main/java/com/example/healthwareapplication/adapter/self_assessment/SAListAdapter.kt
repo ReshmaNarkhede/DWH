@@ -6,10 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.AppSessions
 import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
 import com.example.healthwareapplication.model.self_assessment.SAListModel
+import kotlinx.android.synthetic.main.activity_s_a_home.*
 import kotlinx.android.synthetic.main.sa_list_item.view.*
+import kotlinx.android.synthetic.main.sa_list_item.view.parentLayout
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -32,6 +35,7 @@ class SAListAdapter(val context: Context,dataArr: JSONArray, private val itemCli
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+
         viewHolder.bindView(position,dataArray.getJSONObject(position), itemClickListener)
     }
 
@@ -44,8 +48,7 @@ class SAListAdapter(val context: Context,dataArr: JSONArray, private val itemCli
             clickListener: RecyclerItemClickListener.OnItemClickListener
         ) {
             val model = SAListModel(jsonObject)
-
-            itemView.dateTxt.text = model.getReportDate() + " " + model.getReportTime()
+            itemView.dateTxt.text = model.getReportDate() + "  " + model.getReportTime()
             itemView.symptomTxt.text = model.getSymptom()
 
             val info = AppSessions.getUserName(context) + ", " + AppSessions.getUserSex(context) + ", " + AppSessions.getUserAge(context)

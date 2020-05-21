@@ -25,7 +25,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/m10"
             android:text="@string/label"
-            android:textColor="@color/black"
+            android:textColor="@color/label_text_color"
             android:textSize="@dimen/t18" />
     </LinearLayout>
 
@@ -40,6 +40,6 @@
         android:paddingEnd="@dimen/p10"
         android:paddingBottom="@dimen/p5"
         android:text="@string/label"
-        android:textColor="@color/black"
+        android:textColor="@color/label_text_color"
         android:textSize="@dimen/t18" />
 </LinearLayout>

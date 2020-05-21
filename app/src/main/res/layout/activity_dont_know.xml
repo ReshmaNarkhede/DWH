@@ -22,7 +22,7 @@
         android:padding="@dimen/p10"
         android:text="@string/give_feedback"
         android:layout_weight="1"
-        android:textColor="@color/black"
+        android:textColor="@color/label_text_color"
         android:textSize="@dimen/t20"
         android:textStyle="bold" />
 
@@ -33,8 +33,8 @@
         android:layout_weight="1"
         android:padding="@dimen/p10"
         android:text="@string/feedback_msg"
-        android:textColor="@color/black"
-        android:textSize="@dimen/t16" />
+        android:textColor="@color/label_text_color"
+        android:textSize="@dimen/t18" />
 
     <CheckBox
         android:id="@+id/chkbox1"
@@ -79,17 +79,17 @@
 
     <EditText
         android:id="@+id/inputEdtTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/m20"
+        android:layout_marginTop="@dimen/m10"
+        android:layout_marginEnd="@dimen/m20"
+        android:layout_marginBottom="@dimen/m10"
+        android:layout_weight="1"
         android:background="@drawable/black_border"
         android:gravity="top|start"
         android:hint="@string/type_to_give_more_details"
         android:inputType="textMultiLine"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/m20"
-        android:layout_marginEnd="@dimen/m20"
-        android:layout_marginTop="@dimen/m10"
-        android:layout_marginBottom="@dimen/m10"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
         android:lines="3"
         android:maxLength="300"
         android:maxLines="3"

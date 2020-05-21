@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/m15"
-            android:textColor="@color/black"
+            android:textColor="@color/label_text_color"
             android:text="@string/label"
             android:textSize="@dimen/t20" />
 

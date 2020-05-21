@@ -18,10 +18,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/m10"
             android:background="@drawable/answer_border"
-            android:paddingStart="@dimen/p30"
+            android:paddingStart="@dimen/p20"
             android:paddingTop="@dimen/p10"
+            android:onClick="symptomClick"
             android:textColor="@color/ans_text_color"
-            android:paddingEnd="@dimen/p30"
+            android:paddingEnd="@dimen/p20"
             android:paddingBottom="@dimen/p10"
             android:text="@string/label" />
 
@@ -47,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/m10"
                 android:padding="@dimen/p5"
-                android:textColor="@color/black"
+                android:textColor="@color/label_text_color"
                 android:text="@string/when_did_it_start"
                 android:textSize="@dimen/t23" />
 
@@ -60,7 +61,7 @@
                 android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/assessmentStartDate"
+                    android:id="@+id/whenStartDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/m10"
@@ -68,15 +69,15 @@
                     android:gravity="center"
                     android:textColor="@color/pink"
                     android:onClick="whenDateClick"
-                    android:paddingStart="@dimen/p40"
+                    android:paddingStart="@dimen/p20"
                     android:paddingTop="@dimen/p10"
-                    android:paddingEnd="@dimen/p40"
+                    android:paddingEnd="@dimen/p20"
                     android:paddingBottom="@dimen/p10"
                     android:text="@string/date"
                     android:textSize="@dimen/t16" />
 
                 <TextView
-                    android:id="@+id/assessmentStartTime"
+                    android:id="@+id/whenStartTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/pink"
