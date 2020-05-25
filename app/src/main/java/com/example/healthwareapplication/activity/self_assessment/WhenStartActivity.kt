@@ -23,9 +23,6 @@ import java.text.SimpleDateFormat
 class WhenStartActivity : AppCompatActivity() {
 
     private var symptomStr: String? = null
-//    private lateinit var whenStartTime: TextView
-//    private lateinit var whenStartDate: TextView
-//    private lateinit var symptomTxt: TextView
     val delimiter = ","
     val finalStr = SpannableStringBuilder()
 
@@ -33,15 +30,9 @@ class WhenStartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(activity_when_start)
 
-        initComponents()
         defaultConfiguration()
     }
 
-    private fun initComponents() {
-//        whenStartTime = findViewById(R.id.assessmentStartTime)
-//        whenStartDate = findViewById(R.id.assessmentStartDate)
-//        symptomTxt = findViewById(R.id.symptomTxt)
-    }
 
     private fun defaultConfiguration() {
         symptomStr = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
@@ -91,8 +82,6 @@ class WhenStartActivity : AppCompatActivity() {
 
         val intent = Intent(this, QuestionActivity::class.java)
         intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptomStr)
-//        intent.putExtra(IntentConstants.kASSESSMENT_DATE, whenStartDate.text)
-//        intent.putExtra(IntentConstants.kASSESSMENT_TIME, whenStartTime.text)
         startActivity(intent)
     }
 

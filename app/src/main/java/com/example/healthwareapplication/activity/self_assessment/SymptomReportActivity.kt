@@ -31,11 +31,6 @@ import retrofit2.Response
 
 class SymptomReportActivity : AppCompatActivity() {
 
-//    private lateinit var userNameTxt: TextView
-//    private lateinit var userGenderTxt: TextView
-//    private lateinit var userAgeTxt: TextView
-//    private lateinit var symptomTxt: TextView
-//    private lateinit var assesmentList: RecyclerView
     val delimiter = "-"
     val finalStr = SpannableStringBuilder()
 
@@ -49,12 +44,6 @@ class SymptomReportActivity : AppCompatActivity() {
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-
-//        userNameTxt = findViewById(R.id.userNameTxt)
-//        userGenderTxt = findViewById(R.id.userGenderTxt)
-//        userAgeTxt = findViewById(R.id.userAgeTxt)
-//        symptomTxt = findViewById(R.id.symptomTxt)
-//        assesmentList = findViewById(R.id.assesmentList)
     }
 
     private fun defaultConfiguration() {

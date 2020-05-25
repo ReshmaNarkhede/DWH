@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_add_symptom
-import com.example.healthwareapplication.adapter.self_assessment.SymptomAdapter
+import com.example.healthwareapplication.adapter.self_assessment.SearchSymptomAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
@@ -26,8 +26,8 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.richpath.RichPath
-import com.richpath.RichPathView
 import kotlinx.android.synthetic.main.activity_add_symptom.*
+import kotlinx.android.synthetic.main.activity_search_symptom.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -243,7 +243,7 @@ class BodySymptomActivity : AppCompatActivity(),View.OnClickListener {
         })
 
         symptmList.layoutManager = LinearLayoutManager(this)
-        val adapter = SymptomAdapter(symptomAry!!,
+        val adapter = SearchSymptomAdapter(this,symptomAry!!,"",
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val modelObj = symptomAry.getJSONObject(position)
                 val resultIntent = Intent()
@@ -251,7 +251,6 @@ class BodySymptomActivity : AppCompatActivity(),View.OnClickListener {
                 setResult(Activity.RESULT_OK, resultIntent)
                 dialog.dismiss()
                 finish()
-
             })
         symptmList.adapter = adapter
         bodyPartName.text = bodyParts.name

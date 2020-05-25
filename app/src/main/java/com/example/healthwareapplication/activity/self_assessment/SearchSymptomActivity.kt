@@ -7,15 +7,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_search_symptom
-import com.example.healthwareapplication.adapter.self_assessment.SymptomAdapter
+import com.example.healthwareapplication.adapter.self_assessment.SearchSymptomAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.AppHelper
@@ -32,10 +28,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
-
-//    private lateinit var symptom: RecyclerView
-//    private lateinit var searchTxt: EditText
-//    private lateinit var cncleImg: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,7 +88,7 @@ class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val symptomListAry = responseModel.getDataArray()!!
-                        bindSymptomSearchName(symptomListAry)
+                        bindSymptomSearchName(symptomListAry,search)
 
                     } else {
                         AppHelper.showToast(
@@ -116,9 +108,9 @@ class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
         })
     }
 
-    private fun bindSymptomSearchName(symptomListAry: JSONArray) {
+    private fun bindSymptomSearchName(symptomListAry: JSONArray, searchStr: String?) {
         symptom.layoutManager = LinearLayoutManager(this)
-        val adapter = SymptomAdapter(symptomListAry!!,
+        val adapter = SearchSymptomAdapter(this,symptomListAry!!,searchStr,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val modelObj = JSONObject(symptomListAry.getJSONObject(position).toString())
                 val resultIntent = Intent()

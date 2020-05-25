@@ -1,8 +1,16 @@
 package com.example.healthwareapplication.adapter.self_assessment
 
+import android.content.Context
+import android.graphics.Color
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
@@ -11,7 +19,8 @@ import kotlinx.android.synthetic.main.symptom_list_item.view.*
 import org.json.JSONArray
 import org.json.JSONObject
 
-class SymptomAdapter(dataArr: JSONArray, private val itemClickListener: RecyclerItemClickListener.OnItemClickListener) : RecyclerView.Adapter<SymptomAdapter.ViewHolder>() {
+
+class SearchSymptomAdapter(val context: Context,dataArr: JSONArray,val searchStr:String?, private val itemClickListener: RecyclerItemClickListener.OnItemClickListener) : RecyclerView.Adapter<SearchSymptomAdapter.ViewHolder>() {
 
     private val dataArray: JSONArray = dataArr
 
@@ -42,7 +51,15 @@ class SymptomAdapter(dataArr: JSONArray, private val itemClickListener: Recycler
             clickListener: RecyclerItemClickListener.OnItemClickListener
         ) {
             val model = SymptomJsonModel(jsonObject)
-            itemView.symptomName.text = model.getName()
+            val originalText = model.getName()
+            val sb: Spannable = SpannableString(originalText)
+            sb.setSpan(
+                ForegroundColorSpan(context.resources.getColor(R.color.pink)),
+                originalText!!.toLowerCase().indexOf(searchStr!!.toLowerCase()),
+                originalText!!.toLowerCase().indexOf(searchStr.toLowerCase()) + searchStr.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            itemView.symptomName.text = sb
             itemView.setOnClickListener {
                 clickListener.onItemClick(itemView,position)
             }

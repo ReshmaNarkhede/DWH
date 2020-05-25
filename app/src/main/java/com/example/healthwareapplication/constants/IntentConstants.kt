@@ -12,5 +12,8 @@ class IntentConstants {
 
         const val kASSESSMENT_DATE: String = "kASSESSMENT_DATE"
         const val kASSESSMENT_TIME: String = "kASSESSMENT_TIME"
+
+        const val REPORT_DATA: String = "REPORT_DATA"
+
     }
 }

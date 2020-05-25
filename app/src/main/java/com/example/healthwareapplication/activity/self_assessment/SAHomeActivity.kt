@@ -3,10 +3,8 @@ package com.example.healthwareapplication.activity.self_assessment
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_s_a_home
@@ -14,6 +12,7 @@ import com.example.healthwareapplication.adapter.self_assessment.SAListAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
+import com.example.healthwareapplication.constants.IntentConstants
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_s_a_home.*
 import org.json.JSONArray
@@ -46,7 +45,7 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.addImg -> {
-                val intent = Intent(this, SADetailActivity::class.java)
+                val intent = Intent(this, WhatFeelActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -100,7 +99,10 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
         list.layoutManager = LinearLayoutManager(this)
         val adapter = SAListAdapter(this,listAry!!,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
-                val modelObj = JSONObject(listAry.getJSONObject(position).toString())
+                val str = listAry.getJSONObject(position).toString()
+//                val intent = Intent(this,ReportFromHome::class.java)
+//                intent.putExtra(IntentConstants.REPORT_DATA,str)
+//                startActivity(intent)
             })
         list.adapter = adapter
     }

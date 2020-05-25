@@ -30,4 +30,8 @@ class FeedbackActivity : AppCompatActivity() {
         startActivity(intent)
         finishAffinity()
     }
+
+    fun reportClick(view: View) {
+        finish()
+    }
 }

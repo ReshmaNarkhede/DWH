@@ -37,7 +37,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     private var drawable: Drawable? = null
 
-    //    private lateinit var dntKnowObj: JSONObject
     private lateinit var symptmJsonAry: JSONArray
     private var ansJsonObj: JSONObject? = JSONObject()
     private var ansJsonAry: JSONArray? = JSONArray()
@@ -46,9 +45,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var dataAry: JSONArray
     var outerIndex: Int? = 0
     var innerIndex: Int? = 0
-//    private lateinit var questionTxt: TextView
-//    private lateinit var answerTxt: TextView
-//    private lateinit var radioList: RecyclerView
 
     val delimiter = ","
     val finalStr = SpannableStringBuilder()
@@ -62,9 +58,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-//        questionTxt = findViewById(R.id.questionTxt)
-//        answerTxt = findViewById(R.id.answerTxt)
-//        radioList = findViewById(R.id.radioList)
 
         drawable = ContextCompat.getDrawable(this, R.drawable.answer_border)
 
@@ -93,7 +86,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
         answerTxt.text = "$assessmentDate, $assessmentTime"
         answerTxt.background = drawable
-        answerTxt.setPadding(30, 10, 30, 10)
+        answerTxt.setPadding(30, 15, 30, 15)
         answerTxt.setOnClickListener(this)
     }
 
@@ -155,7 +148,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         val ansObj = QuestionData.QuestionAnsModel(ansJsonObj!!)
         if (ansObj.getSelectedAnswer()!!.isNotEmpty()) {
             answerTxt.background = drawable
-            answerTxt.setPadding(30, 10, 30, 10)
+            answerTxt.setPadding(30, 15, 30, 15)
         } else {
             answerTxt.background = null
         }

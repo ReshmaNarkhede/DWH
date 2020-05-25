@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.self_assessment.SearchSymptomActivity"></activity>
+        <activity android:name=".activity.self_assessment.ReportFromHome"/>
+        <activity android:name=".activity.self_assessment.SearchSymptomActivity"/>
         <activity android:name=".activity.self_assessment.SAHomeActivity" />
         <activity android:name=".activity.self_assessment.WhenStartActivity" />
         <activity android:name=".activity.self_assessment.AddTestActivity" />
@@ -25,7 +26,7 @@
         <activity android:name=".activity.self_assessment.ThankYouActivity" />
         <activity android:name=".activity.self_assessment.QuestionActivity" />
         <activity android:name=".activity.self_assessment.QuestionDemoActivity" />
-        <activity android:name=".activity.self_assessment.SADetailActivity" />
+        <activity android:name=".activity.self_assessment.WhatFeelActivity" />
         <activity android:name=".activity.self_assessment.BodySymptomActivity" />
         <activity android:name=".activity.account.register.RegisterTermsActivity" />
         <activity

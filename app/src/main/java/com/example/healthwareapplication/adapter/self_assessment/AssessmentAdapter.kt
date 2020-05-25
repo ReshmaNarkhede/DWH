@@ -5,9 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.activity.self_assessment.SADetailActivity
 import com.example.healthwareapplication.model.self_assessment.QuestionData
-import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import kotlinx.android.synthetic.main.assessment_list_item.view.*
 import org.json.JSONArray
 import org.json.JSONObject

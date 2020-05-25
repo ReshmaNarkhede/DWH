@@ -6,24 +6,22 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.healthwareapplication.R.layout.activity_s_a_detail
+import com.example.healthwareapplication.R.layout.activity_what_feel_detail
 import com.example.healthwareapplication.adapter.self_assessment.SelectedSymptomAdapter
-import com.example.healthwareapplication.adapter.self_assessment.SymptomAdapter
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_s_a_detail.*
+import kotlinx.android.synthetic.main.activity_what_feel_detail.*
 import org.json.JSONArray
 import org.json.JSONObject
 
-class SADetailActivity : AppCompatActivity() {
-    var adapter: SymptomAdapter? = null
+class WhatFeelActivity : AppCompatActivity() {
     private lateinit var gson: Gson
     val symptmJsonAry: JSONArray = JSONArray()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_s_a_detail)
+        setContentView(activity_what_feel_detail)
 
         initComponents()
     }

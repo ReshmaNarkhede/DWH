@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.activity.self_assessment.SADetailActivity
+import com.example.healthwareapplication.activity.self_assessment.WhatFeelActivity
 import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import kotlinx.android.synthetic.main.selected_symptom_list_item.view.*
 import kotlinx.android.synthetic.main.symptom_list_item.view.symptomName
@@ -14,7 +14,7 @@ import org.json.JSONObject
 
 class SelectedSymptomAdapter(
     val dataArr: JSONArray?,
-    val showDeleted: SADetailActivity.ShowDeleted
+    val showDeleted: WhatFeelActivity.ShowDeleted
 ) : RecyclerView.Adapter<SelectedSymptomAdapter.ViewHolder>() {
 
     val dataArray: JSONArray? = dataArr
@@ -39,7 +39,7 @@ class SelectedSymptomAdapter(
         fun bindView(
             position: Int,
             jsonObject: JSONObject,
-            showDeleted: SADetailActivity.ShowDeleted
+            showDeleted: WhatFeelActivity.ShowDeleted
         ) {
             val model = SymptomJsonModel(jsonObject)
             itemView.symptomName.text = model.getName()

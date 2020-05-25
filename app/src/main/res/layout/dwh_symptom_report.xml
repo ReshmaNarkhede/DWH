@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
@@ -9,7 +10,7 @@
         android:id="@+id/userDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/m20"
+        android:layout_marginTop="@dimen/m10"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -92,7 +93,7 @@
                 android:layout_weight="1"
                 android:text="@string/dwh_thought"
                 android:textColor="@color/label_text_color"
-                android:textSize="@dimen/t20" />
+                android:textSize="@dimen/t18" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -112,13 +113,14 @@
                 android:layout_margin="@dimen/m10"
                 android:text="@string/assesment"
                 android:textColor="@color/label_text_color"
-                android:textSize="@dimen/t20" />
+                android:textSize="@dimen/t18" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/assesmentList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/m10" />
+                android:layout_margin="@dimen/m10"
+                tools:listitem="@layout/assessment_list_item"/>
 
             <TextView
                 android:layout_width="match_parent"

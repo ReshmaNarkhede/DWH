@@ -131,6 +131,7 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="i_don_t_understand_the_question"> I don\'t understand this question.</string>
     <string name="self_assessment">Self Assessment</string>
     <string name="search">Search...</string>
+    <string name="report">Report</string>
 
     <array name="tick_below_text_length_5">
         <item>one</item>

@@ -7,16 +7,17 @@
     <color name="body_outline">#677895</color>
     <color name="body_def_fill">#677895</color>
     <color name="body_fill">#3A79E6</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
 
 
     <color name="grey">#949393</color>
     <color name="label_text_color">#27354F</color>
-    <color name="white">#ffffff</color>
     <color name="transparent_gradient">#59000000</color>
     <color name="pink">#ec6492</color>
     <color name="old_btn_color">#CF4238</color>
     <color name="curent_btn_color">#2A95E7</color>
     <color name="add_btn_color">#46E434</color>
     <color name="ans_text_color">#B8A0A8</color>
-    <color name="label_text_color1">#27354F</color>
+    <color name="search_symptom_text_color">#415881</color>
 </resources>

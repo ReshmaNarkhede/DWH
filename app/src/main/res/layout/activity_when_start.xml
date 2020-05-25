@@ -13,18 +13,18 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/symptomTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/m10"
-            android:background="@drawable/answer_border"
-            android:paddingStart="@dimen/p20"
-            android:paddingTop="@dimen/p10"
-            android:onClick="symptomClick"
-            android:textColor="@color/ans_text_color"
-            android:paddingEnd="@dimen/p20"
-            android:paddingBottom="@dimen/p10"
-            android:text="@string/label" />
+        android:id="@+id/symptomTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/m10"
+        android:background="@drawable/answer_border"
+        android:paddingStart="@dimen/p25"
+        android:paddingTop="@dimen/p10"
+        android:onClick="symptomClick"
+        android:textColor="@color/ans_text_color"
+        android:paddingEnd="@dimen/p25"
+        android:paddingBottom="@dimen/p10"
+        android:text="@string/label" />
 
         <ImageView
             android:layout_width="@dimen/h100"
@@ -55,40 +55,38 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_margin="@dimen/m10"
+                android:layout_marginStart="@dimen/m10"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/m10"
+                android:layout_marginTop="@dimen/m10"
+                android:padding="@dimen/p10">
 
-                <TextView
+                <Button
                     android:id="@+id/whenStartDate"
-                    android:layout_width="match_parent"
+                    style="@style/CustomButtonTheme"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/m10"
-                    android:background="@drawable/btn_selector"
-                    android:gravity="center"
-                    android:textColor="@color/pink"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/m7"
                     android:onClick="whenDateClick"
-                    android:paddingStart="@dimen/p20"
-                    android:paddingTop="@dimen/p10"
-                    android:paddingEnd="@dimen/p20"
-                    android:paddingBottom="@dimen/p10"
+                    android:paddingStart="@dimen/p30"
+                    android:paddingEnd="@dimen/p30"
                     android:text="@string/date"
-                    android:textSize="@dimen/t16" />
+                    android:textColor="@color/pink" />
 
-                <TextView
+                <Button
                     android:id="@+id/whenStartTime"
-                    android:layout_width="match_parent"
+                    style="@style/CustomButtonTheme"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/p30"
+                    android:paddingEnd="@dimen/p30"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/m7"
                     android:textColor="@color/pink"
-                    android:layout_gravity="end"
-                    android:layout_margin="@dimen/m10"
-                    android:background="@drawable/btn_selector"
-                    android:gravity="center"
                     android:onClick="whenTimeClick"
-                    android:padding="@dimen/p10"
-                    android:text="@string/time"
-                    android:textSize="@dimen/t16" />
+                    android:text="@string/time" />
             </LinearLayout>
 
         </LinearLayout>

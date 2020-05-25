@@ -54,7 +54,9 @@
     <dimen name="p9">9dp</dimen>
     <dimen name="p10">10dp</dimen>
     <dimen name="p20">20dp</dimen>
+    <dimen name="p25">25dp</dimen>
     <dimen name="p30">30dp</dimen>
+    <dimen name="p35">35dp</dimen>
     <dimen name="p40">40dp</dimen>
     <dimen name="p50">50dp</dimen>
     <dimen name="p60">60dp</dimen>

@@ -13,6 +13,20 @@
         android:orientation="vertical"
         android:padding="@dimen/p5">
 
+        <TextView
+            android:id="@+id/reportTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:background="@drawable/answer_border"
+            android:onClick="reportClick"
+            android:paddingStart="@dimen/p25"
+            android:paddingTop="@dimen/p10"
+            android:paddingEnd="@dimen/p25"
+            android:paddingBottom="@dimen/p10"
+            android:text="@string/report"
+            android:textColor="@color/ans_text_color" />
+
         <ImageView
             android:layout_width="@dimen/h100"
             android:layout_height="@dimen/h100"
@@ -30,63 +44,59 @@
             android:textColor="@color/label_text_color"
             android:textSize="@dimen/t23" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:orientation="vertical"
             android:layout_margin="@dimen/m10"
+            android:orientation="vertical"
             android:padding="10dp">
 
             <Button
                 android:id="@+id/yesBtn"
                 style="@style/CustomButtonTheme"
-                android:onClick="yesClick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end"
                 android:layout_margin="@dimen/m8"
-                android:paddingStart="@dimen/p20"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/pink"
+                android:onClick="yesClick"
+                android:paddingStart="@dimen/p25"
                 android:paddingTop="@dimen/p10"
-                android:paddingEnd="@dimen/p20"
+                android:paddingEnd="@dimen/p25"
                 android:paddingBottom="@dimen/p10"
-                android:text="@string/yes" />
+                android:text="@string/yes"
+                android:textColor="@color/pink" />
 
             <Button
                 android:id="@+id/noBtn"
                 style="@style/CustomButtonTheme"
-                android:onClick="noClick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_margin="@dimen/m8"
-                android:layout_below="@+id/yesBtn"
-                android:paddingStart="@dimen/p20"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/pink"
+                android:onClick="noClick"
+                android:paddingStart="@dimen/p25"
                 android:paddingTop="@dimen/p10"
-                android:paddingEnd="@dimen/p20"
+                android:paddingEnd="@dimen/p25"
                 android:paddingBottom="@dimen/p10"
-                android:text="@string/no" />
+                android:text="@string/no"
+                android:textColor="@color/pink" />
 
             <Button
                 android:id="@+id/notSureBtn"
                 style="@style/CustomButtonTheme"
-                android:onClick="notSureClick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_below="@+id/noBtn"
                 android:layout_margin="@dimen/m8"
-                android:paddingStart="@dimen/p20"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/pink"
+                android:onClick="notSureClick"
+                android:paddingStart="@dimen/p25"
                 android:paddingTop="@dimen/p10"
-                android:paddingEnd="@dimen/p20"
+                android:paddingEnd="@dimen/p25"
                 android:paddingBottom="@dimen/p10"
-                android:text="@string/i_am_not_sure" />
-        </RelativeLayout>
+                android:text="@string/i_am_not_sure"
+                android:textColor="@color/pink" />
+        </LinearLayout>
 
         <include
             android:id="@+id/layout"

@@ -9,8 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/p10"
-        android:textSize="@dimen/t20"
+        android:textSize="@dimen/t16"
         android:text="@string/label"
         style="@style/TextViewTheme"
+        android:textColor="@color/search_symptom_text_color"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

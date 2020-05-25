@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/self_assessment"
+        android:textSize="@dimen/t20"
         style="@style/TextViewTheme"/>
 
     <FrameLayout
