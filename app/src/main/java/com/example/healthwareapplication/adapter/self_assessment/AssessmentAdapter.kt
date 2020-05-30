@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.model.self_assessment.QuestionData
+import com.example.healthwareapplication.model.self_assessment.ReportData
 import kotlinx.android.synthetic.main.assessment_list_item.view.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -35,9 +36,9 @@ class AssessmentAdapter(val dataArr: JSONArray?) : RecyclerView.Adapter<Assessme
             position: Int,
             jsonObject: JSONObject
         ) {
-            val model = QuestionData.QuestionAnsModel(jsonObject)
+            val model = ReportData(jsonObject)
             itemView.questionTxt.text = model.getQuestion()
-            itemView.answerTxt.text = model.getSelectedAnswer()
+            itemView.answerTxt.text = model.getAnswer()
         }
     }
 }

@@ -1,14 +1,12 @@
 package com.example.healthwareapplication.activity.self_assessment
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableStringBuilder
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.frats.android.models.response.ResponseModel
-import com.example.healthwareapplication.R
+import com.example.healthwareapplication.R.layout.dwh_symptom_report
 import com.example.healthwareapplication.adapter.self_assessment.AssessmentAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
@@ -18,7 +16,6 @@ import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.app_utils.NoConnectivityException
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.self_assessment.SAListModel
-import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.dwh_symptom_report.*
 import org.json.JSONArray
@@ -34,31 +31,29 @@ class ReportFromHome : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.dwh_symptom_report)
-
+        setContentView(dwh_symptom_report)
 
         initComponents()
-        defaultConfiguration()
     }
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-        getReportAPI()
-    }
 
-    private fun defaultConfiguration() {
+        okayBtn.text = "Back"
 
         val reportStr = intent.getStringExtra(IntentConstants.REPORT_DATA)
         val reportObj = JSONObject(reportStr!!)
         val model = SAListModel(reportObj)
-        Log.e("STr: ", ": $reportStr")
+        getReportAPI(model)
+
+        defaultConfiguration(model)
+    }
+
+    private fun defaultConfiguration(model: SAListModel) {
 
         userNameTxt.text = AppSessions.getUserName(this)
         userGenderTxt.text = AppSessions.getUserSex(this)
-
-
         userAgeTxt.text = AppSessions.getUserAge(this)
-
         symptomTxt.text = model.getSymptom()
 
 //        assesmentList.layoutManager = LinearLayoutManager(this)
@@ -66,12 +61,13 @@ class ReportFromHome : AppCompatActivity() {
 //        assesmentList.adapter = addAdapter
     }
 
-    private fun getReportAPI() {
+    private fun getReportAPI(model: SAListModel) {
         val apiService: ApiInterface =
             ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
 
         val param = JsonObject()
-        param.addProperty("user_id", AppSessions.getUserId(this))
+        param.addProperty("symptom_id", model.getSymptomId())
+        param.addProperty("ass_report_id", model.getId())
 
         AppHelper.printParam("report PAram:", param)
 

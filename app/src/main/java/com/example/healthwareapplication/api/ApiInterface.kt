@@ -35,7 +35,7 @@ interface ApiInterface {
     @POST("selfassessment/tests")
     fun submitSelfData(@Body jsonObject: JsonObject?): Call<JsonObject>
 
-    @POST("selfassessment/get_tests")
+    @POST("selfassessment/report_details")
     fun getReport(@Body jsonObject: JsonObject?): Call<JsonObject>
 
     @POST("selfassessment/get_assessments")

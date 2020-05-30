@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/self_assessment"
-        android:textSize="@dimen/t20"
-        style="@style/TextViewTheme"/>
+        android:textColor="@color/label_text_color"
+        android:typeface="normal"
+        android:textSize="@dimen/t18"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -50,7 +51,7 @@
             android:layout_gravity="bottom|end"
             android:layout_marginEnd="@dimen/m15"
             android:layout_marginBottom="@dimen/m20"
-            android:backgroundTint="@color/pink"
+            app:backgroundTint="@color/pink"
             app:fabCustomSize="@dimen/h40"
             android:src="@drawable/ic_add"
             app:maxImageSize="@dimen/h35"

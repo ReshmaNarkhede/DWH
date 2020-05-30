@@ -92,8 +92,8 @@
                 android:layout_margin="@dimen/m10"
                 android:layout_weight="1"
                 android:text="@string/dwh_thought"
-                android:textColor="@color/label_text_color"
-                android:textSize="@dimen/t18" />
+                android:typeface="sans"
+                android:textSize="@dimen/t16" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -102,8 +102,9 @@
                 android:layout_weight="1"
                 android:layout_margin="@dimen/m10"
                 android:gravity="center"
+                android:textColor="@color/label_text_color"
                 android:text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups"
-                android:textSize="@dimen/t16" />
+                android:textSize="@dimen/t17" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -112,8 +113,8 @@
                 android:layout_weight="1"
                 android:layout_margin="@dimen/m10"
                 android:text="@string/assesment"
-                android:textColor="@color/label_text_color"
-                android:textSize="@dimen/t18" />
+                android:typeface="sans"
+                android:textSize="@dimen/t16" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/assesmentList"
@@ -141,7 +142,6 @@
                 android:layout_margin="@dimen/m20"
                 android:textColor="@color/pink"
                 android:onClick="okClick"
-                android:text="Done"
                 android:textSize="@dimen/t20" />
 
 

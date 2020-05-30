@@ -35,7 +35,7 @@ import retrofit2.Response
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
-    private var drawable: Drawable? = null
+//    private var drawable: Drawable? = null
 
     private lateinit var symptmJsonAry: JSONArray
     private var ansJsonObj: JSONObject? = JSONObject()
@@ -59,7 +59,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
 
-        drawable = ContextCompat.getDrawable(this, R.drawable.answer_border)
+//        drawable = ContextCompat.getDrawable(this, R.drawable.answer_border)
 
     }
 
@@ -85,8 +85,8 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         val assessmentTime = AppSettings.getStringValue(this, IntentConstants.kASSESSMENT_TIME)
 
         answerTxt.text = "$assessmentDate, $assessmentTime"
-        answerTxt.background = drawable
-        answerTxt.setPadding(30, 15, 30, 15)
+//        answerTxt.background = drawable
+//        answerTxt.setPadding(30, 15, 30, 15)
         answerTxt.setOnClickListener(this)
     }
 
@@ -146,12 +146,12 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
         ansJsonObj = ansJObj
         val ansObj = QuestionData.QuestionAnsModel(ansJsonObj!!)
-        if (ansObj.getSelectedAnswer()!!.isNotEmpty()) {
-            answerTxt.background = drawable
-            answerTxt.setPadding(30, 15, 30, 15)
-        } else {
-            answerTxt.background = null
-        }
+//        if (ansObj.getSelectedAnswer()!!.isNotEmpty()) {
+////            answerTxt.background = drawable
+////            answerTxt.setPadding(30, 15, 30, 15)
+//        } else {
+//            answerTxt.background = null
+//        }
         if (index!! > 0) {
             answerTxt.text = ansObj.getSelectedAnswer()
         } else {
@@ -195,7 +195,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                         intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptmJsonAry.toString())
                         intent.putExtra(IntentConstants.kANSWER_DATA, ansJsonAry.toString())
                         startActivity(intent)
-//                        finish()
+                        finish()
                     }
                     ansJsonAry!!.put(qObj)
                 }
@@ -241,17 +241,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onBackPressed() {
-//        if (innerIndex!! > 0) {
-//            val test = QuestionData.QuestionAnsModel(ansJsonAry!!.getJSONObject(innerIndex!! - 1))
-//            if (test.getSelectedAnswer()!!.isNotEmpty()) {
-//                answerTxt.background = drawable
-//                answerTxt.setPadding(30, 10, 30, 10)
-//            } else {
-//                answerTxt.background = null
-//            }
-//            answerTxt.text = test.getSelectedAnswer()
-//            Log.e("backpressed: $innerIndex", ": " + test.getSelectedAnswer())
-//        }
 
         if (innerIndex == 0) {
             super.onBackPressed()
@@ -261,7 +250,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             if (innerIndex!! > 0) {
                 ansJsonObj = ansJsonAry!!.getJSONObject(innerIndex!! - 1)
             }
-//            ansJsonObj = JSONObject()
             ansJsonAry!!.remove(innerIndex!!)
             setDynamicData(innerIndex, ansJsonObj!!)
         }

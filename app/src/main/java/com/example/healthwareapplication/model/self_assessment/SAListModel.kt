@@ -14,7 +14,6 @@ class SAListModel(json: JSONObject) {
         return dataJSONObj!!.optString("user_id")
     }
     fun getReportDate(): String? {
-//        17/4/2020
         val dateStr = dataJSONObj!!.optString("report_date")
         val inFormat = SimpleDateFormat("dd/mm/yyyy")
         val date = inFormat.parse(dateStr)
@@ -27,5 +26,7 @@ class SAListModel(json: JSONObject) {
     fun getSymptom(): String? {
         return dataJSONObj!!.optString("symptom")
     }
-
+    fun getSymptomId(): String? {
+        return dataJSONObj!!.optString("symptom_id")
+    }
 }

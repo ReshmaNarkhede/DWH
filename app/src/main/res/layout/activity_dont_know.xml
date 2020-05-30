@@ -1,70 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/cancleImg"
-        android:layout_gravity="end"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
         android:onClick="cancelClick"
-        android:padding="@dimen/p10"
+        android:padding="@dimen/p7"
         android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
     <TextView
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m10"
         android:layout_width="wrap_content"
-        android:padding="@dimen/p10"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/m10"
+        android:layout_marginBottom="@dimen/m10"
+        android:layout_marginEnd="@dimen/m10"
+        android:padding="@dimen/p5"
         android:text="@string/give_feedback"
         android:textColor="@color/label_text_color"
         android:textSize="@dimen/t20"
         android:textStyle="bold" />
 
     <TextView
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m10"
         android:layout_width="wrap_content"
-        android:padding="@dimen/p10"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/m10"
+        android:layout_marginTop="@dimen/m10"
+        android:layout_marginEnd="@dimen/m10"
+        android:padding="@dimen/p5"
         android:text="@string/feedback_msg"
         android:textColor="@color/label_text_color"
         android:textSize="@dimen/t18" />
 
     <CheckBox
         android:id="@+id/chkbox1"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m10"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/m10"
+        android:layout_marginTop="@dimen/m10"
+        android:layout_marginEnd="@dimen/m10"
         android:buttonTint="@color/pink"
         android:text="@string/i_don_t_understand_the_question"
         android:textSize="@dimen/t16" />
 
     <CheckBox
         android:id="@+id/chkbox2"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m10"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/m10"
+        android:layout_marginTop="@dimen/m10"
+        android:layout_marginEnd="@dimen/m10"
         android:buttonTint="@color/pink"
         android:text="@string/the_question_doesn_t_feel_relevant_to_me"
         android:textSize="@dimen/t16" />
 
     <CheckBox
         android:id="@+id/chkbox3"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m10"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/m10"
+        android:layout_marginTop="@dimen/m10"
+        android:layout_marginEnd="@dimen/m10"
         android:buttonTint="@color/pink"
         android:text="@string/need_improve_answer"
         android:textSize="@dimen/t16" />
 
     <CheckBox
         android:id="@+id/chkbox4"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/m10"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/m10"
+        android:layout_marginTop="@dimen/m10"
+        android:layout_marginEnd="@dimen/m10"
         android:buttonTint="@color/pink"
         android:text="@string/i_want_to_choose_multiple_answers"
         android:textSize="@dimen/t16" />
@@ -96,12 +108,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginTop="@dimen/m10"
-        android:layout_marginEnd="@dimen/m10"
+        android:layout_marginEnd="@dimen/m20"
         android:layout_marginBottom="@dimen/m20"
-        android:paddingTop="@dimen/p5"
-        android:paddingBottom="@dimen/p5"
         android:onClick="nxtQueClick"
         android:paddingStart="@dimen/p20"
+        android:paddingTop="@dimen/p5"
         android:paddingEnd="@dimen/p20"
+        android:paddingBottom="@dimen/p5"
         android:text="@string/next_question" />
 </LinearLayout>

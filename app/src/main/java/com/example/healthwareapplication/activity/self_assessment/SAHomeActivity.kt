@@ -100,9 +100,9 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
         val adapter = SAListAdapter(this,listAry!!,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val str = listAry.getJSONObject(position).toString()
-//                val intent = Intent(this,ReportFromHome::class.java)
-//                intent.putExtra(IntentConstants.REPORT_DATA,str)
-//                startActivity(intent)
+                val intent = Intent(this,ReportFromHome::class.java)
+                intent.putExtra(IntentConstants.REPORT_DATA,str)
+                startActivity(intent)
             })
         list.adapter = adapter
     }

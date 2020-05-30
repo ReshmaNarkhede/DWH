@@ -25,7 +25,7 @@
             android:padding="@dimen/p10"
             android:singleLine="true"
             android:textColor="@color/pink"
-            android:textSize="@dimen/t20" />
+            android:textSize="@dimen/t18" />
 
         <ImageView
             android:id="@+id/cncleImg"

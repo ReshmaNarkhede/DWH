@@ -46,7 +46,7 @@ class ThankYouActivity : AppCompatActivity() {
         symptomStr = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
         ansStr = intent.getStringExtra(IntentConstants.kANSWER_DATA)
         val user = AppSessions.getLoginModel(this)
-        thankYouText.text = "Thank you ${user!!.firstName} All done! Your Report is Ready"
+        thankYouText.text = getString(R.string.thank_you_after_report,user!!.firstName)
         Log.e("Ans: ", ":: $ansStr")
         submitReport(ansStr)
     }
@@ -109,5 +109,10 @@ class ThankYouActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

@@ -116,7 +116,7 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="i_am_not_sure">I am not sure</string>
     <string name="is_symtom_assessment_was_helpful">Is symtom assessment was helpful?</string>
     <string name="have_you_taken_medicine">If you have taken any medicine, please add 😀 </string>
-    <string name="have_you_taken_test">If have have taken any test, please add 😀 </string>
+    <string name="have_you_taken_test">If  have taken any test, please add 😀 </string>
 
 
     <string name="feedback_msg">Please tell me what you don’t know about this question, So we can improve! Write and choose all the option that apply to you.
@@ -133,6 +133,7 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="search">Search...</string>
     <string name="report">Report</string>
 
+
     <array name="tick_below_text_length_5">
         <item>one</item>
         <item>two</item>
@@ -140,4 +141,7 @@ User Information. In the course of your use of the Web Site and/or the services 
         <item>four</item>
         <item>five</item>
     </array>
+
+    <string name="thank_you_after_report">Thank you %1$s All done! Your Report is Ready</string>
+
 </resources>

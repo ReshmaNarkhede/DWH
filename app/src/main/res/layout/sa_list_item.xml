@@ -42,11 +42,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/dateTxt"
         android:layout_marginStart="@dimen/m40"
-        android:layout_marginEnd="@dimen/m20"
+        android:layout_marginEnd="@dimen/m30"
         android:layout_marginBottom="@dimen/m20"
         android:background="@drawable/black_border"
         android:orientation="vertical"
-        android:padding="@dimen/p10">
+        android:padding="@dimen/p7">
 
         <TextView
             android:id="@+id/symptomTxt"

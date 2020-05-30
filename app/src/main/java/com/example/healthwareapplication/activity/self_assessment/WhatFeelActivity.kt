@@ -10,6 +10,7 @@ import com.example.healthwareapplication.R.layout.activity_what_feel_detail
 import com.example.healthwareapplication.adapter.self_assessment.SelectedSymptomAdapter
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_what_feel_detail.*
 import org.json.JSONArray
@@ -49,25 +50,36 @@ class WhatFeelActivity : AppCompatActivity() {
         if (requestCode == 2) {
             if (data != null) {
                 val modelObj = data!!.getStringExtra(IntentConstants.kSYMPTOM_SELECTED)
-                if (symptmJsonAry.length() > 3) {
-                    AppHelper.showToast(this, "You are not able to add more symptom")
-                } else {
-                    symptmJsonAry.put(JSONObject(modelObj!!))
-                    symptomList.adapter!!.notifyDataSetChanged()
-                    showBottom()
-                }
+                addToList(modelObj)
             }
         }
         if (requestCode == 3) {
             if (data != null) {
                 val modelObj = data!!.getStringExtra(IntentConstants.kSYMPTOM_SELECTED)
-                if (symptmJsonAry.length() > 3) {
-                    AppHelper.showToast(this, "You are not able to add more symptom")
-                } else {
-                    symptmJsonAry.put(JSONObject(modelObj!!))
-                    symptomList.adapter!!.notifyDataSetChanged()
-                    showBottom()
+                addToList(modelObj)
+            }
+        }
+    }
+
+    private fun addToList(modelObj: String?) {
+        var isAllow:Boolean = true
+        if (symptmJsonAry.length() > 3) {
+            AppHelper.showToast(this, "You are not able to add more symptom")
+        } else {
+            if (symptmJsonAry.length() > 0) {
+                val obj = SymptomJsonModel(JSONObject(modelObj!!))
+                for (i in 0 until symptmJsonAry.length()) {
+                    val selectedSymptmObj = SymptomJsonModel(symptmJsonAry.getJSONObject(i))
+                    if (selectedSymptmObj.getName().equals(obj.getName(), false)) {
+                        AppHelper.showToast(this, "You are not able to add same symptom again")
+                        isAllow = false
+                    }
                 }
+            }
+            if(isAllow) {
+                symptmJsonAry.put(JSONObject(modelObj!!))
+                symptomList.adapter!!.notifyDataSetChanged()
+                showBottom()
             }
         }
     }
@@ -86,7 +98,6 @@ class WhatFeelActivity : AppCompatActivity() {
     }
 
     private fun showBottom() {
-        Log.e("Show bottom: ", " " + symptmJsonAry.length())
         nextBtn.visibility = View.VISIBLE
     }
 
