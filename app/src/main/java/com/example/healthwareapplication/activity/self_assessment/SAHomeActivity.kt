@@ -24,6 +24,8 @@ import retrofit2.Response
 class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
     var pageCount = 1
 
+    var allowRefresh: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_s_a_home)
@@ -105,5 +107,18 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             })
         list.adapter = adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (allowRefresh) {
+            allowRefresh = false
+            fetchList(pageCount)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (!allowRefresh) allowRefresh = true
     }
 }

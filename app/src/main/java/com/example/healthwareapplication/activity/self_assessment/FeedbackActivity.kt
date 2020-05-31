@@ -34,4 +34,9 @@ class FeedbackActivity : AppCompatActivity() {
     fun reportClick(view: View) {
         finish()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
 }

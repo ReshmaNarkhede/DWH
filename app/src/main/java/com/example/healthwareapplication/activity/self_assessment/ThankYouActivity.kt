@@ -56,7 +56,6 @@ class ThankYouActivity : AppCompatActivity() {
         intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptomStr)
         intent.putExtra(IntentConstants.kANSWER_DATA,ansStr)
         startActivity(intent)
-        finish()
     }
 
 
@@ -113,6 +112,9 @@ class ThankYouActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+//        finish()
+        val intent = Intent(this,SAHomeActivity::class.java)
+        startActivity(intent)
         finish()
     }
 }

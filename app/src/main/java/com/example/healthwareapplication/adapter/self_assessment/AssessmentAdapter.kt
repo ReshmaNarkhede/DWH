@@ -11,7 +11,8 @@ import kotlinx.android.synthetic.main.assessment_list_item.view.*
 import org.json.JSONArray
 import org.json.JSONObject
 
-class AssessmentAdapter(val dataArr: JSONArray?) : RecyclerView.Adapter<AssessmentAdapter.ViewHolder>() {
+class AssessmentAdapter(val dataArr: JSONArray?, val isHome: Boolean) :
+    RecyclerView.Adapter<AssessmentAdapter.ViewHolder>() {
 
     val dataArray: JSONArray? = dataArr
 
@@ -36,9 +37,15 @@ class AssessmentAdapter(val dataArr: JSONArray?) : RecyclerView.Adapter<Assessme
             position: Int,
             jsonObject: JSONObject
         ) {
-            val model = ReportData(jsonObject)
-            itemView.questionTxt.text = model.getQuestion()
-            itemView.answerTxt.text = model.getAnswer()
+            if (isHome) {
+                val model = ReportData(jsonObject)
+                itemView.questionTxt.text = model.getQuestion()
+                itemView.answerTxt.text = model.getAnswer()
+            } else {
+                val model = QuestionData.QuestionAnsModel(jsonObject)
+                itemView.questionTxt.text = model.getQuestion()
+                itemView.answerTxt.text = model.getSelectedAnswer()
+            }
         }
     }
 }

@@ -70,7 +70,7 @@ class WhatFeelActivity : AppCompatActivity() {
                 val obj = SymptomJsonModel(JSONObject(modelObj!!))
                 for (i in 0 until symptmJsonAry.length()) {
                     val selectedSymptmObj = SymptomJsonModel(symptmJsonAry.getJSONObject(i))
-                    if (selectedSymptmObj.getName().equals(obj.getName(), false)) {
+                    if (selectedSymptmObj.getName().equals(obj.getName(), true)) {
                         AppHelper.showToast(this, "You are not able to add same symptom again")
                         isAllow = false
                     }

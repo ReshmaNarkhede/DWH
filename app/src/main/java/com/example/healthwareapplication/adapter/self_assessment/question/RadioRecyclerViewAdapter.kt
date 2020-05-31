@@ -31,7 +31,7 @@ class RadioRecyclerViewAdapter(ansAry: List<String>, private val itemClickListen
         fun bindView(
             position: Int, ansAry: List<String>,
             clickListener: RecyclerItemClickListener.OnItemClickListener) {
-            itemView.textView.text = ansAry[position]
+            itemView.textView.text = ansAry[position].replace("\\'","'")
 
             itemView.textView.setOnClickListener(View.OnClickListener {
                 clickListener.onItemClick(itemView,position)

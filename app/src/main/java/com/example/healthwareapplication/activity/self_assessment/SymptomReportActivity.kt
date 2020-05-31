@@ -57,12 +57,18 @@ class SymptomReportActivity : AppCompatActivity() {
         symptomTxt.text = finalStr.toString().replaceFirst(delimiter, "")
 
         assesmentList.layoutManager = LinearLayoutManager(this)
-        val addAdapter = AssessmentAdapter(answerAry!!)
+        val addAdapter = AssessmentAdapter(answerAry!!, false)
         assesmentList.adapter = addAdapter
     }
 
     fun okClick(view: View) {
         val intent = Intent(this, FeedbackActivity::class.java)
         startActivity(intent)
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this,SAHomeActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

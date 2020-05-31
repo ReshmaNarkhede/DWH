@@ -35,7 +35,6 @@ import retrofit2.Response
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
-//    private var drawable: Drawable? = null
 
     private lateinit var symptmJsonAry: JSONArray
     private var ansJsonObj: JSONObject? = JSONObject()
@@ -58,8 +57,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-
-//        drawable = ContextCompat.getDrawable(this, R.drawable.answer_border)
 
     }
 
@@ -85,8 +82,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         val assessmentTime = AppSettings.getStringValue(this, IntentConstants.kASSESSMENT_TIME)
 
         answerTxt.text = "$assessmentDate, $assessmentTime"
-//        answerTxt.background = drawable
-//        answerTxt.setPadding(30, 15, 30, 15)
         answerTxt.setOnClickListener(this)
     }
 
@@ -122,7 +117,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                         setOuterLoop(outerIndex)
                     } else {
                         questionTxt.text = "No question for this Symptom."
-//                        AppHelper.showToast(this@QuestionActivity, responseModel.getMessage().toString())
                     }
                 }
             }
@@ -146,12 +140,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
         ansJsonObj = ansJObj
         val ansObj = QuestionData.QuestionAnsModel(ansJsonObj!!)
-//        if (ansObj.getSelectedAnswer()!!.isNotEmpty()) {
-////            answerTxt.background = drawable
-////            answerTxt.setPadding(30, 15, 30, 15)
-//        } else {
-//            answerTxt.background = null
-//        }
         if (index!! > 0) {
             answerTxt.text = ansObj.getSelectedAnswer()
         } else {
@@ -176,15 +164,15 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         val radioRecyclerAdapter = RadioRecyclerViewAdapter(
             result,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
-                val ansObj = result[position]
+                val ansObj = result[position].replace("\\'","'")
                 qObj!!.put("selected_answer", ansObj)
 
-                if (ansObj.contains("know")) {
+                if (ansObj.contains("Don't know")) {
 
                     val intent = Intent(this, DontKnowActivity::class.java)
                     startActivityForResult(intent, 201)
 
-                } else if (qModel.getAnswer() == "any") {
+                } else if (qModel.getAnswer()!!.equals("any",true)){
                     Log.e("RadioAns: $innerIndex", ": $ansObj")
                     if (innerIndex!! < (QArray!!.length() - 1)) {
                         innerIndex = innerIndex!!.plus(1)
@@ -195,7 +183,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                         intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptmJsonAry.toString())
                         intent.putExtra(IntentConstants.kANSWER_DATA, ansJsonAry.toString())
                         startActivity(intent)
-                        finish()
                     }
                     ansJsonAry!!.put(qObj)
                 }

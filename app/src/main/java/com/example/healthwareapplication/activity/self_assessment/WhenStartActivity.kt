@@ -88,4 +88,9 @@ class WhenStartActivity : AppCompatActivity() {
     fun symptomClick(view: View) {
         finish()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
 }

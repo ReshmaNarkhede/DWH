@@ -91,6 +91,7 @@
         android:layout_marginEnd="@dimen/m20"
         android:layout_marginBottom="@dimen/m10"
         android:background="@drawable/black_border"
+        android:textCursorDrawable="@null"
         android:gravity="top|start"
         android:hint="@string/type_to_give_more_details"
         android:inputType="textMultiLine"

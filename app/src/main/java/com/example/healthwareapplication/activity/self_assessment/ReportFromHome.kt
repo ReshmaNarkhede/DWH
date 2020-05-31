@@ -107,7 +107,7 @@ class ReportFromHome : AppCompatActivity() {
 
     private fun bindList(reportAry: JSONArray?) {
         assesmentList.layoutManager = LinearLayoutManager(this)
-        val addAdapter = AssessmentAdapter(reportAry!!)
+        val addAdapter = AssessmentAdapter(reportAry!!,true)
         assesmentList.adapter = addAdapter
     }
 
