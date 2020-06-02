@@ -48,9 +48,10 @@ class WhenStartActivity : AppCompatActivity() {
 
     fun whenDateClick(view: View) {
         val listner = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            whenStartDate.text = "$dayOfMonth/$monthOfYear/$year"
+            val month = monthOfYear + 1
+            whenStartDate.text = "$dayOfMonth/$month/$year"
             DialogUtility.hideProgressDialog()
-            Log.e("Time: ", " : ${whenStartTime.text}")
+            Log.e("when Date: ", " : ${whenStartDate.text}")
             if (whenStartTime.text.toString() == resources.getString(R.string.time)) {
                 AppHelper.showToast(this, "Please select the time.")
             } else {
@@ -66,7 +67,7 @@ class WhenStartActivity : AppCompatActivity() {
                 whenStartTime.text =
                     "${SimpleDateFormat("hh:mm a").format(SimpleDateFormat("hh:mm").parse("${selectedHour}:${selectedMinute}"))}"
                 DialogUtility.hideProgressDialog()
-                Log.e("Time: ", " : ${whenStartDate.text}")
+                Log.e("when Time: ", " : ${whenStartTime.text}")
                 if (whenStartDate.text.toString() == resources.getString(R.string.date)) {
                     AppHelper.showToast(this, "Please select the date.")
                 } else {

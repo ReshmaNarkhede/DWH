@@ -103,6 +103,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/symptomList"
             android:layout_width="match_parent"
+            android:overScrollMode="never"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/m15"
             android:layout_marginBottom="@dimen/m10"

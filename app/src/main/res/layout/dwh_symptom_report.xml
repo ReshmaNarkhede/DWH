@@ -101,7 +101,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:layout_margin="@dimen/m10"
-                android:gravity="center"
                 android:textColor="@color/label_text_color"
                 android:text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups"
                 android:textSize="@dimen/t17" />
@@ -120,6 +119,7 @@
                 android:id="@+id/assesmentList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:overScrollMode="never"
                 android:layout_margin="@dimen/m10"
                 tools:listitem="@layout/assessment_list_item"/>
 
@@ -128,7 +128,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/m20"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:layout_margin="@dimen/m10"
                 android:text="You might have condition that is not suggested here. your assessment is ready here. if you have any concern about your health please consult nearest doctor."
                 android:textSize="@dimen/t18" />
@@ -140,9 +139,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_margin="@dimen/m20"
+                android:paddingStart="@dimen/p25"
+                android:paddingEnd="@dimen/p25"
                 android:textColor="@color/pink"
-                android:onClick="okClick"
-                android:textSize="@dimen/t20" />
+                android:onClick="okClick"/>
 
 
         </LinearLayout>

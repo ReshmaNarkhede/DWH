@@ -64,7 +64,6 @@ class AppHelper {
             return arr
         }
         fun getAge(year: String, month: String, day: String): String? {
-            Log.e("Date: ", "$year, $month, $day")
             val dob: Calendar = Calendar.getInstance()
             val today: Calendar = Calendar.getInstance()
             dob.set(year.toInt(), month.toInt(), day.toInt())

@@ -1,31 +1,6 @@
 package com.example.healthwareapplication.activity.self_assessment
 
-import android.graphics.Color
-import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import app.frats.android.models.response.ResponseModel
-import com.example.healthwareapplication.R
-import com.example.healthwareapplication.adapter.self_assessment.question.CheckRecyclerViewAdapter
-import com.example.healthwareapplication.adapter.self_assessment.question.RadioRecyclerViewAdapter
-import com.example.healthwareapplication.api.ApiClient
-import com.example.healthwareapplication.api.ApiInterface
-import com.example.healthwareapplication.app_utils.*
-import com.example.healthwareapplication.constants.AppConstants
-import com.example.healthwareapplication.model.self_assessment.QuestionData
-import com.google.gson.JsonObject
-import com.warkiz.widget.*
-import org.json.JSONArray
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class QuestionDemoActivity : AppCompatActivity() {

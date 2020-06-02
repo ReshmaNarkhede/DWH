@@ -27,7 +27,6 @@ import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.richpath.RichPath
 import kotlinx.android.synthetic.main.activity_add_symptom.*
-import kotlinx.android.synthetic.main.activity_search_symptom.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -258,7 +257,7 @@ class BodySymptomActivity : AppCompatActivity(),View.OnClickListener {
         dialog.show()
     }
 
-    fun backClick(view: View) {
+    fun backImgClick(view: View) {
         finish()
     }
 }

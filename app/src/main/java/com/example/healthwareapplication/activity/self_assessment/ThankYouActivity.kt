@@ -78,7 +78,7 @@ class ThankYouActivity : AppCompatActivity() {
         AppHelper.printParam("submit PAram:", param)
 
         val call: Call<JsonObject> = apiService.submitSelfData(param)
-        DialogUtility.showProgressDialog(this)
+//        DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
@@ -87,7 +87,7 @@ class ThankYouActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     AppHelper.printResponse("submit REs:", response)
 
-                    DialogUtility.hideProgressDialog()
+//                    DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
@@ -103,7 +103,7 @@ class ThankYouActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
                 if (t is NoConnectivityException) {
-                    DialogUtility.hideProgressDialog()
+//                    DialogUtility.hideProgressDialog()
                     AppHelper.showNetNotAvailable(this@ThankYouActivity)
                 }
             }

@@ -44,7 +44,9 @@
         android:layout_marginStart="@dimen/m10"
         android:layout_marginTop="@dimen/m10"
         android:layout_marginEnd="@dimen/m10"
+        android:paddingTop="@dimen/p3"
         android:buttonTint="@color/pink"
+        android:gravity="start"
         android:text="@string/i_don_t_understand_the_question"
         android:textSize="@dimen/t16" />
 
@@ -54,7 +56,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/m10"
         android:layout_marginTop="@dimen/m10"
+        android:gravity="top"
         android:layout_marginEnd="@dimen/m10"
+        android:paddingTop="@dimen/p3"
         android:buttonTint="@color/pink"
         android:text="@string/the_question_doesn_t_feel_relevant_to_me"
         android:textSize="@dimen/t16" />
@@ -66,6 +70,8 @@
         android:layout_marginStart="@dimen/m10"
         android:layout_marginTop="@dimen/m10"
         android:layout_marginEnd="@dimen/m10"
+        android:paddingTop="@dimen/p3"
+        android:gravity="top"
         android:buttonTint="@color/pink"
         android:text="@string/need_improve_answer"
         android:textSize="@dimen/t16" />
@@ -77,7 +83,9 @@
         android:layout_marginStart="@dimen/m10"
         android:layout_marginTop="@dimen/m10"
         android:layout_marginEnd="@dimen/m10"
+        android:paddingTop="@dimen/p3"
         android:buttonTint="@color/pink"
+        android:gravity="top"
         android:text="@string/i_want_to_choose_multiple_answers"
         android:textSize="@dimen/t16" />
 
@@ -112,9 +120,7 @@
         android:layout_marginEnd="@dimen/m20"
         android:layout_marginBottom="@dimen/m20"
         android:onClick="nxtQueClick"
-        android:paddingStart="@dimen/p20"
-        android:paddingTop="@dimen/p5"
-        android:paddingEnd="@dimen/p20"
-        android:paddingBottom="@dimen/p5"
+        android:paddingStart="@dimen/p25"
+        android:paddingEnd="@dimen/p25"
         android:text="@string/next_question" />
 </LinearLayout>

@@ -20,7 +20,7 @@
         android:id="@+id/rotate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/layout"
+        android:layout_above="@+id/backImg"
         android:layout_alignParentEnd="true"
         android:layout_margin="@dimen/m10"
         android:drawableStart="@android:drawable/ic_menu_rotate"
@@ -29,7 +29,18 @@
         android:text="@string/rotate_model"
         android:textSize="@dimen/t18" />
 
-    <include
-        android:id="@+id/layout"
-        layout="@layout/bottom_layout" />
+    <ImageView
+        android:id="@+id/backImg"
+        android:layout_width="@dimen/h35"
+        android:layout_height="@dimen/h35"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:scaleType="center"
+        android:layout_marginTop="@dimen/m5"
+        android:layout_marginEnd="@dimen/m10"
+        android:layout_marginBottom="@dimen/m10"
+        android:paddingStart="@dimen/p20"
+        android:onClick="backImgClick"
+        android:paddingEnd="@dimen/p20"
+        android:background="@drawable/ic_left_black_24dp" />
 </RelativeLayout>

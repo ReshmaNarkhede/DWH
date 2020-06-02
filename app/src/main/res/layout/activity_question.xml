@@ -51,6 +51,7 @@
             android:layout_gravity="end"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/m10"
+            android:overScrollMode="never"
             tools:listitem="@layout/radio_item"
             tools:itemCount="5"/>
 
