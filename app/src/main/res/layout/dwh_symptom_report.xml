@@ -140,9 +140,7 @@
                 android:layout_gravity="end"
                 android:onClick="okClick"/>
 
-
         </LinearLayout>
-
 
     </androidx.core.widget.NestedScrollView>
 

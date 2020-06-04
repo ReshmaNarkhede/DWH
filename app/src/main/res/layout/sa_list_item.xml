@@ -33,7 +33,7 @@
         android:textSize="@dimen/t15" />
     <View
         android:layout_width="1dp"
-        android:layout_height="@dimen/h134"
+        android:layout_height="@dimen/h125"
         android:layout_below="@+id/img"
         android:background="@color/label_text_color"
         android:layout_marginStart="@dimen/m15"/>
