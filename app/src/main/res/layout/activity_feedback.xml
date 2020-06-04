@@ -38,7 +38,7 @@
             android:id="@+id/thankYouText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/m15"
+            android:layout_margin="@dimen/m10"
             android:padding="@dimen/p5"
             android:text="@string/is_symtom_assessment_was_helpful"
             android:textColor="@color/label_text_color"
@@ -50,52 +50,28 @@
             android:layout_gravity="end"
             android:layout_margin="@dimen/m10"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="@dimen/p7">
 
             <Button
                 android:id="@+id/yesBtn"
                 style="@style/CustomButtonTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_margin="@dimen/m8"
                 android:onClick="yesClick"
-                android:paddingStart="@dimen/p25"
-                android:paddingTop="@dimen/p10"
-                android:paddingEnd="@dimen/p25"
-                android:paddingBottom="@dimen/p10"
-                android:text="@string/yes"
-                android:textColor="@color/pink" />
+                android:text="@string/yes" />
 
             <Button
                 android:id="@+id/noBtn"
                 style="@style/CustomButtonTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_margin="@dimen/m8"
                 android:onClick="noClick"
-                android:paddingStart="@dimen/p25"
-                android:paddingTop="@dimen/p10"
-                android:paddingEnd="@dimen/p25"
-                android:paddingBottom="@dimen/p10"
-                android:text="@string/no"
-                android:textColor="@color/pink" />
+                android:text="@string/no" />
 
             <Button
                 android:id="@+id/notSureBtn"
                 style="@style/CustomButtonTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_margin="@dimen/m8"
                 android:onClick="notSureClick"
-                android:paddingStart="@dimen/p25"
-                android:paddingTop="@dimen/p10"
-                android:paddingEnd="@dimen/p25"
-                android:paddingBottom="@dimen/p10"
-                android:text="@string/i_am_not_sure"
-                android:textColor="@color/pink" />
+                android:text="@string/i_am_not_sure"/>
         </LinearLayout>
 
         <include

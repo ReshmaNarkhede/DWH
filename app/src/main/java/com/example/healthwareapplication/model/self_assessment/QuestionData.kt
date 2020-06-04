@@ -1,6 +1,5 @@
 package com.example.healthwareapplication.model.self_assessment
 
-import android.text.TextUtils
 import android.util.Log
 import org.json.JSONArray
 import org.json.JSONException
@@ -48,6 +47,11 @@ class QuestionData(json: JSONObject) {
             return dataJSONObj!!.optString("ans_options")
         }
 
+        fun getAnswerOptionsList(): List<String> {
+            val words = getAnswerOptions().split("#").toMutableList()
+            return words
+        }
+
         fun getQuestionType(): String? {
             return dataJSONObj!!.optString("ans_type")
         }
@@ -67,7 +71,6 @@ class QuestionData(json: JSONObject) {
         fun getCreatedAt(): String? {
             return dataJSONObj!!.optString("created_at")
         }
-
     }
 
     fun parseGroupedQuestionArray(productList: JSONArray?): JSONArray? {

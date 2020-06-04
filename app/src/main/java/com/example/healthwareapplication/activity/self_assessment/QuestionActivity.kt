@@ -141,7 +141,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         ansJsonObj = ansJObj
         val ansObj = QuestionData.QuestionAnsModel(ansJsonObj!!)
         if (index!! > 0) {
-            answerTxt.text = ansObj.getSelectedAnswer()
+            answerTxt.text = ansObj.getSelectedAnswer()!!.toLowerCase().split(' ').joinToString(" ") { it.capitalize() }
         } else {
             setDateAnswer()
         }
@@ -159,8 +159,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         val qModel = QuestionData.QuestionAnsModel(qObj)
         val recyclerLayoutManager = LinearLayoutManager(this)
         radioList.layoutManager = recyclerLayoutManager
-        val str = qModel.getAnswerOptions()
-        val result: List<String> = str!!.split("#")
+        val result: List<String> = qModel.getAnswerOptionsList()
         val radioRecyclerAdapter = RadioRecyclerViewAdapter(
             result,
             RecyclerItemClickListener.OnItemClickListener { view, position ->

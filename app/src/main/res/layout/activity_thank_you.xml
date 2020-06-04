@@ -25,20 +25,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/m15"
-            android:textColor="@color/label_text_color"
             android:text="@string/label"
+            android:textColor="@color/label_text_color"
             android:textSize="@dimen/t20" />
 
         <Button
             android:id="@+id/okayBtn"
             style="@style/CustomButtonTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginTop="@dimen/m20"
-            android:layout_marginBottom="@dimen/m20"
-            android:textColor="@color/pink"
-            android:layout_marginEnd="@dimen/m5"
+            android:layout_margin="@dimen/m10"
             android:onClick="okClick"
             android:text="@string/okeh" />
 

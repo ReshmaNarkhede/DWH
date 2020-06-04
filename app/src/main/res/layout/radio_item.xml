@@ -6,38 +6,25 @@
     android:layout_gravity="end"
     android:orientation="vertical">
 
-    <TextView
+    <Button
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_selector"
-        android:layout_alignParentEnd="true"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/m5"
-        android:layout_marginBottom="@dimen/m5"
-        android:layout_marginEnd="@dimen/m5"
-        android:paddingStart="@dimen/p25"
-        android:paddingTop="@dimen/p10"
-        android:paddingEnd="@dimen/p25"
-        android:textColor="@color/pink"
-        android:paddingBottom="@dimen/p10"
-        android:text="@string/label"
-        android:textSize="@dimen/t16" />
+        style="@style/CustomButtonTheme"
+        android:text="@string/label" />
 </RelativeLayout>
 
 
-<!--<TextView xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:id="@+id/textView"-->
-<!--    style="@style/CustomButtonTheme"-->
-<!--    android:layout_width="wrap_content"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:layout_gravity="end"-->
-<!--    android:layout_margin="@dimen/m8"-->
-<!--    android:gravity="end"-->
-<!--    android:onClick="yesClick"-->
-<!--    android:paddingStart="@dimen/p20"-->
-<!--    android:paddingTop="@dimen/p10"-->
-<!--    android:paddingEnd="@dimen/p20"-->
-<!--    android:paddingBottom="@dimen/p10"-->
-<!--    android:text="@string/label"-->
-<!--    android:textColor="@color/pink" />-->
+    <!--<TextView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    android:id="@+id/textView"-->
+    <!--    style="@style/CustomButtonTheme"-->
+    <!--    android:layout_width="wrap_content"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:layout_gravity="end"-->
+    <!--    android:layout_margin="@dimen/m8"-->
+    <!--    android:gravity="end"-->
+    <!--    android:onClick="yesClick"-->
+    <!--    android:paddingStart="@dimen/p20"-->
+    <!--    android:paddingTop="@dimen/p10"-->
+    <!--    android:paddingEnd="@dimen/p20"-->
+    <!--    android:paddingBottom="@dimen/p10"-->
+    <!--    android:text="@string/label"-->
+    <!--    android:textColor="@color/pink" />-->

@@ -37,7 +37,6 @@
             android:id="@+id/timeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/m10"
             android:orientation="vertical"
             android:paddingTop="@dimen/p10"
             android:paddingBottom="@dimen/p10"
@@ -55,36 +54,20 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/m10"
                 android:orientation="vertical"
                 android:layout_gravity="end"
-                android:layout_marginEnd="@dimen/m10"
-                android:layout_marginTop="@dimen/m10"
                 android:padding="@dimen/p10">
 
                 <Button
                     android:id="@+id/whenStartDate"
                     style="@style/CustomButtonTheme"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/m7"
-                    android:onClick="whenDateClick"
-                    android:paddingStart="@dimen/p30"
-                    android:paddingEnd="@dimen/p30"
                     android:text="@string/date"
+                    android:onClick="whenDateClick"
                     android:textColor="@color/pink" />
 
                 <Button
                     android:id="@+id/whenStartTime"
                     style="@style/CustomButtonTheme"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/p30"
-                    android:paddingEnd="@dimen/p30"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/m7"
-                    android:textColor="@color/pink"
                     android:onClick="whenTimeClick"
                     android:text="@string/time" />
             </LinearLayout>
