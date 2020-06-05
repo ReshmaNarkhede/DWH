@@ -14,10 +14,7 @@ import com.example.healthwareapplication.R.layout.activity_search_symptom
 import com.example.healthwareapplication.adapter.self_assessment.SearchSymptomAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
-import com.example.healthwareapplication.app_utils.AppHelper
-import com.example.healthwareapplication.app_utils.DialogUtility
-import com.example.healthwareapplication.app_utils.NoConnectivityException
-import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
+import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_search_symptom.*
@@ -71,6 +68,7 @@ class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
 
         val param = JsonObject()
         param.addProperty("search", search)
+        param.addProperty( "gender", AppSessions.getUserSex(this))
         AppHelper.printParam("SEARCH PAram:", param)
 
         val call: Call<JsonObject> = apiService.getSearchSymptomsByName(param)

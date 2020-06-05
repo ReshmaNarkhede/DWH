@@ -30,14 +30,14 @@
             android:orientation="vertical"
             android:padding="@dimen/p10">
 
-            <Button
+            <TextView
                 android:id="@+id/searchBtn"
                 style="@style/CustomButtonTheme"
                 android:onClick="searchClick"
                 android:layout_gravity="end"
                 android:text="@string/search_feel" />
 
-            <Button
+            <TextView
                 android:id="@+id/addSymptomBtn"
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
@@ -56,7 +56,7 @@
             android:visibility="visible"
             tools:itemCount="4" />
 
-        <Button
+        <TextView
             android:id="@+id/nextBtn"
             style="@style/CustomButtonTheme"
             android:onClick="clickNext"

@@ -22,11 +22,24 @@
         <item name="android:layout_marginEnd">@dimen/m5</item>
         <item name="android:paddingStart">@dimen/p25</item>
         <item name="android:paddingEnd">@dimen/p25</item>
-        <item name="android:paddingTop">@dimen/p10</item>
-        <item name="android:paddingBottom">@dimen/p10</item>
+        <item name="android:paddingTop">@dimen/p7</item>
+        <item name="android:paddingBottom">@dimen/p7</item>
         <item name="android:layout_alignParentEnd">true</item>
     </style>
 
+    <style name="AnswerButtonTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/answer_border</item>
+        <item name="android:textColor">@color/ans_text_color</item>
+        <item name="android:layout_margin">@dimen/m10</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/t16</item>
+        <item name="android:paddingStart">@dimen/p25</item>
+        <item name="android:paddingEnd">@dimen/p25</item>
+        <item name="android:paddingTop">@dimen/p7</item>
+        <item name="android:paddingBottom">@dimen/p7</item>
+    </style>
 
     <style name="EditTextTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorControlNormal">@color/grey</item>

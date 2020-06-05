@@ -57,7 +57,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-
     }
 
     private fun defaultConfiguration() {

@@ -15,17 +15,9 @@
 
         <TextView
             android:id="@+id/reportTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/m10"
-            android:background="@drawable/answer_border"
+            style="@style/AnswerButtonTheme"
             android:onClick="reportClick"
-            android:paddingStart="@dimen/p25"
-            android:paddingTop="@dimen/p10"
-            android:paddingEnd="@dimen/p25"
-            android:paddingBottom="@dimen/p10"
-            android:text="@string/report"
-            android:textColor="@color/ans_text_color" />
+            android:text="@string/report" />
 
         <ImageView
             android:layout_width="@dimen/h100"
@@ -52,21 +44,21 @@
             android:orientation="vertical"
             android:padding="@dimen/p7">
 
-            <Button
+            <TextView
                 android:id="@+id/yesBtn"
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
                 android:onClick="yesClick"
                 android:text="@string/yes" />
 
-            <Button
+            <TextView
                 android:id="@+id/noBtn"
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
                 android:onClick="noClick"
                 android:text="@string/no" />
 
-            <Button
+            <TextView
                 android:id="@+id/notSureBtn"
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"

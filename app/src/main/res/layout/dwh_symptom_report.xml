@@ -133,7 +133,7 @@
                 android:text="You might have condition that is not suggested here. your assessment is ready here. if you have any concern about your health please consult nearest doctor."
                 android:textSize="@dimen/t18" />
 
-            <Button
+            <TextView
                 android:id="@+id/okayBtn"
                 style="@style/CustomButtonTheme"
                 android:layout_marginBottom="@dimen/m10"

@@ -6,25 +6,12 @@
     android:layout_gravity="end"
     android:orientation="vertical">
 
-    <Button
+    <TextView
         android:id="@+id/textView"
         style="@style/CustomButtonTheme"
         android:text="@string/label" />
+
 </RelativeLayout>
 
 
-    <!--<TextView xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--    android:id="@+id/textView"-->
-    <!--    style="@style/CustomButtonTheme"-->
-    <!--    android:layout_width="wrap_content"-->
-    <!--    android:layout_height="wrap_content"-->
-    <!--    android:layout_gravity="end"-->
-    <!--    android:layout_margin="@dimen/m8"-->
-    <!--    android:gravity="end"-->
-    <!--    android:onClick="yesClick"-->
-    <!--    android:paddingStart="@dimen/p20"-->
-    <!--    android:paddingTop="@dimen/p10"-->
-    <!--    android:paddingEnd="@dimen/p20"-->
-    <!--    android:paddingBottom="@dimen/p10"-->
-    <!--    android:text="@string/label"-->
-    <!--    android:textColor="@color/pink" />-->
+
