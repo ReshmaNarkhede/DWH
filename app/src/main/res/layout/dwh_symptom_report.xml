@@ -10,7 +10,7 @@
         android:id="@+id/userDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/m10"
+        android:layout_marginTop="@dimen/m7"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -68,7 +68,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/userDetail"
         android:layout_centerHorizontal="true"
-        android:padding="@dimen/m2"
+        android:paddingBottom="@dimen/p7"
+        android:layout_marginBottom="@dimen/m7"
         android:text="@string/label"
         android:textColor="@color/label_text_color"
         android:textSize="@dimen/t18" />

@@ -26,10 +26,12 @@
                 android:visibility="visible" />
 
             <ImageView
-                android:layout_width="@dimen/h100"
+                android:layout_width="@dimen/h120"
                 android:layout_height="@dimen/h100"
                 android:layout_margin="@dimen/m10"
-                android:background="@drawable/dwh_logo"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:background="@drawable/dwh_logo_1"
                 android:visibility="visible" />
 
             <TextView

@@ -16,24 +16,21 @@
         android:tint="@color/black"
         android:src="@drawable/ic_add"
         android:layout_marginTop="@dimen/m10"/>
-
     <TextView
         android:id="@+id/dateTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/m30"
-        android:layout_marginTop="@dimen/m10"
+        android:layout_marginStart="@dimen/m40"
+        android:layout_marginTop="@dimen/m15"
         android:layout_marginEnd="@dimen/m20"
-        android:layout_marginBottom="@dimen/m10"
-        android:padding="@dimen/p5"
+        android:layout_marginBottom="@dimen/m5"
         android:paddingStart="@dimen/p15"
-        style="@style/TextViewTheme"
         android:paddingEnd="@dimen/p5"
         android:text="@string/label"
         android:textSize="@dimen/t15" />
     <View
         android:layout_width="1dp"
-        android:layout_height="@dimen/h125"
+        android:layout_height="@dimen/h90"
         android:layout_below="@+id/img"
         android:background="@color/label_text_color"
         android:layout_marginStart="@dimen/m15"/>
@@ -42,20 +39,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/dateTxt"
         android:layout_marginStart="@dimen/m40"
-        android:layout_marginEnd="@dimen/m30"
+        android:layout_marginEnd="@dimen/m40"
         android:layout_marginBottom="@dimen/m20"
         android:background="@drawable/black_border"
         android:orientation="vertical"
-        android:padding="@dimen/p7">
+        android:padding="@dimen/p5">
 
         <TextView
             android:id="@+id/symptomTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/m10"
+            android:layout_marginStart="@dimen/m7"
             android:layout_marginTop="@dimen/m5"
             android:layout_marginEnd="@dimen/m10"
-            android:padding="@dimen/p5"
+            android:padding="@dimen/p2"
             android:text="@string/label"
             style="@style/TextViewTheme"
             android:textSize="@dimen/t18" />
@@ -64,10 +61,11 @@
             android:id="@+id/userInfoTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/m10"
-            android:layout_marginTop="@dimen/m10"
+            android:layout_marginStart="@dimen/m7"
+            android:layout_marginTop="@dimen/m5"
+            android:layout_marginBottom="@dimen/m5"
             android:layout_marginEnd="@dimen/m10"
-            android:padding="@dimen/p5"
+            android:padding="@dimen/p2"
             android:text="@string/label"
             android:textSize="@dimen/t16" />
     </LinearLayout>

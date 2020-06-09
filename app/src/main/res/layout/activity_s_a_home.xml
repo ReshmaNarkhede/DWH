@@ -14,6 +14,8 @@
         android:gravity="center"
         android:text="@string/self_assessment"
         android:textColor="@color/label_text_color"
+        android:paddingBottom="@dimen/p7"
+        android:layout_marginBottom="@dimen/m7"
         android:typeface="normal"
         android:textSize="@dimen/t18"/>
 
@@ -29,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:overScrollMode="never"
-            android:layout_margin="@dimen/m10"
             tools:listitem="@layout/sa_list_item" />
 
         <!--        <ImageView-->

@@ -24,8 +24,13 @@
         <activity android:name=".activity.self_assessment.FeedbackActivity" />
         <activity android:name=".activity.self_assessment.SymptomReportActivity" />
         <activity android:name=".activity.self_assessment.ThankYouActivity" />
-        <activity android:name=".activity.self_assessment.QuestionActivity" />
-<!--        <activity android:name=".activity.self_assessment.QuestionDemoActivity" />-->
+        <activity android:name=".activity.self_assessment.QuestionActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.self_assessment.WhatFeelActivity" />
         <activity android:name=".activity.self_assessment.BodySymptomActivity" />
         <activity android:name=".activity.account.register.RegisterTermsActivity" />
@@ -54,11 +59,7 @@
             android:name=".activity.account.register.RegisterMobNoActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.splash.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

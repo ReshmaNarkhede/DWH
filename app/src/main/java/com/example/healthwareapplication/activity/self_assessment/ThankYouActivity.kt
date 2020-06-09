@@ -48,7 +48,7 @@ class ThankYouActivity : AppCompatActivity() {
         val user = AppSessions.getLoginModel(this)
         thankYouText.text = getString(R.string.thank_you_after_report,user!!.firstName)
         Log.e("Ans: ", ":: $ansStr")
-        submitReport(ansStr)
+//        submitReport(ansStr)
     }
 
     fun okClick(view: View) {
