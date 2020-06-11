@@ -35,7 +35,6 @@ import retrofit2.Response
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
-
     private lateinit var symptmJsonAry: JSONArray
     private var ansJsonObj: JSONObject? = JSONObject()
     private var ansJsonAry: JSONArray? = JSONArray()
@@ -57,6 +56,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
+        radioList.isNestedScrollingEnabled = false
     }
 
     private fun defaultConfiguration() {
@@ -108,11 +108,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     if (responseModel.isCode()) {
                         dataAry = responseModel.getDataArray()!!
 
-                        AppSettings.setJsonArrayValue(
-                            this@QuestionActivity,
-                            AppConstants.kQUESTION_ARY,
-                            dataAry.toString()
-                        )
+                        AppSettings.setJsonArrayValue(this@QuestionActivity, AppConstants.kQUESTION_ARY, dataAry.toString())
                         setOuterLoop(outerIndex)
                     } else {
                         questionTxt.text = "No question for this Symptom."

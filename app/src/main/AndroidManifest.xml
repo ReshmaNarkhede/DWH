@@ -25,6 +25,8 @@
         <activity android:name=".activity.self_assessment.SymptomReportActivity" />
         <activity android:name=".activity.self_assessment.ThankYouActivity" />
         <activity android:name=".activity.self_assessment.QuestionActivity" >
+        </activity>
+        <activity android:name=".activity.self_assessment.QuestionDemoActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -59,7 +61,11 @@
             android:name=".activity.account.register.RegisterMobNoActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.splash.SplashActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 
