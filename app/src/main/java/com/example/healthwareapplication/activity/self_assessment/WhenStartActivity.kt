@@ -81,7 +81,7 @@ class WhenStartActivity : AppCompatActivity() {
         AppSettings.setStringValue(this,IntentConstants.kASSESSMENT_DATE,whenStartDate.text.toString())
         AppSettings.setStringValue(this,IntentConstants.kASSESSMENT_TIME,whenStartTime.text.toString())
 
-        val intent = Intent(this, QuestionActivity::class.java)
+        val intent = Intent(this, QuestionDemoActivity::class.java)
         intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptomStr)
         startActivity(intent)
     }

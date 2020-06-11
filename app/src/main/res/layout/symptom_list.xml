@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/p10"
+            android:padding="@dimen/p7"
             android:orientation="horizontal">
 
             <TextView
@@ -21,8 +22,9 @@
                 android:layout_width="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_height="wrap_content"
-                android:text="dfgf"
-                android:textSize="@dimen/t20"
+                android:text="@string/label"
+                style="@style/TextViewTheme"
+                android:textSize="@dimen/t18"
                 android:textStyle="bold"/>
 
             <ImageView

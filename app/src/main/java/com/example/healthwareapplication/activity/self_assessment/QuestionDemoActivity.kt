@@ -2,6 +2,7 @@ package com.example.healthwareapplication.activity.self_assessment
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,9 @@ import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.AppConstants
+import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.self_assessment.QuestionData
+import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_question.*
 import org.json.JSONArray
@@ -24,12 +27,14 @@ import retrofit2.Response
 
 
 class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
-
+    private lateinit var symptmJsonAry: JSONArray
     private var ansJsonObj: JSONObject? = JSONObject()
     private var ansJsonAry: JSONArray? = JSONArray()
 
-    private lateinit var questionAry: JSONArray
+    private var questionAry: JSONArray = JSONArray()
     var innerIndex: Int? = 0
+    val delimiter = ","
+    val finalStr = SpannableStringBuilder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,13 +50,26 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun defaultConfiguration() {
 
-        val searchStr = "3,61"
+        val symptomStr = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
+        symptmJsonAry = JSONArray(symptomStr)
+        for (i in 0 until symptmJsonAry.length()) {
+            val obj = SymptomJsonModel(symptmJsonAry.getJSONObject(i))
+            Log.e("ID: ", ": " + obj.getId())
+            finalStr.append(delimiter)
+            finalStr.append(obj.getId())
+        }
+        val searchStr = finalStr.toString().replaceFirst(delimiter, "")
+        Log.e("STr: ", ": $searchStr")
         fetchQuestionData(searchStr)
 
         setDateAnswer()
     }
 
     private fun setDateAnswer() {
+        val assessmentDate = AppSettings.getStringValue(this, IntentConstants.kASSESSMENT_DATE)
+        val assessmentTime = AppSettings.getStringValue(this, IntentConstants.kASSESSMENT_TIME)
+
+        answerTxt.text = "$assessmentDate, $assessmentTime"
         answerTxt.setOnClickListener(this)
     }
 
@@ -64,7 +82,7 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
         AppHelper.printParam("QUESTION PAram:", param)
 
         val call: Call<JsonObject> = apiService.getQuestions(param)
-        DialogUtility.showProgressDialog(this)
+//        DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
@@ -73,7 +91,7 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
                 if (response.isSuccessful) {
                     AppHelper.printResponse("QUESTION REs:", response)
 
-                    DialogUtility.hideProgressDialog()
+//                    DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
@@ -100,7 +118,7 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun getAllQuestion(tempAry: JSONArray?) {
-        questionAry = JSONArray()
+
         for (i in 0 until tempAry!!.length()) {
             val obj = QuestionData(tempAry.getJSONObject(i))
             for (j in 0 until obj.getQuestionAns()!!.length()) {
@@ -169,10 +187,10 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
                         setDynamicData(innerIndex, qObj)
                     } else {
                             Log.e("Ans Ary Size:", ": " + ansJsonAry!!.length())
-//                            val intent = Intent(this, ThankYouActivity::class.java)
-//                            intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptmJsonAry.toString())
-//                            intent.putExtra(IntentConstants.kANSWER_DATA, ansJsonAry.toString())
-//                            startActivity(intent)
+                            val intent = Intent(this, ThankYouActivity::class.java)
+                            intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptmJsonAry.toString())
+                            intent.putExtra(IntentConstants.kANSWER_DATA, ansJsonAry.toString())
+                            startActivity(intent)
                     }
                     ansJsonAry!!.put(qObj)
                 }

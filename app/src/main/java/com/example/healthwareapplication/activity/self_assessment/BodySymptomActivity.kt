@@ -1,11 +1,17 @@
 package com.example.healthwareapplication.activity.self_assessment
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -21,7 +27,6 @@ import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.self_assessment.BodyParts
 import com.example.healthwareapplication.model.user.UserDetailModel
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -34,11 +39,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.lang.reflect.Type
 
-class BodySymptomActivity : AppCompatActivity(),View.OnClickListener {
+
+class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var gson: Gson
     private var user: UserDetailModel? = null
-//    private lateinit var bodyImg: RichPathView
-//    private lateinit var rotate: TextView
     var image_front_back_flag = true
     var bodyPartLists = arrayListOf<BodyParts>()
 
@@ -55,39 +59,21 @@ class BodySymptomActivity : AppCompatActivity(),View.OnClickListener {
         user = AppSessions.getLoginModel(this)
         gson = Gson()
         fetchBodyParts(user!!.sex)
-
-//        bodyImg = findViewById(R.id.bodyImg)
-//        rotate = findViewById(R.id.rotate)
     }
 
     private fun defaultConfiguration() {
-//        val array = bodyImg.findAllRichPaths()
         rotate.setOnClickListener(this)
-
         setDefaultImage(user)
-
-//        bodyImg.setOnPathClickListener(RichPath.OnPathClickListener { richPath ->
-//            for (i in array.indices) {
-//                val obj: RichPath = bodyImg.findRichPathByIndex(i)!!
-//                if (richPath.name == obj.name) {
-//                    Log.e("check: ",obj.name)
-////                    getIDFromBodyPart(obj)
-//                    obj.fillColor = ContextCompat.getColor(this, R.color.body_fill)
-//                } else {
-//                    obj.fillColor = ContextCompat.getColor(this, R.color.white)
-//                    obj.strokeColor = ContextCompat.getColor(this, R.color.body_outline)
-//                }
-//            }
-//        })
     }
+
     private fun getIDFromBodyPart(obj: RichPath) {
         for (i in 0 until bodyPartLists.size) {
             val bodyParts = bodyPartLists[i]
             if (bodyParts.name!!.equals(obj.name, true)) {
-                if (image_front_back_flag && (bodyParts.side=="front")) {
+                if (image_front_back_flag && (bodyParts.side == "front")) {
                     fetchSymptom(bodyParts)
                     break
-                } else if(!image_front_back_flag && bodyParts.side.equals("back",true)){
+                } else if (!image_front_back_flag && bodyParts.side.equals("back", true)) {
                     fetchSymptom(bodyParts)
                     break
                 }
@@ -137,7 +123,7 @@ class BodySymptomActivity : AppCompatActivity(),View.OnClickListener {
             for (i in array.indices) {
                 val obj: RichPath = bodyImg.findRichPathByIndex(i)!!
                 if (richPath.name == obj.name) {
-                    Log.e("check: ",obj.name)
+                    Log.e("check: ", obj.name.trim())
                     getIDFromBodyPart(obj)
                     obj.fillColor = ContextCompat.getColor(this, R.color.body_fill)
                 } else {
@@ -155,7 +141,7 @@ class BodySymptomActivity : AppCompatActivity(),View.OnClickListener {
         val param = JsonObject()
         param.addProperty("gender", sex)
 
-        AppHelper.printParam("BODY PARTS Param:",param)
+        AppHelper.printParam("BODY PARTS Param:", param)
 
         val call: Call<JsonObject> = apiService.getBodyPart(param)
         DialogUtility.showProgressDialog(this)
@@ -163,7 +149,7 @@ class BodySymptomActivity : AppCompatActivity(),View.OnClickListener {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
 
-                AppHelper.printUrl("BODY PARTS:",response)
+                AppHelper.printUrl("BODY PARTS:", response)
 
                 if (response.isSuccessful) {
 
@@ -172,11 +158,14 @@ class BodySymptomActivity : AppCompatActivity(),View.OnClickListener {
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val bodyAry = responseModel.getDataArray()
-                        Log.e("Size: ",""+bodyAry!!.length())
+                        Log.e("Size: ", "" + bodyAry!!.length())
                         val listType: Type = object : TypeToken<List<BodyParts?>?>() {}.type
                         bodyPartLists = gson.fromJson(bodyAry.toString(), listType)
                     } else {
-                        AppHelper.showToast(this@BodySymptomActivity, responseModel.getMessage().toString())
+                        AppHelper.showToast(
+                            this@BodySymptomActivity,
+                            responseModel.getMessage().toString()
+                        )
                     }
                 }
             }
@@ -191,31 +180,35 @@ class BodySymptomActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private fun fetchSymptom(bodyParts: BodyParts) {
-        val apiService: ApiInterface = ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
+        val apiService: ApiInterface =
+            ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
 
         val param = JsonObject()
         param.addProperty("body_part_id", bodyParts.id)
-        AppHelper.printParam("SYMPTOMS PAram:",param)
-
+        AppHelper.printParam("SYMPTOMS PAram:", param)
 
         val call: Call<JsonObject> = apiService.getSymptomsByBodyPartId(param)
         DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
-                AppHelper.printUrl("SYMPTOMS URL:",response)
+                AppHelper.printUrl("SYMPTOMS URL:", response)
 
                 if (response.isSuccessful) {
-                    AppHelper.printResponse("SYMPTOMS REs:",response)
+                    AppHelper.printResponse("SYMPTOMS REs:", response)
 
                     DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val symptomAry = responseModel.getDataArray()
-                        openSymptomDialog(bodyParts,symptomAry!!)
+                        openDialog(bodyParts, symptomAry!!)
+//                        openSymptomDialog(bodyParts, symptomAry!!)
                     } else {
-                        AppHelper.showToast(this@BodySymptomActivity, responseModel.getMessage().toString())
+                        AppHelper.showToast(
+                            this@BodySymptomActivity,
+                            responseModel.getMessage().toString()
+                        )
                     }
                 }
             }
@@ -228,34 +221,97 @@ class BodySymptomActivity : AppCompatActivity(),View.OnClickListener {
             }
         })
     }
-    private fun openSymptomDialog(bodyParts: BodyParts, symptomAry: JSONArray) {
 
-        val view = layoutInflater.inflate(R.layout.symptom_list, null)
-        val dialog = BottomSheetDialog(this)
-        dialog.setContentView(view)
-        val bodyPartName: TextView = view.findViewById(R.id.bodyPartName)
-        val symptmList: RecyclerView = view.findViewById(R.id.symptmList)
-        val cncleImg: ImageView = view.findViewById(R.id.cncleImg)
+    private fun openDialog(bodyParts: BodyParts, symptomAry: JSONArray) {
+        val dialog = Dialog(this, android.R.style.Theme_Translucent_NoTitleBar)
 
-        cncleImg.setOnClickListener(View.OnClickListener {
-            dialog.dismiss()
-        })
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val displayHeight = displayMetrics.heightPixels
+        val layoutParams = WindowManager.LayoutParams()
+        layoutParams.copyFrom(dialog.window!!.attributes)
+        val dialogWindowHeight = (displayHeight * 0.5f).toInt()
+        layoutParams.height = dialogWindowHeight
+        dialog.window!!.attributes = layoutParams
+
+        val window: Window? = dialog.window
+        window!!.setGravity(Gravity.BOTTOM)
+
+//        window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+        dialog.setTitle(null)
+        dialog.setContentView(R.layout.symptom_list)
+        dialog.setCancelable(true)
+        val cncleImg: ImageView = dialog.findViewById(R.id.cncleImg)
+        val bodyPartName: TextView = dialog.findViewById(R.id.bodyPartName)
+        val symptmList: RecyclerView = dialog.findViewById(R.id.symptmList)
 
         symptmList.layoutManager = LinearLayoutManager(this)
-        val adapter = SearchSymptomAdapter(this,symptomAry!!,"",
+        val adapter = SearchSymptomAdapter(this, symptomAry!!, "",
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val modelObj = symptomAry.getJSONObject(position)
                 val resultIntent = Intent()
-                resultIntent.putExtra(IntentConstants.kSYMPTOM_SELECTED,modelObj.toString())
+                resultIntent.putExtra(IntentConstants.kSYMPTOM_SELECTED, modelObj.toString())
                 setResult(Activity.RESULT_OK, resultIntent)
                 dialog.dismiss()
                 finish()
             })
         symptmList.adapter = adapter
         bodyPartName.text = bodyParts.name
+        cncleImg.setOnClickListener(View.OnClickListener {
+            dialog.dismiss()
+        })
 
         dialog.show()
     }
+
+    /* private fun openSymptomDialog(bodyParts: BodyParts, symptomAry: JSONArray) {
+         val view = layoutInflater.inflate(R.layout.symptom_list, null)
+         val dialog = BottomSheetDialog(this)
+         dialog.setContentView(view)
+         val behavior: BottomSheetBehavior<*> =
+             BottomSheetBehavior.from(view.parent as View)
+         behavior.isHideable = false
+         behavior.setBottomSheetCallback(object : BottomSheetCallback() {
+             override fun onStateChanged(
+                 @NonNull bottomSheet: View,
+                 newState: Int
+             ) {
+                 if (newState == BottomSheetBehavior.STATE_DRAGGING) {
+                     behavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+                 }
+             }
+
+             override fun onSlide(
+                 @NonNull bottomSheet: View,
+                 slideOffset: Float
+             ) {
+                 behavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+             }
+         })
+         val bodyPartName: TextView = view.findViewById(R.id.bodyPartName)
+         val symptmList: RecyclerView = view.findViewById(R.id.symptmList)
+         val cncleImg: ImageView = view.findViewById(R.id.cncleImg)
+
+         symptmList.setHasFixedSize(true)
+         cncleImg.setOnClickListener(View.OnClickListener {
+             dialog.dismiss()
+         })
+
+         symptmList.layoutManager = LinearLayoutManager(this)
+         val adapter = SearchSymptomAdapter(this, symptomAry!!, "",
+             RecyclerItemClickListener.OnItemClickListener { view, position ->
+                 val modelObj = symptomAry.getJSONObject(position)
+                 val resultIntent = Intent()
+                 resultIntent.putExtra(IntentConstants.kSYMPTOM_SELECTED, modelObj.toString())
+                 setResult(Activity.RESULT_OK, resultIntent)
+                 dialog.dismiss()
+                 finish()
+             })
+         symptmList.adapter = adapter
+         bodyPartName.text = bodyParts.name
+
+         dialog.show()
+     }*/
 
     fun backImgClick(view: View) {
         finish()
