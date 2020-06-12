@@ -3,12 +3,11 @@ package com.example.healthwareapplication.activity.self_assessment
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.View
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_when_start
 import com.example.healthwareapplication.app_utils.AppHelper
@@ -33,7 +32,6 @@ class WhenStartActivity : AppCompatActivity() {
         defaultConfiguration()
     }
 
-
     private fun defaultConfiguration() {
         symptomStr = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
         val symptmJsonAry = JSONArray(symptomStr)
@@ -49,7 +47,15 @@ class WhenStartActivity : AppCompatActivity() {
     fun whenDateClick(view: View) {
         val listner = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
             val month = monthOfYear + 1
-            whenStartDate.text = "$dayOfMonth/$month/$year"
+            val mt: String
+            val dy: String //local variable
+
+            mt = if (monthOfYear < 10) "0$monthOfYear" //if month less than 10 then ad 0 before month
+                else java.lang.String.valueOf(monthOfYear)
+
+            dy = if (dayOfMonth < 10) "0$dayOfMonth" else java.lang.String.valueOf(dayOfMonth)
+
+            whenStartDate.text = "$dy/$mt/$year"
             DialogUtility.hideProgressDialog()
             Log.e("when Date: ", " : ${whenStartDate.text}")
             if (whenStartTime.text.toString() == resources.getString(R.string.time)) {

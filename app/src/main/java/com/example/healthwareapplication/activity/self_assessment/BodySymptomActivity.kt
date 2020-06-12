@@ -144,7 +144,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
         AppHelper.printParam("BODY PARTS Param:", param)
 
         val call: Call<JsonObject> = apiService.getBodyPart(param)
-        DialogUtility.showProgressDialog(this)
+//        DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
@@ -153,7 +153,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
 
                 if (response.isSuccessful) {
 
-                    DialogUtility.hideProgressDialog()
+//                    DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
@@ -188,7 +188,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
         AppHelper.printParam("SYMPTOMS PAram:", param)
 
         val call: Call<JsonObject> = apiService.getSymptomsByBodyPartId(param)
-        DialogUtility.showProgressDialog(this)
+//        DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
@@ -197,7 +197,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
                 if (response.isSuccessful) {
                     AppHelper.printResponse("SYMPTOMS REs:", response)
 
-                    DialogUtility.hideProgressDialog()
+//                    DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
@@ -215,7 +215,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
 
             override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
                 if (t is NoConnectivityException) {
-                    DialogUtility.hideProgressDialog()
+//                    DialogUtility.hideProgressDialog()
                     AppHelper.showNetNotAvailable(this@BodySymptomActivity)
                 }
             }

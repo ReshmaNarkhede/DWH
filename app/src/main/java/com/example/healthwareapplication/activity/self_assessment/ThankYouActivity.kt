@@ -78,7 +78,7 @@ class ThankYouActivity : AppCompatActivity() {
         AppHelper.printParam("submit PAram:", param)
 
         val call: Call<JsonObject> = apiService.submitSelfData(param)
-        DialogUtility.showProgressDialog(this)
+//        DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {

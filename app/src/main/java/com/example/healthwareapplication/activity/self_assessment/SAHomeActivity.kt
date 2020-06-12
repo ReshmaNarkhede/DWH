@@ -13,6 +13,7 @@ import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.views.ProgressBarDialog
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_s_a_home.*
 import org.json.JSONArray
@@ -25,18 +26,19 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
     var pageCount = 1
 
     var allowRefresh: Boolean = false
+    private lateinit var progressBar: ProgressBarDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_s_a_home)
 
-        fetchList(pageCount)
-
         initComponents()
         defaultConfiguration()
+        fetchList(pageCount)
     }
 
     private fun initComponents() {
+        progressBar = ProgressBarDialog()
         AppHelper.transparentStatusBar(this)
     }
 
@@ -53,7 +55,7 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun fetchList(pageCount:Int?) {
+    private fun fetchList(pageCount: Int?) {
         val apiService: ApiInterface =
             ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
 
@@ -64,7 +66,7 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
         AppHelper.printParam("list param:", param)
 
         val call: Call<JsonObject> = apiService.getSAList(param)
-//        DialogUtility.showProgressDialog(this)
+        progressBar.show(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
@@ -73,7 +75,8 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
                 if (response.isSuccessful) {
                     AppHelper.printResponse("list REs:", response)
 
-//                    DialogUtility.hideProgressDialog()
+                    progressBar.dialog.dismiss()
+
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
@@ -89,7 +92,7 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
-//                DialogUtility.hideProgressDialog()
+                DialogUtility.hideProgressDialog()
                 if (t is NoConnectivityException) {
                     AppHelper.showNetNotAvailable(this@SAHomeActivity)
                 }
@@ -99,11 +102,11 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun bindData(listAry: JSONArray) {
         list.layoutManager = LinearLayoutManager(this)
-        val adapter = SAListAdapter(this,listAry!!,
+        val adapter = SAListAdapter(this, listAry!!,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val str = listAry.getJSONObject(position).toString()
-                val intent = Intent(this,ReportFromHome::class.java)
-                intent.putExtra(IntentConstants.REPORT_DATA,str)
+                val intent = Intent(this, ReportFromHome::class.java)
+                intent.putExtra(IntentConstants.REPORT_DATA, str)
                 startActivity(intent)
             })
         list.adapter = adapter

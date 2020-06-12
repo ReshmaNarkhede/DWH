@@ -93,7 +93,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         AppHelper.printParam("QUESTION PAram:", param)
 
         val call: Call<JsonObject> = apiService.getQuestions(param)
-        DialogUtility.showProgressDialog(this)
+//        DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
@@ -102,7 +102,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                 if (response.isSuccessful) {
                     AppHelper.printResponse("QUESTION REs:", response)
 
-                    DialogUtility.hideProgressDialog()
+//                    DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
@@ -118,7 +118,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
             override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
                 if (t is NoConnectivityException) {
-                    DialogUtility.hideProgressDialog()
+//                    DialogUtility.hideProgressDialog()
                     AppHelper.showNetNotAvailable(this@QuestionActivity)
                 }
             }

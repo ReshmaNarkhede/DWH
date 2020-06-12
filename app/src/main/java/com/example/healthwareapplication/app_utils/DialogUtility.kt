@@ -7,12 +7,14 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.widget.ProgressBar
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.views.ProgressBarDialog
 import java.util.*
 
 
 class DialogUtility {
     companion object{
         var dialog: Dialog? = null
+
         fun showProgressDialog(context: Context) {
             if (dialog == null) {
                 dialog = Dialog(context)
@@ -22,7 +24,6 @@ class DialogUtility {
             if (!(context is Activity && context.isFinishing)) {
                 dialog?.show()
             }
-
         }
 
         fun hideProgressDialog() {
