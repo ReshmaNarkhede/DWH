@@ -26,7 +26,6 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
     var pageCount = 1
 
     var allowRefresh: Boolean = false
-    private lateinit var progressBar: ProgressBarDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +37,6 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initComponents() {
-        progressBar = ProgressBarDialog()
         AppHelper.transparentStatusBar(this)
     }
 
@@ -66,7 +64,6 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
         AppHelper.printParam("list param:", param)
 
         val call: Call<JsonObject> = apiService.getSAList(param)
-        progressBar.show(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
@@ -74,8 +71,6 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
 
                 if (response.isSuccessful) {
                     AppHelper.printResponse("list REs:", response)
-
-                    progressBar.dialog.dismiss()
 
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
@@ -92,7 +87,6 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
-                DialogUtility.hideProgressDialog()
                 if (t is NoConnectivityException) {
                     AppHelper.showNetNotAvailable(this@SAHomeActivity)
                 }

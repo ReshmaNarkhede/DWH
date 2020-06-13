@@ -14,6 +14,7 @@ import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.AppConstants
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.views.ProgressBarDialog
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
@@ -26,7 +27,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ThankYouActivity : AppCompatActivity() {
-
     private var symptomStr: String? = null
     private var ansStr: String? = null
 
@@ -78,7 +78,6 @@ class ThankYouActivity : AppCompatActivity() {
         AppHelper.printParam("submit PAram:", param)
 
         val call: Call<JsonObject> = apiService.submitSelfData(param)
-//        DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
@@ -86,24 +85,16 @@ class ThankYouActivity : AppCompatActivity() {
 
                 if (response.isSuccessful) {
                     AppHelper.printResponse("submit REs:", response)
-
-//                    DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
-                        AppHelper.showToast(this@ThankYouActivity,responseModel.getMessage().toString())
-                    } else {
-                        AppHelper.showToast(
-                            this@ThankYouActivity,
-                            responseModel.getMessage().toString()
-                        )
+//                        AppHelper.showToast(this@ThankYouActivity,responseModel.getMessage().toString())
                     }
                 }
             }
 
             override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
                 if (t is NoConnectivityException) {
-//                    DialogUtility.hideProgressDialog()
                     AppHelper.showNetNotAvailable(this@ThankYouActivity)
                 }
             }
@@ -112,7 +103,6 @@ class ThankYouActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-//        finish()
         val intent = Intent(this,SAHomeActivity::class.java)
         startActivity(intent)
         finish()

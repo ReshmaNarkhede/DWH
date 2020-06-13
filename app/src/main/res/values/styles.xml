@@ -22,8 +22,8 @@
         <item name="android:layout_marginEnd">@dimen/m5</item>
         <item name="android:paddingStart">@dimen/p25</item>
         <item name="android:paddingEnd">@dimen/p25</item>
-        <item name="android:paddingTop">@dimen/p9</item>
-        <item name="android:paddingBottom">@dimen/p9</item>
+        <item name="android:paddingTop">@dimen/p8</item>
+        <item name="android:paddingBottom">@dimen/p8</item>
         <item name="android:layout_alignParentEnd">true</item>
     </style>
 
@@ -37,8 +37,8 @@
         <item name="android:textSize">@dimen/t16</item>
         <item name="android:paddingStart">@dimen/p25</item>
         <item name="android:paddingEnd">@dimen/p25</item>
-        <item name="android:paddingTop">@dimen/p9</item>
-        <item name="android:paddingBottom">@dimen/p9</item>
+        <item name="android:paddingTop">@dimen/p8</item>
+        <item name="android:paddingBottom">@dimen/p8</item>
     </style>
 
     <style name="EditTextTheme" parent="Theme.AppCompat.Light.NoActionBar">
