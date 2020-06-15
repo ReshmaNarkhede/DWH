@@ -13,12 +13,9 @@
         android:orientation="vertical"
         android:padding="@dimen/p5">
 
-        <ImageView
-            android:layout_width="@dimen/h100"
-            android:layout_height="@dimen/h100"
-            android:layout_margin="@dimen/m10"
-            android:background="@drawable/dwh_logo"
-            android:visibility="visible" />
+        <include
+            android:id="@+id/logo_layout"
+            layout="@layout/logo_layout" />
 
         <TextView
             android:id="@+id/thankYouText"
@@ -33,7 +30,10 @@
             android:id="@+id/okayBtn"
             style="@style/CustomButtonTheme"
             android:layout_gravity="end"
-            android:layout_margin="@dimen/m10"
+            android:layout_marginBottom="@dimen/m10"
+            android:layout_marginEnd="@dimen/m15"
+            android:layout_marginStart="@dimen/m10"
+            android:layout_marginTop="@dimen/m10"
             android:onClick="okClick"
             android:text="@string/okeh" />
 

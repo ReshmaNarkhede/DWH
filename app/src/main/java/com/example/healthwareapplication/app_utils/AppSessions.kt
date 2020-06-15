@@ -42,6 +42,9 @@ class AppSessions {
         fun getSymptomData(context: Context): JSONArray? {
             return AppSettings.getArrayValue(context,IntentConstants.kSYMPTOM_DATA)
         }
+        fun getAssessmentData(context: Context): JSONArray? {
+            return AppSettings.getArrayValue(context,AppConstants.kASSESSMENT_DATA)
+        }
         fun getQuestionData(context: Context): JSONArray? {
             val array = AppSettings.getArrayValue(context!!, AppConstants.kQUESTION_ARY)
             return if (array.length() > 0) {

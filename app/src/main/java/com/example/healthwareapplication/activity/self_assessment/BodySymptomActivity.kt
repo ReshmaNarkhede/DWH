@@ -26,6 +26,7 @@ import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.self_assessment.BodyParts
+import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.example.healthwareapplication.model.user.UserDetailModel
 import com.google.gson.Gson
 import com.google.gson.JsonObject
@@ -237,7 +238,6 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
         val window: Window? = dialog.window
         window!!.setGravity(Gravity.BOTTOM)
 
-//        window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
         dialog.setTitle(null)
         dialog.setContentView(R.layout.symptom_list)
         dialog.setCancelable(true)
@@ -249,9 +249,12 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
         val adapter = SearchSymptomAdapter(this, symptomAry!!, "",
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val modelObj = symptomAry.getJSONObject(position)
-                val resultIntent = Intent()
-                resultIntent.putExtra(IntentConstants.kSYMPTOM_SELECTED, modelObj.toString())
-                setResult(Activity.RESULT_OK, resultIntent)
+                val intent = Intent(this, WhenStartActivity::class.java)
+                intent.putExtra(IntentConstants.kSYMPTOM_DATA, modelObj.toString())
+                startActivity(intent)
+//                val resultIntent = Intent()
+//                resultIntent.putExtra(IntentConstants.kSYMPTOM_SELECTED, modelObj.toString())
+//                setResult(Activity.RESULT_OK, resultIntent)
                 dialog.dismiss()
                 finish()
             })
@@ -263,7 +266,9 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
 
         dialog.show()
     }
-
+    fun backImgClick(view: View) {
+        finish()
+    }
     /* private fun openSymptomDialog(bodyParts: BodyParts, symptomAry: JSONArray) {
          val view = layoutInflater.inflate(R.layout.symptom_list, null)
          val dialog = BottomSheetDialog(this)
@@ -313,7 +318,5 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
          dialog.show()
      }*/
 
-    fun backImgClick(view: View) {
-        finish()
-    }
+
 }

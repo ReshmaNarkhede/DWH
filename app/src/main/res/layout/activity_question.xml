@@ -25,14 +25,9 @@
                 android:text="@string/label"
                 android:visibility="visible" />
 
-            <ImageView
-                android:layout_width="@dimen/h120"
-                android:layout_height="@dimen/h100"
-                android:layout_margin="@dimen/m10"
-                android:scaleType="centerCrop"
-                android:adjustViewBounds="true"
-                android:background="@drawable/dwh_logo_1"
-                android:visibility="visible" />
+            <include
+                android:id="@+id/logo_layout"
+                layout="@layout/logo_layout" />
 
             <TextView
                 android:id="@+id/questionTxt"
@@ -41,7 +36,7 @@
                 android:layout_margin="@dimen/m10"
                 android:text="@string/label"
                 android:textColor="@color/label_text_color"
-                android:textSize="@dimen/t23" />
+                android:textSize="@dimen/t22" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/radioList"

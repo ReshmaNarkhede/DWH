@@ -18,7 +18,7 @@ import org.json.JSONObject
 
 class WhatFeelActivity : AppCompatActivity() {
     private lateinit var gson: Gson
-    val symptmJsonAry: JSONArray = JSONArray()
+//    val symptmJsonAry: JSONArray = JSONArray()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,85 +28,84 @@ class WhatFeelActivity : AppCompatActivity() {
     }
 
     private fun initComponents() {
-
         AppHelper.transparentStatusBar(this)
         gson = Gson()
-        dataBind()
-
+//        dataBind()
     }
 
     fun addSymptom(view: View) {
         val intent = Intent(this, BodySymptomActivity::class.java)
-        startActivityForResult(intent, 2)
+        startActivity(intent)
+//        startActivityForResult(intent, 2)
     }
 
     fun searchClick(view: View) {
         val intent = Intent(this, SearchSymptomActivity::class.java)
-        startActivityForResult(intent, 3)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 2) {
-            if (data != null) {
-                val modelObj = data!!.getStringExtra(IntentConstants.kSYMPTOM_SELECTED)
-                addToList(modelObj)
-            }
-        }
-        if (requestCode == 3) {
-            if (data != null) {
-                val modelObj = data!!.getStringExtra(IntentConstants.kSYMPTOM_SELECTED)
-                addToList(modelObj)
-            }
-        }
-    }
-
-    private fun addToList(modelObj: String?) {
-        var isAllow:Boolean = true
-        if (symptmJsonAry.length() > 3) {
-            AppHelper.showToast(this, "You are not able to add more symptom")
-        } else {
-            if (symptmJsonAry.length() > 0) {
-                val obj = SymptomJsonModel(JSONObject(modelObj!!))
-                for (i in 0 until symptmJsonAry.length()) {
-                    val selectedSymptmObj = SymptomJsonModel(symptmJsonAry.getJSONObject(i))
-                    if (selectedSymptmObj.getName().equals(obj.getName(), true)) {
-                        AppHelper.showToast(this, "You are not able to add same symptom again")
-                        isAllow = false
-                    }
-                }
-            }
-            if(isAllow) {
-                symptmJsonAry.put(JSONObject(modelObj!!))
-                symptomList.adapter!!.notifyDataSetChanged()
-                showBottom()
-            }
-        }
-    }
-
-    private fun dataBind() {
-        val showDeleted: ShowDeleted = object : ShowDeleted {
-            override fun showDeleted(size: Int) {
-                if (size == 0) {
-                    nextBtn.visibility = View.GONE
-                }
-            }
-        }
-        symptomList.layoutManager = LinearLayoutManager(this)
-        val addAdapter = SelectedSymptomAdapter(symptmJsonAry!!, showDeleted)
-        symptomList.adapter = addAdapter
-    }
-
-    private fun showBottom() {
-        nextBtn.visibility = View.VISIBLE
-    }
-
-
-    fun clickNext(view: View) {
-        val intent = Intent(this, WhenStartActivity::class.java)
-        intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptmJsonAry.toString())
         startActivity(intent)
+//        startActivityForResult(intent, 3)
     }
+
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode == 2) {
+//            if (data != null) {
+//                val modelObj = data!!.getStringExtra(IntentConstants.kSYMPTOM_SELECTED)
+//                addToList(modelObj)
+//            }
+//        }
+//        if (requestCode == 3) {
+//            if (data != null) {
+//                val modelObj = data!!.getStringExtra(IntentConstants.kSYMPTOM_SELECTED)
+//                addToList(modelObj)
+//            }
+//        }
+//    }
+
+//    private fun addToList(modelObj: String?) {
+//        var isAllow:Boolean = true
+//        if (symptmJsonAry.length() > 3) {
+//            AppHelper.showToast(this, "You are not able to add more symptom")
+//        } else {
+//            if (symptmJsonAry.length() > 0) {
+//                val obj = SymptomJsonModel(JSONObject(modelObj!!))
+//                for (i in 0 until symptmJsonAry.length()) {
+//                    val selectedSymptmObj = SymptomJsonModel(symptmJsonAry.getJSONObject(i))
+//                    if (selectedSymptmObj.getName().equals(obj.getName(), true)) {
+//                        AppHelper.showToast(this, "You are not able to add same symptom again")
+//                        isAllow = false
+//                    }
+//                }
+//            }
+//            if(isAllow) {
+//                symptmJsonAry.put(JSONObject(modelObj!!))
+//                symptomList.adapter!!.notifyDataSetChanged()
+//                showBottom()
+//            }
+//        }
+//    }
+
+//    private fun dataBind() {
+//        val showDeleted: ShowDeleted = object : ShowDeleted {
+//            override fun showDeleted(size: Int) {
+//                if (size == 0) {
+//                    nextBtn.visibility = View.GONE
+//                }
+//            }
+//        }
+//        symptomList.layoutManager = LinearLayoutManager(this)
+//        val addAdapter = SelectedSymptomAdapter(symptmJsonAry!!, showDeleted)
+//        symptomList.adapter = addAdapter
+//    }
+
+//    private fun showBottom() {
+//        nextBtn.visibility = View.VISIBLE
+//    }
+
+//    fun clickNext(view: View) {
+//        val intent = Intent(this, WhenStartActivity::class.java)
+////        intent.putExtra(IntentConstants.kSYMPTOM_DATA, symptmJsonAry.toString())
+//        startActivity(intent)
+//    }
 
     interface ShowDeleted {
         fun showDeleted(size: Int)

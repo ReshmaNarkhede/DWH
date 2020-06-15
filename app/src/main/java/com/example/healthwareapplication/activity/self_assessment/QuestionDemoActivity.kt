@@ -49,9 +49,10 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun defaultConfiguration() {
-
         val symptomStr = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
-        symptmJsonAry = JSONArray(symptomStr)
+        val obj1 = JSONObject(symptomStr!!)
+        symptmJsonAry = JSONArray()
+        symptmJsonAry.put(obj1)
         for (i in 0 until symptmJsonAry.length()) {
             val obj = SymptomJsonModel(symptmJsonAry.getJSONObject(i))
             Log.e("ID: ", ": " + obj.getId())
@@ -96,11 +97,7 @@ class QuestionDemoActivity : AppCompatActivity(), View.OnClickListener {
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val tempAry = responseModel.getDataArray()
-                        AppSettings.setJsonArrayValue(
-                            this@QuestionDemoActivity,
-                            AppConstants.kQUESTION_ARY,
-                            tempAry.toString()
-                        )
+                        AppSettings.setJsonArrayValue(this@QuestionDemoActivity, AppConstants.kQUESTION_ARY, tempAry.toString())
                         getAllQuestion(tempAry)
                     } else {
                         questionTxt.text = "No question for this Symptom."

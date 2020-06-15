@@ -2,9 +2,11 @@ package com.example.healthwareapplication.activity.self_assessment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_s_a_home
@@ -14,6 +16,7 @@ import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.views.ProgressBarDialog
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_s_a_home.*
 import org.json.JSONArray
@@ -24,8 +27,9 @@ import retrofit2.Response
 
 class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
     var pageCount = 1
-
+    var isLoading = false
     var allowRefresh: Boolean = false
+    private var assessmentAry: JSONArray? = JSONArray()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +46,7 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun defaultConfiguration() {
         addImg.setOnClickListener(this)
+//        assessmentAry = AppSessions.getAssessmentData(this)!!
     }
 
     override fun onClick(v: View?) {
@@ -54,6 +59,7 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun fetchList(pageCount: Int?) {
+        Log.e("Count: ",": $pageCount")
         val apiService: ApiInterface =
             ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
 
@@ -76,12 +82,12 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val listAry = responseModel.getDataArray()!!
-                        bindData(listAry)
-                    } else {
-                        AppHelper.showToast(
-                            this@SAHomeActivity,
-                            responseModel.getMessage().toString()
-                        )
+                        for (i in 0 until listAry.length()) {
+                            val obj = listAry.get(i)
+                            assessmentAry!!.put(obj)
+                        }
+                        isLoading = false
+                        bindData(assessmentAry!!)
                     }
                 }
             }
@@ -104,8 +110,26 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             })
         list.adapter = adapter
+        list.addOnScrollListener(recyclerViewOnScrollListener)
     }
+    private val recyclerViewOnScrollListener: RecyclerView.OnScrollListener =
+        object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+            }
 
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager?
+                if (!isLoading) {
+                    if (layoutManager!!.findLastCompletelyVisibleItemPosition() == assessmentAry!!.length() - 1) {
+                        pageCount++
+                        fetchList(pageCount)
+                        isLoading = true
+                    }
+                }
+            }
+        }
     override fun onResume() {
         super.onResume()
         if (allowRefresh) {

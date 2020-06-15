@@ -17,6 +17,7 @@ import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import kotlinx.android.synthetic.main.activity_when_start.*
 import org.json.JSONArray
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 
 class WhenStartActivity : AppCompatActivity() {
@@ -34,7 +35,9 @@ class WhenStartActivity : AppCompatActivity() {
 
     private fun defaultConfiguration() {
         symptomStr = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
-        val symptmJsonAry = JSONArray(symptomStr)
+        val obj1 = JSONObject(symptomStr!!)
+        val symptmJsonAry = JSONArray()
+        symptmJsonAry.put(obj1)
         for (i in 0 until symptmJsonAry.length()) {
             val obj = SymptomJsonModel(symptmJsonAry.getJSONObject(i))
             finalStr.append(delimiter)
@@ -45,8 +48,8 @@ class WhenStartActivity : AppCompatActivity() {
     }
 
     fun whenDateClick(view: View) {
-        val listner = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            val month = monthOfYear + 1
+        val listner = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            val monthOfYear = month + 1
             val mt: String
             val dy: String //local variable
 

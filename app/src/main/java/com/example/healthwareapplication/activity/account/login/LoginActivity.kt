@@ -95,6 +95,8 @@ class LoginActivity : AppCompatActivity() {
                         AppSettings.setStringValue(this@LoginActivity, AppConstants.kUSER_GENDER, gender)
                         AppSettings.setJsonObjectValue(this@LoginActivity, AppConstants.kLOGIN, detailObj.toString())
 
+//                        fetchApidata()
+
                         showDashboard()
                     }
                     else{
@@ -110,6 +112,10 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun fetchApidata() {
+
     }
 
     private fun showDashboard() {

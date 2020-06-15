@@ -16,6 +16,7 @@ import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_search_symptom.*
 import org.json.JSONArray
@@ -111,10 +112,14 @@ class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
         val adapter = SearchSymptomAdapter(this,symptomListAry!!,searchStr,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val modelObj = JSONObject(symptomListAry.getJSONObject(position).toString())
-                val resultIntent = Intent()
-                resultIntent.putExtra(IntentConstants.kSYMPTOM_SELECTED,modelObj.toString())
-                setResult(Activity.RESULT_OK, resultIntent)
+                val intent = Intent(this, WhenStartActivity::class.java)
+                intent.putExtra(IntentConstants.kSYMPTOM_DATA, modelObj.toString())
+                startActivity(intent)
                 searchTxt.text.clear()
+//                val resultIntent = Intent()
+//                resultIntent.putExtra(IntentConstants.kSYMPTOM_SELECTED,modelObj.toString())
+//                setResult(Activity.RESULT_OK, resultIntent)
+//                searchTxt.text.clear()
                 finish()
             })
         symptom.adapter = adapter
