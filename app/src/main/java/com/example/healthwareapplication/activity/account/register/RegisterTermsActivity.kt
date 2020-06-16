@@ -10,11 +10,10 @@ import android.widget.Switch
 import android.widget.Toast
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.activity.account.login.LoginActivity
+import com.example.healthwareapplication.activity.account.login.OldLoginActivity
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
-import com.example.healthwareapplication.constants.AppConstants
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.country.CountryData
 import com.example.healthwareapplication.model.user.UserDetailModel
@@ -112,7 +111,7 @@ class RegisterTermsActivity : AppCompatActivity() {
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         AppHelper.showToast(this@RegisterTermsActivity,responseModel.getMessage().toString())
-                        val intent = Intent(this@RegisterTermsActivity, LoginActivity::class.java)
+                        val intent = Intent(this@RegisterTermsActivity, OldLoginActivity::class.java)
                         startActivity(intent)
                      }
                     else{

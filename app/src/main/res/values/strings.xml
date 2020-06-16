@@ -1,6 +1,25 @@
 <resources>
     <string name="app_name">DWH</string>
 
+    <!--Intro Screen-->
+    <string name="lets_meet">"Let's Meet dwh 🙂"</string>
+    <string name="signup">Sign up</string>
+    <string name="login">Log in</string>
+    <string name="forgot_password">Forgot my password</string>
+
+    <!--Login Screen-->
+    <string name="login_screen_text">Please enter your email id and password</string>
+    <string name="enter_email">Enter your email</string>
+    <string name="enter_password">Enter password</string>
+
+
+
+
+
+
+
+
+
     <string name="login_as">Login As</string>
     <string name="doctor">Doctor</string>
     <string name="user">User</string>
@@ -28,8 +47,6 @@
     <string name="eunuch">Third Gender</string>
 
     <string name="acha">Achha</string>
-    <string name="enter_password">Enter password</string>
-    <string name="forgot_or_new_password">Forgot or new password ?</string>
     <string name="lets_start">let\'s start</string>
     <string name="thanks">Thanks</string>
     <string name="enter_your_mobile_no">Enter Your Mobile No</string>
@@ -144,5 +161,6 @@ User Information. In the course of your use of the Web Site and/or the services 
 
     <string name="thank_you_after_report">Thank you %1$s All done! Your Report is Ready</string>
     <string name="search_feel">Search</string>
+
 
 </resources>

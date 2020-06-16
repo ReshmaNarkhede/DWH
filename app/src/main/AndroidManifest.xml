@@ -14,8 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.self_assessment.ReportFromHome"/>
-        <activity android:name=".activity.self_assessment.SearchSymptomActivity"/>
+        <activity android:name=".activity.account.LetsMeetActivity"></activity>
+        <activity android:name=".activity.self_assessment.ReportFromHome" />
+        <activity android:name=".activity.self_assessment.SearchSymptomActivity" />
         <activity android:name=".activity.self_assessment.SAHomeActivity" />
         <activity android:name=".activity.self_assessment.WhenStartActivity" />
         <activity android:name=".activity.self_assessment.AddTestActivity" />
@@ -24,14 +25,15 @@
         <activity android:name=".activity.self_assessment.FeedbackActivity" />
         <activity android:name=".activity.self_assessment.SymptomReportActivity" />
         <activity android:name=".activity.self_assessment.ThankYouActivity" />
-        <activity android:name=".activity.self_assessment.QuestionActivity" >
-        </activity>
-        <activity android:name=".activity.self_assessment.QuestionDemoActivity" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+        <activity android:name=".activity.self_assessment.QuestionActivity"></activity>
+        <activity android:name=".activity.self_assessment.QuestionDemoActivity">
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".activity.self_assessment.WhatFeelActivity" />
         <activity android:name=".activity.self_assessment.BodySymptomActivity" />
@@ -47,7 +49,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.dashboard.DashboardActivity" />
         <activity
-            android:name=".activity.account.login.LoginActivity"
+            android:name=".activity.account.login.OldLoginActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.account.register.GenderActivity" />
         <activity android:name=".activity.account.register.RegisterIntroActivity" />
@@ -55,7 +57,8 @@
             android:name=".activity.country.CountryActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.account.login.HaveWeMetActivity" />
-        <activity android:name=".activity.account.login.IntroActivity" />
+        <activity android:name=".activity.account.login.LoginActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".activity.account.login.LoginAsActivity" />
         <activity
             android:name=".activity.account.register.RegisterMobNoActivity"

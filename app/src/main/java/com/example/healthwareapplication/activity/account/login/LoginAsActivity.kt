@@ -50,7 +50,7 @@ class LoginAsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun openIntroActivity() {
-        val intent = Intent(this, IntroActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
         startActivity(intent)
     }

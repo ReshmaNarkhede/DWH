@@ -12,12 +12,6 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/loginTxt"
-            style="@style/AnswerButtonTheme"
-            android:onClick="loginClick"
-            android:text="@string/login" />
-
         <include
             android:id="@+id/logo_layout"
             layout="@layout/logo_layout" />
@@ -36,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/m10"
                 android:padding="@dimen/p5"
-                android:text="@string/login_screen_text"
+                android:text="@string/lets_meet"
                 android:textColor="@color/label_text_color"
                 android:textSize="@dimen/t22" />
 
@@ -47,29 +41,33 @@
                 android:orientation="vertical"
                 android:padding="@dimen/p10">
 
-                <EditText
-                    android:id="@+id/emailEdtTxt"
+                <TextView
+                    android:id="@+id/signUpBtn"
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"
-                    android:maxLines="1"
-                    android:textColorHint="@color/pink"
-                    android:hint="@string/enter_email" />
+                    android:onClick="signUpClick"
+                    android:text="@string/signup" />
 
-                <EditText
-                    android:id="@+id/pwdEdtTxt"
+                <TextView
+                    android:id="@+id/loginBtn"
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"
-                    android:maxLines="1"
-                    android:inputType="textPassword"
-                    android:textColorHint="@color/pink"
-                    android:hint="@string/enter_password" />
+                    android:onClick="LogInClick"
+                    android:text="@string/login" />
+
+                <TextView
+                    android:id="@+id/forgotPwdBtn"
+                    style="@style/CustomButtonTheme"
+                    android:layout_gravity="end"
+                    android:onClick="forgotPwdClick"
+                    android:text="@string/forgot_password" />
             </LinearLayout>
 
         </LinearLayout>
 
         <include
             android:id="@+id/layout"
-            layout="@layout/bottom_layout" />
+            layout="@layout/account_bottom_layout" />
 
     </LinearLayout>
 </ScrollView>

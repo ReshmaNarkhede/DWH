@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.activity.account.login.LoginActivity
+import com.example.healthwareapplication.activity.account.login.OldLoginActivity
 import com.example.healthwareapplication.activity.account.register.RegisterMobNoActivity
 import com.example.healthwareapplication.adapter.country.CountryAdapter
 import com.example.healthwareapplication.api.ApiClient
@@ -119,7 +119,7 @@ class CountryActivity : AppCompatActivity() {
                             AppConstants.kCOUNTRY,
                             dataArray.getJSONObject(position).toString()
                         )
-                        val intent = Intent(this, LoginActivity::class.java)
+                        val intent = Intent(this, OldLoginActivity::class.java)
                         startActivity(intent)
                     } else {
                         val userDetailModel =

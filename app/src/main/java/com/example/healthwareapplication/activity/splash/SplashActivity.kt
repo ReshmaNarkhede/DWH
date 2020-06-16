@@ -7,6 +7,7 @@ import android.os.Handler
 import android.view.Window
 import android.view.WindowManager
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.activity.account.LetsMeetActivity
 import com.example.healthwareapplication.activity.dashboard.DashboardActivity
 import com.example.healthwareapplication.activity.account.login.LoginAsActivity
 import com.example.healthwareapplication.app_utils.AppSessions
@@ -35,7 +36,7 @@ class SplashActivity : AppCompatActivity() {
             finish()
 
         } else {
-            val intent = Intent(this, LoginAsActivity::class.java)
+            val intent = Intent(this, LetsMeetActivity::class.java)
             startActivity(intent)
             finish()
         }
