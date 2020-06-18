@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">DWH</string>
 
+    <!--Common String-->
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
     <!--Intro Screen-->
     <string name="lets_meet">"Let's Meet dwh 🙂"</string>
     <string name="signup">Sign up</string>
@@ -10,19 +14,34 @@
     <!--Login Screen-->
     <string name="login_screen_text">Please enter your email id and password</string>
     <string name="enter_email">Enter your email</string>
-    <string name="enter_password">Enter password</string>
+    <string name="enter_password">password</string>
+    <string name="ok">Okay</string>
+    <string name="valid_password">Please enter valid password.</string>
+    <string name="valid_email">Please enter valid email.</string>
 
-
-
-
-
-
-
-
-
-    <string name="login_as">Login As</string>
+    <!--Sign up as Screen-->
+    <string name="signup_as">Sign up as?</string>
     <string name="doctor">Doctor</string>
-    <string name="user">User</string>
+    <string name="human">Human</string>
+
+    <!--Gender Screen-->
+    <string name="gender_msg">What is your gender?</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+
+    <!--Age Screen-->
+    <string name="age_msg">Are you 16 year old or above?</string>
+    <string name="age_no_16_msg">We are sorry to inform you that due to legal reason you should be 16 year old or above to use</string>
+    <string name="above_16_age">16+ year old</string>
+    <string name="enter_dob">Please enter your date of birth</string>
+    <string name="valid_date_msg">Please select the date.</string>
+    <string name="valid_time_msg">Please select the time.</string>
+
+    <!--Country Screen-->
+    <string name="country_msg">Which country, city or district do you live?</string>
+    <string name="city">City or district</string>
+    <string name="country">Country</string>
+
 
     <string name="please_check_internet_connection">Please check internet connection and try again.</string>
     <string name="welcome_message">Hi, This is DWH. I can digitalis your health.</string>
@@ -31,7 +50,7 @@
     <string name="errormessage">This field required !</string>
 
     <string name="have_we_met">Have we ever met.... ?</string>
-    <string name="no">No</string>
+    <!--    <string name="no">No</string>-->
     <string name="yeah">Yeah</string>
 
     <string name="choose_your_nation">Choose your nation...!</string>
@@ -41,9 +60,7 @@
 
     <string name="hmm">Hmm</string>
 
-    <string name="gender_msg">What is your gender?</string>
-    <string name="male">Male</string>
-    <string name="female">Female</string>
+
     <string name="eunuch">Third Gender</string>
 
     <string name="acha">Achha</string>
@@ -53,7 +70,6 @@
     <string name="got_it">Got It</string>
 
 
-    <string name="age_msg">What is your age...?</string>
     <string name="date">Date</string>
     <string name="day_1">Day-1</string>
     <string name="time">Time</string>
@@ -128,8 +144,6 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="dwh_thought">DWH Thought</string>
     <string name="assesment">Your Assesment</string>
 
-    <string name="yes">Yes</string>
-    <string name="ok">Okay</string>
     <string name="i_am_not_sure">I am not sure</string>
     <string name="is_symtom_assessment_was_helpful">Is symtom assessment was helpful?</string>
     <string name="have_you_taken_medicine">If you have taken any medicine, please add 😀 </string>

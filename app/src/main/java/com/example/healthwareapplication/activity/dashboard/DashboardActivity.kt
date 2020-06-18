@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.activity.account.login.LoginAsActivity
+import com.example.healthwareapplication.activity.account.register.RegisterAsActivity
 import com.example.healthwareapplication.activity.self_assessment.SAHomeActivity
 import com.example.healthwareapplication.adapter.home.HomeMenuAdapter
 import com.example.healthwareapplication.app_utils.AppHelper
@@ -93,7 +93,7 @@ class DashboardActivity : AppCompatActivity(), RecyclerItemClickListener.OnItemC
     }
     private fun logout() {
         AppSettings.clearAllData(this)
-        val intent = Intent(this, LoginAsActivity::class.java)
+        val intent = Intent(this, RegisterAsActivity::class.java)
         startActivity(intent)
         finish()
     }

@@ -4,11 +4,16 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
+import android.text.Editable
 import android.text.TextUtils
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.example.healthwareapplication.R
 import com.google.gson.JsonObject
@@ -74,6 +79,29 @@ class AppHelper {
             val ageInt = age
             return ageInt.toString()
         }
+        fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
+            this.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
 
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(editable: Editable?) {
+                    afterTextChanged.invoke(editable.toString())
+                }
+            })
+        }
+        fun EditText.afterEditorAction(editorAction: (String) -> Unit){
+            this.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+                when (actionId) {
+                    EditorInfo.IME_ACTION_DONE, EditorInfo.IME_ACTION_NEXT, EditorInfo.IME_ACTION_PREVIOUS -> {
+                        editorAction.invoke(this.text.toString())
+                        return@OnEditorActionListener true
+                    }
+                }
+                false
+            })
+        }
     }
 }

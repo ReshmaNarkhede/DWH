@@ -52,6 +52,7 @@
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"
                     android:maxLines="1"
+                    android:imeOptions="actionDone"
                     android:textColorHint="@color/pink"
                     android:hint="@string/enter_email" />
 
@@ -60,16 +61,24 @@
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"
                     android:maxLines="1"
+                    android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:textColorHint="@color/pink"
                     android:hint="@string/enter_password" />
+
+                <TextView
+                    android:id="@+id/okayBtn"
+                    android:text="@string/ok"
+                    android:onClick="okayClick"
+                    android:layout_gravity="end"
+                    style="@style/CustomButtonTheme"/>
             </LinearLayout>
 
         </LinearLayout>
 
         <include
             android:id="@+id/layout"
-            layout="@layout/bottom_layout" />
+            layout="@layout/account_bottom_layout" />
 
     </LinearLayout>
 </ScrollView>

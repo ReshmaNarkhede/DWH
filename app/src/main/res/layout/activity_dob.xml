@@ -12,6 +12,12 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/ageTxt"
+            style="@style/AnswerButtonTheme"
+            android:onClick="ageTxtClick"
+            android:text="@string/above_16_age" />
+
         <include
             android:id="@+id/logo_layout"
             layout="@layout/logo_layout" />
@@ -26,12 +32,11 @@
             android:visibility="visible">
 
             <TextView
-                android:id="@+id/letsMeetTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/m10"
                 android:padding="@dimen/p5"
-                android:text="@string/lets_meet"
+                android:text="@string/enter_dob"
                 android:textColor="@color/label_text_color"
                 android:textSize="@dimen/t22" />
 
@@ -43,32 +48,25 @@
                 android:padding="@dimen/p10">
 
                 <TextView
-                    android:id="@+id/signUpBtn"
+                    android:id="@+id/dobDate"
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"
-                    android:onClick="signUpClick"
-                    android:text="@string/signup" />
+                    android:onClick="dobDateClick"
+                    android:text="@string/date" />
 
                 <TextView
-                    android:id="@+id/loginBtn"
+                    android:id="@+id/dobTime"
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"
-                    android:onClick="LogInClick"
-                    android:text="@string/login" />
-
-                <TextView
-                    android:id="@+id/forgotPwdBtn"
-                    style="@style/CustomButtonTheme"
-                    android:layout_gravity="end"
-                    android:onClick="forgotPwdClick"
-                    android:text="@string/forgot_password" />
+                    android:onClick="dobTimeClick"
+                    android:text="@string/time" />
             </LinearLayout>
 
         </LinearLayout>
 
         <include
             android:id="@+id/layout"
-            layout="@layout/account_bottom_layout" />
+            layout="@layout/bottom_layout" />
 
     </LinearLayout>
 </ScrollView>

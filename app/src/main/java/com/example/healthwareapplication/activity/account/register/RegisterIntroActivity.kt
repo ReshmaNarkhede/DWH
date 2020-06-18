@@ -34,8 +34,8 @@ class RegisterIntroActivity : AppCompatActivity() {
     }
 
     fun hmmClick(view: View) {
-        val intent = Intent(this, GenderActivity::class.java)
-        intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
-        startActivity(intent)
+//        val intent = Intent(this, GenderActivity::class.java)
+//        intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
+//        startActivity(intent)
     }
 }

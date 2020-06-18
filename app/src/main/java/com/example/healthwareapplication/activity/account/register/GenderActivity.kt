@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.R.layout.activity_gender
 import com.example.healthwareapplication.activity.country.CountryActivity
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.user.UserDetailModel
@@ -15,7 +16,7 @@ class GenderActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_gender)
+        setContentView(activity_gender)
 
         defaultConfiguration()
     }
@@ -34,14 +35,13 @@ class GenderActivity : AppCompatActivity() {
         jumpNextActivity()
     }
 
-    fun transClick(view: View) {
-        userDetailModel!!.sex = "eunuch"
-        jumpNextActivity()
-    }
-
     private fun jumpNextActivity() {
-        val intent = Intent(this, CountryActivity::class.java)
+        val intent = Intent(this, AgeActivity::class.java)
         intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
         startActivity(intent)
+    }
+
+    fun humanClick(view: View) {
+        finish()
     }
 }

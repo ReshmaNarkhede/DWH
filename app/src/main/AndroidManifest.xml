@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.account.LetsMeetActivity"></activity>
+        <activity android:name=".activity.account.register.DobActivity"></activity>
+        <activity android:name=".activity.account.register.AgeActivity" />
+        <activity android:name=".activity.account.LetsMeetActivity" />
         <activity android:name=".activity.self_assessment.ReportFromHome" />
         <activity android:name=".activity.self_assessment.SearchSymptomActivity" />
         <activity android:name=".activity.self_assessment.SAHomeActivity" />
@@ -25,7 +27,7 @@
         <activity android:name=".activity.self_assessment.FeedbackActivity" />
         <activity android:name=".activity.self_assessment.SymptomReportActivity" />
         <activity android:name=".activity.self_assessment.ThankYouActivity" />
-        <activity android:name=".activity.self_assessment.QuestionActivity"></activity>
+        <activity android:name=".activity.self_assessment.QuestionActivity" />
         <activity android:name=".activity.self_assessment.QuestionDemoActivity">
 
             <!-- <intent-filter> -->
@@ -55,11 +57,11 @@
         <activity android:name=".activity.account.register.RegisterIntroActivity" />
         <activity
             android:name=".activity.country.CountryActivity"
+            android:windowSoftInputMode="adjustPan" /> <!-- <activity android:name=".activity.account.login.HaveWeMetActivity" /> -->
+        <activity
+            android:name=".activity.account.login.LoginActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.account.login.HaveWeMetActivity" />
-        <activity android:name=".activity.account.login.LoginActivity"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".activity.account.login.LoginAsActivity" />
+        <activity android:name=".activity.account.register.RegisterAsActivity" />
         <activity
             android:name=".activity.account.register.RegisterMobNoActivity"
             android:windowSoftInputMode="adjustPan" />

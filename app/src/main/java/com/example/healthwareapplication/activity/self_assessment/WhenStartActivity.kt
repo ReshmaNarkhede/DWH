@@ -62,7 +62,7 @@ class WhenStartActivity : AppCompatActivity() {
             DialogUtility.hideProgressDialog()
             Log.e("when Date: ", " : ${whenStartDate.text}")
             if (whenStartTime.text.toString() == resources.getString(R.string.time)) {
-                AppHelper.showToast(this, "Please select the time.")
+                AppHelper.showToast(this, getString(R.string.valid_time_msg))
             } else {
                 openNextActivity()
             }
@@ -78,7 +78,7 @@ class WhenStartActivity : AppCompatActivity() {
                 DialogUtility.hideProgressDialog()
                 Log.e("when Time: ", " : ${whenStartTime.text}")
                 if (whenStartDate.text.toString() == resources.getString(R.string.date)) {
-                    AppHelper.showToast(this, "Please select the date.")
+                    AppHelper.showToast(this, getString(R.string.valid_date_msg))
                 } else {
                     openNextActivity()
                 }

@@ -12,6 +12,12 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/loginTxt"
+            style="@style/AnswerButtonTheme"
+            android:onClick="signUpClick"
+            android:text="@string/signup" />
+
         <include
             android:id="@+id/logo_layout"
             layout="@layout/logo_layout" />
@@ -26,12 +32,11 @@
             android:visibility="visible">
 
             <TextView
-                android:id="@+id/letsMeetTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/m10"
                 android:padding="@dimen/p5"
-                android:text="@string/lets_meet"
+                android:text="@string/signup_as"
                 android:textColor="@color/label_text_color"
                 android:textSize="@dimen/t22" />
 
@@ -43,25 +48,19 @@
                 android:padding="@dimen/p10">
 
                 <TextView
-                    android:id="@+id/signUpBtn"
+                    android:id="@+id/doctorBtn"
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"
-                    android:onClick="signUpClick"
-                    android:text="@string/signup" />
+                    android:textColorHint="@color/pink"
+                    android:text="@string/doctor"/>
 
                 <TextView
-                    android:id="@+id/loginBtn"
+                    android:id="@+id/humanBtn"
                     style="@style/CustomButtonTheme"
+                    android:text="@string/human"
                     android:layout_gravity="end"
-                    android:onClick="LogInClick"
-                    android:text="@string/login" />
+                    android:textColorHint="@color/pink" />
 
-                <TextView
-                    android:id="@+id/forgotPwdBtn"
-                    style="@style/CustomButtonTheme"
-                    android:layout_gravity="end"
-                    android:onClick="forgotPwdClick"
-                    android:text="@string/forgot_password" />
             </LinearLayout>
 
         </LinearLayout>

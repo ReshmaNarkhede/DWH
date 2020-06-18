@@ -15,21 +15,20 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/genderTxt"
             style="@style/AnswerButtonTheme"
-            android:onClick="humanClick"
-            android:text="@string/human" />
+            android:onClick="genderClick" />
 
         <include
             android:id="@+id/logo_layout"
             layout="@layout/logo_layout" />
 
         <TextView
-            android:id="@+id/welcomeMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/m10"
             android:padding="@dimen/p5"
-            android:text="@string/gender_msg"
+            android:text="@string/age_msg"
             android:textColor="@color/label_text_color"
             android:textSize="@dimen/t22" />
 
@@ -43,14 +42,14 @@
             <TextView
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
-                android:onClick="maleClick"
-                android:text="@string/male" />
+                android:onClick="yesClick"
+                android:text="@string/yes" />
 
             <TextView
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
-                android:onClick="femaleClick"
-                android:text="@string/female" />
+                android:onClick="noClick"
+                android:text="@string/no" />
         </LinearLayout>
 
         <include
