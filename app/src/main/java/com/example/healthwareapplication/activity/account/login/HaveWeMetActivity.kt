@@ -4,13 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.activity.account.register.CountryActivity
 import com.example.healthwareapplication.activity.account.register.RegisterIntroActivity
-import com.example.healthwareapplication.activity.country.CountryActivity
-import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.constants.IntentConstants
-import com.google.android.material.textfield.TextInputEditText
 
 class HaveWeMetActivity : AppCompatActivity(), View.OnClickListener {
 

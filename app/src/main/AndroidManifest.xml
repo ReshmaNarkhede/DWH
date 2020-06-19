@@ -56,7 +56,7 @@
         <activity android:name=".activity.account.register.GenderActivity" />
         <activity android:name=".activity.account.register.RegisterIntroActivity" />
         <activity
-            android:name=".activity.country.CountryActivity"
+            android:name=".activity.account.register.CountryActivity"
             android:windowSoftInputMode="adjustPan" /> <!-- <activity android:name=".activity.account.login.HaveWeMetActivity" /> -->
         <activity
             android:name=".activity.account.login.LoginActivity"

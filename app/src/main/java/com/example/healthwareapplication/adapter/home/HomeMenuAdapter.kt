@@ -5,16 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.R.layout.recycler_home_menu_item
 import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
 import com.example.healthwareapplication.model.menu.MenuModel
-import kotlinx.android.synthetic.main.recycler_country_item.view.*
+import kotlinx.android.synthetic.main.recycler_home_menu_item.view.*
 
 class HomeMenuAdapter(var mList: ArrayList<MenuModel>, private val itemClickListener: RecyclerItemClickListener.OnItemClickListener) : RecyclerView.Adapter<HomeMenuAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.recycler_home_menu_item, parent, false)
+                .inflate(recycler_home_menu_item, parent, false)
         )
     }
 

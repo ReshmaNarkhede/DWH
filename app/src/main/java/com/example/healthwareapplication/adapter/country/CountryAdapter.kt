@@ -5,8 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
 import com.example.healthwareapplication.model.country.CountryData
@@ -15,8 +13,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 
-class CountryAdapter(
-    private var dataArr: JSONArray,
+class CountryAdapter
+    (private var dataArr: JSONArray,
 private val itemClickListener: RecyclerItemClickListener.OnItemClickListener
 ) : RecyclerView.Adapter<CountryAdapter.ViewHolder>() {
     var mFilter: ItemFilter = ItemFilter()
@@ -45,9 +43,6 @@ private val itemClickListener: RecyclerItemClickListener.OnItemClickListener
         ) {
 
             val obj = CountryData(jsonObject)
-
-            Glide.with(itemView.context).load(obj.getImage())
-                .apply(RequestOptions().placeholder(R.drawable.dwh_logo)).into(itemView.image)
             itemView.name.text = obj.getName()
 
             itemView.setOnClickListener {

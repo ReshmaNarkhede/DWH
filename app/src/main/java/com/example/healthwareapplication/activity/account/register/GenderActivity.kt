@@ -4,9 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_gender
-import com.example.healthwareapplication.activity.country.CountryActivity
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.user.UserDetailModel
 

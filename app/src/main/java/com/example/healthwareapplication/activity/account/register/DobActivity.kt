@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.View
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_dob
-import com.example.healthwareapplication.activity.country.CountryActivity
 
 import com.example.healthwareapplication.app_utils.AppHelper
 
