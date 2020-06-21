@@ -14,14 +14,23 @@ import com.example.healthwareapplication.app_utils.AppHelper
 
 import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.model.user.UserDetailModel
 
 import kotlinx.android.synthetic.main.activity_dob.*
 import java.text.SimpleDateFormat
 
 class DobActivity : AppCompatActivity() {
+    private lateinit var userDetailModel: UserDetailModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_dob)
+
+        initComponents()
+    }
+
+    private fun initComponents() {
+        userDetailModel = intent?.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
     }
 
     fun ageTxtClick(view: View) {
@@ -41,12 +50,9 @@ class DobActivity : AppCompatActivity() {
 
             dobDate.text = "$dy/$mt/$year"
             DialogUtility.hideProgressDialog()
+            userDetailModel.dob = dobDate.text.toString()
             Log.e("when Date: ", " : ${dobDate.text}")
-//            if (dobTime.text.toString() == resources.getString(R.string.time)) {
-////                AppHelper.showToast(this, "Please select the time.")
-//            } else {
                 openNextActivity()
-//            }
         }
         DialogUtility.showDatePickerDialog(this, listner).show()
     }
@@ -58,6 +64,7 @@ class DobActivity : AppCompatActivity() {
                     "${SimpleDateFormat("hh:mm a").format(SimpleDateFormat("hh:mm").parse("${selectedHour}:${selectedMinute}"))}"
                 DialogUtility.hideProgressDialog()
                 Log.e("when Time: ", " : ${dobTime.text}")
+                userDetailModel.tob = dobTime.text.toString()
                 if (dobDate.text.toString() == resources.getString(R.string.date)) {
                     AppHelper.showToast(this, getString(R.string.valid_date_msg))
                 } else {
@@ -67,12 +74,9 @@ class DobActivity : AppCompatActivity() {
         DialogUtility.showTimePickerDialog(this, listner).show()
     }
     private fun openNextActivity() {
-//        AppSettings.setStringValue(this, IntentConstants.kASSESSMENT_DATE,whenStartDate.text.toString())
-//        AppSettings.setStringValue(this, IntentConstants.kASSESSMENT_TIME,whenStartTime.text.toString())
 
         val intent = Intent(this, CountryActivity::class.java)
-        intent.putExtra(IntentConstants.kDOB_DATE,dobDate.text.toString())
-        intent.putExtra(IntentConstants.kDOB_TIME,dobTime.text.toString())
+        intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
         startActivity(intent)
     }
 

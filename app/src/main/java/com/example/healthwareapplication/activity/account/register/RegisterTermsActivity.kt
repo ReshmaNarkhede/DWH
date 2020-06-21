@@ -10,14 +10,16 @@ import android.widget.Switch
 import android.widget.Toast
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.R.layout.activity_register_terms
 import com.example.healthwareapplication.activity.account.login.OldLoginActivity
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
-import com.example.healthwareapplication.model.country.CountryData
 import com.example.healthwareapplication.model.user.UserDetailModel
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.activity_register_info.*
+import kotlinx.android.synthetic.main.activity_register_terms.*
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import org.json.JSONObject
@@ -27,28 +29,27 @@ import retrofit2.Response
 import java.io.File
 
 class RegisterTermsActivity : AppCompatActivity() {
-    private var countryModel: CountryData? = null
-    private lateinit var termAndConditionSwitch: Switch
-    private lateinit var termAndConditionDetailLayout: LinearLayout
-    private lateinit var termAndConditionLayout: LinearLayout
+
+    private lateinit var userDetailModel: UserDetailModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register_terms)
+        setContentView(activity_register_terms)
 
         initComponents()
         defaultConfiguration()
     }
 
-    private fun defaultConfiguration() {
-        countryModel = AppSessions.getCountry(this)
-    }
-
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-        termAndConditionSwitch = findViewById(R.id.termAndConditionSwitch)
-        termAndConditionDetailLayout = findViewById(R.id.termAndConditionDetailLayout)
-        termAndConditionLayout = findViewById(R.id.termAndConditionLayout)
+        userDetailModel = intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
+        pwdTxt.text = userDetailModel.password
+        pwdTxt.setOnClickListener(View.OnClickListener {
+            finish()
+        })
+    }
+
+    private fun defaultConfiguration() {
     }
 
     fun signupwaaClick(view: View) {
@@ -85,7 +86,7 @@ class RegisterTermsActivity : AppCompatActivity() {
         fieldsmap.put("lastName", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.lastName))
         fieldsmap.put("dob", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.dob))
         fieldsmap.put("tob", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.tob))
-        fieldsmap.put("sex", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.sex))
+        fieldsmap.put("sex", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.gender))
         fieldsmap.put("countryId", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.countryId))
         fieldsmap.put("password", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.password))
         fieldsmap.put("userType", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.userType.toString()))

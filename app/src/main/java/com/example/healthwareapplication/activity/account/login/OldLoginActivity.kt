@@ -46,8 +46,8 @@ class OldLoginActivity : AppCompatActivity() {
     }
 
     private fun defaultConfiguration() {
-        val countryModel = AppSessions.getCountry(this)
-        countryCode.text = countryModel!!.getCode()
+//        val countryModel = AppSessions.getCountry(this)
+//        countryCode.text = countryModel!!.getCode()
         uniqueId.hint = getString(R.string.enter_your_mobile_no)
     }
 

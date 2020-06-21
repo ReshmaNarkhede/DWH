@@ -7,7 +7,6 @@ import android.view.View
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_age
 import com.example.healthwareapplication.activity.account.LetsMeetActivity
-import com.example.healthwareapplication.activity.account.login.LoginActivity
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.user.UserDetailModel
 import kotlinx.android.synthetic.main.activity_age.*
@@ -23,7 +22,7 @@ class AgeActivity : AppCompatActivity() {
 
     private fun defaultConfiguration() {
         userDetailModel = intent?.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
-        if(userDetailModel.sex == "male"){
+        if(userDetailModel.gender == "male"){
             genderTxt.text = getString(R.string.male)
         }else{
             genderTxt.text = getString(R.string.female)
@@ -36,6 +35,7 @@ class AgeActivity : AppCompatActivity() {
 
     fun yesClick(view: View) {
         val intent = Intent(this, DobActivity::class.java)
+        intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
         startActivity(intent)
     }
 

@@ -11,10 +11,8 @@ import android.widget.Toast
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.DialogUtility
-import com.example.healthwareapplication.constants.AppConstants
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.user.UserDetailModel
-import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
 
 class RegisterAgeActivity : AppCompatActivity() {
@@ -71,7 +69,7 @@ class RegisterAgeActivity : AppCompatActivity() {
             val userDetailModel = intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
             userDetailModel.dob = date.text.toString()
             userDetailModel.tob =time.text.toString()
-            val intent = Intent(this, RegisterNameActivity::class.java)
+            val intent = Intent(this, RegisterInfoActivity::class.java)
             intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
             startActivity(intent)
         }

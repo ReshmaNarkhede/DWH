@@ -49,7 +49,6 @@ class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
                     cncleImg.setOnClickListener(this@SearchSymptomActivity)
                 } else {
                     cncleImg.visibility = View.GONE
-
                 }
             }
 
@@ -73,7 +72,6 @@ class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
         AppHelper.printParam("SEARCH PAram:", param)
 
         val call: Call<JsonObject> = apiService.getSearchSymptomsByName(param)
-//        DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
@@ -82,13 +80,11 @@ class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
                 if (response.isSuccessful) {
                     AppHelper.printResponse("SEARCH REs:", response)
 
-//                    DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val symptomListAry = responseModel.getDataArray()!!
                         bindSymptomSearchName(symptomListAry,search)
-
                     } else {
                         AppHelper.showToast(
                             this@SearchSymptomActivity,
@@ -100,7 +96,6 @@ class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
 
             override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
                 if (t is NoConnectivityException) {
-//                    DialogUtility.hideProgressDialog()
                     AppHelper.showNetNotAvailable(this@SearchSymptomActivity)
                 }
             }

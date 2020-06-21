@@ -3,16 +3,10 @@ package com.example.healthwareapplication.app_utils
 import android.content.Context
 import com.example.healthwareapplication.constants.AppConstants
 import com.example.healthwareapplication.constants.IntentConstants
-import com.example.healthwareapplication.model.country.CountryData
 import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.example.healthwareapplication.model.user.UserDetailModel
 import com.google.gson.Gson
 import org.json.JSONArray
-import org.json.JSONObject
-
-
-
-
 
 class AppSessions {
 
@@ -21,10 +15,10 @@ class AppSessions {
         fun isSession(context: Context): Boolean {
             return AppSettings.getBooleanValue(context, AppConstants.kIS_LOGIN)
         }
-        fun getCountry(context: Context): CountryData? {
-            val jObj = JSONObject(AppSettings.getJsonObjectValue(context, AppConstants.kCOUNTRY)!!)
-            return CountryData(jObj)
-        }
+//        fun getCountry(context: Context): CountryData? {
+//            val jObj = JSONObject(AppSettings.getJsonObjectValue(context, AppConstants.kCOUNTRY)!!)
+//            return CountryData(jObj)
+//        }
 
         fun getCountryArray(context: Context): JSONArray?{
             return AppSettings.getArrayValue(context,AppConstants.kCOUNTRY_DATA)
@@ -68,7 +62,7 @@ class AppSessions {
         }
         fun getUserSex(context: Context):String?{
             val user = AppSessions.getLoginModel(context)
-            return user!!.sex
+            return user!!.gender
         }
         fun getUserAge(context: Context):String?{
             val user = AppSessions.getLoginModel(context)

@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/pwdParentLayout"
+        android:id="@+id/parentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -16,10 +16,8 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/userInfoTxt"
-            style="@style/AnswerButtonTheme"
-            android:gravity="center"
-            android:background="@drawable/black_border"/>
+            android:id="@+id/cityTxt"
+            style="@style/AnswerButtonTheme" />
 
         <include
             android:id="@+id/logo_layout"
@@ -31,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/m10"
             android:padding="@dimen/p5"
-            android:text="@string/create_your_password"
+            android:text="@string/please_enter_info"
             android:textColor="@color/label_text_color"
             android:textSize="@dimen/t22" />
 
@@ -43,17 +41,24 @@
             android:padding="@dimen/p10">
 
             <EditText
-                android:id="@+id/pwdEdtTxt"
+                android:id="@+id/nameEdtTxt"
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
-                android:hint="@string/enter_your_password"
+                android:hint="@string/name"
                 android:textColorHint="@color/pink" />
 
             <EditText
-                android:id="@+id/cnfmPwdEdtTxt"
+                android:id="@+id/emailEdtTxt"
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
-                android:hint="@string/confirm_password"
+                android:hint="@string/email"
+                android:textColorHint="@color/pink" />
+
+            <EditText
+                android:id="@+id/mobNoEdtTxt"
+                style="@style/CustomButtonTheme"
+                android:layout_gravity="end"
+                android:hint="@string/mob_no"
                 android:textColorHint="@color/pink" />
         </LinearLayout>
 

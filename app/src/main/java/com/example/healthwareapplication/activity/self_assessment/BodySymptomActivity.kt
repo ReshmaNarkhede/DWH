@@ -1,6 +1,5 @@
 package com.example.healthwareapplication.activity.self_assessment
 
-import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +10,6 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -26,7 +24,6 @@ import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.self_assessment.BodyParts
-import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.example.healthwareapplication.model.user.UserDetailModel
 import com.google.gson.Gson
 import com.google.gson.JsonObject
@@ -59,7 +56,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
         AppHelper.transparentStatusBar(this)
         user = AppSessions.getLoginModel(this)
         gson = Gson()
-        fetchBodyParts(user!!.sex)
+        fetchBodyParts(user!!.gender)
     }
 
     private fun defaultConfiguration() {
@@ -83,7 +80,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setDefaultImage(user: UserDetailModel?) {
-        if (user!!.sex == "female") {
+        if (user!!.gender == "female") {
             bodyImg.setVectorDrawable(R.drawable.female_body_front)
         } else {
             bodyImg.setVectorDrawable(R.drawable.male_body_front)
@@ -101,14 +98,14 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun rotateImageClick() {
         if (image_front_back_flag) {
-            if (user!!.sex == "female") {
+            if (user!!.gender == "female") {
                 bodyImg.setVectorDrawable(R.drawable.female_body_back)
             } else {
                 bodyImg.setVectorDrawable(R.drawable.male_body_back)
             }
             image_front_back_flag = false
         } else {
-            if (user!!.sex == "female") {
+            if (user!!.gender == "female") {
                 bodyImg.setVectorDrawable(R.drawable.female_body_front)
             } else {
                 bodyImg.setVectorDrawable(R.drawable.male_body_front)

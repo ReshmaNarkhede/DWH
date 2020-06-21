@@ -40,8 +40,30 @@
     <!--Country Screen-->
     <string name="country_msg">Which country, city or district do you live?</string>
     <string name="city">City or district</string>
+    <string name="valid_city">Please enter valid city</string>
     <string name="country">Country</string>
+    <string name="valid_country">Please enter valid country</string>
 
+    <!--Name Screen-->
+    <string name="please_enter_info">Please enter your name, email &amp; mobile number</string>
+    <string name="surname">Surname</string>
+    <string name="name">Name</string>
+    <string name="valid_name">Please enter your name</string>
+    <string name="please_enter_email">Please enter your email</string>
+    <string name="email">Email</string>
+    <string name="please_enter_mob_no">Please enter your mobile number</string>
+    <string name="mob_no">Mobile number</string>
+
+    <!--Pwd Screen-->
+    <string name="create_your_password">Let\'s create your password</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="confirm_password">Confirm your password</string>
+    <string name="password_not_match">Password not match</string>
+
+    <!--Terms Screen-->
+    <string name="register">Register</string>
+    <string name="term_condition_msg">We are almost done with your digital health account.</string>
+    <string name="term_condition_msg2"><![CDATA[I have read and accept the term & conditions !]]></string>
 
     <string name="please_check_internet_connection">Please check internet connection and try again.</string>
     <string name="welcome_message">Hi, This is DWH. I can digitalis your health.</string>
@@ -75,16 +97,7 @@
     <string name="time">Time</string>
     <string name="sup">Super</string>
 
-    <string name="what_is_your_namewa">What is your name...?</string>
-    <string name="name">Name</string>
-    <string name="surname">Surname</string>
-    <string name="email">Email</string>
-    <string name="signupwaa">Signupwaa</string>
-    <string name="term_condition_msg">We are almost done with your digital health account.</string>
-    <string name="term_condition_msg2"><![CDATA[I have read and accept the term & conditions !]]></string>
 
-    <string name="create_your_password">Let\'s create your password!</string>
-    <string name="confirm_password">Confirm password</string>
     <string name="change_your_password">Let\'s change your password!</string>
     <string name="done">Done</string>
 

@@ -85,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
             ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
 
         val param = JsonObject()
-        param.addProperty("userName", uName)
+        param.addProperty("username", uName)
         param.addProperty("password", pwd)
 
         val call: Call<JsonObject> = apiService.fetchLogin(param)

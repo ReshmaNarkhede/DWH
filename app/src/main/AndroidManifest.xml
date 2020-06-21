@@ -28,15 +28,7 @@
         <activity android:name=".activity.self_assessment.SymptomReportActivity" />
         <activity android:name=".activity.self_assessment.ThankYouActivity" />
         <activity android:name=".activity.self_assessment.QuestionActivity" />
-        <activity android:name=".activity.self_assessment.QuestionDemoActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:name=".activity.self_assessment.QuestionDemoActivity"></activity>
         <activity android:name=".activity.self_assessment.WhatFeelActivity" />
         <activity android:name=".activity.self_assessment.BodySymptomActivity" />
         <activity android:name=".activity.account.register.RegisterTermsActivity" />
@@ -44,8 +36,9 @@
             android:name=".activity.account.register.RegisterPasswordActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.account.register.RegisterNameActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:name=".activity.account.register.RegisterInfoActivity"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
         <activity
             android:name=".activity.account.register.RegisterAgeActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -54,17 +47,15 @@
             android:name=".activity.account.login.OldLoginActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.account.register.GenderActivity" />
-        <activity android:name=".activity.account.register.RegisterIntroActivity" />
+
         <activity
             android:name=".activity.account.register.CountryActivity"
-            android:windowSoftInputMode="adjustPan" /> <!-- <activity android:name=".activity.account.login.HaveWeMetActivity" /> -->
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.account.login.LoginActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.account.register.RegisterAsActivity" />
-        <activity
-            android:name=".activity.account.register.RegisterMobNoActivity"
-            android:windowSoftInputMode="adjustPan" />
+
         <activity android:name=".activity.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
