@@ -86,7 +86,6 @@ class CountryActivity : AppCompatActivity(), View.OnClickListener {
 
                 Log.d("COUNTRY: ", ": " + response.raw().request().url())
                 if (response.isSuccessful) {
-                    DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
@@ -117,13 +116,15 @@ class CountryActivity : AppCompatActivity(), View.OnClickListener {
                 val model = CityData(dataArray.getJSONObject(position))
                 countryTxt.setText(model.getCountry())
                 cityTxt.setText(model.getName())
-                userDetailModel.cityId = model.getId()
+                userDetailModel.cityId = model.getId()!!.toInt()
                 userDetailModel.cityName = model.getName()
                 userDetailModel.countryName = model.getCountry()
                 userDetailModel.mobileLength = model.getDigits()
                 val intent = Intent(this, RegisterInfoActivity::class.java)
                 intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
                 startActivity(intent)
+                cityTxt.text.clear()
+                countryTxt.text.clear()
             })
         cityList.adapter = adapter
     }
@@ -140,6 +141,10 @@ class CountryActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        cityList.visibility = View.GONE
+    }
 //    private fun checkValidation() {
 //        var isFlag = true
 //        if (cityTxt.text!!.trim().isEmpty()) {

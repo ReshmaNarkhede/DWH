@@ -14,7 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.account.register.DobActivity"></activity>
+
+        <activity
+            android:name=".activity.account.OtpActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".activity.account.register.DobActivity" />
         <activity android:name=".activity.account.register.AgeActivity" />
         <activity android:name=".activity.account.LetsMeetActivity" />
         <activity android:name=".activity.self_assessment.ReportFromHome" />
@@ -28,7 +32,7 @@
         <activity android:name=".activity.self_assessment.SymptomReportActivity" />
         <activity android:name=".activity.self_assessment.ThankYouActivity" />
         <activity android:name=".activity.self_assessment.QuestionActivity" />
-        <activity android:name=".activity.self_assessment.QuestionDemoActivity"></activity>
+        <activity android:name=".activity.self_assessment.QuestionDemoActivity" />
         <activity android:name=".activity.self_assessment.WhatFeelActivity" />
         <activity android:name=".activity.self_assessment.BodySymptomActivity" />
         <activity android:name=".activity.account.register.RegisterTermsActivity" />
@@ -37,8 +41,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.account.register.RegisterInfoActivity"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activity.account.register.RegisterAgeActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -47,7 +50,6 @@
             android:name=".activity.account.login.OldLoginActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.account.register.GenderActivity" />
-
         <activity
             android:name=".activity.account.register.CountryActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -55,7 +57,6 @@
             android:name=".activity.account.login.LoginActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.account.register.RegisterAsActivity" />
-
         <activity android:name=".activity.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

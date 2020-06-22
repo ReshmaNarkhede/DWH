@@ -48,7 +48,7 @@ class DobActivity : AppCompatActivity() {
 
             dy = if (dayOfMonth < 10) "0$dayOfMonth" else java.lang.String.valueOf(dayOfMonth)
 
-            dobDate.text = "$dy/$mt/$year"
+            dobDate.text = "$year-$mt-$dy"
             DialogUtility.hideProgressDialog()
             userDetailModel.dob = dobDate.text.toString()
             Log.e("when Date: ", " : ${dobDate.text}")

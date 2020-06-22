@@ -65,6 +65,19 @@
     <string name="term_condition_msg">We are almost done with your digital health account.</string>
     <string name="term_condition_msg2"><![CDATA[I have read and accept the term & conditions !]]></string>
 
+    <!--OTP screen-->
+    <string name="otp_msg">OTP has been sent to you on your email id.</string>
+    <string name="please_enter_it_below">Please enter it below.</string>
+    <string name="please_enter_otp">Please enter otp</string>
+    <string name="didn_t_received_otp">Didn\'t received OTP?</string>
+    <string name="invalid_otp">Invalid Otp</string>
+    <string name="resend">Resend</string>
+
+
+
+
+
+
     <string name="please_check_internet_connection">Please check internet connection and try again.</string>
     <string name="welcome_message">Hi, This is DWH. I can digitalis your health.</string>
     <string name="welcome_message_dr">Hi, This is DWH. Would you like to see people as well as digitalis your health?</string>

@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
+        android:onClick="parentCLick"
         android:orientation="vertical">
 
         <TextView
@@ -66,12 +67,12 @@
                     android:textColorHint="@color/pink"
                     android:hint="@string/enter_password" />
 
-                <TextView
-                    android:id="@+id/okayBtn"
-                    android:text="@string/ok"
-                    android:onClick="okayClick"
-                    android:layout_gravity="end"
-                    style="@style/CustomButtonTheme"/>
+<!--                <TextView-->
+<!--                    android:id="@+id/okayBtn"-->
+<!--                    android:text="@string/ok"-->
+<!--                    android:onClick="okayClick"-->
+<!--                    android:layout_gravity="end"-->
+<!--                    style="@style/CustomButtonTheme"/>-->
             </LinearLayout>
 
         </LinearLayout>

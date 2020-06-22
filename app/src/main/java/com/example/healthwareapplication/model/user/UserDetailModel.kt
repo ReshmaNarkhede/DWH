@@ -12,7 +12,7 @@ class UserDetailModel:Serializable {
     var tob: String = ""
     var mobile: String = ""
     var mobileLength: String? = ""
-    var cityId: String? = ""
+    var cityId: Int? = 0
     var cityName: String? = ""
     var countryId: String? = ""
     var countryName: String? = ""

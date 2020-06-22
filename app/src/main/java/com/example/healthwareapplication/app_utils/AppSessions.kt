@@ -53,19 +53,23 @@ class AppSessions {
         }
 
         fun getUserId(context: Context):String?{
-            val user = AppSessions.getLoginModel(context)
+            val user = getLoginModel(context)
             return user!!.id
         }
         fun getUserName(context: Context):String?{
             val user = AppSessions.getLoginModel(context)
-            return user!!.firstName + user.lastName.first()
+            return user!!.firstName.plus(" ").plus(user.lastName.first())
+        }
+        fun getUserEmail(context: Context):String?{
+            val user = getLoginModel(context)
+            return user!!.email
         }
         fun getUserSex(context: Context):String?{
-            val user = AppSessions.getLoginModel(context)
+            val user = getLoginModel(context)
             return user!!.gender
         }
         fun getUserAge(context: Context):String?{
-            val user = AppSessions.getLoginModel(context)
+            val user = getLoginModel(context)
             val date = user!!.dob.split("/")
            return  AppHelper.getAge(date[2], date[1], date[0]) + " years"
         }

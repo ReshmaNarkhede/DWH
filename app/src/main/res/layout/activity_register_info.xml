@@ -44,6 +44,7 @@
                 android:id="@+id/nameEdtTxt"
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
+                android:imeOptions="actionDone"
                 android:hint="@string/name"
                 android:textColorHint="@color/pink" />
 
@@ -51,6 +52,7 @@
                 android:id="@+id/emailEdtTxt"
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
+                android:imeOptions="actionDone"
                 android:hint="@string/email"
                 android:textColorHint="@color/pink" />
 
@@ -58,7 +60,9 @@
                 android:id="@+id/mobNoEdtTxt"
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
+                android:imeOptions="actionDone"
                 android:hint="@string/mob_no"
+                android:inputType="number"
                 android:textColorHint="@color/pink" />
         </LinearLayout>
 

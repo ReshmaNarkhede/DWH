@@ -40,22 +40,17 @@ class LoginActivity : AppCompatActivity() {
         setContentView(activity_login)
 
         initComponents()
-        defaultConfiguration()
     }
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
     }
 
-    private fun defaultConfiguration() {
-
-    }
-
     fun loginClick(view: View) {
         finish()
     }
 
-    fun okayClick(view: View) {
+    fun parentCLick(view: View) {
         checkValidation()
     }
 
@@ -126,4 +121,5 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
 }

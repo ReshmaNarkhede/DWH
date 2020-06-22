@@ -1,83 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="false"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:gravity="bottom"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/cityPLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:gravity="bottom"
+        android:layout_height="match_parent"
+        android:fillViewport="false"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/dobTxt"
-            style="@style/AnswerButtonTheme"
-            android:onClick="dobClick" />
-
-        <include
-            android:id="@+id/logo_layout"
-            layout="@layout/logo_layout" />
-
         <LinearLayout
-            android:id="@+id/timeLayout"
+            android:id="@+id/cityPLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/p5"
-            android:paddingBottom="@dimen/p10"
-            android:visibility="visible">
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/m10"
-                android:padding="@dimen/p5"
-                android:text="@string/country_msg"
-                android:textColor="@color/label_text_color"
-                android:textSize="@dimen/t22" />
+                android:id="@+id/dobTxt"
+                style="@style/AnswerButtonTheme"
+                android:onClick="dobClick" />
+
+            <include
+                android:id="@+id/logo_layout"
+                layout="@layout/logo_layout" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/timeLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
                 android:orientation="vertical"
-                android:padding="@dimen/p10">
+                android:paddingTop="@dimen/p5"
+                android:paddingBottom="@dimen/p10"
+                android:visibility="visible">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/cityList"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/m15"
-                    android:layout_marginEnd="@dimen/m15"
-                    android:visibility="gone" />
+                    android:layout_margin="@dimen/m10"
+                    android:padding="@dimen/p5"
+                    android:text="@string/country_msg"
+                    android:textColor="@color/label_text_color"
+                    android:textSize="@dimen/t22" />
 
-                <EditText
-                    android:id="@+id/cityTxt"
-                    style="@style/CustomButtonTheme"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:hint="@string/city"
-                    android:textColorHint="@color/pink" />
+                    android:orientation="vertical"
+                    android:padding="@dimen/p10">
 
-                <EditText
-                    android:id="@+id/countryTxt"
-                    style="@style/CustomButtonTheme"
-                    android:layout_gravity="end"
-                    android:hint="@string/country"
-                    android:clickable="false"
-                    android:editable="false"
-                    android:textColorHint="@color/pink" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/cityList"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h150"
+                        android:layout_marginStart="@dimen/m15"
+                        android:layout_marginEnd="@dimen/m15"
+                        android:visibility="gone" />
 
+                    <EditText
+                        android:id="@+id/cityTxt"
+                        style="@style/CustomButtonTheme"
+                        android:layout_gravity="end"
+                        android:imeOptions="actionDone"
+                        android:hint="@string/city"
+                        android:textColorHint="@color/pink" />
+
+                    <EditText
+                        android:id="@+id/countryTxt"
+                        style="@style/CustomButtonTheme"
+                        android:layout_gravity="end"
+                        android:clickable="false"
+                        android:editable="false"
+                        android:hint="@string/country"
+                        android:textColorHint="@color/pink" />
+
+                </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
+    </ScrollView>
 
-        <include
-            android:id="@+id/layout"
-            layout="@layout/account_bottom_layout" />
+    <include
+        android:id="@+id/layout"
+        layout="@layout/account_bottom_layout" />
 
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

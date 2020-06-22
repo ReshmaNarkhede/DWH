@@ -17,6 +17,7 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">@dimen/t16</item>
         <item name="android:textColor">@color/pink</item>
+        <item name="android:singleLine">true</item>
         <item name="android:layout_marginTop">@dimen/m5</item>
         <item name="android:layout_marginBottom">@dimen/m5</item>
         <item name="android:layout_marginEnd">@dimen/m5</item>

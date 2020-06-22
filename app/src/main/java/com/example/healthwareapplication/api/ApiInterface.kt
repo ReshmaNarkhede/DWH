@@ -19,9 +19,15 @@ interface ApiInterface {
     @POST("api/login")
     fun fetchLogin(@Body jsonObject: JsonObject?): Call<JsonObject>
 
-    @POST("api/registration")
-    @Multipart
-    fun registration(@PartMap fieldMap: Map<String, @JvmSuppressWildcards RequestBody?>): Call<JsonObject>
+    @POST("api/user_ac_register")
+    fun fetchRegister(@Body jsonObject: JsonObject?): Call<JsonObject>
+
+    @POST("api/verify_register_ac")
+    fun verifyUser(@Body jsonObject: JsonObject?): Call<JsonObject>
+
+//    @POST("api/user_ac_register")
+//    @Multipart
+//    fun registration(@PartMap fieldMap: Map<String, @JvmSuppressWildcards RequestBody?>): Call<JsonObject>
 
     @POST("api/getBodyParts")
     fun getBodyPart(@Body jsonObject: JsonObject?): Call<JsonObject>

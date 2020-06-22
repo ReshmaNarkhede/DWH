@@ -37,8 +37,8 @@ class RegisterAsActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.doctorBtn -> {
-                userDetailModel.userType = 1
-                openIntroActivity()
+//                userDetailModel.userType = 1
+//                openIntroActivity()
             }
             R.id.humanBtn -> {
                 userDetailModel.userType = 2
