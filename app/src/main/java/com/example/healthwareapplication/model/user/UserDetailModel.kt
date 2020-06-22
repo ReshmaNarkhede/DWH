@@ -17,12 +17,14 @@ class UserDetailModel:Serializable {
     var countryId: String? = ""
     var countryName: String? = ""
     var password: String = ""
-    var userType: Int = 1
+    var userType: Int = 0
     var parentId: String = ""
     var gender: String = ""
     var height: String = ""
     var resume: String = ""
     var resumeName: String = ""
     var mciNo: String = ""
+    var speciality: String = ""
+    var experience: String = ""
 }
 

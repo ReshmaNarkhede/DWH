@@ -44,7 +44,7 @@ class RegisterInfoActivity : AppCompatActivity() {
     }
 
     private fun checkValidation() {
-        var isFlag = true
+        var isFlag = false
         if (nameEdtTxt.text!!.trim().isEmpty()) {
             AppHelper.showToast(this, getString(R.string.valid_name))
             isFlag = false
@@ -55,6 +55,9 @@ class RegisterInfoActivity : AppCompatActivity() {
         } else {
             if (emailEdtTxt.text!!.trim().matches(emailPattern.toRegex())) {
                 isFlag = true
+            }else{
+                AppHelper.showToast(this, getString(R.string.valid_email))
+                isFlag = false
             }
         }
         if (mobNoEdtTxt.text!!.trim().isEmpty()) {
@@ -74,9 +77,15 @@ class RegisterInfoActivity : AppCompatActivity() {
         userDetailModel.email = email
         userDetailModel.mobile = mobNo
 
-        val intent = Intent(this, RegisterPasswordActivity::class.java)
-        intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
-        startActivity(intent)
+        if (userDetailModel.userType == 1) {
+            val intent = Intent(this, DoctorSpecialityActivity::class.java)
+            intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
+            startActivity(intent)
+        } else if(userDetailModel.userType == 2){
+            val intent = Intent(this, RegisterPasswordActivity::class.java)
+            intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
+            startActivity(intent)
+        }
     }
 
 }

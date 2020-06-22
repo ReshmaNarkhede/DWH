@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_gender
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.user.UserDetailModel
+import kotlinx.android.synthetic.main.activity_gender.*
 
 class GenderActivity : AppCompatActivity() {
 
@@ -21,15 +23,20 @@ class GenderActivity : AppCompatActivity() {
 
     private fun defaultConfiguration() {
         userDetailModel = intent?.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
+        if(userDetailModel.userType==1){
+            userTypeTxt.text = getString(R.string.doctor)
+        }else if(userDetailModel.userType==2){
+            userTypeTxt.text = getString(R.string.human)
+        }
     }
 
     fun maleClick(view: View) {
-        userDetailModel!!.gender = "male"
+        userDetailModel.gender = "male"
         jumpNextActivity()
     }
 
     fun femaleClick(view: View) {
-        userDetailModel!!.gender = "female"
+        userDetailModel.gender = "female"
         jumpNextActivity()
     }
 

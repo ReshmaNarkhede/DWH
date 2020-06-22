@@ -3,21 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:fitsSystemWindows="false"
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/parentLayout"
+        android:id="@+id/pwdParentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="bottom"
         android:background="@color/white"
         android:gravity="bottom"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/userTypeTxt"
+            android:id="@+id/userInfoTxt"
+            android:layout_width="match_parent"
             style="@style/AnswerButtonTheme"
-            android:onClick="humanClick" />
+            android:gravity="center"
+            android:background="@drawable/black_border"/>
 
         <include
             android:id="@+id/logo_layout"
@@ -29,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/m10"
             android:padding="@dimen/p5"
-            android:text="@string/gender_msg"
+            android:text="@string/dr_msg"
             android:textColor="@color/label_text_color"
             android:textSize="@dimen/t22" />
 
@@ -40,17 +43,22 @@
             android:orientation="vertical"
             android:padding="@dimen/p10">
 
-            <TextView
+            <EditText
+                android:id="@+id/specialityEdtTxt"
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
-                android:onClick="maleClick"
-                android:text="@string/male" />
+                android:hint="@string/speciality"
+                android:imeOptions="actionDone"
+                android:textColorHint="@color/pink" />
 
-            <TextView
+            <EditText
+                android:id="@+id/experienceEdtTxt"
                 style="@style/CustomButtonTheme"
+                android:imeOptions="actionDone"
                 android:layout_gravity="end"
-                android:onClick="femaleClick"
-                android:text="@string/female" />
+                android:inputType="number"
+                android:hint="@string/yr_of_work_experience"
+                android:textColorHint="@color/pink" />
         </LinearLayout>
 
         <include

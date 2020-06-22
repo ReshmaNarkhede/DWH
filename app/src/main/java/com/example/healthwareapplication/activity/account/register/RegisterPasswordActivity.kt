@@ -27,7 +27,14 @@ class RegisterPasswordActivity : AppCompatActivity() {
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
         userDetailModel = intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
-        userInfoTxt.text = userDetailModel.firstName.plus("\n").plus(userDetailModel.email).plus("\n").plus(userDetailModel.mobile)
+        if (userDetailModel.userType == 1) {
+            userInfoTxt.text =
+                userDetailModel.speciality.plus("\n").plus(userDetailModel.experience)
+        } else if (userDetailModel.userType == 2) {
+            userInfoTxt.text =
+                userDetailModel.firstName.plus("\n").plus(userDetailModel.email).plus("\n")
+                    .plus(userDetailModel.mobile)
+        }
         userInfoTxt.setOnClickListener(View.OnClickListener {
             finish()
         })
@@ -43,11 +50,11 @@ class RegisterPasswordActivity : AppCompatActivity() {
         var isFlag = true
         val newPwd = pwdEdtTxt.text.toString()
         val cnfmPwd = cnfmPwdEdtTxt.text.toString()
-        if (TextUtils.isEmpty(newPwd) || newPwd.length<6) {
-            AppHelper.showToast(this,getString(R.string.valid_password))
+        if (TextUtils.isEmpty(newPwd) || newPwd.length < 6) {
+            AppHelper.showToast(this, getString(R.string.valid_password))
             isFlag = false
-        } else if (TextUtils.isEmpty(cnfmPwd) || cnfmPwd.length<6) {
-            AppHelper.showToast(this,getString(R.string.valid_password))
+        } else if (TextUtils.isEmpty(cnfmPwd) || cnfmPwd.length < 6) {
+            AppHelper.showToast(this, getString(R.string.valid_password))
             isFlag = false
         }
         if (isFlag) {

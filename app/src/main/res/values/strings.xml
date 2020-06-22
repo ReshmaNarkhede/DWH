@@ -73,6 +73,12 @@
     <string name="invalid_otp">Invalid Otp</string>
     <string name="resend">Resend</string>
 
+    <!--Dr speciality screen-->
+    <string name="dr_msg">what is your speciality and experience?</string>
+    <string name="speciality">Speciality</string>
+    <string name="yr_of_work_experience">Year of work experience</string>
+    <string name="valid_speciality">Please enter valid speciality</string>
+    <string name="valid_experience">Please enter valid year of experience</string>
 
 
 

@@ -14,10 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".activity.account.register.DoctorSpecialityActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activity.account.OtpActivity"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.account.register.DobActivity" />
         <activity android:name=".activity.account.register.AgeActivity" />
         <activity android:name=".activity.account.LetsMeetActivity" />
@@ -41,7 +42,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.account.register.RegisterInfoActivity"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.account.register.RegisterAgeActivity"
             android:windowSoftInputMode="adjustPan" />
