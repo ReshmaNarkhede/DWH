@@ -56,7 +56,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
         AppHelper.transparentStatusBar(this)
         user = AppSessions.getLoginModel(this)
         gson = Gson()
-        fetchBodyParts(user!!.gender)
+        fetchBodyParts()
     }
 
     private fun defaultConfiguration() {
@@ -132,17 +132,16 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
 
-    private fun fetchBodyParts(sex: String?) {
+    private fun fetchBodyParts() {
         val apiService: ApiInterface =
             ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
 
         val param = JsonObject()
-        param.addProperty("gender", sex)
+        param.addProperty("gender", AppSessions.getUserSex(this))
 
         AppHelper.printParam("BODY PARTS Param:", param)
 
         val call: Call<JsonObject> = apiService.getBodyPart(param)
-//        DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
@@ -151,7 +150,6 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
 
                 if (response.isSuccessful) {
 
-//                    DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {

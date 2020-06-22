@@ -135,16 +135,11 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
 
         AppHelper.printParam("verifyParam: ", param)
 
-        val call: Call<JsonObject> = apiService.fetchLogin(param)
+        val call: Call<JsonObject> = apiService.verifyUser(param)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
                 if (response.isSuccessful) {
-//                    {
-//                        "code": 200,
-//                        "message": "DWH account activated successfully.",
-//                        "data": true
-//                    }
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {

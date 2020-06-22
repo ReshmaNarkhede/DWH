@@ -75,34 +75,29 @@ class RegisterTermsActivity : AppCompatActivity() {
 
         AppHelper.printParam("RegisterParam: ", param)
 
-//        call.enqueue(object : Callback<JsonObject?> {
-//
-//            override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
-//
-//                if (response.isSuccessful) {
-//                    DialogUtility.hideProgressDialog()
-//                    val json = JSONObject(response.body().toString())
-//                    val responseModel = ResponseModel(json)
-////                    {
-////                        "code": 200,
-////                        "message": "Account created successfully",
-////                        "data": 2640
-////                    }
-//                    if (responseModel.isCode()) {
-//                        val otp = json.optInt("message")
-//                        showOTPDialog(otp.toString())
-//                    } else {
-//                        AppHelper.showToast(this@RegisterTermsActivity, responseModel.getMessage().toString())
-//                    }
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
-//                if (t is NoConnectivityException) {
-//                    AppHelper.showNetNotAvailable(this@RegisterTermsActivity)
-//                }
-//            }
-//        })
+        call.enqueue(object : Callback<JsonObject?> {
+
+            override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
+
+                if (response.isSuccessful) {
+                    DialogUtility.hideProgressDialog()
+                    val json = JSONObject(response.body().toString())
+                    val responseModel = ResponseModel(json)
+                    if (responseModel.isCode()) {
+                        val otp = json.optInt("data")
+                        showOTPDialog(otp.toString())
+                    } else {
+                        AppHelper.showToast(this@RegisterTermsActivity, responseModel.getMessage().toString())
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
+                if (t is NoConnectivityException) {
+                    AppHelper.showNetNotAvailable(this@RegisterTermsActivity)
+                }
+            }
+        })
     }
 
     private fun showOTPDialog(otp: String) {

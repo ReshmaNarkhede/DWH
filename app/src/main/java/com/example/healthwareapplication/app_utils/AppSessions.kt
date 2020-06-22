@@ -57,21 +57,26 @@ class AppSessions {
             return user!!.id
         }
         fun getUserName(context: Context):String?{
-            val user = AppSessions.getLoginModel(context)
-            return user!!.firstName.plus(" ").plus(user.lastName.first())
+            val user = getLoginModel(context)
+            var name = ""
+            if(user!!.lastName.isNotEmpty()) {
+                name = user!!.firstName.plus(" ").plus(user.lastName.first())
+            }else{
+                name = user!!.firstName
+            }
+            return name
         }
         fun getUserEmail(context: Context):String?{
             val user = getLoginModel(context)
             return user!!.email
         }
         fun getUserSex(context: Context):String?{
-            val user = getLoginModel(context)
-            return user!!.gender
+            return  AppSettings.getStringValue(context,AppConstants.kUSER_GENDER)
         }
         fun getUserAge(context: Context):String?{
             val user = getLoginModel(context)
-            val date = user!!.dob.split("/")
-           return  AppHelper.getAge(date[2], date[1], date[0]) + " years"
+            val date = user!!.dob.split("-")
+           return  AppHelper.getAge(date[0], date[1], date[2]) + " years"
         }
     }
 }
