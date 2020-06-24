@@ -4,23 +4,20 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.text.SpannableStringBuilder
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import androidx.core.text.bold
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_otp
+import com.example.healthwareapplication.activity.account.forgot_password.ResetPasswordActivity
 import com.example.healthwareapplication.activity.account.login.LoginActivity
-import com.example.healthwareapplication.activity.dashboard.DashboardActivity
 import com.example.healthwareapplication.api.ApiClient
+import com.example.healthwareapplication.api.ApiData
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.AppHelper
-import com.example.healthwareapplication.app_utils.AppSessions
 import com.example.healthwareapplication.app_utils.NoConnectivityException
 import com.example.healthwareapplication.constants.IntentConstants
-import com.example.healthwareapplication.model.user.UserDetailModel
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_otp.*
 import org.json.JSONObject
@@ -29,6 +26,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class OtpActivity : AppCompatActivity(), View.OnClickListener {
+    private var isForgot: Boolean = false
     private lateinit var value1: String
     private lateinit var value2: String
     private lateinit var value3: String
@@ -47,10 +45,15 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-        val userDetailModel =
-            intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
+        isForgot = intent.getBooleanExtra(IntentConstants.kIS_FORGOT, false)
+        if (isForgot) {
+            resendOtp.visibility = View.VISIBLE
+            resendOtp.setOnClickListener(this)
+        } else {
+            resendOtp.visibility = View.GONE
+        }
+        email = intent.getStringExtra(IntentConstants.kEMAIL)
         otpMailString = intent.getStringExtra(IntentConstants.kOTP)
-        email = userDetailModel.email
     }
 
     private fun defaultConfiguration() {
@@ -88,6 +91,9 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
             R.id.otpLayout -> {
                 checkValidation()
             }
+            R.id.resendOtp->{
+                ApiData.fetchForgotPwdAPI(this,email!!)
+            }
         }
     }
 
@@ -119,15 +125,20 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
 
         if (otpMailString == otpString) {
             Log.e("OtpValue: ", ": $otpString")
-            verifyAccount(otpString!!)
+            if (isForgot) {
+                val intent = Intent(this,ResetPasswordActivity::class.java)
+                intent.putExtra(IntentConstants.kEMAIL,email)
+                startActivity(intent)
+            }else {
+                verifyAccount(otpString!!)
+            }
         } else {
             AppHelper.showToast(this, getString(R.string.invalid_otp))
         }
     }
 
     private fun verifyAccount(otpString: String) {
-        val apiService: ApiInterface =
-            ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
+        val apiService: ApiInterface = ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
 
         val param = JsonObject()
         param.addProperty("username", email)
@@ -143,7 +154,7 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
-                        showDashboard()
+                        showLogin()
                     } else {
                         AppHelper.showToast(this@OtpActivity, responseModel.getMessage().toString())
                     }
@@ -158,10 +169,9 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
 
-    private fun showDashboard() {
+    private fun showLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
-
 
 }

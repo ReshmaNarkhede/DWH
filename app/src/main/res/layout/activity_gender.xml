@@ -44,6 +44,8 @@
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
                 android:onClick="maleClick"
+                android:paddingStart="@dimen/p35"
+                android:paddingEnd="@dimen/p35"
                 android:text="@string/male" />
 
             <TextView

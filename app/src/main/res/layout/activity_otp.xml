@@ -88,14 +88,18 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/sendOtp"
-                android:layout_width="match_parent"
+                android:id="@+id/resendOtp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/m10"
                 android:layout_marginTop="@dimen/m5"
                 android:layout_marginEnd="@dimen/m10"
-                android:gravity="end"
-                android:padding="@dimen/p5"
+                android:layout_gravity="end"
+                android:paddingTop="@dimen/p7"
+                android:paddingBottom="@dimen/p7"
+                android:paddingStart="@dimen/p20"
+                android:paddingEnd="@dimen/p20"
+                android:text="Resend OTP"
                 android:textColor="@color/label_text_color"
                 android:textSize="@dimen/t18"
                 android:visibility="gone" />

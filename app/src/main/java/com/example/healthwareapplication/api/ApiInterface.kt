@@ -25,6 +25,12 @@ interface ApiInterface {
     @POST("api/verify_register_ac")
     fun verifyUser(@Body jsonObject: JsonObject?): Call<JsonObject>
 
+    @POST("api/forgotPassword")
+    fun forgotPassword(@Body jsonObject: JsonObject?): Call<JsonObject>
+
+    @POST("api/resetPassword")
+    fun resetPassword(@Body jsonObject: JsonObject?): Call<JsonObject>
+//
 //    @POST("api/user_ac_register")
 //    @Multipart
 //    fun registration(@PartMap fieldMap: Map<String, @JvmSuppressWildcards RequestBody?>): Call<JsonObject>

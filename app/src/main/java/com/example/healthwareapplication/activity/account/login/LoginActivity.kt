@@ -55,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun checkValidation() {
-        var isFlag = true
+        var isFlag = false
         val email = emailEdtTxt.text.trim().toString()
         val pwd = pwdEdtTxt.text.trim().toString()
         if (email.isEmpty()) {
@@ -84,13 +84,11 @@ class LoginActivity : AppCompatActivity() {
         param.addProperty("password", pwd)
 
         val call: Call<JsonObject> = apiService.fetchLogin(param)
-        DialogUtility.showProgressDialog(this)
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
                 Log.e("LOGIN: $param",": "+response.raw().request().url())
                 if (response.isSuccessful) {
-                    DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
@@ -110,7 +108,6 @@ class LoginActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
                 if (t is NoConnectivityException) {
-                    DialogUtility.hideProgressDialog()
                     AppHelper.showNetNotAvailable(this@LoginActivity)
                 }
             }

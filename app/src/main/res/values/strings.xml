@@ -80,7 +80,13 @@
     <string name="valid_speciality">Please enter valid speciality</string>
     <string name="valid_experience">Please enter valid year of experience</string>
 
+    <!--Forgot Password Screen-->
+    <string name="what_is_your_email">What is your email?</string>
 
+    <!--Reset Password screen-->
+    <string name="reset_pwd_msg">Reset your password</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="confirm_new_password">Confirm new password</string>
 
 
 

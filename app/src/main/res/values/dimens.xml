@@ -63,11 +63,17 @@
     <dimen name="p17">17dp</dimen>
     <dimen name="p20">20dp</dimen>
     <dimen name="p25">25dp</dimen>
+    <dimen name="p26">26dp</dimen>
+    <dimen name="p27">27dp</dimen>
+    <dimen name="p28">28dp</dimen>
+    <dimen name="p29">29dp</dimen>
     <dimen name="p30">30dp</dimen>
     <dimen name="p35">35dp</dimen>
     <dimen name="p40">40dp</dimen>
     <dimen name="p42">42dp</dimen>
     <dimen name="p45">45dp</dimen>
+    <dimen name="p46">46dp</dimen>
+    <dimen name="p47">47dp</dimen>
     <dimen name="p50">50dp</dimen>
     <dimen name="p60">60dp</dimen>
     <dimen name="p70">70dp</dimen>

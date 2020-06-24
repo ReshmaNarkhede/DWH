@@ -70,6 +70,10 @@ class RegisterTermsActivity : AppCompatActivity() {
         param.addProperty("mobile", userDetailModel.mobile)
         param.addProperty("city_id", userDetailModel.cityId)
         param.addProperty("user_type", userDetailModel.userType)
+        if(userDetailModel.userType==1){
+            param.addProperty("speciality", userDetailModel.speciality)
+            param.addProperty("experience", userDetailModel.experience)
+        }
 
         val call: Call<JsonObject> = apiService.fetchRegister(param)
 
@@ -80,11 +84,11 @@ class RegisterTermsActivity : AppCompatActivity() {
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
 
                 if (response.isSuccessful) {
-                    DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
-                        val otp = json.optInt("data")
+                        val data = responseModel.getDataObj()
+                        val otp = data!!.optInt("otp")
                         showOTPDialog(otp.toString())
                     } else {
                         AppHelper.showToast(this@RegisterTermsActivity, responseModel.getMessage().toString())
@@ -107,7 +111,8 @@ class RegisterTermsActivity : AppCompatActivity() {
         builder.setPositiveButton("okay") { dialog, which ->
             val intent = Intent(this,OtpActivity::class.java)
             intent.putExtra(IntentConstants.kOTP,otp)
-            intent.putExtra(IntentConstants.kUSER_DATA,userDetailModel)
+            intent.putExtra(IntentConstants.kEMAIL,userDetailModel.email)
+            intent.putExtra(IntentConstants.kIS_FORGOT,false)
             startActivity(intent)
         }
         val dialog: AlertDialog = builder.create()

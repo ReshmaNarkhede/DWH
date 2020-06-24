@@ -12,6 +12,11 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/answerTxt"
+            style="@style/AnswerButtonTheme"
+            android:visibility="gone" />
+
         <include
             android:id="@+id/logo_layout"
             layout="@layout/logo_layout" />

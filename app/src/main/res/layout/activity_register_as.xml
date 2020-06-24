@@ -51,6 +51,8 @@
                     android:id="@+id/doctorBtn"
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"
+                    android:paddingStart="@dimen/p27"
+                    android:paddingEnd="@dimen/p27"
                     android:textColorHint="@color/pink"
                     android:text="@string/doctor"/>
 
