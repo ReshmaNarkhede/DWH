@@ -41,6 +41,15 @@ class DialogUtility {
             dialog = datePickerDialog
             return dialog as DatePickerDialog
         }
+        fun showDOBDatePickerDialog(context: Context, listner: DatePickerDialog.OnDateSetListener): Dialog {
+            val calendar = Calendar.getInstance()
+            calendar.add(Calendar.YEAR, -16)
+            val datePickerDialog = DatePickerDialog(context, R.style.DialogTheme, listner, calendar.get(Calendar.YEAR), calendar.get(
+                Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+            datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
+            dialog = datePickerDialog
+            return dialog as DatePickerDialog
+        }
 
         fun showTimePickerDialog(context: Context, listner: TimePickerDialog.OnTimeSetListener): Dialog {
 

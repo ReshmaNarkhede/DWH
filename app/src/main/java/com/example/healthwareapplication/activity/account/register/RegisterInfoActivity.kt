@@ -2,8 +2,10 @@ package com.example.healthwareapplication.activity.account.register
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.text.InputFilter
 import android.text.InputFilter.LengthFilter
+import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
@@ -35,11 +37,27 @@ class RegisterInfoActivity : AppCompatActivity() {
         })
         val maxLengthofEditText = userDetailModel.mobileLength!!.toInt()
         mobNoEdtTxt.filters = arrayOf<InputFilter>(LengthFilter(maxLengthofEditText))
+        prefix.text = userDetailModel.mobilePrefix
     }
 
     private fun defaultConfiguration() {
         parentLayout.setOnClickListener(View.OnClickListener {
             checkValidation()
+        })
+        mobNoEdtTxt.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+
+            }
+            override fun afterTextChanged(s: Editable) {
+                if(s.toString().isNotEmpty()){
+                    prefix.visibility = View.VISIBLE
+                }else{
+                    prefix.visibility = View.GONE
+                }
+            }
         })
     }
 

@@ -54,7 +54,7 @@ class DobActivity : AppCompatActivity() {
             Log.e("when Date: ", " : ${dobDate.text}")
                 openNextActivity()
         }
-        DialogUtility.showDatePickerDialog(this, listner).show()
+        DialogUtility.showDOBDatePickerDialog(this, listner).show()
     }
 
     fun dobTimeClick(view: View) {

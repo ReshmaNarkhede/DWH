@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_country
@@ -22,7 +23,6 @@ import com.example.healthwareapplication.model.country.CityData
 import com.example.healthwareapplication.model.user.UserDetailModel
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_country.*
-import kotlinx.android.synthetic.main.activity_country.cityTxt
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -62,6 +62,7 @@ class CountryActivity : AppCompatActivity(), View.OnClickListener {
 
             override fun onTextChanged(s: CharSequence, i: Int, i1: Int, i2: Int) {
                 cityList.visibility = View.VISIBLE
+                cityLayout.background = resources.getDrawable(R.drawable.country_btn_selector)
                 callCityApi(s.toString())
             }
 
@@ -109,7 +110,9 @@ class CountryActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun bindCountryData(dataArray: JSONArray?, searchStr: String?) {
-        cityList.layoutManager = LinearLayoutManager(this)
+        val linearlayoutManager = LinearLayoutManager(this, VERTICAL, true)
+        linearlayoutManager.reverseLayout = true
+        cityList.layoutManager = linearlayoutManager
         val adapter = CityAdapter(this, dataArray!!, searchStr,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 cityList.visibility = View.GONE
@@ -120,6 +123,7 @@ class CountryActivity : AppCompatActivity(), View.OnClickListener {
                 userDetailModel.cityName = model.getName()
                 userDetailModel.countryName = model.getCountry()
                 userDetailModel.mobileLength = model.getDigits()
+                userDetailModel.mobilePrefix = "+"+model.getCode()
                 val intent = Intent(this, RegisterInfoActivity::class.java)
                 intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
                 startActivity(intent)
@@ -144,6 +148,7 @@ class CountryActivity : AppCompatActivity(), View.OnClickListener {
     override fun onResume() {
         super.onResume()
         cityList.visibility = View.GONE
+        cityLayout.background = resources.getDrawable(R.drawable.btn_selector)
     }
 //    private fun checkValidation() {
 //        var isFlag = true

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:id="@+id/otpLayout"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:gravity="bottom"
     android:orientation="vertical">
 
@@ -16,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:background="@color/white"
             android:layout_margin="@dimen/m10"
             android:orientation="vertical">
 
@@ -31,18 +33,19 @@
                 android:textColor="@color/label_text_color"
                 android:textSize="@dimen/t20" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/p5"
-                android:text="@string/please_enter_it_below"
-                android:textColor="@color/label_text_color"
-                android:textSize="@dimen/t20" />
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="@dimen/p5"-->
+<!--                android:text="@string/please_enter_it_below"-->
+<!--                android:textColor="@color/label_text_color"-->
+<!--                android:textSize="@dimen/t20" />-->
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
+                style="@style/CustomButtonTheme"
                 android:layout_margin="@dimen/m5"
                 android:orientation="horizontal">
 
@@ -89,20 +92,10 @@
 
             <TextView
                 android:id="@+id/resendOtp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/m10"
-                android:layout_marginTop="@dimen/m5"
-                android:layout_marginEnd="@dimen/m10"
-                android:layout_gravity="end"
-                android:paddingTop="@dimen/p7"
-                android:paddingBottom="@dimen/p7"
-                android:paddingStart="@dimen/p20"
-                android:paddingEnd="@dimen/p20"
+                style="@style/CustomButtonTheme"
+               android:layout_gravity="end"
                 android:text="Resend OTP"
-                android:textColor="@color/label_text_color"
-                android:textSize="@dimen/t18"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
         </LinearLayout>
     </ScrollView>
