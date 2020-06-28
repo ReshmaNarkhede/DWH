@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
@@ -53,6 +54,7 @@
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"
                     android:maxLines="1"
+                    android:inputType="textNoSuggestions|textEmailAddress"
                     android:imeOptions="actionDone"
                     android:textColorHint="@color/pink"
                     android:hint="@string/enter_email" />

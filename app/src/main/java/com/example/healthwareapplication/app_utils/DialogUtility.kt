@@ -7,7 +7,7 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.widget.ProgressBar
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.views.ProgressBarDialog
+import com.tsongkha.spinnerdatepicker.SpinnerDatePickerDialogBuilder
 import java.util.*
 
 
@@ -47,6 +47,8 @@ class DialogUtility {
             val datePickerDialog = DatePickerDialog(context, R.style.DialogTheme, listner, calendar.get(Calendar.YEAR), calendar.get(
                 Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
             datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
+            datePickerDialog.datePicker.spinnersShown = true
+            datePickerDialog.datePicker.calendarViewShown = false
             dialog = datePickerDialog
             return dialog as DatePickerDialog
         }

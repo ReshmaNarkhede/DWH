@@ -1,25 +1,26 @@
 package com.example.healthwareapplication.activity.account.register
 
-import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_dob
-
 import com.example.healthwareapplication.app_utils.AppHelper
-
 import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.user.UserDetailModel
-
+import com.tsongkha.spinnerdatepicker.SpinnerDatePickerDialogBuilder
 import kotlinx.android.synthetic.main.activity_dob.*
 import java.text.SimpleDateFormat
+import java.util.*
 
-class DobActivity : AppCompatActivity() {
+
+class DobActivity : AppCompatActivity(),
+    com.tsongkha.spinnerdatepicker.DatePickerDialog.OnDateSetListener {
+    private lateinit var simpleDateFormat: SimpleDateFormat
     private lateinit var userDetailModel: UserDetailModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,34 +28,61 @@ class DobActivity : AppCompatActivity() {
         setContentView(activity_dob)
 
         initComponents()
+        defaultconfig()
+    }
+
+    private fun defaultconfig() {
+        dobDate.setOnClickListener(View.OnClickListener {
+            showDate(R.style.NumberPickerStyle)
+//            dobDateClick()
+        })
     }
 
     private fun initComponents() {
-        userDetailModel = intent?.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
+        simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+        userDetailModel =
+            intent?.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
     }
 
     fun ageTxtClick(view: View) {
         finish()
     }
 
-    fun dobDateClick(view: View) {
-        val listner = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-            val monthOfYear = month + 1
-            val mt: String
-            val dy: String //local variable
-
-            mt = if (monthOfYear < 10) "0$monthOfYear" //if month less than 10 then ad 0 before month
-            else java.lang.String.valueOf(monthOfYear)
-
-            dy = if (dayOfMonth < 10) "0$dayOfMonth" else java.lang.String.valueOf(dayOfMonth)
-
-            dobDate.text = "$year-$mt-$dy"
-            DialogUtility.hideProgressDialog()
-            userDetailModel.dob = dobDate.text.toString()
-            Log.e("when Date: ", " : ${dobDate.text}")
-                openNextActivity()
-        }
-        DialogUtility.showDOBDatePickerDialog(this, listner).show()
+    //    fun dobDateClick() {
+//        val listner = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+//            val monthOfYear = month + 1
+//            val mt: String
+//            val dy: String //local variable
+//
+//            mt =
+//                if (monthOfYear < 10) "0$monthOfYear" //if month less than 10 then ad 0 before month
+//                else java.lang.String.valueOf(monthOfYear)
+//
+//            dy = if (dayOfMonth < 10) "0$dayOfMonth" else java.lang.String.valueOf(dayOfMonth)
+//
+//            dobDate.text = "$year-$mt-$dy"
+//            DialogUtility.hideProgressDialog()
+//            userDetailModel.dob = dobDate.text.toString()
+//            Log.e("when Date: ", " : ${dobDate.text}")
+//            openNextActivity()
+//        }
+//        DialogUtility.showDOBDatePickerDialog(this, listner).show()
+//    }
+    fun showDate(spinnerTheme: Int) {
+        val calendar = Calendar.getInstance()
+        val cYear = calendar[Calendar.YEAR]
+        val cMonth = calendar[Calendar.MONTH]
+        val cDay = calendar[Calendar.DAY_OF_MONTH]
+        val year = cYear - 16
+        Log.e("year: ", ""+year)
+        SpinnerDatePickerDialogBuilder()
+            .context(this)
+            .callback(this)
+            .maxDate(year, cMonth, cDay)
+            .spinnerTheme(spinnerTheme)
+            .defaultDate(cYear, cMonth, cDay)
+            .build()
+            .show()
     }
 
     fun dobTimeClick(view: View) {
@@ -73,11 +101,23 @@ class DobActivity : AppCompatActivity() {
             }
         DialogUtility.showTimePickerDialog(this, listner).show()
     }
+
     private fun openNextActivity() {
 
         val intent = Intent(this, CountryActivity::class.java)
         intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
         startActivity(intent)
+    }
+
+
+    override fun onDateSet(
+        view: com.tsongkha.spinnerdatepicker.DatePicker?,
+        year: Int,
+        monthOfYear: Int,
+        dayOfMonth: Int
+    ) {
+        val calendar: Calendar = GregorianCalendar(year, monthOfYear, dayOfMonth)
+        dobDate.text = simpleDateFormat.format(calendar.time)
     }
 
 }

@@ -130,6 +130,7 @@ class CountryActivity : AppCompatActivity(), View.OnClickListener {
                 cityTxt.text.clear()
                 countryTxt.text.clear()
             })
+        cityList.setHasFixedSize(true)
         cityList.adapter = adapter
     }
 

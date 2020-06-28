@@ -61,7 +61,6 @@
                     android:layout_gravity="end"
                     android:paddingStart="@dimen/p27"
                     android:paddingEnd="@dimen/p27"
-                    android:onClick="dobDateClick"
                     android:text="@string/date" />
 
             </LinearLayout>

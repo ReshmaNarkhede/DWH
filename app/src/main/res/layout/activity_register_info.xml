@@ -45,6 +45,7 @@
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
                 android:hint="@string/name"
+                android:inputType="textNoSuggestions"
                 android:imeOptions="actionDone"
                 android:textColorHint="@color/pink" />
 
@@ -54,6 +55,7 @@
                 android:layout_gravity="end"
                 android:hint="@string/email"
                 android:imeOptions="actionDone"
+                android:inputType="textNoSuggestions"
                 android:textColorHint="@color/pink" />
 
             <LinearLayout
