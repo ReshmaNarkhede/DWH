@@ -118,6 +118,8 @@ class DobActivity : AppCompatActivity(),
     ) {
         val calendar: Calendar = GregorianCalendar(year, monthOfYear, dayOfMonth)
         dobDate.text = simpleDateFormat.format(calendar.time)
+        userDetailModel.dob = dobDate.text.toString()
+        openNextActivity()
     }
 
 }

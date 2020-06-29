@@ -30,10 +30,6 @@ interface ApiInterface {
 
     @POST("api/resetPassword")
     fun resetPassword(@Body jsonObject: JsonObject?): Call<JsonObject>
-//
-//    @POST("api/user_ac_register")
-//    @Multipart
-//    fun registration(@PartMap fieldMap: Map<String, @JvmSuppressWildcards RequestBody?>): Call<JsonObject>
 
     @POST("api/getBodyParts")
     fun getBodyPart(@Body jsonObject: JsonObject?): Call<JsonObject>
