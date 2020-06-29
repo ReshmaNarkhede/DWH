@@ -1,6 +1,7 @@
 package com.example.healthwareapplication.activity.account.forgot_password
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,6 +16,9 @@ import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiData
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.AppHelper
+import com.example.healthwareapplication.app_utils.NoConnectivityException
+import com.example.healthwareapplication.constants.IntentConstants
+import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 import org.json.JSONObject
 import retrofit2.Call
@@ -65,8 +69,52 @@ class ForgotPasswordActivity : AppCompatActivity() {
             }
         }
         if (isFlag) {
-            ApiData.fetchForgotPwdAPI(this,email)
+            fetchForgotPwdAPI(this,email)
         }
     }
+    fun fetchForgotPwdAPI(context: Context, email: String) {
+        val apiService: ApiInterface = ApiClient.getRetrofitClient(context)!!.create(ApiInterface::class.java)
 
+        val param = JsonObject()
+        param.addProperty("email_id", email)
+
+        val call: Call<JsonObject> = apiService.forgotPassword(param)
+
+        call.enqueue(object : Callback<JsonObject?> {
+
+            override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
+                if (response.isSuccessful) {
+                    val json = JSONObject(response.body().toString())
+                    val responseModel = ResponseModel(json)
+//                    if (responseModel.isCode()) {
+                    val data = responseModel.getDataObj()
+                    val otp = data!!.optInt("otp")
+                    showOTPDialog(context,email,otp.toString())
+//                    }
+//                    else{
+//                        AppHelper.showToast(this@ForgotPasswordActivity,responseModel.getMessage().toString())
+//                    }
+                }
+            }
+
+            override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
+                if (t is NoConnectivityException) {
+                    AppHelper.showNetNotAvailable(context)
+                }
+            }
+        })
+    }
+    private fun showOTPDialog(context: Context, email: String, otp: String) {
+//            val builder = AlertDialog.Builder(context)
+//            builder.setMessage("Your Otp is: $otp")
+//            builder.setPositiveButton("okay") { dialog, which ->
+        val intent = Intent(context, OtpActivity::class.java)
+        intent.putExtra(IntentConstants.kOTP,otp)
+        intent.putExtra(IntentConstants.kEMAIL,email)
+        intent.putExtra(IntentConstants.kIS_FORGOT,true)
+        context.startActivity(intent)
+//            }
+//            val dialog: AlertDialog = builder.create()
+//            dialog.show()
+    }
 }

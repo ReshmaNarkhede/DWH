@@ -89,6 +89,7 @@ class RegisterTermsActivity : AppCompatActivity() {
                     if (responseModel.isCode()) {
                         val data = responseModel.getDataObj()
                         val otp = data!!.optInt("otp")
+
                         showOTPDialog(otp.toString())
                     } else {
                         AppHelper.showToast(this@RegisterTermsActivity, responseModel.getMessage().toString())
@@ -105,18 +106,18 @@ class RegisterTermsActivity : AppCompatActivity() {
     }
 
     private fun showOTPDialog(otp: String) {
-        val builder = AlertDialog.Builder(this)
-//        builder.setTitle("Atenção")
-        builder.setMessage("Your Otp is: $otp")
-        builder.setPositiveButton("okay") { dialog, which ->
+//        val builder = AlertDialog.Builder(this)
+////        builder.setTitle("Atenção")
+//        builder.setMessage("Your Otp is: $otp")
+//        builder.setPositiveButton("okay") { dialog, which ->
             val intent = Intent(this,OtpActivity::class.java)
             intent.putExtra(IntentConstants.kOTP,otp)
             intent.putExtra(IntentConstants.kEMAIL,userDetailModel.email)
             intent.putExtra(IntentConstants.kIS_FORGOT,false)
             startActivity(intent)
-        }
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
+//        }
+//        val dialog: AlertDialog = builder.create()
+//        dialog.show()
     }
 
     fun termAndConditionClick(view: View) {

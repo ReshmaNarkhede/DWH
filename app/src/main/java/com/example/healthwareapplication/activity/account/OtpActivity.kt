@@ -1,5 +1,6 @@
 package com.example.healthwareapplication.activity.account
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -92,7 +93,7 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
                 checkValidation()
             }
             R.id.resendOtp->{
-                ApiData.fetchForgotPwdAPI(this,email!!)
+                resendOTP(this,email!!)
             }
         }
     }
@@ -174,4 +175,31 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
         startActivity(intent)
     }
 
+    fun resendOTP(context: Context, email: String) {
+        val apiService: ApiInterface = ApiClient.getRetrofitClient(context)!!.create(ApiInterface::class.java)
+
+        val param = JsonObject()
+        param.addProperty("email_id", email)
+
+        val call: Call<JsonObject> = apiService.forgotPassword(param)
+
+        call.enqueue(object : Callback<JsonObject?> {
+
+            override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
+                if (response.isSuccessful) {
+                    val json = JSONObject(response.body().toString())
+                    val responseModel = ResponseModel(json)
+//                    if (responseModel.isCode()) {
+                    val data = responseModel.getDataObj()
+                    otpMailString = data!!.optInt("otp").toString()
+                }
+            }
+
+            override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
+                if (t is NoConnectivityException) {
+                    AppHelper.showNetNotAvailable(context)
+                }
+            }
+        })
+    }
 }
