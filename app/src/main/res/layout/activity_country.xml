@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="bottom"
@@ -51,8 +52,7 @@
                     android:textColor="@color/label_text_color"
                     android:textSize="@dimen/t22" />
 
-
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cityLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -62,20 +62,22 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/cityList"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/h100"
-                        android:layout_marginStart="@dimen/m15"
-                        android:layout_marginEnd="@dimen/m15"
-                        android:maxHeight="@dimen/h10"
-                        android:visibility="gone"
-                        app:layout_constraintHeight_max="@dimen/h10"
-                        app:stackFromEnd="true" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        app:layout_constraintHeight_max="@dimen/h150"
+                        android:layout_marginStart="@dimen/m10"
+                        android:layout_marginTop="@dimen/m10"
+                        app:layout_constraintHeight_min="@dimen/h20"
+                        app:layout_constraintBottom_toTopOf="@+id/cityTxt"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:visibility="visible"
+                        app:stackFromEnd="true"
+                        tools:listitem="@layout/recycler_country_item"/>
 
                     <EditText
                         android:id="@+id/cityTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end"
                         android:background="@null"
                         android:hint="@string/city"
                         android:imeOptions="actionDone"
@@ -83,9 +85,11 @@
                         android:paddingTop="@dimen/p8"
                         android:paddingEnd="@dimen/p25"
                         android:paddingBottom="@dimen/p8"
-                        android:textColorHint="@color/pink" />
+                        android:textColorHint="@color/pink"
+                        app:layout_constraintBottom_toBottomOf="@+id/cityList"
+                        app:layout_constraintStart_toStartOf="parent"/>
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <EditText
                     android:id="@+id/countryTxt"

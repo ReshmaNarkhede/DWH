@@ -33,30 +33,19 @@ class DialogUtility {
             }
         }
 
-        fun showDatePickerDialog(context: Context, listner: DatePickerDialog.OnDateSetListener): Dialog {
-            val calendar = Calendar.getInstance()
-            val datePickerDialog = DatePickerDialog(context, R.style.DialogTheme, listner, calendar.get(Calendar.YEAR), calendar.get(
-                Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
-            datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
-            dialog = datePickerDialog
-            return dialog as DatePickerDialog
-        }
-        fun showDOBDatePickerDialog(context: Context, listner: DatePickerDialog.OnDateSetListener): Dialog {
-            val calendar = Calendar.getInstance()
-            calendar.add(Calendar.YEAR, -16)
-            val datePickerDialog = DatePickerDialog(context, R.style.DialogTheme, listner, calendar.get(Calendar.YEAR), calendar.get(
-                Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
-            datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
-            datePickerDialog.datePicker.spinnersShown = true
-            datePickerDialog.datePicker.calendarViewShown = false
-            dialog = datePickerDialog
-            return dialog as DatePickerDialog
-        }
+//        fun showDatePickerDialog(context: Context, listner: DatePickerDialog.OnDateSetListener): Dialog {
+//            val calendar = Calendar.getInstance()
+//            val datePickerDialog = DatePickerDialog(context, R.style.DialogTheme, listner, calendar.get(Calendar.YEAR), calendar.get(
+//                Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+//            datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
+//            dialog = datePickerDialog
+//            return dialog as DatePickerDialog
+//        }
 
         fun showTimePickerDialog(context: Context, listner: TimePickerDialog.OnTimeSetListener): Dialog {
 
             val calendar = Calendar.getInstance()
-            dialog = TimePickerDialog(context, R.style.DialogTheme, listner, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(
+            dialog = TimePickerDialog(context,android.R.style.Widget_Material_TimePicker, listner, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(
                 Calendar.MINUTE), false)
             return dialog as TimePickerDialog
         }
