@@ -2,8 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:background="@color/white"
+    android:fillViewport="true"
     android:fitsSystemWindows="false"
     android:orientation="vertical">
 
@@ -40,32 +40,21 @@
                 android:textColor="@color/label_text_color"
                 android:textSize="@dimen/t20" />
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/term_condition_msg2"
-                    android:textColor="@color/label_text_color"
-                    android:textSize="@dimen/t20" />
-
-                <ImageView
-                    android:id="@+id/termAndCondition"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="end"
-                    android:background="@drawable/ic_term_and_condition"
-                    android:onClick="termAndConditionClick" />
-            </FrameLayout>
+            <ImageView
+                android:id="@+id/termAndCondition"
+                android:layout_width="@dimen/h50"
+                android:layout_height="@dimen/h50"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/m10"
+                android:background="@drawable/ic_term_and_condition"
+                android:onClick="termAndConditionClick" />
 
             <Switch
                 android:id="@+id/termAndConditionSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:layout_margin="@dimen/m10" />
 
             <TextView
@@ -74,45 +63,6 @@
                 android:layout_gravity="end"
                 android:onClick="signupwaaClick"
                 android:text="@string/register" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/termAndConditionDetailLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone">
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/term_condition"
-                        android:layout_margin="@dimen/m5"
-                        android:padding="@dimen/p2"
-                        android:textSize="@dimen/t16" />
-
-                    <ImageView
-                        android:id="@+id/termAndConditionRead"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="end"
-                        android:background="@drawable/ic_term_and_condition"
-                        android:onClick="termAndConditionReadClick" />
-
-                </LinearLayout>
-
-
-            </ScrollView>
-
 
         </LinearLayout>
 

@@ -50,7 +50,7 @@ class RegisterTermsActivity : AppCompatActivity() {
                 intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
             callRegisterationAPI(userDetailModel)
         } else {
-            Toast.makeText(this, "Check Term and condition !", Toast.LENGTH_LONG).show()
+            AppHelper.showToast(this,"Check Term and condition !")
         }
     }
 
@@ -69,7 +69,7 @@ class RegisterTermsActivity : AppCompatActivity() {
         param.addProperty("mobile", userDetailModel.mobile)
         param.addProperty("city_id", userDetailModel.cityId)
         param.addProperty("user_type", userDetailModel.userType)
-        if(userDetailModel.userType==1){
+        if (userDetailModel.userType == 1) {
             param.addProperty("speciality", userDetailModel.speciality)
             param.addProperty("experience", userDetailModel.experience)
         }
@@ -91,7 +91,10 @@ class RegisterTermsActivity : AppCompatActivity() {
 
                         showOTPDialog(otp.toString())
                     } else {
-                        AppHelper.showToast(this@RegisterTermsActivity, responseModel.getMessage().toString())
+                        AppHelper.showToast(
+                            this@RegisterTermsActivity,
+                            responseModel.getMessage().toString()
+                        )
                     }
                 }
             }
@@ -105,21 +108,24 @@ class RegisterTermsActivity : AppCompatActivity() {
     }
 
     private fun showOTPDialog(otp: String) {
-            val intent = Intent(this,OtpActivity::class.java)
-            intent.putExtra(IntentConstants.kOTP,otp)
-            intent.putExtra(IntentConstants.kEMAIL,userDetailModel.email)
-            intent.putExtra(IntentConstants.kIS_FORGOT,false)
-            startActivity(intent)
+        val intent = Intent(this, OtpActivity::class.java)
+        intent.putExtra(IntentConstants.kOTP, otp)
+        intent.putExtra(IntentConstants.kEMAIL, userDetailModel.email)
+        intent.putExtra(IntentConstants.kIS_FORGOT, false)
+        startActivity(intent)
     }
 
     fun termAndConditionClick(view: View) {
-        termAndConditionDetailLayout.visibility = View.VISIBLE
-        termAndConditionLayout.visibility = View.GONE
+        val intent = Intent(this, TermsAndPolicyActivity::class.java)
+        startActivityForResult(intent, 205)
     }
 
-    fun termAndConditionReadClick(view: View) {
-        termAndConditionDetailLayout.visibility = View.GONE
-        termAndConditionLayout.visibility = View.VISIBLE
-        termAndConditionSwitch.isChecked = true
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 205) {
+            if (resultCode == RESULT_OK) {
+                termAndConditionSwitch.isChecked = true
+            }
+        }
     }
 }

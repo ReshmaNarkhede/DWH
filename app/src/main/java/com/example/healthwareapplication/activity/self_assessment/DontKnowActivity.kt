@@ -9,36 +9,23 @@ import android.widget.CheckBox
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.R.layout.activity_dont_know
 import com.example.healthwareapplication.app_utils.AppHelper
+import kotlinx.android.synthetic.main.activity_dont_know.*
 import org.json.JSONObject
 
 
 class DontKnowActivity : AppCompatActivity() {
-    private lateinit var chkbox1: CheckBox
-    private lateinit var chkbox2: CheckBox
-    private lateinit var chkbox3: CheckBox
-    private lateinit var chkbox4: CheckBox
-    private lateinit var inputEdtTxt: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dont_know)
+        setContentView(activity_dont_know)
 
         initComponents()
-        defaultConfiguration()
     }
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-        chkbox1 = findViewById(R.id.chkbox1)
-        chkbox2 = findViewById(R.id.chkbox2)
-        chkbox3 = findViewById(R.id.chkbox3)
-        chkbox4 = findViewById(R.id.chkbox4)
-        inputEdtTxt = findViewById(R.id.inputEdtTxt)
-    }
-
-    private fun defaultConfiguration() {
-
     }
 
     fun cancelClick(view: View) {
