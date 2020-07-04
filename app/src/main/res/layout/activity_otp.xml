@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/otpLayout"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -45,48 +46,54 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                style="@style/CustomButtonTheme"
+                android:background="@drawable/btn_selector"
+                android:paddingStart="@dimen/p25"
+                android:paddingEnd="@dimen/p25"
                 android:layout_margin="@dimen/m5"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/otpEditText1"
-                    android:layout_width="@dimen/h50"
-                    android:layout_height="@dimen/h50"
-                    android:gravity="center"
+                    android:layout_width="@dimen/h30"
+                    android:layout_height="@dimen/h40"
+                    android:gravity="bottom"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:textColor="@color/label_text_color"
-                    android:textSize="@dimen/t16" />
+                    android:textColor="@color/pink"
+                    app:backgroundTint="@color/pink"
+                    android:textSize="@dimen/t14" />
 
                 <EditText
                     android:id="@+id/otpEditText2"
-                    android:layout_width="@dimen/h50"
-                    android:layout_height="@dimen/h50"
+                    android:layout_width="@dimen/h30"
+                    android:layout_height="@dimen/h40"
                     android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:textColor="@color/label_text_color"
+                    android:textColor="@color/pink"
+                    app:backgroundTint="@color/pink"
                     android:textSize="@dimen/t16" />
 
                 <EditText
                     android:id="@+id/otpEditText3"
-                    android:layout_width="@dimen/h50"
-                    android:layout_height="@dimen/h50"
+                    android:layout_width="@dimen/h30"
+                    android:layout_height="@dimen/h40"
                     android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:textColor="@color/label_text_color"
+                    android:textColor="@color/pink"
+                    app:backgroundTint="@color/pink"
                     android:textSize="@dimen/t16" />
 
                 <EditText
                     android:id="@+id/otpEditText4"
-                    android:layout_width="@dimen/h50"
-                    android:layout_height="@dimen/h50"
+                    android:layout_width="@dimen/h30"
+                    android:layout_height="@dimen/h40"
                     android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:textColor="@color/label_text_color"
+                    android:textColor="@color/pink"
+                    app:backgroundTint="@color/pink"
                     android:textSize="@dimen/t16" />
             </LinearLayout>
 

@@ -70,7 +70,7 @@
                         app:layout_constraintHeight_min="@dimen/h20"
                         app:layout_constraintBottom_toTopOf="@+id/cityTxt"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         app:stackFromEnd="true"
                         tools:listitem="@layout/recycler_country_item"/>
 
@@ -86,6 +86,7 @@
                         android:paddingEnd="@dimen/p25"
                         android:paddingBottom="@dimen/p8"
                         android:textColorHint="@color/pink"
+                        android:textSize="@dimen/t16"
                         app:layout_constraintBottom_toBottomOf="@+id/cityList"
                         app:layout_constraintStart_toStartOf="parent"/>
 

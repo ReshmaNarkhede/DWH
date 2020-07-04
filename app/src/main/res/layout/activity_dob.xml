@@ -69,7 +69,7 @@
 
         <include
             android:id="@+id/layout"
-            layout="@layout/bottom_layout" />
+            layout="@layout/account_bottom_layout" />
 
     </LinearLayout>
 </ScrollView>

@@ -39,7 +39,7 @@ class DobActivity : AppCompatActivity(),
     }
 
     private fun initComponents() {
-        simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+        simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         userDetailModel =
             intent?.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
     }

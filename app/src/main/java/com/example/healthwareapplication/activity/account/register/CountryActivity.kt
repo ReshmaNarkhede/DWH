@@ -51,9 +51,9 @@ class CountryActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun defaultConfiguration() {
         if (userDetailModel.tob.isEmpty() || userDetailModel.tob == getString(R.string.time)) {
-            dobTxt.text = userDetailModel.dob
+            dobTxt.text = AppHelper.getDobFormat(userDetailModel.dob)
         } else {
-            dobTxt.text = userDetailModel.dob.plus(" ").plus(userDetailModel.tob)
+            dobTxt.text = AppHelper.getDobFormat(userDetailModel.dob).plus(" ").plus(userDetailModel.tob)
         }
 
         cityTxt.addTextChangedListener(object : TextWatcher {
@@ -173,4 +173,6 @@ class CountryActivity : AppCompatActivity(), View.OnClickListener {
 //        intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
 //        startActivity(intent)
 //    }
+
+
 }

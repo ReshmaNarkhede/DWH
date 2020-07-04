@@ -53,12 +53,14 @@
     <string name="email">Email</string>
     <string name="please_enter_mob_no">Please enter your mobile number</string>
     <string name="mob_no">Mobile number</string>
+    <string name="dr_prefix">Dr.</string>
 
     <!--Pwd Screen-->
     <string name="create_your_password">Let\'s create your password</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="confirm_password">Confirm your password</string>
     <string name="password_not_match">Password not match</string>
+    <string name="experience_suffix">year of experience</string>
 
     <!--Terms Screen-->
     <string name="register">Register</string>

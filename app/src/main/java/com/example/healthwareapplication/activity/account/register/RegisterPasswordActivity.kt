@@ -29,7 +29,8 @@ class RegisterPasswordActivity : AppCompatActivity() {
         userDetailModel = intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
         if (userDetailModel.userType == 1) {
             userInfoTxt.text =
-                userDetailModel.speciality.plus("\n").plus(userDetailModel.experience)
+                userDetailModel.speciality.plus("\n").plus(userDetailModel.experience.plus(" ").plus(getString(
+                                    R.string.experience_suffix)))
         } else if (userDetailModel.userType == 2) {
             userInfoTxt.text =
                 userDetailModel.firstName.plus("\n").plus(userDetailModel.email).plus("\n")

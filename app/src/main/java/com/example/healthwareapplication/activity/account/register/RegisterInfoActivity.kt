@@ -38,6 +38,8 @@ class RegisterInfoActivity : AppCompatActivity() {
         val maxLengthofEditText = userDetailModel.mobileLength!!.toInt()
         mobNoEdtTxt.filters = arrayOf<InputFilter>(LengthFilter(maxLengthofEditText))
         prefix.text = userDetailModel.mobilePrefix
+
+
     }
 
     private fun defaultConfiguration() {
@@ -56,6 +58,25 @@ class RegisterInfoActivity : AppCompatActivity() {
                     prefix.visibility = View.VISIBLE
                 }else{
                     prefix.visibility = View.GONE
+                }
+            }
+        })
+        nameEdtTxt.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+
+            }
+            override fun afterTextChanged(s: Editable) {
+                if(s.toString().isNotEmpty()){
+                    if(userDetailModel.userType==1){
+                        drPrefix.visibility = View.VISIBLE
+                    }else{
+                        drPrefix.visibility = View.GONE
+                    }
+                }else{
+                    drPrefix.visibility = View.GONE
                 }
             }
         })

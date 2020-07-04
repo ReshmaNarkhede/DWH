@@ -1,6 +1,5 @@
 package com.example.healthwareapplication.activity.account.register
 
-import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -106,18 +105,11 @@ class RegisterTermsActivity : AppCompatActivity() {
     }
 
     private fun showOTPDialog(otp: String) {
-//        val builder = AlertDialog.Builder(this)
-////        builder.setTitle("Atenção")
-//        builder.setMessage("Your Otp is: $otp")
-//        builder.setPositiveButton("okay") { dialog, which ->
             val intent = Intent(this,OtpActivity::class.java)
             intent.putExtra(IntentConstants.kOTP,otp)
             intent.putExtra(IntentConstants.kEMAIL,userDetailModel.email)
             intent.putExtra(IntentConstants.kIS_FORGOT,false)
             startActivity(intent)
-//        }
-//        val dialog: AlertDialog = builder.create()
-//        dialog.show()
     }
 
     fun termAndConditionClick(view: View) {
@@ -130,59 +122,4 @@ class RegisterTermsActivity : AppCompatActivity() {
         termAndConditionLayout.visibility = View.VISIBLE
         termAndConditionSwitch.isChecked = true
     }
-
-
-//    private fun callRegisteration(userDetailModel: UserDetailModel) {
-////        val apiService: ApiInterface =
-////            ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
-////
-////        val fieldsmap = HashMap<String, RequestBody>()
-////        fieldsmap.put("mobile", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.mobile))
-////        fieldsmap.put("firstName", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.firstName))
-////        fieldsmap.put("lastName", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.lastName))
-////        fieldsmap.put("dob", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.dob))
-////        fieldsmap.put("tob", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.tob))
-////        fieldsmap.put("sex", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.gender))
-////        fieldsmap.put("countryId", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.countryId))
-////        fieldsmap.put("password", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.password))
-////        fieldsmap.put("userType", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.userType.toString()))
-////        fieldsmap.put("parentId", RequestBody.create(MediaType.parse("text/plain"), userDetailModel.parentId))
-////        if (userDetailModel.resume != "") {
-////            val file = File(userDetailModel.resume)
-////            fieldsmap["resume\"; filename=" + userDetailModel.resumeName + "." + file.extension] = RequestBody.create(
-////                MediaType.parse("image/*"), file)
-////        }
-////        fieldsmap["mciNo"] = RequestBody.create(MediaType.parse("text/plain"), userDetailModel.mciNo)
-////
-////        Log.d("map: ",": $fieldsmap")
-////        val call: Call<JsonObject> = apiService.registration(fieldsmap)
-////        DialogUtility.showProgressDialog(this)
-////        call.enqueue(object : Callback<JsonObject?> {
-////
-////            override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
-////
-////                Log.e("REGISTER: ",": "+response.raw().request().url())
-////                if (response.isSuccessful) {
-////                    DialogUtility.hideProgressDialog()
-////                    val json = JSONObject(response.body().toString())
-////                    val responseModel = ResponseModel(json)
-////                    if (responseModel.isCode()) {
-////                        AppHelper.showToast(this@RegisterTermsActivity,responseModel.getMessage().toString())
-////                        val intent = Intent(this@RegisterTermsActivity, OldLoginActivity::class.java)
-////                        startActivity(intent)
-////                     }
-////                    else{
-////                        AppHelper.showToast(this@RegisterTermsActivity,responseModel.getMessage().toString())
-////                    }
-////                }
-////            }
-////
-////            override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
-////                if (t is NoConnectivityException) {
-////                    DialogUtility.hideProgressDialog()
-////                    AppHelper.showNetNotAvailable(this@RegisterTermsActivity)
-////                }
-////            }
-////        })
-////    }
 }
