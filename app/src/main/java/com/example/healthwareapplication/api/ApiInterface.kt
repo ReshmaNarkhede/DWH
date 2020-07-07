@@ -1,10 +1,6 @@
 package com.example.healthwareapplication.api
 
 import com.google.gson.JsonObject
-import io.reactivex.Observable
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -24,6 +20,9 @@ interface ApiInterface {
 
     @POST("api/verify_register_ac")
     fun verifyUser(@Body jsonObject: JsonObject?): Call<JsonObject>
+
+    @POST("api/getSpeciality")
+    fun getSpeciality(@Body jsonObject: JsonObject): Call<JsonObject>
 
     @POST("api/forgotPassword")
     fun forgotPassword(@Body jsonObject: JsonObject?): Call<JsonObject>
@@ -51,4 +50,5 @@ interface ApiInterface {
 
     @POST("selfassessment/get_assessments")
     fun getSAList(@Body jsonObject: JsonObject?): Call<JsonObject>
-}
+
+ }

@@ -30,7 +30,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CountryActivity : AppCompatActivity(), View.OnClickListener {
+class CountryActivity : AppCompatActivity() {
     private lateinit var userDetailModel: UserDetailModel
     private var dataArray: JSONArray? = JSONArray()
 
@@ -71,7 +71,6 @@ class CountryActivity : AppCompatActivity(), View.OnClickListener {
                 Log.e("City: ", ": " + cityTxt.text.toString())
             }
         })
-//        cityPLayout.setOnClickListener(this)
     }
 
     private fun callCityApi(searchStr: String?) {
@@ -139,40 +138,9 @@ class CountryActivity : AppCompatActivity(), View.OnClickListener {
         finish()
     }
 
-    override fun onClick(v: View?) {
-        when (v!!.id) {
-            R.id.cityPLayout -> {
-//                checkValidation()
-            }
-        }
-    }
-
     override fun onResume() {
         super.onResume()
         cityList.visibility = View.GONE
         cityLayout.background = resources.getDrawable(R.drawable.btn_selector)
     }
-//    private fun checkValidation() {
-//        var isFlag = true
-//        if (cityTxt.text!!.trim().isEmpty()) {
-//            AppHelper.showToast(this, getString(R.string.valid_city))
-//            isFlag = false
-//        }
-//        if (countryTxt.text!!.trim().isEmpty()) {
-//            AppHelper.showToast(this, getString(R.string.valid_country))
-//            isFlag = false
-//        }
-//        if (isFlag) {
-//            goToNext()
-//        }
-//    }
-//
-//    private fun goToNext() {
-//        userDetailModel.cityId = cityTxt.text.toString()
-//        val intent = Intent(this, RegisterInfoActivity::class.java)
-//        intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
-//        startActivity(intent)
-//    }
-
-
 }

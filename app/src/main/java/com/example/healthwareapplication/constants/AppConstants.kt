@@ -10,7 +10,7 @@ class AppConstants {
         const val kIS_LOGIN: String = "kIS_LOGIN"
         const val kLOGIN: String = "kLOGIN"
         const val kUSER_GENDER: String = "kUSER_GENDER"
-        const val kCOUNTRY: String = "kCOUNTRY"
+        const val kSPECIALITY_DATA: String = "kSPECIALITY_DATA"
         const val kCOUNTRY_DATA: String = "kCOUNTRY_DATA"
 
         const val kASSESSMENT_DATA: String = "kASSESSMENT_DATA"

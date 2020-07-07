@@ -32,7 +32,9 @@ class AppSessions {
             val gson = Gson()
             return gson.fromJson(getLoginData(context), UserDetailModel::class.java)
         }
-
+        fun getSpecialityData(context: Context): JSONArray? {
+            return AppSettings.getArrayValue(context,AppConstants.kSPECIALITY_DATA)
+        }
         fun getSymptomData(context: Context): JSONArray? {
             return AppSettings.getArrayValue(context,IntentConstants.kSYMPTOM_DATA)
         }

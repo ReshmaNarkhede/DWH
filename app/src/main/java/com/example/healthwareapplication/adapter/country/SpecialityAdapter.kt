@@ -10,22 +10,22 @@ import android.view.ViewGroup
 import android.widget.Filter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.recycler_country_item
 import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
 import com.example.healthwareapplication.model.country.CityData
 import com.example.healthwareapplication.model.country.SpecialityData
+import com.example.healthwareapplication.model.country.SpecialityModel
 import kotlinx.android.synthetic.main.recycler_country_item.view.*
 import org.json.JSONArray
 import org.json.JSONObject
 
-class CityAdapter (val context: Context, dataArr: JSONArray, val searchStr:String?, private val itemClickListener: RecyclerItemClickListener.OnItemClickListener) : RecyclerView.Adapter<CityAdapter.ViewHolder>() {
+class SpecialityAdapter(val context: Context, dataArr: JSONArray, val searchStr:String?, private val itemClickListener: RecyclerItemClickListener.OnItemClickListener) : RecyclerView.Adapter<SpecialityAdapter.ViewHolder>() {
 
     private val dataArray: JSONArray = dataArr
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                recycler_country_item,
+                R.layout.recycler_country_item,
                 parent,
                 false
             )
@@ -48,7 +48,7 @@ class CityAdapter (val context: Context, dataArr: JSONArray, val searchStr:Strin
             jsonObject: JSONObject,
             clickListener: RecyclerItemClickListener.OnItemClickListener
         ) {
-            val obj = CityData(jsonObject)
+            val obj = SpecialityData(jsonObject)
             val originalText = obj.getName()
             val sb: Spannable = SpannableString(originalText)
             sb.setSpan(
