@@ -49,8 +49,8 @@
                 android:layout_marginBottom="@dimen/m5"
                 android:background="@drawable/btn_selector"
                 android:orientation="horizontal"
-                android:paddingStart="@dimen/p20"
-                android:paddingEnd="@dimen/p20">
+                android:paddingStart="@dimen/p25"
+                android:paddingEnd="@dimen/p25">
 
                 <TextView
                     android:id="@+id/drPrefix"

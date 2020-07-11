@@ -62,13 +62,18 @@ class CountryActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence, i: Int, i1: Int, i2: Int) {
-                cityList.visibility = View.VISIBLE
-                cityLayout.background = resources.getDrawable(R.drawable.country_btn_selector)
-                callCityApi(s.toString())
+                if(s.toString().isNotEmpty()) {
+                    cityList.visibility = View.VISIBLE
+                    cityLayout.background = resources.getDrawable(R.drawable.country_btn_selector)
+                    callCityApi(s.toString())
+                }
             }
 
             override fun afterTextChanged(editable: Editable) {
-                Log.e("City: ", ": " + cityTxt.text.toString())
+                if(editable.toString().isEmpty()){
+                    cityList.visibility = View.GONE
+                    cityLayout.background = resources.getDrawable(R.drawable.btn_selector)
+                }
             }
         })
     }

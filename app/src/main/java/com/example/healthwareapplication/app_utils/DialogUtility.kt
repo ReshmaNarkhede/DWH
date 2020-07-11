@@ -45,7 +45,7 @@ class DialogUtility {
         fun showTimePickerDialog(context: Context, listner: TimePickerDialog.OnTimeSetListener): Dialog {
 
             val calendar = Calendar.getInstance()
-            dialog = TimePickerDialog(context,android.R.style.Widget_Material_TimePicker, listner, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(
+            dialog = TimePickerDialog(context,R.style.DialogTheme, listner, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(
                 Calendar.MINUTE), false)
             return dialog as TimePickerDialog
         }

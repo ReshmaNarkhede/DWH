@@ -59,22 +59,23 @@ class DoctorSpecialityActivity : AppCompatActivity() {
             checkValidation()
         })
         specialityEdtTxt.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(
-                charSequence: CharSequence,
-                i: Int,
-                i1: Int,
-                i2: Int
-            ) {
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
 
             }
 
             override fun onTextChanged(s: CharSequence, i: Int, i1: Int, i2: Int) {
-                specialityList.visibility = View.VISIBLE
-                specLayout.background = resources.getDrawable(R.drawable.country_btn_selector)
-                fetchSpeciality(s.toString())
+                if(s.toString().isNotEmpty()) {
+                    specialityList.visibility = View.VISIBLE
+                    specLayout.background = resources.getDrawable(R.drawable.country_btn_selector)
+                    fetchSpeciality(s.toString())
+                }
             }
 
             override fun afterTextChanged(editable: Editable) {
+                if(editable.toString().isEmpty()){
+                    specialityList.visibility = View.GONE
+                    specLayout.background = resources.getDrawable(R.drawable.btn_selector)
+                }
             }
         })
     }

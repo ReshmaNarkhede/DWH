@@ -44,19 +44,31 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/h35"
                 android:layout_gravity="end"
                 android:background="@drawable/btn_selector"
-                android:paddingStart="@dimen/p25"
-                android:paddingEnd="@dimen/p25"
+                android:paddingStart="@dimen/p30"
+                android:paddingEnd="@dimen/p30"
                 android:layout_margin="@dimen/m5"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/otpEditText1"
-                    android:layout_width="@dimen/h30"
-                    android:layout_height="@dimen/h40"
-                    android:gravity="bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:text="1"
+                    android:textColor="@color/pink"
+                    app:backgroundTint="@color/pink"
+                    android:textSize="@dimen/t12" />
+
+                <EditText
+                    android:id="@+id/otpEditText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
                     android:textColor="@color/pink"
@@ -64,37 +76,26 @@
                     android:textSize="@dimen/t14" />
 
                 <EditText
-                    android:id="@+id/otpEditText2"
-                    android:layout_width="@dimen/h30"
-                    android:layout_height="@dimen/h40"
-                    android:gravity="center"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:textColor="@color/pink"
-                    app:backgroundTint="@color/pink"
-                    android:textSize="@dimen/t16" />
-
-                <EditText
                     android:id="@+id/otpEditText3"
-                    android:layout_width="@dimen/h30"
-                    android:layout_height="@dimen/h40"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
                     android:textColor="@color/pink"
                     app:backgroundTint="@color/pink"
-                    android:textSize="@dimen/t16" />
+                    android:textSize="@dimen/t14" />
 
                 <EditText
                     android:id="@+id/otpEditText4"
-                    android:layout_width="@dimen/h30"
-                    android:layout_height="@dimen/h40"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
                     android:textColor="@color/pink"
                     app:backgroundTint="@color/pink"
-                    android:textSize="@dimen/t16" />
+                    android:textSize="@dimen/t14" />
             </LinearLayout>
 
             <TextView

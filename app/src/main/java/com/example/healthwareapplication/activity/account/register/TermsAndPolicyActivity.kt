@@ -22,6 +22,7 @@ class TermsAndPolicyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_terms_and_policy)
+
         initComponents()
         defaultConfig()
     }
@@ -78,6 +79,5 @@ class TermsAndPolicyActivity : AppCompatActivity() {
             LinkMovementMethod.getInstance()
         this.setText(spannableString, TextView.BufferType.SPANNABLE)
     }
-
 
 }

@@ -74,7 +74,7 @@ class DobActivity : AppCompatActivity(),
         val cMonth = calendar[Calendar.MONTH]
         val cDay = calendar[Calendar.DAY_OF_MONTH]
         val year = cYear - 16
-        Log.e("year: ", ""+year)
+        Log.e("year: ", "" + year)
         SpinnerDatePickerDialogBuilder()
             .context(this)
             .callback(this)
@@ -118,8 +118,8 @@ class DobActivity : AppCompatActivity(),
         dayOfMonth: Int
     ) {
         val calendar: Calendar = GregorianCalendar(year, monthOfYear, dayOfMonth)
-        dobDate.text = simpleDateFormat.format(calendar.time)
-        userDetailModel.dob = dobDate.text.toString()
+        userDetailModel.dob = simpleDateFormat.format(calendar.time)
+        dobDate.text = AppHelper.getDobFormat(simpleDateFormat.format(calendar.time))
         openNextActivity()
     }
 
