@@ -44,7 +44,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/h35"
+                android:layout_height="@dimen/h37"
                 android:layout_gravity="end"
                 android:background="@drawable/btn_selector"
                 android:paddingStart="@dimen/p30"
@@ -59,7 +59,6 @@
                     android:layout_gravity="bottom"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:text="1"
                     android:textColor="@color/pink"
                     app:backgroundTint="@color/pink"
                     android:textSize="@dimen/t12" />

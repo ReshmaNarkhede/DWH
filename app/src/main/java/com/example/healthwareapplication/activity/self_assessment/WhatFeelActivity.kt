@@ -18,7 +18,6 @@ import org.json.JSONObject
 
 class WhatFeelActivity : AppCompatActivity() {
     private lateinit var gson: Gson
-//    val symptmJsonAry: JSONArray = JSONArray()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

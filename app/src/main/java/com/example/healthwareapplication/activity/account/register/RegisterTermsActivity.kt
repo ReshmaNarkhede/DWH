@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R.layout.activity_register_terms
 import com.example.healthwareapplication.activity.account.OtpActivity
@@ -63,7 +62,7 @@ class RegisterTermsActivity : AppCompatActivity() {
         param.addProperty("password", userDetailModel.password)
         param.addProperty("first_name", userDetailModel.firstName)
         param.addProperty("last_name", userDetailModel.lastName)
-        param.addProperty("gender", userDetailModel.gender)
+        param.addProperty("gender", userDetailModel.sex)
         param.addProperty("dob", userDetailModel.dob)
         param.addProperty("tob", userDetailModel.tob)
         param.addProperty("mobile", userDetailModel.mobile)
@@ -111,6 +110,7 @@ class RegisterTermsActivity : AppCompatActivity() {
         val intent = Intent(this, OtpActivity::class.java)
         intent.putExtra(IntentConstants.kOTP, otp)
         intent.putExtra(IntentConstants.kEMAIL, userDetailModel.email)
+        intent.putExtra(IntentConstants.kPASSWORD, userDetailModel.password)
         intent.putExtra(IntentConstants.kIS_FORGOT, false)
         startActivity(intent)
     }

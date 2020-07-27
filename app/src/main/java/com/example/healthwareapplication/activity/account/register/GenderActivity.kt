@@ -31,12 +31,12 @@ class GenderActivity : AppCompatActivity() {
     }
 
     fun maleClick(view: View) {
-        userDetailModel.gender = "male"
+        userDetailModel.sex = "male"
         jumpNextActivity()
     }
 
     fun femaleClick(view: View) {
-        userDetailModel.gender = "female"
+        userDetailModel.sex = "female"
         jumpNextActivity()
     }
 

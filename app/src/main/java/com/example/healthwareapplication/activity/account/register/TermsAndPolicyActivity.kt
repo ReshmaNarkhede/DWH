@@ -4,12 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Selection
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.Spanned
+import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.text.style.URLSpan
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -68,6 +66,11 @@ class TermsAndPolicyActivity : AppCompatActivity() {
                     view.invalidate()
                     link.second.onClick(view)
                 }
+
+                override fun updateDrawState(ds: TextPaint) {
+                    super.updateDrawState(ds)
+                    ds.isUnderlineText = false
+                }
             }
             val startIndexOfLink = this.text.toString().indexOf(link.first)
             spannableString.setSpan(
@@ -75,9 +78,7 @@ class TermsAndPolicyActivity : AppCompatActivity() {
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
         }
-        this.movementMethod =
-            LinkMovementMethod.getInstance()
+        this.movementMethod = LinkMovementMethod.getInstance()
         this.setText(spannableString, TextView.BufferType.SPANNABLE)
     }
-
 }

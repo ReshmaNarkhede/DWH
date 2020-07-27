@@ -91,9 +91,9 @@ class LoginActivity : AppCompatActivity() {
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val detailObj = responseModel.getDataObj()
-                        val gender = detailObj!!.optString("sex").toString()
+//                        val gender = detailObj!!.optString("sex").toString()
                         AppSettings.setBooleanValue(this@LoginActivity, AppConstants.kIS_LOGIN, true)
-                        AppSettings.setStringValue(this@LoginActivity, AppConstants.kUSER_GENDER, gender)
+//                        AppSettings.setStringValue(this@LoginActivity, AppConstants.kUSER_GENDER, gender)
                         AppSettings.setJsonObjectValue(this@LoginActivity, AppConstants.kLOGIN, detailObj.toString())
 
                         showDashboard()

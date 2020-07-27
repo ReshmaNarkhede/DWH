@@ -8,6 +8,7 @@ class IntentConstants {
         const val kOTP: String = "kOTP"
         const val kIS_FORGOT: String = "kIS_FORGOT"
         const val kEMAIL: String = "kEMAIL"
+        const val kPASSWORD: String = "kPASSWORD"
         const val kDOB_TIME: String = "kDOB_TIME"
 
         const val kSYMPTOM_SELECTED: String = "kSYMPTOM_SELECTED"

@@ -80,7 +80,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setDefaultImage(user: UserDetailModel?) {
-        if (user!!.gender == "female") {
+        if (user!!.sex == "female") {
             bodyImg.setVectorDrawable(R.drawable.female_body_front)
         } else {
             bodyImg.setVectorDrawable(R.drawable.male_body_front)
@@ -98,14 +98,14 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun rotateImageClick() {
         if (image_front_back_flag) {
-            if (user!!.gender == "female") {
+            if (user!!.sex == "female") {
                 bodyImg.setVectorDrawable(R.drawable.female_body_back)
             } else {
                 bodyImg.setVectorDrawable(R.drawable.male_body_back)
             }
             image_front_back_flag = false
         } else {
-            if (user!!.gender == "female") {
+            if (user!!.sex == "female") {
                 bodyImg.setVectorDrawable(R.drawable.female_body_front)
             } else {
                 bodyImg.setVectorDrawable(R.drawable.male_body_front)

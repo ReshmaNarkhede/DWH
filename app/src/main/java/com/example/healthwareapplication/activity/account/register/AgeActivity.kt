@@ -22,7 +22,7 @@ class AgeActivity : AppCompatActivity() {
 
     private fun defaultConfiguration() {
         userDetailModel = intent?.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
-        if(userDetailModel.gender == "male"){
+        if(userDetailModel.sex == "male"){
             genderTxt.text = getString(R.string.male)
         }else{
             genderTxt.text = getString(R.string.female)

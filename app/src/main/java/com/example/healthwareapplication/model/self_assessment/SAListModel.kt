@@ -16,8 +16,8 @@ class SAListModel(json: JSONObject) {
     }
     fun getReportDate(): String? {
         val dateStr = dataJSONObj!!.optString("report_date")
-
-        val formatter = SimpleDateFormat("dd/MM/yyyy")
+//        2020-07-27
+        val formatter = SimpleDateFormat("yyyy-MM-dd")
         val date = formatter.parse(dateStr)
         val desiredFormat = SimpleDateFormat("dd MMM yyyy").format(date!!)
         return desiredFormat

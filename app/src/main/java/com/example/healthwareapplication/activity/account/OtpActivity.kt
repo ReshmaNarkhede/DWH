@@ -13,11 +13,14 @@ import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_otp
 import com.example.healthwareapplication.activity.account.forgot_password.ResetPasswordActivity
 import com.example.healthwareapplication.activity.account.login.LoginActivity
+import com.example.healthwareapplication.activity.dashboard.DashboardActivity
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiData
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.AppHelper
+import com.example.healthwareapplication.app_utils.AppSettings
 import com.example.healthwareapplication.app_utils.NoConnectivityException
+import com.example.healthwareapplication.constants.AppConstants
 import com.example.healthwareapplication.constants.IntentConstants
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_otp.*
@@ -35,6 +38,7 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
     private var otpString: String? = null
     private var otpMailString: String? = null
     private var email: String? = null
+    private var password: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +58,7 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
             resendOtp.visibility = View.GONE
         }
         email = intent.getStringExtra(IntentConstants.kEMAIL)
+        password = intent.getStringExtra(IntentConstants.kPASSWORD)
         otpMailString = intent.getStringExtra(IntentConstants.kOTP)
     }
 
@@ -143,6 +148,7 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
 
         val param = JsonObject()
         param.addProperty("username", email)
+        param.addProperty("password", password)
         param.addProperty("otp", otpString)
 
         AppHelper.printParam("verifyParam: ", param)
@@ -155,7 +161,11 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
-                        showLogin()
+                        val detailObj = responseModel.getDataObj()
+                        AppSettings.setBooleanValue(this@OtpActivity, AppConstants.kIS_LOGIN, true)
+                        AppSettings.setJsonObjectValue(this@OtpActivity, AppConstants.kLOGIN, detailObj.toString())
+
+                        showDashboard()
                     } else {
                         AppHelper.showToast(this@OtpActivity, responseModel.getMessage().toString())
                     }
@@ -201,5 +211,10 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         })
+    }
+    private fun showDashboard() {
+        val intent = Intent(this, DashboardActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

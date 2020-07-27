@@ -3,11 +3,15 @@
     android:id="@+id/parentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:onClick="parentClick"
-    android:gravity="bottom"
     android:background="@color/white"
+    android:fillViewport="true"
+    android:gravity="bottom"
+    android:onClick="parentClick"
     android:orientation="vertical">
+
+    <include
+        android:id="@+id/logo_layout"
+        layout="@layout/logo_layout" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +23,7 @@
         android:fitsSystemWindows="true"
         android:gravity="bottom"
         android:orientation="vertical">
+
 
         <TextView
             android:layout_width="wrap_content"

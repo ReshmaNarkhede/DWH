@@ -20,7 +20,7 @@ class UserDetailModel:Serializable {
     var password: String = ""
     var userType: Int = 0
     var parentId: String = ""
-    var gender: String = ""
+    var sex: String = ""
     var height: String = ""
     var resume: String = ""
     var resumeName: String = ""

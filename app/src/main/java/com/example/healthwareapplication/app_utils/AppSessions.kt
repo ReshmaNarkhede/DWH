@@ -73,7 +73,8 @@ class AppSessions {
             return user!!.email
         }
         fun getUserSex(context: Context):String?{
-            return  AppSettings.getStringValue(context,AppConstants.kUSER_GENDER)
+            val user = getLoginModel(context)
+            return user!!.sex
         }
         fun getUserAge(context: Context):String?{
             val user = getLoginModel(context)

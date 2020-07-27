@@ -53,6 +53,7 @@
             android:name=".activity.account.register.RegisterPasswordActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
+
             android:name=".activity.account.register.RegisterInfoActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.dashboard.DashboardActivity" />
