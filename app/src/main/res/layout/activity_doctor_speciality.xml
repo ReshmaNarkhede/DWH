@@ -21,7 +21,6 @@
             android:id="@+id/userInfoTxt"
             style="@style/AnswerButtonTheme"
             android:layout_width="wrap_content"
-            android:background="@drawable/black_border"
             android:gravity="center" />
 
         <include

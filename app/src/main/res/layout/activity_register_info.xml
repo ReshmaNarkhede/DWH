@@ -61,7 +61,6 @@
                     android:textColor="@color/pink"
                     android:textSize="@dimen/t16"
                     android:text="@string/dr_prefix"
-                    android:textStyle="bold"
                     android:visibility="gone" />
 
                 <EditText
@@ -105,7 +104,6 @@
                     android:paddingEnd="@dimen/p5"
                     android:textColor="@color/pink"
                     android:textSize="@dimen/t16"
-                    android:textStyle="bold"
                     android:visibility="gone" />
 
                 <EditText
@@ -114,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:hint="@string/mob_no"
-                    android:inputType="phone"
+                    android:inputType="number"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:textColor="@color/pink"

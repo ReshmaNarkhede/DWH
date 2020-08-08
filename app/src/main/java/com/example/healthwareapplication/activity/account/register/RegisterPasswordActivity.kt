@@ -11,8 +11,11 @@ import com.example.healthwareapplication.R.layout.activity_register_password
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.user.UserDetailModel
+import kotlinx.android.synthetic.main.activity_doctor_speciality.*
 import kotlinx.android.synthetic.main.activity_register_info.*
 import kotlinx.android.synthetic.main.activity_register_password.*
+import kotlinx.android.synthetic.main.activity_register_password.pwdParentLayout
+import kotlinx.android.synthetic.main.activity_register_password.userInfoTxt
 
 class RegisterPasswordActivity : AppCompatActivity() {
     private lateinit var userDetailModel: UserDetailModel
@@ -29,11 +32,11 @@ class RegisterPasswordActivity : AppCompatActivity() {
         userDetailModel = intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
         if (userDetailModel.userType == 1) {
             userInfoTxt.text =
-                userDetailModel.speciality.plus("\n").plus(userDetailModel.experience.plus(" ").plus(getString(
+                userDetailModel.speciality.plus(", ").plus(userDetailModel.experience.plus(" ").plus(getString(
                                     R.string.experience_suffix)))
         } else if (userDetailModel.userType == 2) {
             userInfoTxt.text =
-                userDetailModel.firstName.plus("\n").plus(userDetailModel.email).plus("\n")
+                userDetailModel.firstName.plus(", ").plus(userDetailModel.email).plus(", ")
                     .plus(userDetailModel.mobile)
         }
         userInfoTxt.setOnClickListener(View.OnClickListener {

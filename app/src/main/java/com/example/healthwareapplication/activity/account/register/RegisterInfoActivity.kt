@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
+import com.example.healthwareapplication.R.layout.activity_register_info
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.model.user.UserDetailModel
@@ -22,7 +23,7 @@ class RegisterInfoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register_info)
+        setContentView(activity_register_info)
 
         initComponents()
         defaultConfiguration()
@@ -53,10 +54,11 @@ class RegisterInfoActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 
             }
+
             override fun afterTextChanged(s: Editable) {
-                if(s.toString().isNotEmpty()){
+                if (s.toString().isNotEmpty()) {
                     prefix.visibility = View.VISIBLE
-                }else{
+                } else {
                     prefix.visibility = View.GONE
                 }
             }
@@ -68,14 +70,15 @@ class RegisterInfoActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 
             }
+
             override fun afterTextChanged(s: Editable) {
-                if(s.toString().isNotEmpty()){
-                    if(userDetailModel.userType==1){
+                if (s.toString().isNotEmpty()) {
+                    if (userDetailModel.userType == 1) {
                         drPrefix.visibility = View.VISIBLE
-                    }else{
+                    } else {
                         drPrefix.visibility = View.GONE
                     }
-                }else{
+                } else {
                     drPrefix.visibility = View.GONE
                 }
             }
@@ -83,7 +86,7 @@ class RegisterInfoActivity : AppCompatActivity() {
     }
 
     private fun checkValidation() {
-        var isFlag = false
+        var isFlag = true
         if (nameEdtTxt.text!!.trim().isEmpty()) {
             AppHelper.showToast(this, getString(R.string.valid_name))
             isFlag = false
@@ -94,14 +97,15 @@ class RegisterInfoActivity : AppCompatActivity() {
         } else {
             if (emailEdtTxt.text!!.trim().matches(emailPattern.toRegex())) {
                 isFlag = true
-            }else{
-                AppHelper.showToast(this, getString(R.string.valid_email))
-                isFlag = false
             }
         }
         if (mobNoEdtTxt.text!!.trim().isEmpty()) {
             AppHelper.showToast(this, getString(R.string.please_enter_mob_no))
             isFlag = false
+        } else {
+            if (AppHelper.isValidMobile(mobNoEdtTxt.text!!.toString())) {
+                isFlag = true
+            }
         }
         if (isFlag) {
             goToNext()
@@ -120,7 +124,7 @@ class RegisterInfoActivity : AppCompatActivity() {
             val intent = Intent(this, DoctorSpecialityActivity::class.java)
             intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
             startActivity(intent)
-        } else if(userDetailModel.userType == 2){
+        } else if (userDetailModel.userType == 2) {
             val intent = Intent(this, RegisterPasswordActivity::class.java)
             intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
             startActivity(intent)

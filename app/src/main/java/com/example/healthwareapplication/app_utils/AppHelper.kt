@@ -8,6 +8,7 @@ import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
+import android.util.Patterns
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
@@ -53,7 +54,9 @@ class AppHelper {
             return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email)
                 .matches()
         }
-
+         fun isValidMobile(phone: String): Boolean {
+            return Patterns.PHONE.matcher(phone).matches()
+        }
         fun printParam(msg: String, param: JsonObject) {
             Log.d(msg, ": $param")
         }

@@ -47,7 +47,7 @@ class DoctorSpecialityActivity : AppCompatActivity() {
         AppHelper.transparentStatusBar(this)
         userDetailModel = intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
         userInfoTxt.text =
-            userDetailModel.firstName.plus("\n").plus(userDetailModel.email).plus("\n")
+            userDetailModel.firstName.plus(", ").plus(userDetailModel.email).plus(", ")
                 .plus(userDetailModel.mobile)
         userInfoTxt.setOnClickListener(View.OnClickListener {
             finish()
