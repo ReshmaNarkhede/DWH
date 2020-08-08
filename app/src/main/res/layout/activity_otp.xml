@@ -72,7 +72,7 @@
                     android:maxLength="1"
                     android:textColor="@color/pink"
                     app:backgroundTint="@color/pink"
-                    android:textSize="@dimen/t14" />
+                    android:textSize="@dimen/t12" />
 
                 <EditText
                     android:id="@+id/otpEditText3"
@@ -83,7 +83,7 @@
                     android:maxLength="1"
                     android:textColor="@color/pink"
                     app:backgroundTint="@color/pink"
-                    android:textSize="@dimen/t14" />
+                    android:textSize="@dimen/t12" />
 
                 <EditText
                     android:id="@+id/otpEditText4"
@@ -94,14 +94,14 @@
                     android:maxLength="1"
                     android:textColor="@color/pink"
                     app:backgroundTint="@color/pink"
-                    android:textSize="@dimen/t14" />
+                    android:textSize="@dimen/t12" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/resendOtp"
                 style="@style/CustomButtonTheme"
                android:layout_gravity="end"
-                android:text="Resend OTP"
+                android:text="@string/resend_otp"
                 android:visibility="visible" />
 
         </LinearLayout>

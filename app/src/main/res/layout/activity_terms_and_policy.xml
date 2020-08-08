@@ -24,7 +24,6 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,8 +37,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/m10"
-            android:orientation="horizontal">
+            android:layout_marginTop="@dimen/m10">
 
             <CheckBox
                 android:id="@+id/chk1"
@@ -53,17 +51,17 @@
                 android:id="@+id/termsTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m2"
                 android:layout_toEndOf="@+id/chk1"
                 android:text="@string/terms"
                 android:textColor="@color/label_text_color"
-                android:textSize="@dimen/t18" />
+                android:textSize="@dimen/t16" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/m15"
-            android:orientation="horizontal">
+            android:layout_marginTop="@dimen/m10">
 
             <CheckBox
                 android:id="@+id/chk2"
@@ -77,17 +75,17 @@
                 android:id="@+id/policyTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m2"
                 android:layout_toEndOf="@+id/chk2"
                 android:text="@string/policy"
                 android:textColor="@color/label_text_color"
-                android:textSize="@dimen/t18" />
+                android:textSize="@dimen/t16" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/m15"
-            android:orientation="horizontal">
+            android:layout_marginTop="@dimen/m10">
 
             <CheckBox
                 android:id="@+id/chk3"
@@ -101,10 +99,11 @@
                 android:id="@+id/consentTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m2"
                 android:layout_toEndOf="@+id/chk3"
                 android:text="@string/dwh"
                 android:textColor="@color/label_text_color"
-                android:textSize="@dimen/t18" />
+                android:textSize="@dimen/t16" />
         </RelativeLayout>
 
     </LinearLayout>
