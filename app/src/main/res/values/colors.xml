@@ -15,6 +15,7 @@
     <color name="label_text_color">#27354F</color>
     <color name="transparent_gradient">#59000000</color>
     <color name="pink">#ec6492</color>
+    <color name="stroke_color">#F1DEE4</color>
     <color name="old_btn_color">#CF4238</color>
     <color name="curent_btn_color">#2A95E7</color>
     <color name="add_btn_color">#46E434</color>

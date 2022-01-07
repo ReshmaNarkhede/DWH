@@ -69,10 +69,10 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
             val bodyParts = bodyPartLists[i]
             if (bodyParts.name!!.equals(obj.name, true)) {
                 if (image_front_back_flag && (bodyParts.side == "front")) {
-                    fetchSymptom(bodyParts)
+                    fetchSymptom(bodyParts,obj)
                     break
                 } else if (!image_front_back_flag && bodyParts.side.equals("back", true)) {
-                    fetchSymptom(bodyParts)
+                    fetchSymptom(bodyParts, obj)
                     break
                 }
             }
@@ -81,9 +81,10 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setDefaultImage(user: UserDetailModel?) {
         if (user!!.sex == "female") {
-            bodyImg.setVectorDrawable(R.drawable.female_body_front)
+            bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
         } else {
-            bodyImg.setVectorDrawable(R.drawable.male_body_front)
+            bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
+//            bodyImg.setVectorDrawable(R.drawable.male_body_front)
         }
         fetchImageClick()
     }
@@ -106,9 +107,10 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
             image_front_back_flag = false
         } else {
             if (user!!.sex == "female") {
-                bodyImg.setVectorDrawable(R.drawable.female_body_front)
+                bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
             } else {
-                bodyImg.setVectorDrawable(R.drawable.male_body_front)
+                bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
+//                bodyImg.setVectorDrawable(R.drawable.male_body_front)
             }
             image_front_back_flag = true
         }
@@ -123,10 +125,10 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
                 if (richPath.name == obj.name) {
                     Log.e("check: ", obj.name.trim())
                     getIDFromBodyPart(obj)
-                    obj.fillColor = ContextCompat.getColor(this, R.color.body_fill)
+                    obj.fillColor = ContextCompat.getColor(this, R.color.pink)
                 } else {
-                    obj.fillColor = ContextCompat.getColor(this, R.color.white)
-                    obj.strokeColor = ContextCompat.getColor(this, R.color.body_outline)
+//                    obj.fillColor = ContextCompat.getColor(this, R.color.white)
+                    obj.strokeColor = ContextCompat.getColor(this, R.color.white)
                 }
             }
         })
@@ -175,7 +177,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
 
-    private fun fetchSymptom(bodyParts: BodyParts) {
+    private fun fetchSymptom(bodyParts: BodyParts, obj: RichPath) {
         val apiService: ApiInterface =
             ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
 
@@ -198,7 +200,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val symptomAry = responseModel.getDataArray()
-                        openDialog(bodyParts, symptomAry!!)
+                        openDialog(bodyParts, symptomAry!!,obj)
 //                        openSymptomDialog(bodyParts, symptomAry!!)
                     } else {
                         AppHelper.showToast(
@@ -218,7 +220,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
 
-    private fun openDialog(bodyParts: BodyParts, symptomAry: JSONArray) {
+    private fun openDialog(bodyParts: BodyParts, symptomAry: JSONArray, obj: RichPath) {
         val dialog = Dialog(this, android.R.style.Theme_Translucent_NoTitleBar)
 
         val displayMetrics = DisplayMetrics()
@@ -241,7 +243,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
         val symptmList: RecyclerView = dialog.findViewById(R.id.symptmList)
 
         symptmList.layoutManager = LinearLayoutManager(this)
-        val adapter = SearchSymptomAdapter(this, symptomAry!!, "",
+        val adapter = SearchSymptomAdapter(this, symptomAry, "",
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val modelObj = symptomAry.getJSONObject(position)
                 val intent = Intent(this, WhenStartActivity::class.java)
@@ -257,6 +259,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
         bodyPartName.text = bodyParts.name
         cncleImg.setOnClickListener(View.OnClickListener {
             dialog.dismiss()
+            obj.fillColor = ContextCompat.getColor(this, R.color.pink)
         })
 
         dialog.show()

@@ -87,6 +87,7 @@
                         android:paddingBottom="@dimen/p8"
                         android:textColorHint="@color/pink"
                         android:textSize="@dimen/t16"
+                        android:maxLines="1"
                         app:layout_constraintBottom_toBottomOf="@+id/cityList"
                         app:layout_constraintStart_toStartOf="parent"/>
 

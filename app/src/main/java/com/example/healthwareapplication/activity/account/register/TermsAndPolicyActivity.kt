@@ -2,19 +2,23 @@ package com.example.healthwareapplication.activity.account.register
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
-import android.text.style.URLSpan
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.R.layout.activity_terms_and_policy
 import com.example.healthwareapplication.app_utils.AppHelper
+import com.example.healthwareapplication.constants.IntentConstants
 import kotlinx.android.synthetic.main.activity_terms_and_policy.*
+
 
 class TermsAndPolicyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,29 +35,32 @@ class TermsAndPolicyActivity : AppCompatActivity() {
 
     private fun defaultConfig() {
         termsTxt.makeLinks(
-            Pair("Terms of Condition", View.OnClickListener {
-                Toast.makeText(applicationContext, "Terms of Service Clicked", Toast.LENGTH_SHORT)
-                    .show()
+            Pair(getString(R.string.terms_span), View.OnClickListener {
+                val intent = Intent(this, TermsDataActivity::class.java)
+                intent.putExtra(IntentConstants.kLABEL, getString(R.string.terms_span))
+                startActivity(intent)
             })
         )
         policyTxt.makeLinks(
-            Pair("Privacy Policy", View.OnClickListener {
-                Toast.makeText(applicationContext, "Privacy Policy Clicked", Toast.LENGTH_SHORT)
-                    .show()
+            Pair(getString(R.string.policy_span), View.OnClickListener {
+                val intent = Intent(this, TermsDataActivity::class.java)
+                intent.putExtra(IntentConstants.kLABEL, getString(R.string.policy_span))
+                startActivity(intent)
             })
         )
     }
+
     fun parentClick(view: View) {
         checkValidation()
     }
 
     private fun checkValidation() {
-        if(chk1.isChecked && chk2.isChecked && chk3.isChecked){
+        if (chk1.isChecked && chk2.isChecked && chk3.isChecked) {
             intent = Intent()
             setResult(Activity.RESULT_OK, intent)
             finish()
-        }else{
-            AppHelper.showToast(this,"Please check terms and policy to register.")
+        } else {
+            AppHelper.showToast(this, "Please check terms and policy to register.")
         }
     }
 

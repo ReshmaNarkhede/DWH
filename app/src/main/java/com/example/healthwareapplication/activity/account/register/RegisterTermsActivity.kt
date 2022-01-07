@@ -80,8 +80,9 @@ class RegisterTermsActivity : AppCompatActivity() {
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
-
+                AppHelper.printUrl("Register url:",response)
                 if (response.isSuccessful) {
+                    AppHelper.printUrl("Register Response:",response)
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {

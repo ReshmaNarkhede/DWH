@@ -14,12 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activity.account.register.TermsDataActivity" />
         <activity android:name=".activity.account.register.TermsAndPolicyActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.account.forgot_password.ResetPasswordActivity"
@@ -29,9 +26,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.account.register.DoctorSpecialityActivity"
-            android:windowSoftInputMode="adjustPan" >
-
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.account.OtpActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -52,14 +47,11 @@
         <activity android:name=".activity.self_assessment.QuestionDemoActivity" />
         <activity android:name=".activity.self_assessment.WhatFeelActivity" />
         <activity android:name=".activity.self_assessment.BodySymptomActivity" />
-        <activity android:name=".activity.account.register.RegisterTermsActivity">
-
-        </activity>
+        <activity android:name=".activity.account.register.RegisterTermsActivity" />
         <activity
             android:name=".activity.account.register.RegisterPasswordActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
-
             android:name=".activity.account.register.RegisterInfoActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.dashboard.DashboardActivity" />
@@ -75,7 +67,11 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.account.register.RegisterAsActivity" />
         <activity android:name=".activity.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

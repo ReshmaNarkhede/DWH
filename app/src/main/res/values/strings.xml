@@ -93,7 +93,9 @@
     <!--Terms Screen-->
     <string name="warning_terms">Please confirm the following to use dwh</string>
     <string name="terms">I have read and accepted the Terms of Condition</string>
+    <string name="terms_span">Terms of Condition</string>
     <string name="policy">I have read the Privacy Policy</string>
+    <string name="policy_span">Privacy Policy</string>
     <string name="dwh">I Consent to dwh analyzing my personal health data, I supply and create an account and provide me an assessment</string>
 
 
@@ -155,6 +157,7 @@ User Information. In the course of your use of the Web Site and/or the services 
     <string name="neck_throat">Neck or Throat</string>
     <string name="chest">Chest</string>
     <string name="upper_arm">Upper Arm</string>
+    <string name="lower_arm">Lower Arm</string>
     <string name="upper_abdomen">Upper Abdomen</string>
     <string name="forearm">Fore arm</string>
     <string name="middle_abdomen">Middle abdomen</string>
