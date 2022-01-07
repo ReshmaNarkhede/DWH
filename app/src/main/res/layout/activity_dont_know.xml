@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/cancleImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:onClick="cancelClick"
+        android:padding="@dimen/p5"
+        android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:layout_marginBottom="@dimen/m5"
+            android:layout_marginTop="@dimen/m2"
+            android:layout_marginStart="@dimen/m20"
+            android:layout_marginEnd="@dimen/m20"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/p5"
+                android:text="@string/give_feedback"
+                android:textColor="@color/label_text_color"
+                android:textSize="@dimen/t18"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m5"
+                android:layout_marginBottom="@dimen/m7"
+                android:padding="@dimen/p5"
+                android:text="@string/feedback_msg"
+                android:textColor="@color/label_text_color"
+                android:textSize="@dimen/t16" />
+
+            <CheckBox
+                android:id="@+id/chkbox1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m10"
+                android:buttonTint="@color/pink"
+                android:gravity="start"
+                android:paddingTop="@dimen/p3"
+                android:text="@string/i_don_t_understand_the_question"
+                android:textSize="@dimen/t16" />
+
+            <CheckBox
+                android:id="@+id/chkbox2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m10"
+                android:buttonTint="@color/pink"
+                android:gravity="top"
+                android:paddingTop="@dimen/p3"
+                android:text="@string/the_question_doesn_t_feel_relevant_to_me"
+                android:textSize="@dimen/t16" />
+
+            <CheckBox
+                android:id="@+id/chkbox3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m10"
+                android:buttonTint="@color/pink"
+                android:gravity="top"
+                android:paddingTop="@dimen/p3"
+                android:text="@string/need_improve_answer"
+                android:textSize="@dimen/t16" />
+
+            <CheckBox
+                android:id="@+id/chkbox4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m10"
+                android:buttonTint="@color/pink"
+                android:gravity="top"
+                android:paddingTop="@dimen/p3"
+                android:text="@string/i_want_to_choose_multiple_answers"
+                android:textSize="@dimen/t16" />
+
+
+            <EditText
+                android:id="@+id/inputEdtTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m30"
+                android:layout_marginBottom="@dimen/m10"
+                android:background="@drawable/black_border"
+                android:hint="@string/type_to_give_more_details"
+                android:inputType="textMultiLine"
+                android:paddingStart="@dimen/p15"
+                android:paddingTop="@dimen/p45"
+                android:paddingEnd="@dimen/p15"
+                android:paddingBottom="@dimen/p45"
+                android:scrollbars="vertical"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/t16" />
+
+            <TextView
+                style="@style/CustomButtonTheme"
+                android:layout_gravity="end"
+                android:onClick="nxtQueClick"
+                android:text="@string/next_question" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/otpLayout"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:fitsSystemWindows="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/white"
+            android:layout_margin="@dimen/m10"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/logo_layout"
+                layout="@layout/logo_layout" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/p5"
+                android:text="@string/otp_msg"
+                android:textColor="@color/label_text_color"
+                android:textSize="@dimen/t20" />
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="@dimen/p5"-->
+<!--                android:text="@string/please_enter_it_below"-->
+<!--                android:textColor="@color/label_text_color"-->
+<!--                android:textSize="@dimen/t20" />-->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/h37"
+                android:layout_gravity="end"
+                android:background="@drawable/btn_selector"
+                android:paddingStart="@dimen/p30"
+                android:paddingEnd="@dimen/p30"
+                android:layout_margin="@dimen/m5"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/otpEditText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textColor="@color/pink"
+                    app:backgroundTint="@color/pink"
+                    android:textSize="@dimen/t12" />
+
+                <EditText
+                    android:id="@+id/otpEditText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textColor="@color/pink"
+                    app:backgroundTint="@color/pink"
+                    android:textSize="@dimen/t12" />
+
+                <EditText
+                    android:id="@+id/otpEditText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textColor="@color/pink"
+                    app:backgroundTint="@color/pink"
+                    android:textSize="@dimen/t12" />
+
+                <EditText
+                    android:id="@+id/otpEditText4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textColor="@color/pink"
+                    app:backgroundTint="@color/pink"
+                    android:textSize="@dimen/t12" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/resendOtp"
+                style="@style/CustomButtonTheme"
+               android:layout_gravity="end"
+                android:text="@string/resend_otp"
+                android:visibility="visible" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/layout"
+        layout="@layout/account_bottom_layout" />
+</LinearLayout>

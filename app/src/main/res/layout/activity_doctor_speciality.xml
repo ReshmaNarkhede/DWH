@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:fitsSystemWindows="false"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/pwdParentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/userInfoTxt"
+            style="@style/AnswerButtonTheme"
+            android:layout_width="wrap_content"
+            android:gravity="center" />
+
+        <include
+            android:id="@+id/logo_layout"
+            layout="@layout/logo_layout" />
+
+        <TextView
+            android:id="@+id/welcomeMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:padding="@dimen/p5"
+            android:text="@string/dr_msg"
+            android:textColor="@color/label_text_color"
+            android:textSize="@dimen/t22" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:orientation="vertical"
+            android:padding="@dimen/p10">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/specLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/m5"
+                android:background="@drawable/btn_selector"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/specialityList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/m10"
+                    android:layout_marginTop="@dimen/m10"
+                    android:paddingTop="@dimen/p10"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@+id/specialityEdtTxt"
+                    app:layout_constraintHeight_max="@dimen/h150"
+                    app:layout_constraintHeight_min="@dimen/h20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:stackFromEnd="true" />
+
+                <EditText
+                    android:id="@+id/specialityEdtTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/speciality"
+                    android:imeOptions="actionDone"
+                    android:paddingStart="@dimen/p35"
+                    android:paddingTop="@dimen/p8"
+                    android:paddingEnd="@dimen/p35"
+                    android:textColor="@color/pink"
+                    android:paddingBottom="@dimen/p8"
+                    android:textColorHint="@color/pink"
+                    android:textSize="@dimen/t16"
+                    app:layout_constraintBottom_toBottomOf="@+id/specialityList"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/experienceEdtTxt"
+                style="@style/CustomButtonTheme"
+                android:layout_gravity="end"
+                android:hint="@string/yr_of_work_experience"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:textColorHint="@color/pink" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/layout"
+            layout="@layout/account_bottom_layout" />
+
+    </LinearLayout>
+</ScrollView>

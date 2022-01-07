@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parentLayout"
+    android:fitsSystemWindows="true">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/self_assessment"
+        android:textColor="@color/label_text_color"
+        android:paddingBottom="@dimen/p7"
+        android:layout_marginBottom="@dimen/m7"
+        android:typeface="normal"
+        android:textSize="@dimen/t18"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layout"
+        android:layout_below="@+id/title">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            tools:listitem="@layout/sa_list_item" />
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/addImg"-->
+        <!--            android:layout_width="@dimen/h60"-->
+        <!--            android:layout_height="@dimen/h60"-->
+        <!--            android:layout_gravity="bottom|right"-->
+        <!--            android:layout_marginEnd="@dimen/m8"-->
+        <!--            android:layout_marginBottom="@dimen/m20"-->
+        <!--            android:padding="@dimen/p10"-->
+        <!--            android:tint="@color/pink"-->
+        <!--            android:backgroundTint="@color/pink"-->
+        <!--            app:srcCompat="@drawable/ic_add" />-->
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="@dimen/m15"
+            android:layout_marginBottom="@dimen/m20"
+            app:backgroundTint="@color/pink"
+            app:fabCustomSize="@dimen/h40"
+            android:src="@drawable/ic_add"
+            app:maxImageSize="@dimen/h35"
+            android:tint="@color/white"
+            android:scaleType="center"
+            android:padding="@dimen/p10" />
+    </FrameLayout>
+
+    <include
+        android:id="@+id/layout"
+        layout="@layout/bottom_layout" />
+</RelativeLayout>

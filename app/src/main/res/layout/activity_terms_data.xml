@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/termsLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/m10"
+        android:textColor="@color/black"
+        android:textSize="@dimen/t18"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/backBtn"
+        android:layout_below="@+id/termsLabel"
+        android:padding="@dimen/p10">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/term_condition" />
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/backBtn"
+        style="@style/CustomButtonTheme"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end"
+        android:layout_margin="@dimen/m10"
+        android:onClick="backClick"
+        android:text="@string/back" />
+
+</RelativeLayout>

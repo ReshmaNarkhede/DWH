@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.healthwareapplication">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".app_utils.OverrideTypefaceApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activity.account.register.TermsDataActivity" />
+        <activity android:name=".activity.account.register.TermsAndPolicyActivity">
+
+        </activity>
+        <activity
+            android:name=".activity.account.forgot_password.ResetPasswordActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.account.forgot_password.ForgotPasswordActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.account.register.DoctorSpecialityActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.account.OtpActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.account.register.DobActivity" />
+        <activity android:name=".activity.account.register.AgeActivity" />
+        <activity android:name=".activity.account.LetsMeetActivity" />
+        <activity android:name=".activity.self_assessment.ReportFromHome" />
+        <activity android:name=".activity.self_assessment.SearchSymptomActivity" />
+        <activity android:name=".activity.self_assessment.SAHomeActivity" />
+        <activity android:name=".activity.self_assessment.WhenStartActivity" />
+        <activity android:name=".activity.self_assessment.AddTestActivity" />
+        <activity android:name=".activity.self_assessment.AddMedicineActivity" />
+        <activity android:name=".activity.self_assessment.DontKnowActivity" />
+        <activity android:name=".activity.self_assessment.FeedbackActivity" />
+        <activity android:name=".activity.self_assessment.SymptomReportActivity" />
+        <activity android:name=".activity.self_assessment.ThankYouActivity" />
+        <activity android:name=".activity.self_assessment.QuestionActivity" />
+        <activity android:name=".activity.self_assessment.QuestionDemoActivity" />
+        <activity android:name=".activity.self_assessment.WhatFeelActivity" />
+        <activity android:name=".activity.self_assessment.BodySymptomActivity" />
+        <activity android:name=".activity.account.register.RegisterTermsActivity" />
+        <activity
+            android:name=".activity.account.register.RegisterPasswordActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.account.register.RegisterInfoActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.dashboard.DashboardActivity" />
+        <activity
+            android:name=".activity.account.login.OldLoginActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.account.register.GenderActivity" />
+        <activity
+            android:name=".activity.account.register.CountryActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.account.login.LoginActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.account.register.RegisterAsActivity" />
+        <activity android:name=".activity.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

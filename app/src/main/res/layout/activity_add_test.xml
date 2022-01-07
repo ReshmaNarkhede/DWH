@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="@dimen/p5">
+
+        <ImageView
+            android:layout_width="@dimen/h100"
+            android:layout_height="@dimen/h100"
+            android:layout_margin="@dimen/m10"
+            android:background="@drawable/dwh_logo"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/thankYouText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m15"
+            android:padding="@dimen/p5"
+            android:text="@string/have_you_taken_test"
+            android:textSize="@dimen/t20" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/m15">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="search"
+                android:textSize="@dimen/t20"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/date"
+                android:textSize="@dimen/t20"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/time"
+                android:textSize="@dimen/t20"
+                android:gravity="center"/>
+
+            <ImageView
+                android:id="@+id/addMedicine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_add"
+                android:layout_weight="1"
+                android:text="@string/add"
+                android:layout_gravity="center"/>
+
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/yesBtn"
+            style="@style/CustomButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/m20"
+            android:layout_marginEnd="@dimen/m10"
+            android:onClick="yesClick"
+            android:text="@string/okeh" />
+        <Button
+            android:id="@+id/noBtn"
+            style="@style/CustomButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/m5"
+            android:layout_marginEnd="@dimen/m10"
+            android:onClick="noClick"
+            android:text="@string/no" />
+
+        <include layout="@layout/logo_on_bottom" />
+
+    </LinearLayout>
+</ScrollView>

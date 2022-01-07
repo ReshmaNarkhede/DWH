@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:gravity="bottom"
+    android:onClick="parentClick"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/logo_layout"
+        layout="@layout/logo_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/m10"
+        android:layout_marginTop="@dimen/m10"
+        android:layout_marginEnd="@dimen/m10"
+        android:layout_marginBottom="@dimen/m15"
+        android:fitsSystemWindows="true"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/m5"
+            android:layout_marginBottom="@dimen/m7"
+            android:padding="@dimen/p5"
+            android:text="@string/warning_terms"
+            android:textColor="@color/label_text_color"
+            android:textSize="@dimen/t20" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/m10">
+
+            <CheckBox
+                android:id="@+id/chk1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/pink"
+                android:gravity="start"
+                android:padding="@dimen/p3" />
+
+            <TextView
+                android:id="@+id/termsTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m2"
+                android:layout_toEndOf="@+id/chk1"
+                android:text="@string/terms"
+                android:textColor="@color/label_text_color"
+                android:textSize="@dimen/t16" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/m10">
+
+            <CheckBox
+                android:id="@+id/chk2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/pink"
+                android:gravity="start"
+                android:padding="@dimen/p3" />
+
+            <TextView
+                android:id="@+id/policyTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m2"
+                android:layout_toEndOf="@+id/chk2"
+                android:text="@string/policy"
+                android:textColor="@color/label_text_color"
+                android:textSize="@dimen/t16" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/m10">
+
+            <CheckBox
+                android:id="@+id/chk3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/pink"
+                android:gravity="start"
+                android:padding="@dimen/p3" />
+
+            <TextView
+                android:id="@+id/consentTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m2"
+                android:layout_toEndOf="@+id/chk3"
+                android:text="@string/dwh"
+                android:textColor="@color/label_text_color"
+                android:textSize="@dimen/t16" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/layout"
+        layout="@layout/account_bottom_layout" />
+
+</LinearLayout>

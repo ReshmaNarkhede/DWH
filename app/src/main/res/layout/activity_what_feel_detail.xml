@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layout"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/label"
+            style="@style/TextViewTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:gravity="bottom"
+            android:padding="@dimen/p5"
+            android:text="@string/what_do_you_feel"
+            android:textSize="@dimen/t22"/>
+
+        <LinearLayout
+            android:id="@+id/btnLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:orientation="vertical"
+            android:padding="@dimen/p10">
+
+            <TextView
+                android:id="@+id/searchBtn"
+                style="@style/CustomButtonTheme"
+                android:onClick="searchClick"
+                android:layout_gravity="end"
+                android:text="@string/search_feel" />
+
+            <TextView
+                android:id="@+id/addSymptomBtn"
+                style="@style/CustomButtonTheme"
+                android:layout_gravity="end"
+                android:onClick="addSymptom"
+                android:text="@string/body" />
+        </LinearLayout>
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/symptomList"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="@dimen/m15"-->
+<!--            android:layout_marginRight="@dimen/m15"-->
+<!--            android:layout_marginBottom="@dimen/m10"-->
+<!--            android:overScrollMode="never"-->
+<!--            android:visibility="gone"-->
+<!--            tools:itemCount="4" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/nextBtn"-->
+<!--            style="@style/CustomButtonTheme"-->
+<!--            android:onClick="clickNext"-->
+<!--            android:text="@string/next"-->
+<!--            android:layout_margin="@dimen/m15"-->
+<!--            android:layout_gravity="end"-->
+<!--            android:visibility="gone" />-->
+    </LinearLayout>
+
+    <include
+        android:id="@+id/layout"
+        layout="@layout/bottom_layout" />
+</RelativeLayout>

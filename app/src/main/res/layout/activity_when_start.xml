@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/symptomTxt"
+            style="@style/AnswerButtonTheme"
+            android:onClick="symptomClick"
+            android:text="@string/label" />
+
+        <include
+            android:id="@+id/logo_layout"
+            layout="@layout/logo_layout" />
+
+        <LinearLayout
+            android:id="@+id/timeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/p10"
+            android:paddingBottom="@dimen/p10"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/m10"
+                android:padding="@dimen/p5"
+                android:text="@string/when_did_it_start"
+                android:textColor="@color/label_text_color"
+                android:textSize="@dimen/t22" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:orientation="vertical"
+                android:padding="@dimen/p10">
+
+                <TextView
+                    android:id="@+id/whenStartDate"
+                    style="@style/CustomButtonTheme"
+                    android:onClick="whenDateClick"
+                    android:layout_gravity="end"
+                    android:text="@string/date" />
+
+                <TextView
+                    android:id="@+id/whenStartTime"
+                    style="@style/CustomButtonTheme"
+                    android:onClick="whenTimeClick"
+                    android:layout_gravity="end"
+                    android:text="@string/time" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/layout"
+            layout="@layout/bottom_layout" />
+
+    </LinearLayout>
+</ScrollView>

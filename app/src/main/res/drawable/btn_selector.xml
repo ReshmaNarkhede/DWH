@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/white"
+        android:drawable="@drawable/button_selected"
+        android:state_selected="true"></item>
+    <item android:color="@color/white"
+        android:drawable="@drawable/answer_border"
+        android:state_pressed="true"></item>
+    <item android:color="@color/pink"
+        android:drawable="@drawable/pink_border_white_solid"></item>
+</selector>

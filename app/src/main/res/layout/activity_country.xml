@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:background="@color/white"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/cityPLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/white"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dobTxt"
+                style="@style/AnswerButtonTheme"
+                android:onClick="dobClick" />
+
+            <include
+                android:id="@+id/logo_layout"
+                layout="@layout/logo_layout" />
+
+            <LinearLayout
+                android:id="@+id/timeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/p10"
+                android:paddingTop="@dimen/p5"
+                android:paddingEnd="@dimen/p10"
+                android:paddingBottom="@dimen/p10"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/m10"
+                    android:padding="@dimen/p5"
+                    android:text="@string/country_msg"
+                    android:textColor="@color/label_text_color"
+                    android:textSize="@dimen/t22" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cityLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:background="@drawable/btn_selector"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/cityList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        app:layout_constraintHeight_max="@dimen/h150"
+                        android:layout_marginStart="@dimen/m10"
+                        android:layout_marginTop="@dimen/m10"
+                        app:layout_constraintHeight_min="@dimen/h20"
+                        app:layout_constraintBottom_toTopOf="@+id/cityTxt"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:visibility="gone"
+                        app:stackFromEnd="true"
+                        tools:listitem="@layout/recycler_country_item"/>
+
+                    <EditText
+                        android:id="@+id/cityTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/city"
+                        android:imeOptions="actionDone"
+                        android:paddingStart="@dimen/p25"
+                        android:paddingTop="@dimen/p8"
+                        android:paddingEnd="@dimen/p25"
+                        android:paddingBottom="@dimen/p8"
+                        android:textColorHint="@color/pink"
+                        android:textSize="@dimen/t16"
+                        android:maxLines="1"
+                        app:layout_constraintBottom_toBottomOf="@+id/cityList"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <EditText
+                    android:id="@+id/countryTxt"
+                    style="@style/CustomButtonTheme"
+                    android:layout_gravity="end"
+                    android:clickable="false"
+                    android:editable="false"
+                    android:hint="@string/country"
+                    android:paddingStart="@dimen/p47"
+                    android:paddingEnd="@dimen/p47"
+                    android:singleLine="true"
+                    android:textColorHint="@color/pink" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/layout"
+        layout="@layout/account_bottom_layout" />
+
+</LinearLayout>

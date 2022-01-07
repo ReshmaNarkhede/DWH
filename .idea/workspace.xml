@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidConfiguredLogFilters">
+    <filters>
+      <filter>
+        <option name="logLevel" value="verbose" />
+        <option name="logMessagePattern" value="" />
+        <option name="logTagPattern" value="" />
+        <option name="name" value="Unnamed-0" />
+        <option name="packageNamePattern" value="" />
+        <option name="pid" value="" />
+      </filter>
+    </filters>
+  </component>
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <device id="pixel_3" />
+        <device id="pixel" />
+        <device id="pixel_2" />
+        <device id="pixel_xl" />
+        <device id="pixel_3_xl" />
+        <device id="Nexus 5X" />
+      </config>
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="00e54ad9-4b28-487e-8ca1-bfa1784a927d" name="Default Changelist" comment="designed part is done as per guided on whats app.">
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Reshma\.android\avd\Pixel_3_XL_API_29_4.avd]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="resourceFile" />
+        <option value="layoutResourceFile" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="ProjectId" id="1a3xIQ27yRaybHZ36YIa3sCsxqo" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DEBUGGABLE_DEVICE" value="emulator-5554" />
+    <property name="DEBUGGABLE_PROCESS" value="com.example.healthwareapplication" />
+    <property name="DEBUGGER_ID" value="Auto" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="PL2GAR9850525247" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-06-18T13:53:26.121Z" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="ScreenshotViewer.SavePath" value="$USER_HOME$/Desktop" />
+    <property name="android.sdk.path" value="C:/android-sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="ignore.virus.scanning.warn.message" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../My_Git_Projects" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="MODULE_TAB" value="Properties" />
+    <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
+  </component>
+  <component name="RecentsManager">
+    <key name="android.template.packageName">
+      <recent name="com.example.healthwareapplication.activity.self_assessment" />
+      <recent name="com.example.healthwareapplication.activity.question" />
+      <recent name="com.example.healthwareapplication.fragment.self_assessment" />
+      <recent name="com.example.healthwareapplication.activity.account.register" />
+      <recent name="com.example.healthwareapplication.activity" />
+    </key>
+    <key name="android.template.160406203">
+      <recent name="com.example.healthwareapplication.activity.account.register" />
+    </key>
+    <key name="android.template.-745951590">
+      <recent name="com.example.healthwareapplication.activity.account.register" />
+    </key>
+    <key name="android.template.353561382">
+      <recent name="com.example.healthwareapplication.activity.account.register" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.example.healthwareapplication.views" />
+      <recent name="com.example.healthwareapplication.app_utils" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.healthwareapplication.app_utils" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Freelance_projects\Devesh\HealthWareApplication\app\src\main\res\drawable" />
+      <recent name="D:\Freelance projects\Devesh\HealthWareApplication\app\src\main\res\drawable" />
+      <recent name="D:\Freelance projects\Devesh\HealthWareApplication\app\src\main\res\layout" />
+      <recent name="D:\Freelance projects\Devesh\HealthWareApplication\app\src\main\assets\fonts" />
+      <recent name="D:\Freelance projects\Devesh\HealthWareApplication\app\src\main" />
+    </key>
+    <key name="android.template.-152177093">
+      <recent name="com.example.healthwareapplication.activity.account" />
+    </key>
+    <key name="android.template.-1695718298">
+      <recent name="com.example.healthwareapplication.activity.account" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Freelance projects\Devesh\HealthWareApplication\app\src\main" />
+      <recent name="D:\Freelance projects\Devesh\HealthWareApplication\app\src\main\res" />
+      <recent name="D:\Freelance projects\Devesh\HealthWareApplication\app\src\main\assets" />
+      <recent name="D:\Freelance projects\HealthWareApplication\app\src\main\java\com\example\healthwareapplication\fragment\self_assessment" />
+      <recent name="D:\Freelance projects\HealthWareApplication\app\src\main\java\com\example\healthwareapplication\fragment\home" />
+    </key>
+    <key name="android.template.1667065568">
+      <recent name="com.example.healthwareapplication.activity.self_assessment" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.healthwareapplication.activity.account.register" />
+      <recent name="com.example.healthwareapplication.activity.self_assessment" />
+      <recent name="com.example.healthwareapplication.fragment.self_assessment.question" />
+      <recent name="com.example.healthwareapplication.adapter.self_assessment.question" />
+      <recent name="com.example.healthwareapplication.model.self_assessment" />
+    </key>
+    <key name="android.template.6338708">
+      <recent name="com.example.healthwareapplication.activity.account.register" />
+    </key>
+    <key name="android.template.376140664">
+      <recent name="com.example.healthwareapplication.activity.account.forgot_password" />
+    </key>
+    <key name="android.template.535908588">
+      <recent name="com.example.healthwareapplication.activity.account.forgot_password" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="HealthWareApplication.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="00e54ad9-4b28-487e-8ca1-bfa1784a927d" name="Default Changelist" comment="" />
+      <created>1585977997863</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585977997863</updated>
+    </task>
+    <task id="LOCAL-00024" summary="report design data integrated.">
+      <created>1588581938979</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1588581938979</updated>
+    </task>
+    <task id="LOCAL-00025" summary="assessment data shown on report.">
+      <created>1588583821260</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1588583821261</updated>
+    </task>
+    <task id="LOCAL-00026" summary="domain link changed.">
+      <created>1588653956590</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1588653956591</updated>
+    </task>
+    <task id="LOCAL-00027" summary="created 2 activity for medicine and test add">
+      <created>1588769961604</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1588769961604</updated>
+    </task>
+    <task id="LOCAL-00028" summary="seperate screen for when did it start after symptom selection.">
+      <created>1588774992917</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1588774992917</updated>
+    </task>
+    <task id="LOCAL-00029" summary="back button done on all activity + dashboard fragment chnge to activity">
+      <created>1589007592701</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1589007592701</updated>
+    </task>
+    <task id="LOCAL-00030" summary="added dont know feeback json object in answer array.">
+      <created>1589013203828</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1589013203828</updated>
+    </task>
+    <task id="LOCAL-00031" summary="added dont know feeback json object in answer array.">
+      <created>1589015438048</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1589015438048</updated>
+    </task>
+    <task id="LOCAL-00032" summary=".">
+      <created>1589043736356</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1589043736356</updated>
+    </task>
+    <task id="LOCAL-00033" summary="new design changes + send report api integration.">
+      <created>1589471643115</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1589471643115</updated>
+    </task>
+    <task id="LOCAL-00034" summary="new design changes on SA home + SA detail + search symptom">
+      <created>1589567890407</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1589567890407</updated>
+    </task>
+    <task id="LOCAL-00035" summary="design changes as per devesh screenshot">
+      <created>1589651099301</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1589651099301</updated>
+    </task>
+    <task id="LOCAL-00036" summary="design changes and all functional flow.">
+      <created>1589725358421</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1589725358422</updated>
+    </task>
+    <task id="LOCAL-00037" summary="custom font added date format change.">
+      <created>1590047974523</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1590047974523</updated>
+    </task>
+    <task id="LOCAL-00038" summary="new design chnges as per whatsapp.">
+      <created>1590408638408</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1590408638408</updated>
+    </task>
+    <task id="LOCAL-00039" summary="designed changes.">
+      <created>1590846280514</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1590846280515</updated>
+    </task>
+    <task id="LOCAL-00040" summary="back issue and slash issue on dont know.">
+      <created>1590917529663</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1590917529663</updated>
+    </task>
+    <task id="LOCAL-00041" summary="new changes on 2nd june.">
+      <created>1591107236482</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1591107236482</updated>
+    </task>
+    <task id="LOCAL-00042" summary="unique style to all box of answer">
+      <created>1591256898193</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1591256898193</updated>
+    </task>
+    <task id="LOCAL-00043" summary="some ui and button selector changes">
+      <created>1591277706765</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1591277706765</updated>
+    </task>
+    <task id="LOCAL-00044" summary="unique style for answer box">
+      <created>1591344999356</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1591344999357</updated>
+    </task>
+    <task id="LOCAL-00045" summary="design issue fixes.">
+      <created>1591712614932</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1591712614932</updated>
+    </task>
+    <task id="LOCAL-00046" summary="logic implemented for multiple symptom questionare.">
+      <created>1591859835303</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1591859835303</updated>
+    </task>
+    <task id="LOCAL-00047" summary="logic implemented for multiple symptom questionare + progress dialog design chang in progress.">
+      <created>1591887247556</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1591887247556</updated>
+    </task>
+    <task id="LOCAL-00048" summary="2 digit date send to api + progress dialog change.">
+      <created>1591950879433</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1591950879434</updated>
+    </task>
+    <task id="LOCAL-00049" summary="design changes as per devesh on 10june">
+      <created>1592055205457</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1592055205457</updated>
+    </task>
+    <task id="LOCAL-00050" summary="design changes by devesh on 14 june.">
+      <created>1592198726489</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1592198726489</updated>
+    </task>
+    <task id="LOCAL-00051" summary="added login new screens design.">
+      <created>1592326492291</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1592326492292</updated>
+    </task>
+    <task id="LOCAL-00052" summary="implementing flow of register + done with login + working on country api integration.">
+      <created>1592489799391</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1592489799391</updated>
+    </task>
+    <task id="LOCAL-00053" summary="country api integrated with search on it.">
+      <created>1592587883553</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1592587883553</updated>
+    </task>
+    <task id="LOCAL-00054" summary="done with human register flow + &#10;terms screen is WIP.">
+      <created>1592759424153</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1592759424154</updated>
+    </task>
+    <task id="LOCAL-00055" summary="pwd special character on pwd screen">
+      <created>1592759474760</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1592759474760</updated>
+    </task>
+    <task id="LOCAL-00056" summary="done with human register module with otp.">
+      <created>1592830216350</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1592830216352</updated>
+    </task>
+    <task id="LOCAL-00057" summary="done with human register module with otp (few changes)">
+      <created>1592834233524</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1592834233524</updated>
+    </task>
+    <task id="LOCAL-00058" summary="doctor register module design.">
+      <created>1592837113147</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1592837113147</updated>
+    </task>
+    <task id="LOCAL-00059" summary="doctor register module functionality + reset password functionality + forgot pwd functionality">
+      <created>1593005609237</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1593005609237</updated>
+    </task>
+    <task id="LOCAL-00060" summary="added 16 year age limit to dob calender + added prefix to mobile number when user typing mobile number + border added to box of city while typing.">
+      <created>1593261988536</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1593261988536</updated>
+    </task>
+    <task id="LOCAL-00061" summary="added new datepicker design library + design changes as white background on all screen.">
+      <created>1593355293835</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1593355293836</updated>
+    </task>
+    <task id="LOCAL-00062" summary="added new datepicker design library + design changes as white background on all screen.">
+      <created>1593412901284</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1593412901284</updated>
+    </task>
+    <task id="LOCAL-00063" summary="valid email id tested on login and forgot password.">
+      <created>1593415836027</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1593415836027</updated>
+    </task>
+    <task id="LOCAL-00064" summary="city list background shown wrap content.">
+      <created>1593436435878</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1593436435879</updated>
+    </task>
+    <task id="LOCAL-00065" summary="done with design issues given by devesh on whatsapp.">
+      <created>1593866221239</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1593866221240</updated>
+    </task>
+    <task id="LOCAL-00066" summary="done with terms and condition design and implementation.">
+      <created>1593870735846</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1593870735846</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Implemented speciality api.">
+      <created>1594097698565</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1594097698565</updated>
+    </task>
+    <task id="LOCAL-00068" summary="alignment issue resolved on search city and speciality screen.">
+      <created>1594447154882</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1594447154883</updated>
+    </task>
+    <task id="LOCAL-00069" summary="issue resolve on 27 july by devesh.">
+      <created>1595858298641</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1595858298641</updated>
+    </task>
+    <task id="LOCAL-00070" summary="box designed change of user info.">
+      <created>1596863986247</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1596863986248</updated>
+    </task>
+    <task id="LOCAL-00071" summary="designed part is done as per guided on whats app.">
+      <created>1596866677395</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1596866677395</updated>
+    </task>
+    <task id="LOCAL-00072" summary="designed part is done as per guided on whats app.">
+      <created>1641578388036</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1641578388036</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="logic implemented for multiple symptom questionare." />
+    <MESSAGE value="logic implemented for multiple symptom questionare + progress dialog design chang in progress." />
+    <MESSAGE value="2 digit date send to api + progress dialog change." />
+    <MESSAGE value="design changes as per devesh on 10june" />
+    <MESSAGE value="design changes by devesh on 14 june." />
+    <MESSAGE value="added login new screens design." />
+    <MESSAGE value="implementing flow of register + done with login + working on country api integration." />
+    <MESSAGE value="country api integrated with search on it." />
+    <MESSAGE value="done with human register flow + &#10;terms screen is WIP." />
+    <MESSAGE value="pwd special character on pwd screen" />
+    <MESSAGE value="done with human register module with otp." />
+    <MESSAGE value="done with human register module with otp (few changes)" />
+    <MESSAGE value="doctor register module design." />
+    <MESSAGE value="doctor register module functionality + reset password functionality + forgot pwd functionality" />
+    <MESSAGE value="added 16 year age limit to dob calender + added prefix to mobile number when user typing mobile number + border added to box of city while typing." />
+    <MESSAGE value="added new datepicker design library + design changes as white background on all screen." />
+    <MESSAGE value="valid email id tested on login and forgot password." />
+    <MESSAGE value="city list background shown wrap content." />
+    <MESSAGE value="done with design issues given by devesh on whatsapp." />
+    <MESSAGE value="done with terms and condition design and implementation." />
+    <MESSAGE value="Implemented speciality api." />
+    <MESSAGE value="alignment issue resolved on search city and speciality screen." />
+    <MESSAGE value="issue resolve on 27 july by devesh." />
+    <MESSAGE value="box designed change of user info." />
+    <MESSAGE value="designed part is done as per guided on whats app." />
+    <option name="LAST_COMMIT_MESSAGE" value="designed part is done as per guided on whats app." />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="app">
+        <watch expression="questionAry" language="kotlin" />
+      </configuration>
+      <configuration name="Remote">
+        <watch expression="symptmJsonAry" language="kotlin" />
+        <watch expression="((SymptomJsonModel)obj).dataJSONObj" custom="com.example.healthwareapplication.model.self_assessment.SymptomJsonModel" />
+        <watch expression="specAry[position].name" language="kotlin" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

@@ -1,0 +1,30 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.warkiz.widget:indicatorseekbar:2.1.2@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/343edf6ce08aed7a965fc18f4a010dcb/jetified-indicatorseekbar-2.1.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/343edf6ce08aed7a965fc18f4a010dcb/jetified-indicatorseekbar-2.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/343edf6ce08aed7a965fc18f4a010dcb/jetified-indicatorseekbar-2.1.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5a41c84dc966b27a9a328df2f7b51308/jetified-indicatorseekbar-2.1.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5a41c84dc966b27a9a328df2f7b51308/jetified-indicatorseekbar-2.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5a41c84dc966b27a9a328df2f7b51308/jetified-indicatorseekbar-2.1.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/773ef1342b70fd7701ba3569a7cbcd08/jetified-indicatorseekbar-2.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/773ef1342b70fd7701ba3569a7cbcd08/jetified-indicatorseekbar-2.1.2/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/773ef1342b70fd7701ba3569a7cbcd08/jetified-indicatorseekbar-2.1.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d5894c70ae3ed903bfb9278996fd2a05/jetified-indicatorseekbar-2.1.2/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d5894c70ae3ed903bfb9278996fd2a05/jetified-indicatorseekbar-2.1.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d5894c70ae3ed903bfb9278996fd2a05/jetified-indicatorseekbar-2.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e97a8869ef68b98b8bf13cf0cd4f172f/jetified-indicatorseekbar-2.1.2/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e97a8869ef68b98b8bf13cf0cd4f172f/jetified-indicatorseekbar-2.1.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e97a8869ef68b98b8bf13cf0cd4f172f/jetified-indicatorseekbar-2.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/aa27509afe598a1ca4b0ad94e37bcaad/jetified-indicatorseekbar-2.1.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/aa27509afe598a1ca4b0ad94e37bcaad/jetified-indicatorseekbar-2.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/aa27509afe598a1ca4b0ad94e37bcaad/jetified-indicatorseekbar-2.1.2/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.warkiz.widget/indicatorseekbar/2.1.2/bac252f326124222e7dc6e67b22185dd22098d6b/indicatorseekbar-2.1.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.warkiz.widget/indicatorseekbar/2.1.2/3853d19069899ac0411e3e41f132cd59c858f404/indicatorseekbar-2.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

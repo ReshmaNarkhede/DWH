@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/userDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/m7"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/userNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="@dimen/m2"
+            android:text="@string/label"
+            android:textColor="@color/label_text_color"
+            android:textSize="@dimen/t16" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="@dimen/p2"
+            android:text="-"
+            android:textColor="@color/label_text_color"
+            android:textSize="@dimen/t20" />
+        <TextView
+            android:id="@+id/userGenderTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="@dimen/m2"
+            android:text="@string/label"
+            android:textColor="@color/label_text_color"
+            android:textSize="@dimen/t16" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="@dimen/p2"
+            android:text="-"
+            android:textColor="@color/label_text_color"
+            android:textSize="@dimen/t20" />
+        <TextView
+
+            android:id="@+id/userAgeTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="@dimen/p2"
+            android:text="@string/label"
+            android:textColor="@color/label_text_color"
+            android:textSize="@dimen/t16" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/symptomTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userDetail"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="@dimen/p7"
+        android:layout_marginBottom="@dimen/m7"
+        android:text="@string/label"
+        android:textColor="@color/label_text_color"
+        android:textSize="@dimen/t18" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/answerSurvey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/symptomTxt"
+        android:overScrollMode="never"
+        android:layout_above="@+id/layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/m10"
+                android:layout_weight="1"
+                android:text="@string/dwh_thought"
+                android:typeface="sans"
+                android:textSize="@dimen/t16" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/m10"
+                android:textColor="@color/label_text_color"
+                android:text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups"
+                android:textSize="@dimen/t17" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/m10"
+                android:text="@string/assesment"
+                android:typeface="sans"
+                android:textSize="@dimen/t16" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/assesmentList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:layout_margin="@dimen/m10"
+                tools:listitem="@layout/assessment_list_item"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m20"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/m10"
+                android:text="You might have condition that is not suggested here. your assessment is ready here. if you have any concern about your health please consult nearest doctor."
+                android:textSize="@dimen/t18" />
+
+            <TextView
+                android:id="@+id/okayBtn"
+                style="@style/CustomButtonTheme"
+                android:layout_marginBottom="@dimen/m10"
+                android:layout_gravity="end"
+                android:onClick="okClick"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/layout"
+        layout="@layout/bottom_layout" />
+</RelativeLayout>
