@@ -1,31 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.tarek360.RichPath:animator:0.1.1@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f73d23b5520fdce366090971df76fba9/jetified-animator-0.1.1/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/836123766238fb10b8be3b24a9244b59/jetified-animator-0.1.1/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b29bd0d8a92534d4979b33676f4a980d/jetified-animator-0.1.1/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bb947f8789ce0a1a67e3802dc47e073f/jetified-animator-0.1.1/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/845f893bbd9f7dcc7e0d9e362519401a/jetified-animator-0.1.1/annotations.zip!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1c0aa3a03e41c91201a07c894221634b/jetified-animator-0.1.1/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f73d23b5520fdce366090971df76fba9/jetified-animator-0.1.1/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f73d23b5520fdce366090971df76fba9/jetified-animator-0.1.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f73d23b5520fdce366090971df76fba9/jetified-animator-0.1.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/836123766238fb10b8be3b24a9244b59/jetified-animator-0.1.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/836123766238fb10b8be3b24a9244b59/jetified-animator-0.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/836123766238fb10b8be3b24a9244b59/jetified-animator-0.1.1/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b29bd0d8a92534d4979b33676f4a980d/jetified-animator-0.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b29bd0d8a92534d4979b33676f4a980d/jetified-animator-0.1.1/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b29bd0d8a92534d4979b33676f4a980d/jetified-animator-0.1.1/jars/classes.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bb947f8789ce0a1a67e3802dc47e073f/jetified-animator-0.1.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bb947f8789ce0a1a67e3802dc47e073f/jetified-animator-0.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bb947f8789ce0a1a67e3802dc47e073f/jetified-animator-0.1.1/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/845f893bbd9f7dcc7e0d9e362519401a/jetified-animator-0.1.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/845f893bbd9f7dcc7e0d9e362519401a/jetified-animator-0.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/845f893bbd9f7dcc7e0d9e362519401a/jetified-animator-0.1.1/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1c0aa3a03e41c91201a07c894221634b/jetified-animator-0.1.1/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1c0aa3a03e41c91201a07c894221634b/jetified-animator-0.1.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1c0aa3a03e41c91201a07c894221634b/jetified-animator-0.1.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1c0aa3a03e41c91201a07c894221634b/jetified-animator-0.1.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />

@@ -1,24 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.tarek360.RichPath:richpath:0.1.1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b37295cf3674c0aa62daf3e096bf6735/jetified-richpath-0.1.1/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b37295cf3674c0aa62daf3e096bf6735/jetified-richpath-0.1.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b37295cf3674c0aa62daf3e096bf6735/jetified-richpath-0.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f5ed88355ba5ec69eed6a25d06b92030/jetified-richpath-0.1.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f5ed88355ba5ec69eed6a25d06b92030/jetified-richpath-0.1.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f5ed88355ba5ec69eed6a25d06b92030/jetified-richpath-0.1.1/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9576d3d4c6cae6e46aba582c4e7889ef/jetified-richpath-0.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9576d3d4c6cae6e46aba582c4e7889ef/jetified-richpath-0.1.1/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9576d3d4c6cae6e46aba582c4e7889ef/jetified-richpath-0.1.1/jars/classes.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f937c13fcd7cd451e38686b51f340c60/jetified-richpath-0.1.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f937c13fcd7cd451e38686b51f340c60/jetified-richpath-0.1.1/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f937c13fcd7cd451e38686b51f340c60/jetified-richpath-0.1.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9892f3412ccc7000d13993f171f2437d/jetified-richpath-0.1.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9892f3412ccc7000d13993f171f2437d/jetified-richpath-0.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9892f3412ccc7000d13993f171f2437d/jetified-richpath-0.1.1/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fa5d2cef053cc1baecfe69847b7b5239/jetified-richpath-0.1.1/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fa5d2cef053cc1baecfe69847b7b5239/jetified-richpath-0.1.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fa5d2cef053cc1baecfe69847b7b5239/jetified-richpath-0.1.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fa5d2cef053cc1baecfe69847b7b5239/jetified-richpath-0.1.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
