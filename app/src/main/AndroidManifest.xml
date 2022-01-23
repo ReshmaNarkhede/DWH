@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.healthwareapplication">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,60 +14,95 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".activity.account.register.TermsDataActivity" />
-        <activity android:name=".activity.account.register.TermsAndPolicyActivity">
-
-        </activity>
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity
+            android:name=".ui.signup.SignUpActivity"
+            android:exported="false" />
+        <activity android:name=".activity.account.register.TermsDataActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.account.register.TermsAndPolicyActivity"
+            android:exported="false"/>
         <activity
             android:name=".activity.account.forgot_password.ResetPasswordActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
         <activity
             android:name=".activity.account.forgot_password.ForgotPasswordActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
         <activity
             android:name=".activity.account.register.DoctorSpecialityActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
         <activity
             android:name=".activity.account.OtpActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.account.register.DobActivity" />
-        <activity android:name=".activity.account.register.AgeActivity" />
-        <activity android:name=".activity.account.LetsMeetActivity" />
-        <activity android:name=".activity.self_assessment.ReportFromHome" />
-        <activity android:name=".activity.self_assessment.SearchSymptomActivity" />
-        <activity android:name=".activity.self_assessment.SAHomeActivity" />
-        <activity android:name=".activity.self_assessment.WhenStartActivity" />
-        <activity android:name=".activity.self_assessment.AddTestActivity" />
-        <activity android:name=".activity.self_assessment.AddMedicineActivity" />
-        <activity android:name=".activity.self_assessment.DontKnowActivity" />
-        <activity android:name=".activity.self_assessment.FeedbackActivity" />
-        <activity android:name=".activity.self_assessment.SymptomReportActivity" />
-        <activity android:name=".activity.self_assessment.ThankYouActivity" />
-        <activity android:name=".activity.self_assessment.QuestionActivity" />
-        <activity android:name=".activity.self_assessment.QuestionDemoActivity" />
-        <activity android:name=".activity.self_assessment.WhatFeelActivity" />
-        <activity android:name=".activity.self_assessment.BodySymptomActivity" />
-        <activity android:name=".activity.account.register.RegisterTermsActivity" />
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
+        <activity android:name=".activity.account.register.DobActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.account.register.AgeActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.account.LetsMeetActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.ReportFromHome"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.SearchSymptomActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.SAHomeActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.WhenStartActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.AddTestActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.AddMedicineActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.DontKnowActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.FeedbackActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.SymptomReportActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.ThankYouActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.QuestionActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.QuestionDemoActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.WhatFeelActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.self_assessment.BodySymptomActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.account.register.RegisterTermsActivity"
+            android:exported="false"/>
         <activity
             android:name=".activity.account.register.RegisterPasswordActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
         <activity
             android:name=".activity.account.register.RegisterInfoActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.dashboard.DashboardActivity" />
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
+        <activity android:name=".activity.dashboard.DashboardActivity"
+            android:exported="false"/>
         <activity
             android:name=".activity.account.login.OldLoginActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.account.register.GenderActivity" />
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
+        <activity android:name=".activity.account.register.GenderActivity"
+            android:exported="false"/>
         <activity
             android:name=".activity.account.register.CountryActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
         <activity
             android:name=".activity.account.login.LoginActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.account.register.RegisterAsActivity" />
-        <activity android:name=".activity.splash.SplashActivity">
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
+        <activity android:name=".activity.account.register.RegisterAsActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.splash.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
