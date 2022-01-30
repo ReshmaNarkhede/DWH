@@ -6,7 +6,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import app.frats.android.models.response.ResponseModel
+import com.example.healthwareapplication.model.response.ResponseModel
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.activity.account.LetsMeetActivity
 import com.example.healthwareapplication.api.ApiClient
@@ -40,7 +40,7 @@ class ResetPasswordActivity : AppCompatActivity() {
     }
 
     private fun defaultConfiguration() {
-        binding.pwdLayout.setOnClickListener(View.OnClickListener {
+        binding.okayBtn.setOnClickListener(View.OnClickListener {
             checkValidation()
         })
     }

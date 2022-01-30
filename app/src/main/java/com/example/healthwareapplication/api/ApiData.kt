@@ -1,14 +1,10 @@
 package com.example.healthwareapplication.api
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.Intent
 import android.util.Log
-import app.frats.android.models.response.ResponseModel
-import com.example.healthwareapplication.activity.account.OtpActivity
+import com.example.healthwareapplication.model.response.ResponseModel
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.AppConstants
-import com.example.healthwareapplication.constants.IntentConstants
 import com.google.gson.JsonObject
 import org.json.JSONObject
 import retrofit2.Call

@@ -6,10 +6,10 @@
     <string name="no">No</string>
 
     <!--Intro Screen-->
-    <string name="lets_meet">"Let's Meet dwh 🙂"</string>
+    <string name="lets_meet">Personalise your health &amp; manage your health data with dwh</string>
     <string name="signup">Sign up</string>
     <string name="login">Log in</string>
-    <string name="forgot_password">Forgot my password</string>
+    <string name="forgot_password">Forgot password</string>
 
     <!--Login Screen-->
     <string name="login_screen_text">Please enter your email id and password</string>
@@ -18,6 +18,7 @@
     <string name="ok">Okay</string>
     <string name="valid_password">Please enter valid password.</string>
     <string name="valid_email">Please enter valid email.</string>
+    <string name="error_email">Your email is not associated with dwh please contact to support@dwh.com</string>
 
     <!--Sign up as Screen-->
     <string name="signup_as">Sign up as?</string>
@@ -86,7 +87,7 @@
     <string name="what_is_your_email">What is your email?</string>
 
     <!--Reset Password screen-->
-    <string name="reset_pwd_msg">Reset your password</string>
+    <string name="reset_pwd_msg">Please reset your password</string>
     <string name="enter_new_password">Enter new password</string>
     <string name="confirm_new_password">Confirm new password</string>
 
@@ -223,5 +224,6 @@ User Information. In the course of your use of the Web Site and/or the services 
 
     <string name="thank_you_after_report">Thank you %1$s All done! Your Report is Ready</string>
     <string name="search_feel">Search</string>
+    <string name="submit">Submit</string>
 
 </resources>

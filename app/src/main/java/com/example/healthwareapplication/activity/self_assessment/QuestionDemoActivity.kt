@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import app.frats.android.models.response.ResponseModel
+import com.example.healthwareapplication.model.response.ResponseModel
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.adapter.self_assessment.question.RadioRecyclerViewAdapter
 import com.example.healthwareapplication.api.ApiClient

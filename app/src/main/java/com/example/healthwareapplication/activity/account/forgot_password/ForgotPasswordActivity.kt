@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import app.frats.android.models.response.ResponseModel
+import com.example.healthwareapplication.model.response.ResponseModel
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.activity.account.OtpActivity
 import com.example.healthwareapplication.activity.account.login.LoginActivity
@@ -32,6 +32,8 @@ class ForgotPasswordActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initComponents()
+
+        binding.submitBtn.setOnClickListener { checkValidation() }
     }
 
     private fun initComponents() {
@@ -68,11 +70,13 @@ class ForgotPasswordActivity : AppCompatActivity() {
             }
         }
         if (isFlag) {
-            fetchForgotPwdAPI(this,email)
+            fetchForgotPwdAPI(this, email)
         }
     }
+
     private fun fetchForgotPwdAPI(context: Context, email: String) {
-        val apiService: ApiInterface = ApiClient.getRetrofitClient(context)!!.create(ApiInterface::class.java)
+        val apiService: ApiInterface =
+            ApiClient.getRetrofitClient(context)!!.create(ApiInterface::class.java)
 
         val param = JsonObject()
         param.addProperty("email_id", email)
@@ -87,8 +91,8 @@ class ForgotPasswordActivity : AppCompatActivity() {
                     val responseModel = ResponseModel(json)
 //                    if (responseModel.isCode()) {
                     val data = responseModel.getDataObj()
-                    val otp = data!!.optInt("otp")
-                    showOTPDialog(context,email,otp.toString())
+                    val otp = data?.optInt("otp")
+                    showOTPDialog(context, email, otp.toString())
 //                    }
 //                    else{
 //                        AppHelper.showToast(this@ForgotPasswordActivity,responseModel.getMessage().toString())
@@ -103,14 +107,15 @@ class ForgotPasswordActivity : AppCompatActivity() {
             }
         })
     }
+
     private fun showOTPDialog(context: Context, email: String, otp: String) {
 //            val builder = AlertDialog.Builder(context)
 //            builder.setMessage("Your Otp is: $otp")
 //            builder.setPositiveButton("okay") { dialog, which ->
         val intent = Intent(context, OtpActivity::class.java)
-        intent.putExtra(IntentConstants.kOTP,otp)
-        intent.putExtra(IntentConstants.kEMAIL,email)
-        intent.putExtra(IntentConstants.kIS_FORGOT,true)
+        intent.putExtra(IntentConstants.kOTP, otp)
+        intent.putExtra(IntentConstants.kEMAIL, email)
+        intent.putExtra(IntentConstants.kIS_FORGOT, true)
         context.startActivity(intent)
 //            }
 //            val dialog: AlertDialog = builder.create()

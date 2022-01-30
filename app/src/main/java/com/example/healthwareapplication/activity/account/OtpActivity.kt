@@ -8,9 +8,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import app.frats.android.models.response.ResponseModel
+import com.example.healthwareapplication.model.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_otp
 import com.example.healthwareapplication.activity.account.forgot_password.ResetPasswordActivity
 import com.example.healthwareapplication.activity.account.login.LoginActivity
 import com.example.healthwareapplication.activity.dashboard.DashboardActivity
@@ -70,7 +69,7 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
             otpEditText3.addTextChangedListener(OTPTextWatcher(otpEditText3))
             otpEditText4.addTextChangedListener(OTPTextWatcher(otpEditText4))
         }
-        binding.otpLayout.setOnClickListener(this)
+        binding.okayBtn.setOnClickListener(this)
 
     }
 
@@ -96,7 +95,7 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.otpLayout -> {
+            R.id.okayBtn -> {
                 checkValidation()
             }
             R.id.resendOtp -> {
@@ -211,7 +210,7 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
                     val responseModel = ResponseModel(json)
 //                    if (responseModel.isCode()) {
                     val data = responseModel.getDataObj()
-                    otpMailString = data!!.optInt("otp").toString()
+                    otpMailString = data?.optInt("otp").toString()
                 }
             }
 

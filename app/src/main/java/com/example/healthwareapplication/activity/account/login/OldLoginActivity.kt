@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import app.frats.android.models.response.ResponseModel
+import com.example.healthwareapplication.model.response.ResponseModel
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.activity.dashboard.DashboardActivity
 import com.example.healthwareapplication.api.ApiClient

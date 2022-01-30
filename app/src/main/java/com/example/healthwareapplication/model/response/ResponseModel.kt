@@ -1,4 +1,4 @@
-package app.frats.android.models.response
+package com.example.healthwareapplication.model.response
 
 import org.json.JSONArray
 import org.json.JSONObject
@@ -13,9 +13,8 @@ class ResponseModel(response: JSONObject) {
         return status == 200
     }
 
-    fun code() : Int {
-        val status = this.resJSONObj?.optInt("code")
-        return status!!
+    fun code(): Int? {
+        return resJSONObj?.optInt("code")
     }
 
     fun getMessage() :String?{
@@ -23,9 +22,9 @@ class ResponseModel(response: JSONObject) {
     }
 
     fun getDataArray() : JSONArray? {
-        return this.resJSONObj!!.optJSONArray("data")
+        return this.resJSONObj?.optJSONArray("data")
     }
     fun getDataObj() : JSONObject? {
-        return this.resJSONObj!!.optJSONObject("data")!!
+        return this.resJSONObj?.optJSONObject("data")
     }
 }
