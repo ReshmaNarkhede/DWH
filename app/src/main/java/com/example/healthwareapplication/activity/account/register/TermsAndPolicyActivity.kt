@@ -3,27 +3,25 @@ package com.example.healthwareapplication.activity.account.register
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
-import android.util.Log
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_terms_and_policy
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.constants.IntentConstants
-import kotlinx.android.synthetic.main.activity_terms_and_policy.*
+import com.example.healthwareapplication.databinding.ActivityTermsAndPolicyBinding
 
 
 class TermsAndPolicyActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityTermsAndPolicyBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_terms_and_policy)
+        binding = ActivityTermsAndPolicyBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
         defaultConfig()
@@ -34,14 +32,14 @@ class TermsAndPolicyActivity : AppCompatActivity() {
     }
 
     private fun defaultConfig() {
-        termsTxt.makeLinks(
+        binding.termsTxt.makeLinks(
             Pair(getString(R.string.terms_span), View.OnClickListener {
                 val intent = Intent(this, TermsDataActivity::class.java)
                 intent.putExtra(IntentConstants.kLABEL, getString(R.string.terms_span))
                 startActivity(intent)
             })
         )
-        policyTxt.makeLinks(
+        binding.policyTxt.makeLinks(
             Pair(getString(R.string.policy_span), View.OnClickListener {
                 val intent = Intent(this, TermsDataActivity::class.java)
                 intent.putExtra(IntentConstants.kLABEL, getString(R.string.policy_span))
@@ -55,7 +53,7 @@ class TermsAndPolicyActivity : AppCompatActivity() {
     }
 
     private fun checkValidation() {
-        if (chk1.isChecked && chk2.isChecked && chk3.isChecked) {
+        if (binding.chk1.isChecked && binding.chk2.isChecked && binding.chk3.isChecked) {
             intent = Intent()
             setResult(Activity.RESULT_OK, intent)
             finish()

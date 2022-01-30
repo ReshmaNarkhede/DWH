@@ -1,24 +1,25 @@
 package com.example.healthwareapplication.activity.account.register
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_terms_data
+import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.constants.IntentConstants
-import kotlinx.android.synthetic.main.activity_terms_data.*
+import com.example.healthwareapplication.databinding.ActivityTermsDataBinding
 
 class TermsDataActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityTermsDataBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_terms_data)
+        binding = ActivityTermsDataBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
     }
 
     private fun initComponents() {
         val label = intent.getStringExtra(IntentConstants.kLABEL)
-        termsLabel.text = label
+        binding.termsLabel.text = label
     }
 
     fun backClick(view: View) {

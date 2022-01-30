@@ -9,23 +9,25 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.activity.account.LetsMeetActivity
-import com.example.healthwareapplication.activity.account.register.RegisterAsActivity
 import com.example.healthwareapplication.activity.self_assessment.SAHomeActivity
 import com.example.healthwareapplication.adapter.home.HomeMenuAdapter
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.AppSessions
 import com.example.healthwareapplication.app_utils.AppSettings
 import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
+import com.example.healthwareapplication.databinding.ActivityDashboardBinding
 import com.example.healthwareapplication.model.menu.MenuModel
 import java.util.ArrayList
 
 class DashboardActivity : AppCompatActivity(), RecyclerItemClickListener.OnItemClickListener {
+    private lateinit var binding: ActivityDashboardBinding
     private var menuAry: ArrayList<MenuModel> = ArrayList()
     private lateinit var menuList: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard)
+        binding = ActivityDashboardBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
         defaultConfigurations()

@@ -6,13 +6,15 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.Window
 import android.view.WindowManager
-import com.example.healthwareapplication.R
 import com.example.healthwareapplication.activity.account.LetsMeetActivity
 import com.example.healthwareapplication.activity.dashboard.DashboardActivity
 import com.example.healthwareapplication.app_utils.AppSessions
 import com.example.healthwareapplication.constants.AppConstants
+import com.example.healthwareapplication.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +23,8 @@ class SplashActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setContentView(R.layout.activity_splash)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         Handler().postDelayed({
             showDashboard()
         }, AppConstants.k_SPLASH_TIME_OUT)

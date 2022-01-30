@@ -82,7 +82,7 @@ class OldLoginActivity : AppCompatActivity() {
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
-                Log.e("LOGIN: $param",": "+response.raw().request().url())
+                Log.e("LOGIN: $param",": "+ response.raw().request.url)
                 if (response.isSuccessful) {
                     DialogUtility.hideProgressDialog()
                     val json = JSONObject(response.body().toString())

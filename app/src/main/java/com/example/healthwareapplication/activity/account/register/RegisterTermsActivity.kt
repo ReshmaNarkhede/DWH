@@ -1,19 +1,18 @@
 package com.example.healthwareapplication.activity.account.register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import app.frats.android.models.response.ResponseModel
-import com.example.healthwareapplication.R.layout.activity_register_terms
 import com.example.healthwareapplication.activity.account.OtpActivity
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.databinding.ActivityRegisterTermsBinding
 import com.example.healthwareapplication.model.user.UserDetailModel
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.activity_register_terms.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,11 +20,13 @@ import retrofit2.Response
 
 class RegisterTermsActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityRegisterTermsBinding
     private lateinit var userDetailModel: UserDetailModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_register_terms)
+        binding = ActivityRegisterTermsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
         defaultConfiguration()
@@ -34,8 +35,8 @@ class RegisterTermsActivity : AppCompatActivity() {
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
         userDetailModel = intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
-        pwdTxt.text = userDetailModel.password
-        pwdTxt.setOnClickListener(View.OnClickListener {
+        binding.pwdTxt.text = userDetailModel.password
+        binding.pwdTxt.setOnClickListener(View.OnClickListener {
             finish()
         })
     }
@@ -44,7 +45,7 @@ class RegisterTermsActivity : AppCompatActivity() {
     }
 
     fun signupwaaClick(view: View) {
-        if (termAndConditionSwitch.isChecked) {
+        if (binding.termAndConditionSwitch.isChecked) {
             val userDetailModel =
                 intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
             callRegisterationAPI(userDetailModel)
@@ -125,7 +126,7 @@ class RegisterTermsActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 205) {
             if (resultCode == RESULT_OK) {
-                termAndConditionSwitch.isChecked = true
+                binding.termAndConditionSwitch.isChecked = true
             }
         }
     }

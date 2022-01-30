@@ -13,7 +13,7 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/answerTxt"
             style="@style/AnswerButtonTheme"
             android:visibility="gone" />
@@ -32,7 +32,7 @@
             android:paddingBottom="@dimen/p10"
             android:visibility="visible">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/letsMeetTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,21 +49,21 @@
                 android:orientation="vertical"
                 android:padding="@dimen/p10">
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/signUpBtn"
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"
                     android:onClick="signUpClick"
                     android:text="@string/signup" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/loginBtn"
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"
-                    android:onClick="LogInClick"
+                    android:onClick="logInClick"
                     android:text="@string/login" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/forgotPwdBtn"
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"

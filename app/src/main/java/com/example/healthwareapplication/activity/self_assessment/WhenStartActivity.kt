@@ -1,6 +1,5 @@
 package com.example.healthwareapplication.activity.self_assessment
 
-import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
@@ -9,15 +8,14 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_when_start
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.AppSettings
 import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.databinding.ActivityWhenStartBinding
 import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.tsongkha.spinnerdatepicker.DatePicker
 import com.tsongkha.spinnerdatepicker.SpinnerDatePickerDialogBuilder
-import kotlinx.android.synthetic.main.activity_when_start.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -26,6 +24,7 @@ import java.util.*
 class WhenStartActivity : AppCompatActivity(),
     com.tsongkha.spinnerdatepicker.DatePickerDialog.OnDateSetListener {
 
+    private lateinit var binding: ActivityWhenStartBinding
     private var symptomStr: String? = null
     val delimiter = ","
     val finalStr = SpannableStringBuilder()
@@ -33,7 +32,8 @@ class WhenStartActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_when_start)
+        binding = ActivityWhenStartBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         defaultConfiguration()
     }
@@ -50,7 +50,7 @@ class WhenStartActivity : AppCompatActivity(),
             finalStr.append(obj.getName())
         }
         Log.e("STr: ", ": " + finalStr.toString().replaceFirst(delimiter, ""))
-        symptomTxt.text = finalStr.toString().replaceFirst(delimiter, "")
+        binding.symptomTxt.text = finalStr.toString().replaceFirst(delimiter, "")
     }
 
     fun whenDateClick(view: View) {
@@ -91,11 +91,11 @@ class WhenStartActivity : AppCompatActivity(),
     fun whenTimeClick(view: View) {
         val listner =
             TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
-                whenStartTime.text =
+                binding.whenStartTime.text =
                     "${SimpleDateFormat("hh:mm a").format(SimpleDateFormat("hh:mm").parse("${selectedHour}:${selectedMinute}"))}"
                 DialogUtility.hideProgressDialog()
-                Log.e("when Time: ", " : ${whenStartTime.text}")
-                if (whenStartDate.text.toString() == resources.getString(R.string.date)) {
+//                Log.e("when Time: ", " : ${whenStartTime.text}")
+                if (binding.whenStartDate.text.toString() == resources.getString(R.string.date)) {
                     AppHelper.showToast(this, getString(R.string.valid_date_msg))
                 } else {
                     openNextActivity()
@@ -108,12 +108,12 @@ class WhenStartActivity : AppCompatActivity(),
         AppSettings.setStringValue(
             this,
             IntentConstants.kASSESSMENT_DATE,
-            whenStartDate.text.toString()
+            binding.whenStartDate.text.toString()
         )
         AppSettings.setStringValue(
             this,
             IntentConstants.kASSESSMENT_TIME,
-            whenStartTime.text.toString()
+            binding.whenStartTime.text.toString()
         )
 
         val intent = Intent(this, QuestionDemoActivity::class.java)
@@ -132,8 +132,8 @@ class WhenStartActivity : AppCompatActivity(),
 
     override fun onDateSet(view: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int) {
         val calendar: Calendar = GregorianCalendar(year, monthOfYear, dayOfMonth)
-        whenStartDate.text = simpleDateFormat.format(calendar.time)
-        if (whenStartTime.text.toString() == resources.getString(R.string.time)) {
+        binding.whenStartDate.text = simpleDateFormat.format(calendar.time)
+        if (binding.whenStartTime.text.toString() == resources.getString(R.string.time)) {
             AppHelper.showToast(this, getString(R.string.valid_time_msg))
         } else {
             openNextActivity()

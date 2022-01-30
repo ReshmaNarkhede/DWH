@@ -1,28 +1,25 @@
 package com.example.healthwareapplication.activity.account.register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_register_password
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.databinding.ActivityRegisterPasswordBinding
 import com.example.healthwareapplication.model.user.UserDetailModel
-import kotlinx.android.synthetic.main.activity_doctor_speciality.*
-import kotlinx.android.synthetic.main.activity_register_info.*
-import kotlinx.android.synthetic.main.activity_register_password.*
-import kotlinx.android.synthetic.main.activity_register_password.pwdParentLayout
-import kotlinx.android.synthetic.main.activity_register_password.userInfoTxt
 
 class RegisterPasswordActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityRegisterPasswordBinding
     private lateinit var userDetailModel: UserDetailModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_register_password)
+        binding = ActivityRegisterPasswordBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initComponents()
         defaultConfiguration()
     }
@@ -31,29 +28,29 @@ class RegisterPasswordActivity : AppCompatActivity() {
         AppHelper.transparentStatusBar(this)
         userDetailModel = intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
         if (userDetailModel.userType == 1) {
-            userInfoTxt.text =
+            binding.userInfoTxt.text =
                 userDetailModel.speciality.plus(", ").plus(userDetailModel.experience.plus(" ").plus(getString(
                                     R.string.experience_suffix)))
         } else if (userDetailModel.userType == 2) {
-            userInfoTxt.text =
+            binding.userInfoTxt.text =
                 userDetailModel.firstName.plus(", ").plus(userDetailModel.email).plus(", ")
                     .plus(userDetailModel.mobile)
         }
-        userInfoTxt.setOnClickListener(View.OnClickListener {
+        binding.userInfoTxt.setOnClickListener(View.OnClickListener {
             finish()
         })
     }
 
     private fun defaultConfiguration() {
-        pwdParentLayout.setOnClickListener(View.OnClickListener {
+        binding.pwdParentLayout.setOnClickListener(View.OnClickListener {
             checkValidation()
         })
     }
 
     private fun checkValidation() {
         var isFlag = true
-        val newPwd = pwdEdtTxt.text.toString()
-        val cnfmPwd = cnfmPwdEdtTxt.text.toString()
+        val newPwd = binding.pwdEdtTxt.text.toString()
+        val cnfmPwd = binding.cnfmPwdEdtTxt.text.toString()
         if (TextUtils.isEmpty(newPwd) || newPwd.length < 6) {
             AppHelper.showToast(this, getString(R.string.valid_password))
             isFlag = false
@@ -72,7 +69,7 @@ class RegisterPasswordActivity : AppCompatActivity() {
     }
 
     private fun goToNext() {
-        val pwd = pwdEdtTxt.text.toString()
+        val pwd = binding.pwdEdtTxt.text.toString()
         userDetailModel.password = pwd
 
         val intent = Intent(this, RegisterTermsActivity::class.java)

@@ -1,16 +1,19 @@
 package com.example.healthwareapplication.activity.self_assessment
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.healthwareapplication.R
+import androidx.appcompat.app.AppCompatActivity
+import com.example.healthwareapplication.databinding.ActivityFeedbackBinding
 
 class FeedbackActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityFeedbackBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_feedback)
+        binding = ActivityFeedbackBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
     fun yesClick(view: View) {

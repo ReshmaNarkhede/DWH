@@ -15,21 +15,21 @@ import com.example.healthwareapplication.activity.account.forgot_password.ResetP
 import com.example.healthwareapplication.activity.account.login.LoginActivity
 import com.example.healthwareapplication.activity.dashboard.DashboardActivity
 import com.example.healthwareapplication.api.ApiClient
-import com.example.healthwareapplication.api.ApiData
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.AppSettings
 import com.example.healthwareapplication.app_utils.NoConnectivityException
 import com.example.healthwareapplication.constants.AppConstants
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.databinding.ActivityOtpBinding
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.activity_otp.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class OtpActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityOtpBinding
     private var isForgot: Boolean = false
     private lateinit var value1: String
     private lateinit var value2: String
@@ -42,7 +42,8 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_otp)
+        binding = ActivityOtpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
         defaultConfiguration()
@@ -52,10 +53,10 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
         AppHelper.transparentStatusBar(this)
         isForgot = intent.getBooleanExtra(IntentConstants.kIS_FORGOT, false)
         if (isForgot) {
-            resendOtp.visibility = View.VISIBLE
-            resendOtp.setOnClickListener(this)
+            binding.resendOtp.visibility = View.VISIBLE
+            binding.resendOtp.setOnClickListener(this)
         } else {
-            resendOtp.visibility = View.GONE
+            binding.resendOtp.visibility = View.GONE
         }
         email = intent.getStringExtra(IntentConstants.kEMAIL)
         password = intent.getStringExtra(IntentConstants.kPASSWORD)
@@ -63,13 +64,14 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun defaultConfiguration() {
+        binding.apply {
+            otpEditText1.addTextChangedListener(OTPTextWatcher(otpEditText1))
+            otpEditText2.addTextChangedListener(OTPTextWatcher(otpEditText2))
+            otpEditText3.addTextChangedListener(OTPTextWatcher(otpEditText3))
+            otpEditText4.addTextChangedListener(OTPTextWatcher(otpEditText4))
+        }
+        binding.otpLayout.setOnClickListener(this)
 
-        otpEditText1.addTextChangedListener(OTPTextWatcher(otpEditText1))
-        otpEditText2.addTextChangedListener(OTPTextWatcher(otpEditText2))
-        otpEditText3.addTextChangedListener(OTPTextWatcher(otpEditText3))
-        otpEditText4.addTextChangedListener(OTPTextWatcher(otpEditText4))
-
-        otpLayout.setOnClickListener(this)
     }
 
     inner class OTPTextWatcher(private val view: View) : TextWatcher {
@@ -77,10 +79,10 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
         override fun afterTextChanged(editable: Editable) {
             val text = editable.toString()
             when (view.id) {
-                R.id.otpEditText1 -> if (text.length == 1) otpEditText2.requestFocus()
-                R.id.otpEditText2 -> if (text.length == 1) otpEditText3.requestFocus() else if (text.isEmpty()) otpEditText1.requestFocus()
-                R.id.otpEditText3 -> if (text.length == 1) otpEditText4.requestFocus() else if (text.isEmpty()) otpEditText2.requestFocus()
-                R.id.otpEditText4 -> if (text.isEmpty()) otpEditText3.requestFocus()
+                R.id.otpEditText1 -> if (text.length == 1) binding.otpEditText2.requestFocus()
+                R.id.otpEditText2 -> if (text.length == 1) binding.otpEditText3.requestFocus() else if (text.isEmpty()) binding.otpEditText1.requestFocus()
+                R.id.otpEditText3 -> if (text.length == 1) binding.otpEditText4.requestFocus() else if (text.isEmpty()) binding.otpEditText2.requestFocus()
+                R.id.otpEditText4 -> if (text.isEmpty()) binding.otpEditText3.requestFocus()
             }
         }
 
@@ -97,18 +99,19 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
             R.id.otpLayout -> {
                 checkValidation()
             }
-            R.id.resendOtp->{
-                resendOTP(this,email!!)
+            R.id.resendOtp -> {
+                resendOTP(this, email!!)
             }
         }
     }
 
     private fun checkValidation() {
-        value1 = otpEditText1.text.toString()
-        value2 = otpEditText2.text.toString()
-        value3 = otpEditText3.text.toString()
-        value4 = otpEditText4.text.toString()
-
+        binding.apply {
+            value1 = otpEditText1.text.toString()
+            value2 = otpEditText2.text.toString()
+            value3 = otpEditText3.text.toString()
+            value4 = otpEditText4.text.toString()
+        }
         var isFlag = true
         if (value1.trim().isEmpty() or value2.trim().isEmpty() or value3.trim()
                 .isEmpty() or value4.trim().isEmpty()
@@ -122,20 +125,21 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun fetchSubmit() {
-        value1 = otpEditText1.text.toString()
-        value2 = otpEditText2.text.toString()
-        value3 = otpEditText3.text.toString()
-        value4 = otpEditText4.text.toString()
-
+        binding.apply {
+            value1 = otpEditText1.text.toString()
+            value2 = otpEditText2.text.toString()
+            value3 = otpEditText3.text.toString()
+            value4 = otpEditText4.text.toString()
+        }
         otpString = value1 + value2 + value3 + value4
 
         if (otpMailString == otpString) {
             Log.e("OtpValue: ", ": $otpString")
             if (isForgot) {
-                val intent = Intent(this,ResetPasswordActivity::class.java)
-                intent.putExtra(IntentConstants.kEMAIL,email)
+                val intent = Intent(this, ResetPasswordActivity::class.java)
+                intent.putExtra(IntentConstants.kEMAIL, email)
                 startActivity(intent)
-            }else {
+            } else {
                 verifyAccount(otpString!!)
             }
         } else {
@@ -144,7 +148,8 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun verifyAccount(otpString: String) {
-        val apiService: ApiInterface = ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
+        val apiService: ApiInterface =
+            ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
 
         val param = JsonObject()
         param.addProperty("username", email)
@@ -163,7 +168,11 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
                     if (responseModel.isCode()) {
                         val detailObj = responseModel.getDataObj()
                         AppSettings.setBooleanValue(this@OtpActivity, AppConstants.kIS_LOGIN, true)
-                        AppSettings.setJsonObjectValue(this@OtpActivity, AppConstants.kLOGIN, detailObj.toString())
+                        AppSettings.setJsonObjectValue(
+                            this@OtpActivity,
+                            AppConstants.kLOGIN,
+                            detailObj.toString()
+                        )
 
                         showDashboard()
                     } else {
@@ -186,7 +195,8 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun resendOTP(context: Context, email: String) {
-        val apiService: ApiInterface = ApiClient.getRetrofitClient(context)!!.create(ApiInterface::class.java)
+        val apiService: ApiInterface =
+            ApiClient.getRetrofitClient(context)!!.create(ApiInterface::class.java)
 
         val param = JsonObject()
         param.addProperty("email_id", email)
@@ -212,6 +222,7 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
             }
         })
     }
+
     private fun showDashboard() {
         val intent = Intent(this, DashboardActivity::class.java)
         startActivity(intent)

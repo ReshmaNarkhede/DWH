@@ -1,24 +1,21 @@
 package com.example.healthwareapplication.activity.self_assessment
 
-import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_search_symptom
 import com.example.healthwareapplication.adapter.self_assessment.SearchSymptomAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
-import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
+import com.example.healthwareapplication.databinding.ActivitySearchSymptomBinding
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.activity_search_symptom.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -27,9 +24,12 @@ import retrofit2.Response
 
 class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
 
+    private lateinit var binding: ActivitySearchSymptomBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_search_symptom)
+        binding = ActivitySearchSymptomBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
         defaultConfiguration()
@@ -41,14 +41,14 @@ class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
 
     private fun defaultConfiguration() {
 
-        searchTxt.addTextChangedListener(object : TextWatcher {
+        binding.searchTxt.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(s: Editable) {
                 if(s.isNotEmpty()) {
-                    cncleImg.visibility = View.VISIBLE
-                    cncleImg.setOnClickListener(this@SearchSymptomActivity)
+                    binding.cncleImg.visibility = View.VISIBLE
+                    binding.cncleImg.setOnClickListener(this@SearchSymptomActivity)
                 } else {
-                    cncleImg.visibility = View.GONE
+                    binding.cncleImg.visibility = View.GONE
                 }
             }
 
@@ -56,7 +56,7 @@ class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                symptom.visibility = View.VISIBLE
+                binding.symptom.visibility = View.VISIBLE
                 fetchSymptomBySearch(s.toString())
             }
         })
@@ -103,21 +103,21 @@ class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private fun bindSymptomSearchName(symptomListAry: JSONArray, searchStr: String?) {
-        symptom.layoutManager = LinearLayoutManager(this)
+        binding.symptom.layoutManager = LinearLayoutManager(this)
         val adapter = SearchSymptomAdapter(this,symptomListAry!!,searchStr,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val modelObj = JSONObject(symptomListAry.getJSONObject(position).toString())
                 val intent = Intent(this, WhenStartActivity::class.java)
                 intent.putExtra(IntentConstants.kSYMPTOM_DATA, modelObj.toString())
                 startActivity(intent)
-                searchTxt.text.clear()
+                binding.searchTxt.text.clear()
 //                val resultIntent = Intent()
 //                resultIntent.putExtra(IntentConstants.kSYMPTOM_SELECTED,modelObj.toString())
 //                setResult(Activity.RESULT_OK, resultIntent)
 //                searchTxt.text.clear()
                 finish()
             })
-        symptom.adapter = adapter
+        binding.symptom.adapter = adapter
     }
 
     fun backClick(view: View) {
@@ -132,8 +132,8 @@ class SearchSymptomActivity : AppCompatActivity(),View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.cncleImg -> {
-                searchTxt.text.clear()
-                symptom.visibility = View.GONE
+                binding.searchTxt.text.clear()
+                binding.symptom.visibility = View.GONE
             }
         }
     }

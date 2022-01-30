@@ -18,7 +18,7 @@ class NetworkConnectionInterceptor:Interceptor {
     }
 
     @Throws(IOException::class)
-    override fun intercept(chain: Interceptor.Chain): Response? {
+    override fun intercept(chain: Interceptor.Chain): Response {
         if (!isConnected()) {
             throw NoConnectivityException()
         }

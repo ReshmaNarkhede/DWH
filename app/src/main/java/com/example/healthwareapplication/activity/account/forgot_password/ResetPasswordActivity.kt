@@ -1,37 +1,34 @@
 package com.example.healthwareapplication.activity.account.forgot_password
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_reset_password
 import com.example.healthwareapplication.activity.account.LetsMeetActivity
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.AppHelper
-import com.example.healthwareapplication.app_utils.AppSettings
 import com.example.healthwareapplication.app_utils.NoConnectivityException
-import com.example.healthwareapplication.constants.AppConstants
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.databinding.ActivityResetPasswordBinding
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.activity_reset_password.*
-import kotlinx.android.synthetic.main.activity_reset_password.cnfmPwdEdtTxt
-import kotlinx.android.synthetic.main.activity_reset_password.pwdEdtTxt
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class ResetPasswordActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityResetPasswordBinding
     private var email: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_reset_password)
+        binding = ActivityResetPasswordBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
         defaultConfiguration()
@@ -43,14 +40,14 @@ class ResetPasswordActivity : AppCompatActivity() {
     }
 
     private fun defaultConfiguration() {
-        pwdLayout.setOnClickListener(View.OnClickListener {
+        binding.pwdLayout.setOnClickListener(View.OnClickListener {
             checkValidation()
         })
     }
     private fun checkValidation() {
         var isFlag = true
-        val newPwd = pwdEdtTxt.text.toString()
-        val cnfmPwd = cnfmPwdEdtTxt.text.toString()
+        val newPwd = binding.pwdEdtTxt.text.toString()
+        val cnfmPwd = binding.cnfmPwdEdtTxt.text.toString()
         if (TextUtils.isEmpty(newPwd) || newPwd.length < 6) {
             AppHelper.showToast(this, getString(R.string.valid_password))
             isFlag = false
@@ -91,7 +88,7 @@ class ResetPasswordActivity : AppCompatActivity() {
                         val responseModel = ResponseModel(json)
                         if (responseModel.isCode()) {
                             AppHelper.showToast(this@ResetPasswordActivity, responseModel.getMessage().toString())
-                            val intent = Intent(this@ResetPasswordActivity,LetsMeetActivity::class.java)
+                            val intent = Intent(this@ResetPasswordActivity, LetsMeetActivity::class.java)
                             startActivity(intent)
                         } else {
                             AppHelper.showToast(this@ResetPasswordActivity, responseModel.getMessage().toString())

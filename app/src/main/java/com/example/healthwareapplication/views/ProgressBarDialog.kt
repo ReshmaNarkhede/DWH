@@ -11,7 +11,7 @@ import android.view.LayoutInflater
 import androidx.annotation.NonNull
 import com.bumptech.glide.Glide
 import com.example.healthwareapplication.R
-import kotlinx.android.synthetic.main.custom_progress.view.*
+import com.example.healthwareapplication.databinding.CustomProgressBinding
 
 class ProgressBarDialog {
     lateinit var dialog: Dialog
@@ -21,9 +21,12 @@ class ProgressBarDialog {
     }
 
     fun show(context: Context, title: CharSequence?): Dialog {
-        val inflator = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view = inflator.inflate(R.layout.custom_progress, null)
-        Glide.with(context).asGif().load(R.drawable.ic_loader).into(view.progressImage)
+        val binding = CustomProgressBinding.inflate(context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+        Glide.with(context).asGif().load(R.drawable.ic_loader).into(binding.progressImage)
+
+//        val inflator = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+//        val view = inflator.inflate(R.layout.custom_progress, null)
+//        Glide.with(context).asGif().load(R.drawable.ic_loader).into(view.progressImage)
 
 //        if (title != null) {
 //            view.cp_title.text = title
@@ -37,7 +40,7 @@ class ProgressBarDialog {
 //        view.cp_title.setTextColor(Color.WHITE) //Text Color
 
         dialog = Dialog(context, R.style.CustomProgressBarTheme)
-        dialog.setContentView(view)
+        dialog.setContentView(binding.root)
         dialog.show()
 
         return dialog

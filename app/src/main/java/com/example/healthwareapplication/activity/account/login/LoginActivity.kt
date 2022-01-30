@@ -2,27 +2,20 @@ package com.example.healthwareapplication.activity.account.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.widget.EditText
-import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_login
 import com.example.healthwareapplication.activity.dashboard.DashboardActivity
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.AppSettings
-import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.app_utils.NoConnectivityException
 import com.example.healthwareapplication.constants.AppConstants
+import com.example.healthwareapplication.databinding.ActivityLoginBinding
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,11 +24,13 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityLoginBinding
     var emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
     }
@@ -54,8 +49,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun checkValidation() {
         var isFlag = false
-        val email = emailEdtTxt.text.trim().toString()
-        val pwd = pwdEdtTxt.text.trim().toString()
+        val email = binding.emailEdtTxt.text.trim().toString()
+        val pwd = binding.pwdEdtTxt.text.trim().toString()
         if (email.isEmpty()) {
             AppHelper.showToast(this, getString(R.string.valid_email))
             isFlag = false
@@ -85,7 +80,7 @@ class LoginActivity : AppCompatActivity() {
         call.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
-                Log.e("LOGIN: $param",": "+response.raw().request().url())
+                Log.e("LOGIN: $param",": "+ response.raw().request.url)
                 if (response.isSuccessful) {
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)

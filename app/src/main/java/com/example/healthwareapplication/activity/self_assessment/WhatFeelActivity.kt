@@ -2,26 +2,20 @@ package com.example.healthwareapplication.activity.self_assessment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.healthwareapplication.R.layout.activity_what_feel_detail
-import com.example.healthwareapplication.adapter.self_assessment.SelectedSymptomAdapter
-import com.example.healthwareapplication.app_utils.*
-import com.example.healthwareapplication.constants.IntentConstants
-import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
+import com.example.healthwareapplication.app_utils.AppHelper
+import com.example.healthwareapplication.databinding.ActivityWhatFeelDetailBinding
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_what_feel_detail.*
-import org.json.JSONArray
-import org.json.JSONObject
 
 class WhatFeelActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityWhatFeelDetailBinding
     private lateinit var gson: Gson
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_what_feel_detail)
+        binding = ActivityWhatFeelDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
     }

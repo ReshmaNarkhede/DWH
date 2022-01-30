@@ -6,18 +6,16 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.frats.android.models.response.ResponseModel
-import com.example.healthwareapplication.R.layout.dwh_symptom_report
 import com.example.healthwareapplication.adapter.self_assessment.AssessmentAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.AppSessions
-import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.app_utils.NoConnectivityException
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.databinding.DwhSymptomReportBinding
 import com.example.healthwareapplication.model.self_assessment.SAListModel
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.dwh_symptom_report.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -26,12 +24,14 @@ import retrofit2.Response
 
 class ReportFromHome : AppCompatActivity() {
 
+    private lateinit var binding: DwhSymptomReportBinding
     val delimiter = "-"
     val finalStr = SpannableStringBuilder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(dwh_symptom_report)
+        binding = DwhSymptomReportBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
     }
@@ -39,7 +39,7 @@ class ReportFromHome : AppCompatActivity() {
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
 
-        okayBtn.text = "Back"
+        binding.okayBtn.text = "Back"
 
         val reportStr = intent.getStringExtra(IntentConstants.REPORT_DATA)
         val reportObj = JSONObject(reportStr!!)
@@ -51,10 +51,10 @@ class ReportFromHome : AppCompatActivity() {
 
     private fun defaultConfiguration(model: SAListModel) {
 
-        userNameTxt.text = AppSessions.getUserName(this)
-        userGenderTxt.text = AppSessions.getUserSex(this)
-        userAgeTxt.text = AppSessions.getUserAge(this)
-        symptomTxt.text = model.getSymptom()
+        binding.userNameTxt.text = AppSessions.getUserName(this)
+        binding.userGenderTxt.text = AppSessions.getUserSex(this)
+        binding.userAgeTxt.text = AppSessions.getUserAge(this)
+        binding.symptomTxt.text = model.getSymptom()
 
 //        assesmentList.layoutManager = LinearLayoutManager(this)
 //        val addAdapter = AssessmentAdapter(answerAry!!)
@@ -106,9 +106,9 @@ class ReportFromHome : AppCompatActivity() {
     }
 
     private fun bindList(reportAry: JSONArray?) {
-        assesmentList.layoutManager = LinearLayoutManager(this)
+        binding.assesmentList.layoutManager = LinearLayoutManager(this)
         val addAdapter = AssessmentAdapter(reportAry!!,true)
-        assesmentList.adapter = addAdapter
+        binding.assesmentList.adapter = addAdapter
     }
 
     fun okClick(view: View) {

@@ -1,24 +1,23 @@
 package com.example.healthwareapplication.activity.account.register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_register_as
-import com.example.healthwareapplication.activity.account.login.LoginActivity
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.databinding.ActivityRegisterAsBinding
 import com.example.healthwareapplication.model.user.UserDetailModel
-import kotlinx.android.synthetic.main.activity_register_as.*
 
 class RegisterAsActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityRegisterAsBinding
     var userDetailModel: UserDetailModel = UserDetailModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_register_as)
+        binding = ActivityRegisterAsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
         defaultConfiguration()
@@ -29,9 +28,8 @@ class RegisterAsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun defaultConfiguration() {
-
-        doctorBtn.setOnClickListener(this)
-        humanBtn.setOnClickListener(this)
+        binding.doctorBtn.setOnClickListener(this)
+        binding.humanBtn.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {

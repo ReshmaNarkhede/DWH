@@ -9,16 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_s_a_home
 import com.example.healthwareapplication.adapter.self_assessment.SAListAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
-import com.example.healthwareapplication.views.ProgressBarDialog
-import com.google.gson.JsonArray
+import com.example.healthwareapplication.databinding.ActivitySAHomeBinding
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.activity_s_a_home.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -26,6 +23,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivitySAHomeBinding
     var pageCount = 1
     var isLoading = false
     var allowRefresh: Boolean = false
@@ -33,7 +31,8 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_s_a_home)
+        binding = ActivitySAHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
         defaultConfiguration()
@@ -45,7 +44,7 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun defaultConfiguration() {
-        addImg.setOnClickListener(this)
+        binding.addImg.setOnClickListener(this)
 //        assessmentAry = AppSessions.getAssessmentData(this)!!
     }
 
@@ -101,7 +100,7 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun bindData(listAry: JSONArray) {
-        list.layoutManager = LinearLayoutManager(this)
+        binding.list.layoutManager = LinearLayoutManager(this)
         val adapter = SAListAdapter(this, listAry!!,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val str = listAry.getJSONObject(position).toString()
@@ -109,8 +108,8 @@ class SAHomeActivity : AppCompatActivity(), View.OnClickListener {
                 intent.putExtra(IntentConstants.REPORT_DATA, str)
                 startActivity(intent)
             })
-        list.adapter = adapter
-        list.addOnScrollListener(recyclerViewOnScrollListener)
+        binding.list.adapter = adapter
+        binding.list.addOnScrollListener(recyclerViewOnScrollListener)
     }
     private val recyclerViewOnScrollListener: RecyclerView.OnScrollListener =
         object : RecyclerView.OnScrollListener() {

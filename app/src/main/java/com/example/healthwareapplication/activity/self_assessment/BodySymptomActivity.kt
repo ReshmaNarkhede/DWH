@@ -17,19 +17,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_add_symptom
 import com.example.healthwareapplication.adapter.self_assessment.SearchSymptomAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.databinding.ActivityAddSymptomBinding
 import com.example.healthwareapplication.model.self_assessment.BodyParts
 import com.example.healthwareapplication.model.user.UserDetailModel
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.richpath.RichPath
-import kotlinx.android.synthetic.main.activity_add_symptom.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -39,6 +38,7 @@ import java.lang.reflect.Type
 
 
 class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityAddSymptomBinding
     private lateinit var gson: Gson
     private var user: UserDetailModel? = null
     var image_front_back_flag = true
@@ -46,7 +46,8 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_add_symptom)
+        binding = ActivityAddSymptomBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
         defaultConfiguration()
@@ -60,7 +61,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun defaultConfiguration() {
-        rotate.setOnClickListener(this)
+        binding.rotate.setOnClickListener(this)
         setDefaultImage(user)
     }
 
@@ -81,9 +82,9 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setDefaultImage(user: UserDetailModel?) {
         if (user!!.sex == "female") {
-            bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
+            binding.bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
         } else {
-            bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
+            binding.bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
 //            bodyImg.setVectorDrawable(R.drawable.male_body_front)
         }
         fetchImageClick()
@@ -100,16 +101,16 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
     private fun rotateImageClick() {
         if (image_front_back_flag) {
             if (user!!.sex == "female") {
-                bodyImg.setVectorDrawable(R.drawable.female_body_back)
+                binding.bodyImg.setVectorDrawable(R.drawable.female_body_back)
             } else {
-                bodyImg.setVectorDrawable(R.drawable.male_body_back)
+                binding.bodyImg.setVectorDrawable(R.drawable.male_body_back)
             }
             image_front_back_flag = false
         } else {
             if (user!!.sex == "female") {
-                bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
+                binding.bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
             } else {
-                bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
+                binding.bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
 //                bodyImg.setVectorDrawable(R.drawable.male_body_front)
             }
             image_front_back_flag = true
@@ -118,10 +119,10 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun fetchImageClick() {
-        val array = bodyImg.findAllRichPaths()
-        bodyImg.setOnPathClickListener(RichPath.OnPathClickListener { richPath ->
+        val array = binding.bodyImg.findAllRichPaths()
+        binding.bodyImg.setOnPathClickListener(RichPath.OnPathClickListener { richPath ->
             for (i in array.indices) {
-                val obj: RichPath = bodyImg.findRichPathByIndex(i)!!
+                val obj: RichPath = binding.bodyImg.findRichPathByIndex(i)!!
                 if (richPath.name == obj.name) {
                     Log.e("check: ", obj.name.trim())
                     getIDFromBodyPart(obj)

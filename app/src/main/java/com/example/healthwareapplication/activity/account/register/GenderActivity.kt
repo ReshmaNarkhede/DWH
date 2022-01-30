@@ -1,22 +1,23 @@
 package com.example.healthwareapplication.activity.account.register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_gender
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.databinding.ActivityGenderBinding
 import com.example.healthwareapplication.model.user.UserDetailModel
-import kotlinx.android.synthetic.main.activity_gender.*
 
 class GenderActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityGenderBinding
     private lateinit var userDetailModel: UserDetailModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_gender)
+        binding = ActivityGenderBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         defaultConfiguration()
     }
@@ -24,9 +25,9 @@ class GenderActivity : AppCompatActivity() {
     private fun defaultConfiguration() {
         userDetailModel = intent?.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
         if(userDetailModel.userType==1){
-            userTypeTxt.text = getString(R.string.doctor)
+            binding.userTypeTxt.text = getString(R.string.doctor)
         }else if(userDetailModel.userType==2){
-            userTypeTxt.text = getString(R.string.human)
+            binding.userTypeTxt.text = getString(R.string.human)
         }
     }
 

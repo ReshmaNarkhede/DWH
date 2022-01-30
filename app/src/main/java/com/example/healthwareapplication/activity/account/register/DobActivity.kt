@@ -7,32 +7,34 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_dob
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.databinding.ActivityDobBinding
 import com.example.healthwareapplication.model.user.UserDetailModel
 import com.tsongkha.spinnerdatepicker.SpinnerDatePickerDialogBuilder
-import kotlinx.android.synthetic.main.activity_dob.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 class DobActivity : AppCompatActivity(),
     com.tsongkha.spinnerdatepicker.DatePickerDialog.OnDateSetListener {
+    private lateinit var binding: ActivityDobBinding
     private lateinit var simpleDateFormat: SimpleDateFormat
     private lateinit var userDetailModel: UserDetailModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_dob)
+        binding = ActivityDobBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
 
         initComponents()
-        defaultconfig()
+        defaultConfig()
     }
 
-    private fun defaultconfig() {
-        dobDate.setOnClickListener(View.OnClickListener {
+    private fun defaultConfig() {
+        binding.dobDate.setOnClickListener(View.OnClickListener {
             showDate(R.style.NumberPickerStyle)
 //            dobDateClick()
         })
@@ -89,12 +91,11 @@ class DobActivity : AppCompatActivity(),
     fun dobTimeClick(view: View) {
         val listner =
             TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
-                dobTime.text =
+                binding.dobTime.text =
                     "${SimpleDateFormat("hh:mm a").format(SimpleDateFormat("hh:mm").parse("${selectedHour}:${selectedMinute}"))}"
                 DialogUtility.hideProgressDialog()
-                Log.e("when Time: ", " : ${dobTime.text}")
-                userDetailModel.tob = dobTime.text.toString()
-                if (dobDate.text.toString() == resources.getString(R.string.date)) {
+                userDetailModel.tob = binding.dobTime.text.toString()
+                if (binding.dobDate.text.toString() == resources.getString(R.string.date)) {
                     AppHelper.showToast(this, getString(R.string.valid_date_msg))
                 } else {
                     openNextActivity()
@@ -119,7 +120,7 @@ class DobActivity : AppCompatActivity(),
     ) {
         val calendar: Calendar = GregorianCalendar(year, monthOfYear, dayOfMonth)
         userDetailModel.dob = simpleDateFormat.format(calendar.time)
-        dobDate.text = AppHelper.getDobFormat(simpleDateFormat.format(calendar.time))
+        binding.dobDate.text = AppHelper.getDobFormat(simpleDateFormat.format(calendar.time))
         openNextActivity()
     }
 

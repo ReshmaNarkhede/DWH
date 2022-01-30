@@ -62,7 +62,7 @@ class AppHelper {
         }
 
         fun printUrl(msg: String, response: Response<JsonObject?>) {
-            Log.d(msg, ": " + response.raw().request().url())
+            Log.d(msg, ": " + response.raw().request.url)
         }
 
         fun printResponse(msg: String, response: Response<JsonObject?>) {

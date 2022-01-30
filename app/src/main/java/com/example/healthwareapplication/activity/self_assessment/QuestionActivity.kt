@@ -1,31 +1,24 @@
 package com.example.healthwareapplication.activity.self_assessment
 
-import android.R.id
-import android.app.Activity
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_question
 import com.example.healthwareapplication.adapter.self_assessment.question.RadioRecyclerViewAdapter
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
 import com.example.healthwareapplication.constants.AppConstants
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.databinding.ActivityQuestionBinding
 import com.example.healthwareapplication.model.self_assessment.QuestionData
 import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.activity_question.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -35,6 +28,7 @@ import retrofit2.Response
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
+    private lateinit var binding: ActivityQuestionBinding
     private lateinit var symptmJsonAry: JSONArray
     private var ansJsonObj: JSONObject? = JSONObject()
     private var ansJsonAry: JSONArray? = JSONArray()
@@ -49,14 +43,15 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_question)
+        binding = ActivityQuestionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initComponents()
         defaultConfiguration()
     }
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-        radioList.isNestedScrollingEnabled = false
+        binding.radioList.isNestedScrollingEnabled = false
     }
 
     private fun defaultConfiguration() {
@@ -80,8 +75,8 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         val assessmentDate = AppSettings.getStringValue(this, IntentConstants.kASSESSMENT_DATE)
         val assessmentTime = AppSettings.getStringValue(this, IntentConstants.kASSESSMENT_TIME)
 
-        answerTxt.text = "$assessmentDate, $assessmentTime"
-        answerTxt.setOnClickListener(this)
+        binding.answerTxt.text = "$assessmentDate, $assessmentTime"
+        binding.answerTxt.setOnClickListener(this)
     }
 
     private fun fetchQuestionData(idStr: String) {
@@ -111,7 +106,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                         AppSettings.setJsonArrayValue(this@QuestionActivity, AppConstants.kQUESTION_ARY, dataAry.toString())
                         setOuterLoop(outerIndex)
                     } else {
-                        questionTxt.text = "No question for this Symptom."
+                        binding.questionTxt.text = "No question for this Symptom."
                     }
                 }
             }
@@ -136,30 +131,30 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         ansJsonObj = ansJObj
         val ansObj = QuestionData.QuestionAnsModel(ansJsonObj!!)
         if (index!! > 0) {
-            answerTxt.text = ansObj.getSelectedAnswer()!!.toLowerCase().split(' ').joinToString(" ") { it.capitalize() }
+            binding.answerTxt.text = ansObj.getSelectedAnswer()!!.toLowerCase().split(' ').joinToString(" ") { it.capitalize() }
         } else {
             setDateAnswer()
         }
 
-        val qObj = QuestionData.QuestionAnsModel(QArray!!.getJSONObject(index!!))
-        questionTxt.text = qObj.getQuestion()
+        val qObj = QuestionData.QuestionAnsModel(QArray!!.getJSONObject(index))
+        binding.questionTxt.text = qObj.getQuestion()
 
         if (qObj.getQuestionType() == "SS") //radio button
         {
-            showRadioData(QArray!!.getJSONObject(index!!))
+            showRadioData(QArray!!.getJSONObject(index))
         }
     }
 
     private fun showRadioData(qObj: JSONObject) {
         val qModel = QuestionData.QuestionAnsModel(qObj)
         val recyclerLayoutManager = LinearLayoutManager(this)
-        radioList.layoutManager = recyclerLayoutManager
+        binding.radioList.layoutManager = recyclerLayoutManager
         val result: List<String> = qModel.getAnswerOptionsList()
         val radioRecyclerAdapter = RadioRecyclerViewAdapter(
             result,
             RecyclerItemClickListener.OnItemClickListener { view, position ->
                 val ansObj = result[position].replace("\\'","'")
-                qObj!!.put("selected_answer", ansObj)
+                qObj.put("selected_answer", ansObj)
 
                 if (ansObj.contains("Don't know")) {
 
@@ -181,7 +176,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     ansJsonAry!!.put(qObj)
                 }
             })
-        radioList.adapter = radioRecyclerAdapter
+        binding.radioList.adapter = radioRecyclerAdapter
     }
 
     override fun onClick(v: View?) {

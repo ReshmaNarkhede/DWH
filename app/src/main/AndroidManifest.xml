@@ -16,9 +16,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity
-            android:name=".ui.signup.SignUpActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".ui.signup.SignUpActivity"-->
+<!--            android:exported="false" />-->
         <activity android:name=".activity.account.register.TermsDataActivity"
             android:exported="false"/>
         <activity android:name=".activity.account.register.TermsAndPolicyActivity"
@@ -101,7 +101,7 @@
             android:exported="false"/>
         <activity android:name=".activity.account.register.RegisterAsActivity"
             android:exported="false"/>
-        <activity android:name=".activity.splash.SplashActivity"
+        <activity android:name="com.example.healthwareapplication.activity.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

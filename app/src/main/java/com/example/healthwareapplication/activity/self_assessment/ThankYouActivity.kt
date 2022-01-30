@@ -1,25 +1,20 @@
 package com.example.healthwareapplication.activity.self_assessment
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_thank_you
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.*
-import com.example.healthwareapplication.constants.AppConstants
 import com.example.healthwareapplication.constants.IntentConstants
-import com.example.healthwareapplication.views.ProgressBarDialog
-import com.google.gson.Gson
+import com.example.healthwareapplication.databinding.ActivityThankYouBinding
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-import kotlinx.android.synthetic.main.activity_thank_you.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -27,12 +22,14 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ThankYouActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityThankYouBinding
     private var symptomStr: String? = null
     private var ansStr: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_thank_you)
+        binding = ActivityThankYouBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
         defaultConfiguration()
@@ -46,7 +43,7 @@ class ThankYouActivity : AppCompatActivity() {
         symptomStr = intent.getStringExtra(IntentConstants.kSYMPTOM_DATA)
         ansStr = intent.getStringExtra(IntentConstants.kANSWER_DATA)
         val user = AppSessions.getLoginModel(this)
-        thankYouText.text = getString(R.string.thank_you_after_report,user!!.firstName)
+        binding.thankYouText.text = getString(R.string.thank_you_after_report,user!!.firstName)
         Log.e("Ans: ", ":: $ansStr")
         submitReport(ansStr)
     }

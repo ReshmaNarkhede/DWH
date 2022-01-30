@@ -1,36 +1,35 @@
 package com.example.healthwareapplication.activity.account.forgot_password
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import app.frats.android.models.response.ResponseModel
 import com.example.healthwareapplication.R
-import com.example.healthwareapplication.R.layout.activity_forgot_password
 import com.example.healthwareapplication.activity.account.OtpActivity
 import com.example.healthwareapplication.activity.account.login.LoginActivity
 import com.example.healthwareapplication.activity.account.register.RegisterAsActivity
 import com.example.healthwareapplication.api.ApiClient
-import com.example.healthwareapplication.api.ApiData
 import com.example.healthwareapplication.api.ApiInterface
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.NoConnectivityException
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.databinding.ActivityForgotPasswordBinding
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.activity_forgot_password.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class ForgotPasswordActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityForgotPasswordBinding
     var emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_forgot_password)
+        binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
     }
@@ -59,7 +58,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
     private fun checkValidation() {
         var isFlag = false
-        val email = emailEdtTxt.text.trim().toString()
+        val email = binding.emailEdtTxt.text.trim().toString()
         if (email.isEmpty()) {
             AppHelper.showToast(this, getString(R.string.valid_email))
             isFlag = false
@@ -72,7 +71,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
             fetchForgotPwdAPI(this,email)
         }
     }
-    fun fetchForgotPwdAPI(context: Context, email: String) {
+    private fun fetchForgotPwdAPI(context: Context, email: String) {
         val apiService: ApiInterface = ApiClient.getRetrofitClient(context)!!.create(ApiInterface::class.java)
 
         val param = JsonObject()

@@ -1,29 +1,30 @@
 package com.example.healthwareapplication.activity.self_assessment
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.healthwareapplication.R.layout.dwh_symptom_report
 import com.example.healthwareapplication.adapter.self_assessment.AssessmentAdapter
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.app_utils.AppSessions
 import com.example.healthwareapplication.constants.IntentConstants
+import com.example.healthwareapplication.databinding.DwhSymptomReportBinding
 import com.example.healthwareapplication.model.self_assessment.SymptomJsonModel
-import kotlinx.android.synthetic.main.dwh_symptom_report.*
 import org.json.JSONArray
 
 class SymptomReportActivity : AppCompatActivity() {
 
+    private lateinit var binding: DwhSymptomReportBinding
     val delimiter = "-"
     val finalStr = SpannableStringBuilder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(dwh_symptom_report)
+        binding = DwhSymptomReportBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initComponents()
         defaultConfiguration()
@@ -32,7 +33,7 @@ class SymptomReportActivity : AppCompatActivity() {
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
 
-        okayBtn.text = "Done"
+        binding.okayBtn.text = "Done"
     }
 
     private fun defaultConfiguration() {
@@ -47,18 +48,18 @@ class SymptomReportActivity : AppCompatActivity() {
             finalStr.append(obj.getName())
         }
         Log.e("STr: ", ": " + finalStr.toString().replaceFirst(delimiter, ""))
+        binding.userNameTxt.text = AppSessions.getUserName(this)
+        binding.userGenderTxt.text = AppSessions.getUserSex(this)
 
-        userNameTxt.text = AppSessions.getUserName(this)
-        userGenderTxt.text = AppSessions.getUserSex(this)
 
+        binding.userAgeTxt.text = AppSessions.getUserAge(this)
 
-        userAgeTxt.text = AppSessions.getUserAge(this)
+        binding.symptomTxt.text = finalStr.toString().replaceFirst(delimiter, "")
 
-        symptomTxt.text = finalStr.toString().replaceFirst(delimiter, "")
+        binding.assesmentList.layoutManager = LinearLayoutManager(this)
+        val addAdapter = AssessmentAdapter(answerAry, false)
+        binding.assesmentList.adapter = addAdapter
 
-        assesmentList.layoutManager = LinearLayoutManager(this)
-        val addAdapter = AssessmentAdapter(answerAry!!, false)
-        assesmentList.adapter = addAdapter
     }
 
     fun okClick(view: View) {

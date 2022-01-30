@@ -1,13 +1,11 @@
 package com.example.healthwareapplication.adapter.self_assessment
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.healthwareapplication.R
+import com.example.healthwareapplication.databinding.AssessmentListItemBinding
 import com.example.healthwareapplication.model.self_assessment.QuestionData
 import com.example.healthwareapplication.model.self_assessment.ReportData
-import kotlinx.android.synthetic.main.assessment_list_item.view.*
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -17,10 +15,12 @@ class AssessmentAdapter(val dataArr: JSONArray?, val isHome: Boolean) :
     val dataArray: JSONArray? = dataArr
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.assessment_list_item, parent, false)
+        val binding = AssessmentListItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
         )
+        return ViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -32,19 +32,19 @@ class AssessmentAdapter(val dataArr: JSONArray?, val isHome: Boolean) :
     }
 
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(private val binding: AssessmentListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindView(
             position: Int,
             jsonObject: JSONObject
         ) {
             if (isHome) {
                 val model = ReportData(jsonObject)
-                itemView.questionTxt.text = model.getQuestion()
-                itemView.answerTxt.text = model.getAnswer()
+                binding.questionTxt.text = model.getQuestion()
+                binding.answerTxt.text = model.getAnswer()
             } else {
                 val model = QuestionData.QuestionAnsModel(jsonObject)
-                itemView.questionTxt.text = model.getQuestion()
-                itemView.answerTxt.text = model.getSelectedAnswer()
+                binding.questionTxt.text = model.getQuestion()
+                binding.answerTxt.text = model.getSelectedAnswer()
             }
         }
     }

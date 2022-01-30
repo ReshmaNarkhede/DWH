@@ -5,16 +5,13 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
+import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
-import com.example.healthwareapplication.model.country.CityData
+import com.example.healthwareapplication.databinding.RecyclerCountryItemBinding
 import com.example.healthwareapplication.model.country.SpecialityData
-import com.example.healthwareapplication.model.country.SpecialityModel
-import kotlinx.android.synthetic.main.recycler_country_item.view.*
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -23,13 +20,12 @@ class SpecialityAdapter(val context: Context, dataArr: JSONArray, val searchStr:
     private val dataArray: JSONArray = dataArr
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.recycler_country_item,
-                parent,
-                false
-            )
+        val binding = RecyclerCountryItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
         )
+        return ViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -41,7 +37,7 @@ class SpecialityAdapter(val context: Context, dataArr: JSONArray, val searchStr:
     }
 
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class ViewHolder(private val binding: RecyclerCountryItemBinding) : RecyclerView.ViewHolder(binding.root)
     {
         fun bindView(
             position: Int,
@@ -54,11 +50,11 @@ class SpecialityAdapter(val context: Context, dataArr: JSONArray, val searchStr:
             sb.setSpan(
                 ForegroundColorSpan(context.resources.getColor(R.color.pink)),
                 originalText!!.toLowerCase().indexOf(searchStr!!.toLowerCase()),
-                originalText!!.toLowerCase().indexOf(searchStr.toLowerCase()) + searchStr.length,
+                originalText.toLowerCase().indexOf(searchStr.toLowerCase()) + searchStr.length,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )
-            itemView.name.text = sb
-            itemView.setOnClickListener {
+            binding.name.text = sb
+            binding.root.setOnClickListener {
                 clickListener.onItemClick(itemView,position)
             }
         }
