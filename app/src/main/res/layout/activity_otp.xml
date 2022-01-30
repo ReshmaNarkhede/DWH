@@ -48,6 +48,7 @@
                 android:layout_margin="@dimen/m5"
                 android:background="@drawable/btn_selector"
                 android:orientation="horizontal"
+                android:visibility="gone"
                 android:paddingStart="@dimen/p30"
                 android:paddingEnd="@dimen/p30">
 
@@ -96,6 +97,15 @@
                     app:backgroundTint="@color/pink" />
             </LinearLayout>
 
+            <EditText
+                android:id="@+id/otpEdtTxt"
+                style="@style/CustomButtonTheme"
+                android:layout_gravity="end"
+                android:hint="@string/otp"
+                android:inputType="number"
+                android:maxLength="4"
+                android:textColorHint="@color/pink" />
+
             <TextView
                 android:id="@+id/resendOtp"
                 style="@style/CustomButtonTheme"
@@ -106,7 +116,7 @@
             <TextView
                 android:id="@+id/okayBtn"
                 style="@style/CustomButtonTheme"
-                android:layout_width="139dp"
+                android:layout_width="wrap_content"
                 android:layout_gravity="end"
                 android:gravity="center"
                 android:text="@string/ok"
