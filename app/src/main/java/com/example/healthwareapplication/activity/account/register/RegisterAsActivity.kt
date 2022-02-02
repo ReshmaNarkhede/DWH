@@ -46,7 +46,7 @@ class RegisterAsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun openIntroActivity() {
-        val intent = Intent(this, GenderActivity::class.java)
+        val intent = Intent(this, AgeActivity::class.java)
         intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
         startActivity(intent)
     }

@@ -33,11 +33,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00e54ad9-4b28-487e-8ca1-bfa1784a927d" name="Default Changelist" comment="">
+    <list default="true" id="00e54ad9-4b28-487e-8ca1-bfa1784a927d" name="Default Changelist" comment="OTP edittext changed">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_otp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_otp.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthwareapplication/activity/account/register/RegisterAsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthwareapplication/activity/account/register/RegisterAsActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,13 +270,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585977997863</updated>
-    </task>
-    <task id="LOCAL-00028" summary="seperate screen for when did it start after symptom selection.">
-      <created>1588774992917</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1588774992917</updated>
     </task>
     <task id="LOCAL-00029" summary="back button done on all activity + dashboard fragment chnge to activity">
       <created>1589007592701</created>
@@ -615,7 +607,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643534135327</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="OTP edittext changed">
+      <created>1643544943706</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1643544943706</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -645,7 +644,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="design changes by devesh on 14 june." />
     <MESSAGE value="added login new screens design." />
     <MESSAGE value="implementing flow of register + done with login + working on country api integration." />
     <MESSAGE value="country api integrated with search on it." />
@@ -670,7 +668,8 @@
     <MESSAGE value="gradle files updated" />
     <MESSAGE value="kotlin synthetic change to view binding.&#10;All error resolved" />
     <MESSAGE value="forgot password design changed&#10;login flow design changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="forgot password design changed&#10;login flow design changed" />
+    <MESSAGE value="OTP edittext changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="OTP edittext changed" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
