@@ -33,10 +33,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00e54ad9-4b28-487e-8ca1-bfa1784a927d" name="Default Changelist" comment="OTP edittext changed">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="00e54ad9-4b28-487e-8ca1-bfa1784a927d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/healthwareapplication/activity/account/register/RegisterAsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/healthwareapplication/activity/account/register/RegisterAsActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,13 +268,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585977997863</updated>
-    </task>
-    <task id="LOCAL-00029" summary="back button done on all activity + dashboard fragment chnge to activity">
-      <created>1589007592701</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1589007592701</updated>
     </task>
     <task id="LOCAL-00030" summary="added dont know feeback json object in answer array.">
       <created>1589013203828</created>
@@ -614,7 +605,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643544943706</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="gitignore added + before signup design changed">
+      <created>1643808245541</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1643808245542</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -644,7 +642,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="added login new screens design." />
     <MESSAGE value="implementing flow of register + done with login + working on country api integration." />
     <MESSAGE value="country api integrated with search on it." />
     <MESSAGE value="done with human register flow + &#10;terms screen is WIP." />
@@ -669,7 +666,8 @@
     <MESSAGE value="kotlin synthetic change to view binding.&#10;All error resolved" />
     <MESSAGE value="forgot password design changed&#10;login flow design changed" />
     <MESSAGE value="OTP edittext changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="OTP edittext changed" />
+    <MESSAGE value="gitignore added + before signup design changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore added + before signup design changed" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
