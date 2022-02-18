@@ -16,8 +16,8 @@
     <string name="enter_email">Email</string>
     <string name="enter_password">Password</string>
     <string name="ok">Okay</string>
-    <string name="valid_password">Please enter correct email &amp; password or contact support@dwh.com</string>
-    <string name="valid_email">Please enter correct email &amp; password or contact support@dwh.com</string>
+    <string name="valid_password">Please enter correct  password or contact support@dwh.com</string>
+    <string name="valid_email">Please enter correct email or contact support@dwh.com</string>
     <string name="error_email">Your email is not associated with dwh please contact to support@dwh.com</string>
 
     <!--Sign up as Screen-->
@@ -98,6 +98,7 @@
     <string name="policy">I have read the Privacy Policy</string>
     <string name="policy_span">Privacy Policy</string>
     <string name="dwh">I Consent to dwh analyzing my personal health data, I supply and create an account and provide me an assessment</string>
+    <string name="terms_error">Please check terms and policy to register.</string>
 
 
     <string name="please_check_internet_connection">Please check internet connection and try again.</string>

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.healthwareapplication.R
 import com.example.healthwareapplication.model.response.ResponseModel
 import com.example.healthwareapplication.activity.dashboard.DashboardActivity
 import com.example.healthwareapplication.api.ApiClient
@@ -54,6 +55,7 @@ class LoginActivity : AppCompatActivity() {
         val pwd = binding.pwdEdtTxt.text.trim().toString()
         if (email.isEmpty()) {
             binding.errorText.visibility = View.VISIBLE
+            binding.errorText.text = getString(R.string.valid_email)
 //            AppHelper.showToast(this, getString(R.string.valid_email))
             isFlag = false
         } else {
@@ -64,11 +66,12 @@ class LoginActivity : AppCompatActivity() {
         }
         if (pwd.isEmpty()) {
             binding.errorText.visibility = View.VISIBLE
+            binding.errorText.text = getString(R.string.valid_password)
 //            AppHelper.showToast(this, getString(R.string.valid_password))
             isFlag = false
         }
         if (isFlag) {
-            binding.errorText.visibility = View.GONE
+            binding.errorText.visibility = View.INVISIBLE
             fetchLoginAPI(email,pwd)
         }
     }
@@ -91,15 +94,16 @@ class LoginActivity : AppCompatActivity() {
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val detailObj = responseModel.getDataObj()
-//                        val gender = detailObj!!.optString("sex").toString()
                         AppSettings.setBooleanValue(this@LoginActivity, AppConstants.kIS_LOGIN, true)
-//                        AppSettings.setStringValue(this@LoginActivity, AppConstants.kUSER_GENDER, gender)
                         AppSettings.setJsonObjectValue(this@LoginActivity, AppConstants.kLOGIN, detailObj.toString())
 
                         showDashboard()
+                        binding.errorText.visibility = View.GONE
                     }
                     else{
-                        AppHelper.showToast(this@LoginActivity,responseModel.getMessage().toString())
+                        binding.errorText.visibility = View.VISIBLE
+                        binding.errorText.text = responseModel.getMessage()
+//                        AppHelper.showToast(this@LoginActivity,responseModel.getMessage().toString())
                     }
                 }
             }

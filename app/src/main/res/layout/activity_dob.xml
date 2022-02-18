@@ -72,7 +72,15 @@
                     android:text="@string/ok"
                     android:visibility="visible" />
             </LinearLayout>
-
+            <TextView
+                android:id="@+id/errorText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/t12"
+                android:visibility="invisible"
+                android:layout_marginStart="@dimen/m10"
+                android:layout_marginEnd="@dimen/m10"
+                android:padding="@dimen/p5"/>
         </LinearLayout>
 
         <include

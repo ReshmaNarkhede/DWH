@@ -3,6 +3,7 @@ package com.example.healthwareapplication.activity.account.register
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.app_utils.AppHelper
@@ -43,16 +44,20 @@ class DobActivity : AppCompatActivity(),
     }
 
     private fun checkValidation() {
-        var isFlag = true
+        var isFlag = false
         if (binding.emailEdtTxt.text.trim().isEmpty()) {
-            AppHelper.showToast(this, getString(R.string.valid_email))
+            binding.errorText.visibility = View.VISIBLE
+            binding.errorText.text = getString(R.string.valid_email)
+//            AppHelper.showToast(this, getString(R.string.valid_email))
             isFlag = false
         } else {
             if (binding.emailEdtTxt.text.trim().matches(emailPattern.toRegex())) {
                 isFlag = true
+                binding.errorText.visibility = View.GONE
             }
         }
         if (isFlag) {
+            binding.errorText.visibility = View.INVISIBLE
             openNextActivity()
         }
     }

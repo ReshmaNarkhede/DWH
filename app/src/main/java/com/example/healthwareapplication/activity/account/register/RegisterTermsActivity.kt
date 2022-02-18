@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.healthwareapplication.R
 import com.example.healthwareapplication.model.response.ResponseModel
 import com.example.healthwareapplication.activity.account.OtpActivity
 import com.example.healthwareapplication.api.ApiClient
@@ -20,6 +21,7 @@ import retrofit2.Response
 
 class RegisterTermsActivity : AppCompatActivity() {
 
+    private var isTermsCheck: Boolean = false
     private lateinit var binding: ActivityRegisterTermsBinding
     private lateinit var userDetailModel: UserDetailModel
 
@@ -36,21 +38,25 @@ class RegisterTermsActivity : AppCompatActivity() {
         AppHelper.transparentStatusBar(this)
         userDetailModel = intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
         binding.pwdTxt.text = userDetailModel.password
-        binding.pwdTxt.setOnClickListener(View.OnClickListener {
+        binding.pwdTxt.setOnClickListener {
             finish()
-        })
+        }
     }
 
     private fun defaultConfiguration() {
     }
 
     fun signupwaaClick(view: View) {
-        if (binding.termAndConditionSwitch.isChecked) {
+        if (isTermsCheck) {
+//        if (binding.termAndConditionSwitch.isChecked) {
+            binding.errorText.visibility = View.INVISIBLE
             val userDetailModel =
                 intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
             callRegisterationAPI(userDetailModel)
         } else {
-            AppHelper.showToast(this,"Check Term and condition !")
+            binding.errorText.visibility = View.VISIBLE
+            binding.errorText.text = getString(R.string.terms_error)
+//            AppHelper.showToast(this,"Check Term and condition !")
         }
     }
 
@@ -92,10 +98,12 @@ class RegisterTermsActivity : AppCompatActivity() {
 
                         showOTPDialog(otp.toString())
                     } else {
-                        AppHelper.showToast(
-                            this@RegisterTermsActivity,
-                            responseModel.getMessage().toString()
-                        )
+                        binding.errorText.visibility = View.VISIBLE
+                        binding.errorText.text = responseModel.getMessage()
+//                        AppHelper.showToast(
+//                            this@RegisterTermsActivity,
+//                            responseModel.getMessage().toString()
+//                        )
                     }
                 }
             }
@@ -126,7 +134,9 @@ class RegisterTermsActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 205) {
             if (resultCode == RESULT_OK) {
-                binding.termAndConditionSwitch.isChecked = true
+                isTermsCheck = true
+                binding.errorText.visibility = View.INVISIBLE
+//                binding.termAndConditionSwitch.isChecked = true
             }
         }
     }

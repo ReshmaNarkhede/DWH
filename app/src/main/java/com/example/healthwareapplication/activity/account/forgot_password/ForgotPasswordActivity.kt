@@ -45,17 +45,8 @@ class ForgotPasswordActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun loginClick(view: View) {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-    }
-
     fun forgotPwdClick(view: View) {
         finish()
-    }
-
-    fun parentCLick(view: View) {
-        checkValidation()
     }
 
     private fun checkValidation() {

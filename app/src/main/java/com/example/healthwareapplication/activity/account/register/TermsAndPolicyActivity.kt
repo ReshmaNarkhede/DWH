@@ -25,6 +25,13 @@ class TermsAndPolicyActivity : AppCompatActivity() {
 
         initComponents()
         defaultConfig()
+        initListener()
+    }
+
+    private fun initListener() {
+        binding.backBtn.setOnClickListener {
+            checkValidation()
+        }
     }
 
     private fun initComponents() {
@@ -48,17 +55,16 @@ class TermsAndPolicyActivity : AppCompatActivity() {
         )
     }
 
-    fun parentClick(view: View) {
-        checkValidation()
-    }
-
     private fun checkValidation() {
         if (binding.chk1.isChecked && binding.chk2.isChecked && binding.chk3.isChecked) {
             intent = Intent()
+            binding.errorText.visibility = View.INVISIBLE
             setResult(Activity.RESULT_OK, intent)
             finish()
         } else {
-            AppHelper.showToast(this, "Please check terms and policy to register.")
+            binding.errorText.visibility = View.VISIBLE
+            binding.errorText.text = getString(R.string.terms_error)
+//            AppHelper.showToast(this, "Please check terms and policy to register.")
         }
     }
 

@@ -6,7 +6,6 @@
     android:background="@color/white"
     android:fillViewport="true"
     android:gravity="bottom"
-    android:onClick="parentClick"
     android:orientation="vertical">
 
     <include
@@ -105,7 +104,22 @@
                 android:textColor="@color/label_text_color"
                 android:textSize="@dimen/t16" />
         </RelativeLayout>
-
+        <TextView
+            android:id="@+id/backBtn"
+            style="@style/CustomButtonTheme"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/m10"
+            android:layout_marginBottom="@dimen/m10"
+            android:text="@string/back" />
+        <TextView
+            android:id="@+id/errorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/t12"
+            android:visibility="invisible"
+            android:layout_marginStart="@dimen/m10"
+            android:layout_marginEnd="@dimen/m10"
+            android:padding="@dimen/p5"/>
     </LinearLayout>
 
     <include

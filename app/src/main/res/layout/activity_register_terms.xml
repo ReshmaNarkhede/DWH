@@ -50,10 +50,11 @@
                 android:background="@drawable/ic_term_and_condition"
                 android:onClick="termAndConditionClick" />
 
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/termAndConditionSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_gravity="end"
                 android:layout_margin="@dimen/m10" />
 
@@ -65,7 +66,15 @@
                 android:text="@string/register" />
 
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/errorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/t12"
+            android:visibility="invisible"
+            android:layout_marginStart="@dimen/m10"
+            android:layout_marginEnd="@dimen/m10"
+            android:padding="@dimen/p5"/>
         <include
             android:id="@+id/layout"
             layout="@layout/account_bottom_layout" />

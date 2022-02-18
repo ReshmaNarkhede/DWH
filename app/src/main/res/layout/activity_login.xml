@@ -76,9 +76,8 @@
         <TextView
             android:id="@+id/errorText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:textSize="@dimen/t12"
-            android:text="@string/valid_email"
             android:visibility="invisible"
             android:layout_marginStart="@dimen/m10"
             android:layout_marginEnd="@dimen/m10"

@@ -3,6 +3,7 @@ package com.example.healthwareapplication.activity.account.register
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
@@ -49,18 +50,24 @@ class RegisterPasswordActivity : AppCompatActivity() {
         val newPwd = binding.pwdEdtTxt.text.toString()
         val cnfmPwd = binding.cnfmPwdEdtTxt.text.toString()
         if (TextUtils.isEmpty(newPwd) || newPwd.length < 6) {
-            AppHelper.showToast(this, getString(R.string.valid_password))
+            binding.errorText.visibility = View.VISIBLE
+            binding.errorText.text = getString(R.string.valid_password)
+//            AppHelper.showToast(this, getString(R.string.valid_password))
             isFlag = false
         } else if (TextUtils.isEmpty(cnfmPwd) || cnfmPwd.length < 6) {
-            AppHelper.showToast(this, getString(R.string.valid_password))
+            binding.errorText.visibility = View.VISIBLE
+            binding.errorText.text = getString(R.string.valid_password)
+//            AppHelper.showToast(this, getString(R.string.valid_password))
             isFlag = false
         }
         if (isFlag) {
             if (newPwd == cnfmPwd) {
+                binding.errorText.visibility = View.INVISIBLE
                 goToNext()
             } else {
-                Toast.makeText(this, getString(R.string.password_not_match), Toast.LENGTH_SHORT)
-                    .show()
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text = getString(R.string.password_not_match)
+//                Toast.makeText(this, getString(R.string.password_not_match), Toast.LENGTH_SHORT).show()
             }
         }
     }
