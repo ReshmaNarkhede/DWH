@@ -3,7 +3,6 @@ package com.example.healthwareapplication.activity.account.register
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
@@ -32,19 +31,17 @@ class RegisterPasswordActivity : AppCompatActivity() {
                 userDetailModel.speciality.plus(", ").plus(userDetailModel.experience.plus(" ").plus(getString(
                                     R.string.experience_suffix)))
         } else if (userDetailModel.userType == 2) {
-            binding.userInfoTxt.text =
-                userDetailModel.firstName.plus(", ").plus(userDetailModel.email).plus(", ")
-                    .plus(userDetailModel.mobile)
+            binding.userInfoTxt.text = userDetailModel.dob.plus(", ").plus(userDetailModel.email)
         }
-        binding.userInfoTxt.setOnClickListener(View.OnClickListener {
+        binding.userInfoTxt.setOnClickListener {
             finish()
-        })
+        }
     }
 
     private fun defaultConfiguration() {
-        binding.pwdParentLayout.setOnClickListener(View.OnClickListener {
+        binding.okayBtn.setOnClickListener {
             checkValidation()
-        })
+        }
     }
 
     private fun checkValidation() {

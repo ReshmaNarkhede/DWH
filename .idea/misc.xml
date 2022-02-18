@@ -12,11 +12,15 @@
         <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_add_symptom.xml" value="0.22592592592592592" />
         <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_age.xml" value="0.190625" />
         <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_country.xml" value="0.2228310502283105" />
+        <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_dob.xml" value="0.190625" />
         <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_forgot_password.xml" value="0.22592592592592592" />
+        <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_gender.xml" value="0.190625" />
         <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_lets_meet.xml" value="0.22592592592592592" />
-        <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_login.xml" value="0.190625" />
+        <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_otp.xml" value="0.2" />
-        <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_register_as.xml" value="0.190625" />
+        <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_register_as.xml" value="0.1" />
+        <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_register_info.xml" value="0.16" />
+        <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_register_password.xml" value="0.190625" />
         <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_register_terms.xml" value="0.22592592592592592" />
         <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_reset_password.xml" value="0.22592592592592592" />
         <entry key="..\:/Freelance_projects/Devesh/HealthWareApplication/app/src/main/res/layout/activity_sign_up.xml" value="0.22592592592592592" />

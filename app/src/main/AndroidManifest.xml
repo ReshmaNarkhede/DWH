@@ -16,92 +16,138 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-<!--        <activity-->
-<!--            android:name=".ui.signup.SignUpActivity"-->
-<!--            android:exported="false" />-->
-        <activity android:name=".activity.account.register.TermsDataActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.account.register.TermsAndPolicyActivity"
-            android:exported="false"/>
+        <!--        <activity-->
+        <!--            android:name=".ui.signup.SignUpActivity"-->
+        <!--            android:exported="false" />-->
+        <activity
+            android:name=".activity.account.register.TermsDataActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.account.register.TermsAndPolicyActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.account.forgot_password.ResetPasswordActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.account.forgot_password.ForgotPasswordActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.account.register.DoctorSpecialityActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.account.OtpActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
-        <activity android:name=".activity.account.register.DobActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.account.register.AgeActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.account.LetsMeetActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.ReportFromHome"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.SearchSymptomActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.SAHomeActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.WhenStartActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.AddTestActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.AddMedicineActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.DontKnowActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.FeedbackActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.SymptomReportActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.ThankYouActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.QuestionActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.QuestionDemoActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.WhatFeelActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.self_assessment.BodySymptomActivity"
-            android:exported="false"/>
-        <activity android:name=".activity.account.register.RegisterTermsActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.account.register.DobActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.account.register.AgeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.account.LetsMeetActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.ReportFromHome"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.SearchSymptomActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.SAHomeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.WhenStartActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.AddTestActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.AddMedicineActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.DontKnowActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.FeedbackActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.SymptomReportActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.ThankYouActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.QuestionActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.QuestionDemoActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.WhatFeelActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.self_assessment.BodySymptomActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.account.register.RegisterTermsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.account.register.RegisterPasswordActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.account.register.RegisterInfoActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
-        <activity android:name=".activity.dashboard.DashboardActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.dashboard.DashboardActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.account.login.OldLoginActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
-        <activity android:name=".activity.account.register.GenderActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.account.register.GenderActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.account.register.CountryActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.account.login.LoginActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
-        <activity android:name=".activity.account.register.RegisterAsActivity"
-            android:exported="false"/>
-        <activity android:name="com.example.healthwareapplication.activity.splash.SplashActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.account.register.RegisterAsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.example.healthwareapplication.activity.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

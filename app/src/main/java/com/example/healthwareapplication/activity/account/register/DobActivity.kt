@@ -1,14 +1,11 @@
 package com.example.healthwareapplication.activity.account.register
 
-import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.app_utils.AppHelper
-import com.example.healthwareapplication.app_utils.DialogUtility
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.databinding.ActivityDobBinding
 import com.example.healthwareapplication.model.user.UserDetailModel
@@ -22,55 +19,57 @@ class DobActivity : AppCompatActivity(),
     private lateinit var binding: ActivityDobBinding
     private lateinit var simpleDateFormat: SimpleDateFormat
     private lateinit var userDetailModel: UserDetailModel
+    var emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDobBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         initComponents()
         defaultConfig()
     }
 
     private fun defaultConfig() {
-        binding.dobDate.setOnClickListener(View.OnClickListener {
+        binding.dobDate.setOnClickListener {
             showDate(R.style.NumberPickerStyle)
-//            dobDateClick()
-        })
+        }
+        binding.okayBtn.setOnClickListener {
+            checkValidation()
+        }
+        binding.genderTxt.setOnClickListener {
+            finish()
+        }
+    }
+
+    private fun checkValidation() {
+        var isFlag = true
+        if (binding.emailEdtTxt.text.trim().isEmpty()) {
+            AppHelper.showToast(this, getString(R.string.valid_email))
+            isFlag = false
+        } else {
+            if (binding.emailEdtTxt.text.trim().matches(emailPattern.toRegex())) {
+                isFlag = true
+            }
+        }
+        if (isFlag) {
+            openNextActivity()
+        }
     }
 
     private fun initComponents() {
         simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         userDetailModel =
             intent?.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
+        binding.welcomeMessage.text = userDetailModel.firstName.plus(getString(R.string.enter_dob))
+        if (userDetailModel.sex == "male") {
+            binding.genderTxt.text = getString(R.string.male)
+        } else {
+            binding.genderTxt.text = getString(R.string.female)
+        }
     }
 
-    fun ageTxtClick(view: View) {
-        finish()
-    }
-
-    //    fun dobDateClick() {
-//        val listner = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-//            val monthOfYear = month + 1
-//            val mt: String
-//            val dy: String //local variable
-//
-//            mt =
-//                if (monthOfYear < 10) "0$monthOfYear" //if month less than 10 then ad 0 before month
-//                else java.lang.String.valueOf(monthOfYear)
-//
-//            dy = if (dayOfMonth < 10) "0$dayOfMonth" else java.lang.String.valueOf(dayOfMonth)
-//
-//            dobDate.text = "$year-$mt-$dy"
-//            DialogUtility.hideProgressDialog()
-//            userDetailModel.dob = dobDate.text.toString()
-//            Log.e("when Date: ", " : ${dobDate.text}")
-//            openNextActivity()
-//        }
-//        DialogUtility.showDOBDatePickerDialog(this, listner).show()
-//    }
-    fun showDate(spinnerTheme: Int) {
+    private fun showDate(spinnerTheme: Int) {
         val calendar = Calendar.getInstance()
         val cYear = calendar[Calendar.YEAR]
         val cMonth = calendar[Calendar.MONTH]
@@ -88,29 +87,13 @@ class DobActivity : AppCompatActivity(),
 
     }
 
-    fun dobTimeClick(view: View) {
-        val listner =
-            TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
-                binding.dobTime.text =
-                    "${SimpleDateFormat("hh:mm a").format(SimpleDateFormat("hh:mm").parse("${selectedHour}:${selectedMinute}"))}"
-                DialogUtility.hideProgressDialog()
-                userDetailModel.tob = binding.dobTime.text.toString()
-                if (binding.dobDate.text.toString() == resources.getString(R.string.date)) {
-                    AppHelper.showToast(this, getString(R.string.valid_date_msg))
-                } else {
-                    openNextActivity()
-                }
-            }
-        DialogUtility.showTimePickerDialog(this, listner).show()
-    }
-
     private fun openNextActivity() {
-
-        val intent = Intent(this, CountryActivity::class.java)
+        val email = binding.emailEdtTxt.text.toString()
+        userDetailModel.email = email
+        val intent = Intent(this, RegisterPasswordActivity::class.java)
         intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
         startActivity(intent)
     }
-
 
     override fun onDateSet(
         view: com.tsongkha.spinnerdatepicker.DatePicker?,
@@ -121,7 +104,5 @@ class DobActivity : AppCompatActivity(),
         val calendar: Calendar = GregorianCalendar(year, monthOfYear, dayOfMonth)
         userDetailModel.dob = simpleDateFormat.format(calendar.time)
         binding.dobDate.text = AppHelper.getDobFormat(simpleDateFormat.format(calendar.time))
-        openNextActivity()
     }
-
 }

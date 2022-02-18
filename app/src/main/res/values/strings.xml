@@ -12,8 +12,8 @@
     <string name="forgot_password">Forgot password</string>
 
     <!--Login Screen-->
-    <string name="login_screen_text">Please enter your email id and password</string>
-    <string name="enter_email">Enter your email</string>
+    <string name="login_screen_text">Please enter your email with password for log in</string>
+    <string name="enter_email">Email</string>
     <string name="enter_password">Password</string>
     <string name="ok">Okay</string>
     <string name="valid_password">Please enter valid password.</string>
@@ -26,7 +26,7 @@
     <string name="human">Human</string>
 
     <!--Gender Screen-->
-    <string name="gender_msg">What is your gender?</string>
+    <string name="gender_msg">, are you male or female?</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
 
@@ -34,21 +34,21 @@
     <string name="age_msg">Are you 16 year old or above?</string>
     <string name="age_no_16_msg">We are sorry to inform you that due to legal reason you should be 16 year old or above to use</string>
     <string name="above_16_age">16+ year old</string>
-    <string name="enter_dob">Please enter your date of birth</string>
+    <string name="enter_dob">, please enter your date of birth &amp; email</string>
     <string name="valid_date_msg">Please select the date.</string>
     <string name="valid_time_msg">Please select the time.</string>
 
     <!--Country Screen-->
     <string name="country_msg">Which country, city or district do you live?</string>
-    <string name="city">City or district</string>
+    <string name="city">City/Town/Village</string>
     <string name="valid_city">Please enter valid city</string>
     <string name="country">Country</string>
     <string name="valid_country">Please enter valid country</string>
 
     <!--Name Screen-->
-    <string name="please_enter_info">Please enter your name, email &amp; mobile number</string>
+    <string name="please_enter_info">Please write your name, country &amp; city</string>
     <string name="surname">Surname</string>
-    <string name="name">Name</string>
+    <string name="name">Write your name</string>
     <string name="valid_name">Please enter your name</string>
     <string name="please_enter_email">Please enter your email</string>
     <string name="email">Email</string>
@@ -127,7 +127,7 @@
     <string name="got_it">Got It</string>
 
 
-    <string name="date">Date</string>
+    <string name="date">Date of birth</string>
     <string name="day_1">Day-1</string>
     <string name="time">Time</string>
     <string name="sup">Super</string>

@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/genderTxt"
+            android:id="@+id/userTypeTxt"
             style="@style/AnswerButtonTheme"
             android:onClick="genderClick" />
 

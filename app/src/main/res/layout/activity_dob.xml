@@ -2,23 +2,20 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:fillViewport="true"
     android:fitsSystemWindows="false"
-    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/parentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/ageTxt"
-            style="@style/AnswerButtonTheme"
-            android:onClick="ageTxtClick"
-            android:text="@string/above_16_age" />
+            android:id="@+id/genderTxt"
+            style="@style/AnswerButtonTheme"/>
 
         <include
             android:id="@+id/logo_layout"
@@ -34,11 +31,11 @@
             android:visibility="visible">
 
             <TextView
+                android:id="@+id/welcomeMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/m10"
                 android:padding="@dimen/p5"
-                android:text="@string/enter_dob"
                 android:textColor="@color/label_text_color"
                 android:textSize="@dimen/t22" />
 
@@ -50,13 +47,6 @@
                 android:padding="@dimen/p10">
 
                 <TextView
-                    android:id="@+id/dobTime"
-                    style="@style/CustomButtonTheme"
-                    android:layout_gravity="end"
-                    android:onClick="dobTimeClick"
-                    android:text="@string/time" />
-
-                <TextView
                     android:id="@+id/dobDate"
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"
@@ -64,6 +54,23 @@
                     android:paddingEnd="@dimen/p27"
                     android:text="@string/date" />
 
+                <EditText
+                    android:id="@+id/emailEdtTxt"
+                    style="@style/CustomButtonTheme"
+                    android:layout_gravity="end"
+                    android:hint="@string/email"
+                    android:imeOptions="actionDone"
+                    android:inputType="textNoSuggestions|textEmailAddress"
+                    android:textColorHint="@color/pink" />
+
+                <TextView
+                    android:id="@+id/okayBtn"
+                    style="@style/CustomButtonTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="end"
+                    android:gravity="center"
+                    android:text="@string/ok"
+                    android:visibility="visible" />
             </LinearLayout>
 
         </LinearLayout>

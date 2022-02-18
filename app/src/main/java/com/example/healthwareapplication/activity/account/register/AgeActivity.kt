@@ -23,10 +23,10 @@ class AgeActivity : AppCompatActivity() {
 
     private fun defaultConfiguration() {
         userDetailModel = intent?.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
-        if(userDetailModel.sex == "male"){
-            binding.genderTxt.text = getString(R.string.male)
+        if(userDetailModel.userType == 1){
+            binding.userTypeTxt.text = getString(R.string.doctor)
         }else{
-            binding.genderTxt.text = getString(R.string.female)
+            binding.userTypeTxt.text = getString(R.string.human)
         }
     }
 
@@ -35,7 +35,7 @@ class AgeActivity : AppCompatActivity() {
     }
 
     fun yesClick(view: View) {
-        val intent = Intent(this, DobActivity::class.java)
+        val intent = Intent(this, RegisterInfoActivity::class.java)
         intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
         startActivity(intent)
     }

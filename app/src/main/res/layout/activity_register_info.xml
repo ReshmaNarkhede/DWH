@@ -7,7 +7,6 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/parentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -16,8 +15,9 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/cityTxt"
-            style="@style/AnswerButtonTheme" />
+            android:id="@+id/ageTxt"
+            style="@style/AnswerButtonTheme"
+            android:text="@string/above_16_age" />
 
         <include
             android:id="@+id/logo_layout"
@@ -58,9 +58,9 @@
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/p5"
                     android:paddingEnd="@dimen/p5"
+                    android:text="@string/dr_prefix"
                     android:textColor="@color/pink"
                     android:textSize="@dimen/t16"
-                    android:text="@string/dr_prefix"
                     android:visibility="gone" />
 
                 <EditText
@@ -78,56 +78,35 @@
             </LinearLayout>
 
             <EditText
-                android:id="@+id/emailEdtTxt"
+                android:id="@+id/countryTxt"
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
-                android:hint="@string/email"
-                android:imeOptions="actionDone"
-                android:inputType="textNoSuggestions|textEmailAddress"
+                android:clickable="false"
+                android:editable="false"
+                android:hint="@string/country"
+                android:paddingStart="@dimen/p47"
+                android:paddingEnd="@dimen/p47"
+                android:singleLine="true"
                 android:textColorHint="@color/pink" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <EditText
+                android:id="@+id/cityTxt"
+                style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
-                android:layout_marginTop="@dimen/m5"
-                android:background="@drawable/btn_selector"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/p20"
-                android:paddingEnd="@dimen/p20">
+                android:hint="@string/city"
+                android:maxLines="1"
+                android:textColorHint="@color/pink"
+                android:textSize="@dimen/t16" />
 
-                <TextView
-                    android:id="@+id/prefix"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/p5"
-                    android:paddingEnd="@dimen/p5"
-                    android:textColor="@color/pink"
-                    android:textSize="@dimen/t16"
-                    android:visibility="gone" />
+            <TextView
+                android:id="@+id/okayBtn"
+                style="@style/CustomButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:text="@string/ok"
+                android:visibility="visible" />
 
-                <EditText
-                    android:id="@+id/mobNoEdtTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:hint="@string/mob_no"
-                    android:inputType="number"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:textColor="@color/pink"
-                    android:textColorHint="@color/pink"
-                    android:textSize="@dimen/t16" />
-
-            </LinearLayout>
-            <!--            <EditText-->
-            <!--                android:id="@+id/mobNoEdtTxt"-->
-            <!--                style="@style/CustomButtonTheme"-->
-            <!--                android:layout_gravity="end"-->
-            <!--                android:imeOptions="actionDone"-->
-            <!--                android:hint="@string/mob_no"-->
-            <!--                android:inputType="number"-->
-            <!--                android:textColorHint="@color/pink" />-->
         </LinearLayout>
 
         <include

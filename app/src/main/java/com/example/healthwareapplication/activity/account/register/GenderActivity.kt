@@ -19,16 +19,26 @@ class GenderActivity : AppCompatActivity() {
         binding = ActivityGenderBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initComponents()
         defaultConfiguration()
     }
 
-    private fun defaultConfiguration() {
+    private fun initComponents() {
         userDetailModel = intent?.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
-        if(userDetailModel.userType==1){
-            binding.userTypeTxt.text = getString(R.string.doctor)
-        }else if(userDetailModel.userType==2){
-            binding.userTypeTxt.text = getString(R.string.human)
+        binding.welcomeMessage.text = userDetailModel.firstName.plus(getString(R.string.gender_msg))
+        binding.userInfoTxt.text = userDetailModel.firstName.plus(" ").plus(userDetailModel.lastName).plus(" ")
+            .plus(userDetailModel.countryName).plus(" ").plus(userDetailModel.cityName)
+    }
+
+    private fun defaultConfiguration() {
+        binding.userInfoTxt.setOnClickListener {
+            finish()
         }
+//        if(userDetailModel.userType==1){
+//            binding.userTypeTxt.text = getString(R.string.doctor)
+//        }else if(userDetailModel.userType==2){
+//            binding.userTypeTxt.text = getString(R.string.human)
+//        }
     }
 
     fun maleClick(view: View) {
@@ -42,12 +52,9 @@ class GenderActivity : AppCompatActivity() {
     }
 
     private fun jumpNextActivity() {
-        val intent = Intent(this, AgeActivity::class.java)
+        val intent = Intent(this, DobActivity::class.java)
         intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
         startActivity(intent)
     }
 
-    fun humanClick(view: View) {
-        finish()
-    }
 }
