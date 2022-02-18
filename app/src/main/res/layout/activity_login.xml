@@ -1,85 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:fillViewport="true"-->
+<!--    android:background="@color/white"-->
+<!--    android:orientation="vertical">-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@color/white"
+    android:gravity="bottom"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/loginTxt"
+        style="@style/AnswerButtonTheme"
+        android:text="@string/login" />
+
+    <include
+        android:id="@+id/logo_layout"
+        layout="@layout/logo_layout" />
+
     <LinearLayout
-        android:id="@+id/parentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:onClick="parentCLick"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="@dimen/p5"
+        android:paddingBottom="@dimen/p10"
+        android:visibility="visible">
 
         <TextView
-            android:id="@+id/loginTxt"
-            style="@style/AnswerButtonTheme"
-            android:onClick="loginClick"
-            android:text="@string/login" />
-
-        <include
-            android:id="@+id/logo_layout"
-            layout="@layout/logo_layout" />
-
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m10"
+            android:padding="@dimen/p5"
+            android:text="@string/login_screen_text"
+            android:textColor="@color/label_text_color"
+            android:textSize="@dimen/t22" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
             android:orientation="vertical"
-            android:paddingTop="@dimen/p5"
-            android:paddingBottom="@dimen/p10"
-            android:visibility="visible">
+            android:padding="@dimen/p10">
+
+            <EditText
+                android:id="@+id/emailEdtTxt"
+                style="@style/CustomButtonTheme"
+                android:layout_gravity="end"
+                android:hint="@string/enter_email"
+                android:imeOptions="actionDone"
+                android:inputType="textNoSuggestions|textEmailAddress"
+                android:maxLines="1"
+                android:textColorHint="@color/pink" />
+
+            <EditText
+                android:id="@+id/pwdEdtTxt"
+                style="@style/CustomButtonTheme"
+                android:layout_gravity="end"
+                android:hint="@string/enter_password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColorHint="@color/pink" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/m10"
-                android:padding="@dimen/p5"
-                android:text="@string/login_screen_text"
-                android:textColor="@color/label_text_color"
-                android:textSize="@dimen/t22" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/loginBtn"
+                style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
-                android:orientation="vertical"
-                android:padding="@dimen/p10">
+                android:text="@string/login" />
 
-                <EditText
-                    android:id="@+id/emailEdtTxt"
-                    style="@style/CustomButtonTheme"
-                    android:layout_gravity="end"
-                    android:maxLines="1"
-                    android:inputType="textNoSuggestions|textEmailAddress"
-                    android:imeOptions="actionDone"
-                    android:textColorHint="@color/pink"
-                    android:hint="@string/enter_email" />
-
-                <EditText
-                    android:id="@+id/pwdEdtTxt"
-                    style="@style/CustomButtonTheme"
-                    android:layout_gravity="end"
-                    android:maxLines="1"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPassword"
-                    android:textColorHint="@color/pink"
-                    android:hint="@string/enter_password" />
-
-                <TextView
-                    android:id="@+id/loginBtn"
-                    android:text="@string/login"
-                    android:layout_gravity="end"
-                    style="@style/CustomButtonTheme"/>
-            </LinearLayout>
 
         </LinearLayout>
-
-        <include
-            android:id="@+id/layout"
-            layout="@layout/account_bottom_layout" />
-
+        <TextView
+            android:id="@+id/errorText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/t12"
+            android:text="@string/valid_email"
+            android:visibility="invisible"
+            android:layout_marginStart="@dimen/m10"
+            android:layout_marginEnd="@dimen/m10"
+            android:padding="@dimen/p5"/>
     </LinearLayout>
-</ScrollView>
+
+    <include
+        android:id="@+id/layout"
+        layout="@layout/account_bottom_layout" />
+
+</LinearLayout><!--</ScrollView>-->

@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthwareapplication.model.response.ResponseModel
-import com.example.healthwareapplication.R
 import com.example.healthwareapplication.activity.dashboard.DashboardActivity
 import com.example.healthwareapplication.api.ApiClient
 import com.example.healthwareapplication.api.ApiInterface
@@ -33,18 +32,20 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initComponents()
+        initListener()
+    }
+
+    private fun initListener() {
+        binding.loginBtn.setOnClickListener {
+            checkValidation()
+        }
+        binding.loginTxt.setOnClickListener {
+            finish()
+        }
     }
 
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
-    }
-
-    fun loginClick(view: View) {
-        finish()
-    }
-
-    fun parentCLick(view: View) {
-        checkValidation()
     }
 
     private fun checkValidation() {
@@ -52,18 +53,22 @@ class LoginActivity : AppCompatActivity() {
         val email = binding.emailEdtTxt.text.trim().toString()
         val pwd = binding.pwdEdtTxt.text.trim().toString()
         if (email.isEmpty()) {
-            AppHelper.showToast(this, getString(R.string.valid_email))
+            binding.errorText.visibility = View.VISIBLE
+//            AppHelper.showToast(this, getString(R.string.valid_email))
             isFlag = false
         } else {
             if (email.matches(emailPattern.toRegex())) {
                 isFlag = true
+                binding.errorText.visibility = View.GONE
             }
         }
         if (pwd.isEmpty()) {
-            AppHelper.showToast(this, getString(R.string.valid_password))
+            binding.errorText.visibility = View.VISIBLE
+//            AppHelper.showToast(this, getString(R.string.valid_password))
             isFlag = false
         }
         if (isFlag) {
+            binding.errorText.visibility = View.GONE
             fetchLoginAPI(email,pwd)
         }
     }

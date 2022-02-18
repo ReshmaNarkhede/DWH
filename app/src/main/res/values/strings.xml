@@ -16,8 +16,8 @@
     <string name="enter_email">Email</string>
     <string name="enter_password">Password</string>
     <string name="ok">Okay</string>
-    <string name="valid_password">Please enter valid password.</string>
-    <string name="valid_email">Please enter valid email.</string>
+    <string name="valid_password">Please enter correct email &amp; password or contact support@dwh.com</string>
+    <string name="valid_email">Please enter correct email &amp; password or contact support@dwh.com</string>
     <string name="error_email">Your email is not associated with dwh please contact to support@dwh.com</string>
 
     <!--Sign up as Screen-->
