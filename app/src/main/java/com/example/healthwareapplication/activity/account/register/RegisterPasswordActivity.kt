@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.constants.IntentConstants
@@ -40,6 +41,12 @@ class RegisterPasswordActivity : AppCompatActivity() {
     }
 
     private fun defaultConfiguration() {
+        binding.pwdEdtTxt.doAfterTextChanged {
+            binding.errorText.visibility = View.INVISIBLE
+        }
+        binding.cnfmPwdEdtTxt.doAfterTextChanged {
+            binding.errorText.visibility = View.INVISIBLE
+        }
         binding.okayBtn.setOnClickListener {
             checkValidation()
         }
@@ -49,15 +56,13 @@ class RegisterPasswordActivity : AppCompatActivity() {
         var isFlag = true
         val newPwd = binding.pwdEdtTxt.text.toString()
         val cnfmPwd = binding.cnfmPwdEdtTxt.text.toString()
-        if (TextUtils.isEmpty(newPwd) || newPwd.length < 6) {
+        if (TextUtils.isEmpty(newPwd) || newPwd.length < 8) {
             binding.errorText.visibility = View.VISIBLE
-            binding.errorText.text = getString(R.string.valid_password)
-//            AppHelper.showToast(this, getString(R.string.valid_password))
+            binding.errorText.text = getString(R.string.weak_password)
             isFlag = false
-        } else if (TextUtils.isEmpty(cnfmPwd) || cnfmPwd.length < 6) {
+        } else if (TextUtils.isEmpty(cnfmPwd) || cnfmPwd.length < 8) {
             binding.errorText.visibility = View.VISIBLE
-            binding.errorText.text = getString(R.string.valid_password)
-//            AppHelper.showToast(this, getString(R.string.valid_password))
+            binding.errorText.text = getString(R.string.weak_password)
             isFlag = false
         }
         if (isFlag) {
@@ -67,7 +72,6 @@ class RegisterPasswordActivity : AppCompatActivity() {
             } else {
                 binding.errorText.visibility = View.VISIBLE
                 binding.errorText.text = getString(R.string.password_not_match)
-//                Toast.makeText(this, getString(R.string.password_not_match), Toast.LENGTH_SHORT).show()
             }
         }
     }

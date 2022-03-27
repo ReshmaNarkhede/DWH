@@ -39,6 +39,9 @@ class TermsAndPolicyActivity : AppCompatActivity() {
     }
 
     private fun defaultConfig() {
+        binding.registerTxt.setOnClickListener {
+            finish()
+        }
         binding.termsTxt.makeLinks(
             Pair(getString(R.string.terms_span), View.OnClickListener {
                 val intent = Intent(this, TermsDataActivity::class.java)

@@ -102,8 +102,8 @@ class LoginActivity : AppCompatActivity() {
                     }
                     else{
                         binding.errorText.visibility = View.VISIBLE
-                        binding.errorText.text = responseModel.getMessage()
-//                        AppHelper.showToast(this@LoginActivity,responseModel.getMessage().toString())
+//                        binding.errorText.text = responseModel.getMessage()
+                        binding.errorText.text = getString(R.string.unauthorized)
                     }
                 }
             }

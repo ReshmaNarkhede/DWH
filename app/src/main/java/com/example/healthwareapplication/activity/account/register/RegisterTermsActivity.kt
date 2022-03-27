@@ -37,7 +37,7 @@ class RegisterTermsActivity : AppCompatActivity() {
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
         userDetailModel = intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
-        binding.pwdTxt.text = userDetailModel.password
+        binding.pwdTxt.text = getString(R.string.password)
         binding.pwdTxt.setOnClickListener {
             finish()
         }

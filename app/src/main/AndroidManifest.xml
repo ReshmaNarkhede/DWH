@@ -110,7 +110,8 @@
         <activity
             android:name=".activity.self_assessment.BodySymptomActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
         <activity
             android:name=".activity.account.register.RegisterTermsActivity"
             android:exported="false"
@@ -125,7 +126,8 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.dashboard.DashboardActivity"
-            android:exported="false" />
+            android:exported="false" >
+        </activity>
         <activity
             android:name=".activity.account.login.OldLoginActivity"
             android:exported="false"

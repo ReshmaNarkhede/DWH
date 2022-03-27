@@ -21,6 +21,11 @@
             android:background="@color/white"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/emailTxt"
+                style="@style/AnswerButtonTheme"
+                android:visibility="invisible" />
+
             <include
                 android:id="@+id/logo_layout"
                 layout="@layout/logo_layout" />
@@ -33,14 +38,6 @@
                 android:textColor="@color/label_text_color"
                 android:textSize="@dimen/t20" />
 
-            <!--            <TextView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:padding="@dimen/p5"-->
-            <!--                android:text="@string/please_enter_it_below"-->
-            <!--                android:textColor="@color/label_text_color"-->
-            <!--                android:textSize="@dimen/t20" />-->
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/h37"
@@ -48,9 +45,9 @@
                 android:layout_margin="@dimen/m5"
                 android:background="@drawable/btn_selector"
                 android:orientation="horizontal"
-                android:visibility="gone"
                 android:paddingStart="@dimen/p30"
-                android:paddingEnd="@dimen/p30">
+                android:paddingEnd="@dimen/p30"
+                android:visibility="gone">
 
                 <EditText
                     android:id="@+id/otpEditText1"
@@ -121,6 +118,17 @@
                 android:gravity="center"
                 android:text="@string/ok"
                 android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/errorText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/m10"
+                android:padding="@dimen/p5"
+                android:textColor="@color/label_text_color"
+                android:textSize="@dimen/t12"
+                android:visibility="invisible" />
         </LinearLayout>
     </ScrollView>
 

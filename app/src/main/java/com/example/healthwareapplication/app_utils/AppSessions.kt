@@ -20,7 +20,7 @@ class AppSessions {
 //            return CountryData(jObj)
 //        }
 
-        fun getCountryArray(context: Context): JSONArray?{
+        fun getCountryArray(context: Context): JSONArray{
             return AppSettings.getArrayValue(context,AppConstants.kCOUNTRY_DATA)
         }
 
@@ -32,17 +32,17 @@ class AppSessions {
             val gson = Gson()
             return gson.fromJson(getLoginData(context), UserDetailModel::class.java)
         }
-        fun getSpecialityData(context: Context): JSONArray? {
+        fun getSpecialityData(context: Context): JSONArray {
             return AppSettings.getArrayValue(context,AppConstants.kSPECIALITY_DATA)
         }
-        fun getSymptomData(context: Context): JSONArray? {
+        fun getSymptomData(context: Context): JSONArray {
             return AppSettings.getArrayValue(context,IntentConstants.kSYMPTOM_DATA)
         }
-        fun getAssessmentData(context: Context): JSONArray? {
+        fun getAssessmentData(context: Context): JSONArray {
             return AppSettings.getArrayValue(context,AppConstants.kASSESSMENT_DATA)
         }
-        fun getQuestionData(context: Context): JSONArray? {
-            val array = AppSettings.getArrayValue(context!!, AppConstants.kQUESTION_ARY)
+        fun getQuestionData(context: Context): JSONArray {
+            val array = AppSettings.getArrayValue(context, AppConstants.kQUESTION_ARY)
             return if (array.length() > 0) {
                 array
             } else {
@@ -56,27 +56,27 @@ class AppSessions {
 
         fun getUserId(context: Context):String?{
             val user = getLoginModel(context)
-            return user!!.id
+            return user?.id
         }
-        fun getUserName(context: Context):String?{
+        fun getUserName(context: Context):String{
             val user = getLoginModel(context)
             var name = ""
-            if(user!!.lastName.isNotEmpty()) {
-                name = user!!.firstName.plus(" ").plus(user.lastName.first())
+            name = if(user!!.lastName.isNotEmpty()) {
+                user.firstName.plus(" ").plus(user.lastName.first())
             }else{
-                name = user!!.firstName
+                user.firstName
             }
             return name
         }
-        fun getUserEmail(context: Context):String?{
+        fun getUserEmail(context: Context):String{
             val user = getLoginModel(context)
             return user!!.email
         }
         fun getUserSex(context: Context):String?{
             val user = getLoginModel(context)
-            return user!!.sex
+            return user?.sex
         }
-        fun getUserAge(context: Context):String?{
+        fun getUserAge(context: Context):String{
             val user = getLoginModel(context)
             val date = user!!.dob.split("-")
            return  AppHelper.getAge(date[0], date[1], date[2]) + " years"

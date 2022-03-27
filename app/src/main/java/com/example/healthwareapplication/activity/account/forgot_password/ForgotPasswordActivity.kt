@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import com.example.healthwareapplication.model.response.ResponseModel
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.activity.account.OtpActivity
@@ -32,8 +33,14 @@ class ForgotPasswordActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initComponents()
-
+        defaultConfig()
         binding.submitBtn.setOnClickListener { checkValidation() }
+    }
+
+    private fun defaultConfig() {
+        binding.emailEdtTxt.doAfterTextChanged {
+            binding.errorText.visibility = View.INVISIBLE
+        }
     }
 
     private fun initComponents() {
@@ -53,14 +60,20 @@ class ForgotPasswordActivity : AppCompatActivity() {
         var isFlag = false
         val email = binding.emailEdtTxt.text.trim().toString()
         if (email.isEmpty()) {
-            AppHelper.showToast(this, getString(R.string.valid_email))
+            binding.errorText.visibility = View.VISIBLE
+            binding.errorText.text = getString(R.string.valid_email_error)
             isFlag = false
         } else {
             if (email.matches(emailPattern.toRegex())) {
                 isFlag = true
+                binding.errorText.visibility = View.INVISIBLE
+            }else{
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text = getString(R.string.valid_email)
             }
         }
         if (isFlag) {
+            binding.errorText.visibility = View.INVISIBLE
             fetchForgotPwdAPI(this, email)
         }
     }

@@ -18,7 +18,9 @@
     <string name="ok">Okay</string>
     <string name="valid_password">Please enter correct  password or contact support@dwh.com</string>
     <string name="valid_email">Please enter correct email or contact support@dwh.com</string>
+    <string name="valid_email_error">Please enter your email or contact support@dwh.com</string>
     <string name="error_email">Your email is not associated with dwh please contact to support@dwh.com</string>
+    <string name="unauthorized">Unauthorized credential or please contact to support@dwh.com</string>
 
     <!--Sign up as Screen-->
     <string name="signup_as">Sign up as?</string>
@@ -57,10 +59,13 @@
     <string name="dr_prefix">Dr.</string>
 
     <!--Pwd Screen-->
+    <string name="password">Password</string>
+    <string name="password_limit">Password should contains minimum 8 character with uppercase - lowercase letters, numbers &amp; special characters</string>
     <string name="create_your_password">Let\'s create your password</string>
+    <string name="weak_password">Your password is weak</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="confirm_password">Confirm your password</string>
-    <string name="password_not_match">Password not match</string>
+    <string name="password_not_match">Your password does not match</string>
     <string name="experience_suffix">year of experience</string>
 
     <!--Terms Screen-->

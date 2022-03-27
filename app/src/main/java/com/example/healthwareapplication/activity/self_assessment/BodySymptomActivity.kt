@@ -81,7 +81,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setDefaultImage(user: UserDetailModel?) {
-        if (user!!.sex == "female") {
+        if (user?.sex == "female") {
             binding.bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
         } else {
             binding.bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
@@ -91,7 +91,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        when (v!!.id) {
+        when (v?.id) {
             R.id.rotate -> {
                 rotateImageClick()
             }
@@ -100,14 +100,14 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun rotateImageClick() {
         if (image_front_back_flag) {
-            if (user!!.sex == "female") {
+            if (user?.sex == "female") {
                 binding.bodyImg.setVectorDrawable(R.drawable.female_body_back)
             } else {
                 binding.bodyImg.setVectorDrawable(R.drawable.male_body_back)
             }
             image_front_back_flag = false
         } else {
-            if (user!!.sex == "female") {
+            if (user?.sex == "female") {
                 binding.bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
             } else {
                 binding.bodyImg.setVectorDrawable(R.drawable.female_body_front_test)
@@ -120,32 +120,35 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun fetchImageClick() {
         val array = binding.bodyImg.findAllRichPaths()
-        binding.bodyImg.setOnPathClickListener(RichPath.OnPathClickListener { richPath ->
+        binding.bodyImg.setOnPathClickListener { richPath ->
             for (i in array.indices) {
-                val obj: RichPath = binding.bodyImg.findRichPathByIndex(i)!!
-                if (richPath.name == obj.name) {
-                    Log.e("check: ", obj.name.trim())
-                    getIDFromBodyPart(obj)
-                    obj.fillColor = ContextCompat.getColor(this, R.color.pink)
+                val obj: RichPath? = binding.bodyImg.findRichPathByIndex(i)
+                if (richPath.name == obj?.name) {
+                    Log.e("check fetch image if ", obj?.name?.trim().toString())
+                    if (obj != null) {
+                        getIDFromBodyPart(obj)
+                    }
+                    obj?.fillColor = ContextCompat.getColor(this, R.color.pink)
                 } else {
-//                    obj.fillColor = ContextCompat.getColor(this, R.color.white)
-                    obj.strokeColor = ContextCompat.getColor(this, R.color.white)
+                    Log.e("check fetch image else ", obj?.name?.trim().toString())
+                    obj?.fillColor = ContextCompat.getColor(this, R.color.stroke_color)
+//                    obj?.strokeColor = ContextCompat.getColor(this, R.color.pink)
                 }
             }
-        })
+        }
     }
 
     private fun fetchBodyParts() {
-        val apiService: ApiInterface =
-            ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
+        val apiService: ApiInterface? =
+            ApiClient.getRetrofitClient(this)?.create(ApiInterface::class.java)
 
         val param = JsonObject()
         param.addProperty("gender", AppSessions.getUserSex(this))
 
         AppHelper.printParam("BODY PARTS Param:", param)
 
-        val call: Call<JsonObject> = apiService.getBodyPart(param)
-        call.enqueue(object : Callback<JsonObject?> {
+        val call: Call<JsonObject>? = apiService?.getBodyPart(param)
+        call?.enqueue(object : Callback<JsonObject?> {
 
             override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
 
@@ -201,7 +204,7 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val symptomAry = responseModel.getDataArray()
-                        openDialog(bodyParts, symptomAry!!,obj)
+                        symptomAry?.let { openDialog(bodyParts, it,obj) }
 //                        openSymptomDialog(bodyParts, symptomAry!!)
                     } else {
                         AppHelper.showToast(
@@ -244,28 +247,28 @@ class BodySymptomActivity : AppCompatActivity(), View.OnClickListener {
         val symptmList: RecyclerView = dialog.findViewById(R.id.symptmList)
 
         symptmList.layoutManager = LinearLayoutManager(this)
-        val adapter = SearchSymptomAdapter(this, symptomAry, "",
-            RecyclerItemClickListener.OnItemClickListener { view, position ->
-                val modelObj = symptomAry.getJSONObject(position)
-                val intent = Intent(this, WhenStartActivity::class.java)
-                intent.putExtra(IntentConstants.kSYMPTOM_DATA, modelObj.toString())
-                startActivity(intent)
+        val adapter = SearchSymptomAdapter(this, symptomAry, ""
+        ) { _, position ->
+            val modelObj = symptomAry.getJSONObject(position)
+            val intent = Intent(this, WhenStartActivity::class.java)
+            intent.putExtra(IntentConstants.kSYMPTOM_DATA, modelObj.toString())
+            startActivity(intent)
 //                val resultIntent = Intent()
 //                resultIntent.putExtra(IntentConstants.kSYMPTOM_SELECTED, modelObj.toString())
 //                setResult(Activity.RESULT_OK, resultIntent)
-                dialog.dismiss()
-                finish()
-            })
+            dialog.dismiss()
+            finish()
+        }
         symptmList.adapter = adapter
         bodyPartName.text = bodyParts.name
-        cncleImg.setOnClickListener(View.OnClickListener {
+        cncleImg.setOnClickListener {
             dialog.dismiss()
             obj.fillColor = ContextCompat.getColor(this, R.color.pink)
-        })
+        }
 
         dialog.show()
     }
-    fun backImgClick(view: View) {
+    fun backImgClick() {
         finish()
     }
     /* private fun openSymptomDialog(bodyParts: BodyParts, symptomAry: JSONArray) {

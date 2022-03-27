@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.constants.IntentConstants
@@ -41,19 +42,24 @@ class DobActivity : AppCompatActivity(),
         binding.genderTxt.setOnClickListener {
             finish()
         }
+        binding.emailEdtTxt.doAfterTextChanged {
+            binding.errorText.visibility = View.INVISIBLE
+        }
     }
 
     private fun checkValidation() {
         var isFlag = false
         if (binding.emailEdtTxt.text.trim().isEmpty()) {
             binding.errorText.visibility = View.VISIBLE
-            binding.errorText.text = getString(R.string.valid_email)
-//            AppHelper.showToast(this, getString(R.string.valid_email))
+            binding.errorText.text = getString(R.string.valid_email_error)
             isFlag = false
         } else {
             if (binding.emailEdtTxt.text.trim().matches(emailPattern.toRegex())) {
                 isFlag = true
-                binding.errorText.visibility = View.GONE
+                binding.errorText.visibility = View.INVISIBLE
+            }else{
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text = getString(R.string.valid_email)
             }
         }
         if (isFlag) {

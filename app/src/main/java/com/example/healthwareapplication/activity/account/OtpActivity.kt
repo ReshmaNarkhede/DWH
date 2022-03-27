@@ -51,15 +51,20 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
     private fun initComponents() {
         AppHelper.transparentStatusBar(this)
         isForgot = intent.getBooleanExtra(IntentConstants.kIS_FORGOT, false)
-        if (isForgot) {
-            binding.resendOtp.visibility = View.VISIBLE
-            binding.resendOtp.setOnClickListener(this)
-        } else {
-            binding.resendOtp.visibility = View.GONE
-        }
         email = intent.getStringExtra(IntentConstants.kEMAIL)
         password = intent.getStringExtra(IntentConstants.kPASSWORD)
         otpMailString = intent.getStringExtra(IntentConstants.kOTP)
+        if (isForgot) {
+            binding.emailTxt.apply {
+                visibility = View.VISIBLE
+                text = email
+            }
+            binding.resendOtp.visibility = View.VISIBLE
+            binding.resendOtp.setOnClickListener(this)
+        } else {
+            binding.emailTxt.visibility = View.INVISIBLE
+            binding.resendOtp.visibility = View.GONE
+        }
     }
 
     private fun defaultConfiguration() {
@@ -70,6 +75,9 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
             otpEditText4.addTextChangedListener(OTPTextWatcher(otpEditText4))
         }
         binding.okayBtn.setOnClickListener(this)
+        binding.emailTxt.setOnClickListener {
+            finish()
+        }
 
     }
 
@@ -106,19 +114,23 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun checkValidation() {
         binding.apply {
-            value1 = otpEditText1.text.toString()
-            value2 = otpEditText2.text.toString()
-            value3 = otpEditText3.text.toString()
-            value4 = otpEditText4.text.toString()
+            value1 = otpEdtTxt.text.toString()
+//            value2 = otpEditText2.text.toString()
+//            value3 = otpEditText3.text.toString()
+//            value4 = otpEditText4.text.toString()
         }
         var isFlag = true
-        if (value1.trim().isEmpty() or value2.trim().isEmpty() or value3.trim()
-                .isEmpty() or value4.trim().isEmpty()
-        ) {
-            AppHelper.showToast(this, getString(R.string.please_enter_otp))
+//        if (value1.trim().isEmpty() or value2.trim().isEmpty() or value3.trim()
+//                .isEmpty() or value4.trim().isEmpty()
+//        )
+        if (value1.trim().isEmpty())
+        {
+            binding.errorText.visibility = View.VISIBLE
+            binding.errorText.text = getString(R.string.please_enter_otp)
             isFlag = false
         }
         if (isFlag) {
+            binding.errorText.visibility = View.INVISIBLE
             fetchSubmit()
         }
     }
@@ -135,6 +147,7 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
         if (otpMailString == otpString) {
             Log.e("OtpValue: ", ": $otpString")
             if (isForgot) {
+                binding.errorText.visibility = View.INVISIBLE
                 val intent = Intent(this, ResetPasswordActivity::class.java)
                 intent.putExtra(IntentConstants.kEMAIL, email)
                 startActivity(intent)
@@ -142,7 +155,8 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
                 verifyAccount(otpString!!)
             }
         } else {
-            AppHelper.showToast(this, getString(R.string.invalid_otp))
+            binding.errorText.visibility = View.VISIBLE
+            binding.errorText.text = getString(R.string.invalid_otp)
         }
     }
 
@@ -175,7 +189,8 @@ class OtpActivity : AppCompatActivity(), View.OnClickListener {
 
                         showDashboard()
                     } else {
-                        AppHelper.showToast(this@OtpActivity, responseModel.getMessage().toString())
+                        binding.errorText.visibility = View.VISIBLE
+                        binding.errorText.text = responseModel.getMessage()
                     }
                 }
             }

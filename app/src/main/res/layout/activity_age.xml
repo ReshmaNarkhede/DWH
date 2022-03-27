@@ -42,14 +42,16 @@
             <TextView
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
+                android:paddingStart="@dimen/p40"
+                android:paddingEnd="@dimen/p40"
                 android:onClick="yesClick"
                 android:text="@string/yes" />
 
             <TextView
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
-                android:paddingStart="@dimen/p27"
-                android:paddingEnd="@dimen/p27"
+                android:paddingStart="@dimen/p42"
+                android:paddingEnd="@dimen/p42"
                 android:onClick="noClick"
                 android:text="@string/no" />
         </LinearLayout>
