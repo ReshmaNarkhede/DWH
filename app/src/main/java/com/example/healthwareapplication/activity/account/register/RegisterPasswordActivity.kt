@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.example.healthwareapplication.R
@@ -12,6 +11,8 @@ import com.example.healthwareapplication.app_utils.AppHelper
 import com.example.healthwareapplication.constants.IntentConstants
 import com.example.healthwareapplication.databinding.ActivityRegisterPasswordBinding
 import com.example.healthwareapplication.model.user.UserDetailModel
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class RegisterPasswordActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterPasswordBinding
@@ -53,25 +54,32 @@ class RegisterPasswordActivity : AppCompatActivity() {
     }
 
     private fun checkValidation() {
-        var isFlag = true
         val newPwd = binding.pwdEdtTxt.text.toString()
         val cnfmPwd = binding.cnfmPwdEdtTxt.text.toString()
-        if (TextUtils.isEmpty(newPwd) || newPwd.length < 8) {
-            binding.errorText.visibility = View.VISIBLE
-            binding.errorText.text = getString(R.string.weak_password)
-            isFlag = false
-        } else if (TextUtils.isEmpty(cnfmPwd) || cnfmPwd.length < 8) {
-            binding.errorText.visibility = View.VISIBLE
-            binding.errorText.text = getString(R.string.weak_password)
-            isFlag = false
-        }
-        if (isFlag) {
-            if (newPwd == cnfmPwd) {
-                binding.errorText.visibility = View.INVISIBLE
-                goToNext()
-            } else {
+        when {
+            TextUtils.isEmpty(newPwd) || newPwd.length < 8 -> {
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text = getString(R.string.weak_password)
+            }
+            !isValidPassword(newPwd)->{
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text = getString(R.string.password_limit)
+            }
+            TextUtils.isEmpty(cnfmPwd) || cnfmPwd.length < 8 -> {
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text =  getString(R.string.weak_cnfm_password)
+            }
+            !isValidPassword(cnfmPwd)->{
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text = getString(R.string.cnfm_password_limit)
+            }
+            newPwd != cnfmPwd ->{
                 binding.errorText.visibility = View.VISIBLE
                 binding.errorText.text = getString(R.string.password_not_match)
+            }
+            else -> {
+                binding.errorText.visibility = View.INVISIBLE
+                goToNext()
             }
         }
     }
@@ -85,25 +93,17 @@ class RegisterPasswordActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun isValidPassword(password: String?): Boolean {
+        val regex = ("^(?=.*[0-9])"
+                + "(?=.*[a-z])(?=.*[A-Z])"
+                + "(?=.*[@#$%^&+=])"
+                + "(?=\\S+$).{8,20}$")
 
-//    fun doneClick(view: View) {
-//        if (password.text.toString().equals("")) {
-//            password.error = resources.getString(R.string.errormessage)
-//        } else if (confirmPassword.text.toString().equals("") && confirmPassword.text.toString()
-//                .equals(password.text.toString())
-//        ) {
-//            confirmPassword.error = resources.getString(R.string.errormessage)
-//        } else {
-//            if (intent.getIntExtra(IntentConstants.kUSER_TYPE, 0) == 1) {
-//                //TODO change password API
-////                networkCalls.changePassword(this, SendOtpModel(registrationPasswordActivity.intent.getStringExtra("id"), "", registrationPasswordActivity.password.text.trim().toString()))
-//            } else {
-//                val userDetailModel = intent.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
-//                userDetailModel.password = password.text!!.trim().toString()
-//                val intent = Intent(this, RegisterTermsActivity::class.java)
-//                intent.putExtra(IntentConstants.kUSER_DATA, userDetailModel)
-//                startActivity(intent)
-//            }
-//        }
-//    }
+        val p: Pattern = Pattern.compile(regex)
+        if (password == null) {
+            return false
+        }
+        val m: Matcher = p.matcher(password)
+        return m.matches()
+    }
 }

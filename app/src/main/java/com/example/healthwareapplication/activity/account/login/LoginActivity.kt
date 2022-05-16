@@ -50,57 +50,60 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun checkValidation() {
-        var isFlag = false
         val email = binding.emailEdtTxt.text.trim().toString()
         val pwd = binding.pwdEdtTxt.text.trim().toString()
-        if (email.isEmpty()) {
-            binding.errorText.visibility = View.VISIBLE
-            binding.errorText.text = getString(R.string.valid_email)
-//            AppHelper.showToast(this, getString(R.string.valid_email))
-            isFlag = false
-        } else {
-            if (email.matches(emailPattern.toRegex())) {
-                isFlag = true
-                binding.errorText.visibility = View.GONE
+        when {
+            email.isEmpty() -> {
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text = "Please enter your email"
             }
-        }
-        if (pwd.isEmpty()) {
-            binding.errorText.visibility = View.VISIBLE
-            binding.errorText.text = getString(R.string.valid_password)
-//            AppHelper.showToast(this, getString(R.string.valid_password))
-            isFlag = false
-        }
-        if (isFlag) {
-            binding.errorText.visibility = View.INVISIBLE
-            fetchLoginAPI(email,pwd)
+            !email.matches(emailPattern.toRegex()) -> {
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text = "Please enter your valid email"
+            }
+            pwd.isEmpty() -> {
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text = "Please enter your password"
+            }
+            else -> {
+                binding.errorText.visibility = View.INVISIBLE
+                fetchLoginAPI(email, pwd)
+            }
         }
     }
 
     private fun fetchLoginAPI(uName: String, pwd: String) {
-        val apiService: ApiInterface =
-            ApiClient.getRetrofitClient(this)!!.create(ApiInterface::class.java)
+        val apiService: ApiInterface? =
+            ApiClient.getRetrofitClient(this)?.create(ApiInterface::class.java)
 
         val param = JsonObject()
         param.addProperty("username", uName)
         param.addProperty("password", pwd)
 
-        val call: Call<JsonObject> = apiService.fetchLogin(param)
-        call.enqueue(object : Callback<JsonObject?> {
+        val call: Call<JsonObject>? = apiService?.fetchLogin(param)
+        call?.enqueue(object : Callback<JsonObject?> {
 
-            override fun onResponse(call: Call<JsonObject?>?, response: Response<JsonObject?>) {
-                Log.e("LOGIN: $param",": "+ response.raw().request.url)
+            override fun onResponse(call: Call<JsonObject?>, response: Response<JsonObject?>) {
+                Log.e("LOGIN: $param", ": " + response.raw().request.url)
                 if (response.isSuccessful) {
                     val json = JSONObject(response.body().toString())
                     val responseModel = ResponseModel(json)
                     if (responseModel.isCode()) {
                         val detailObj = responseModel.getDataObj()
-                        AppSettings.setBooleanValue(this@LoginActivity, AppConstants.kIS_LOGIN, true)
-                        AppSettings.setJsonObjectValue(this@LoginActivity, AppConstants.kLOGIN, detailObj.toString())
+                        AppSettings.setBooleanValue(
+                            this@LoginActivity,
+                            AppConstants.kIS_LOGIN,
+                            true
+                        )
+                        AppSettings.setJsonObjectValue(
+                            this@LoginActivity,
+                            AppConstants.kLOGIN,
+                            detailObj.toString()
+                        )
 
                         showDashboard()
                         binding.errorText.visibility = View.GONE
-                    }
-                    else{
+                    } else {
                         binding.errorText.visibility = View.VISIBLE
 //                        binding.errorText.text = responseModel.getMessage()
                         binding.errorText.text = getString(R.string.unauthorized)
@@ -108,13 +111,14 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<JsonObject?>?, t: Throwable) {
+            override fun onFailure(call: Call<JsonObject?>, t: Throwable) {
                 if (t is NoConnectivityException) {
                     AppHelper.showNetNotAvailable(this@LoginActivity)
                 }
             }
         })
     }
+
     private fun showDashboard() {
         val intent = Intent(this, DashboardActivity::class.java)
         startActivity(intent)

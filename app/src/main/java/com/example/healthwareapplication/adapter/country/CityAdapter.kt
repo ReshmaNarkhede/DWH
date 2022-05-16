@@ -6,12 +6,12 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.NonNull
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthwareapplication.R
 import com.example.healthwareapplication.app_utils.RecyclerItemClickListener
 import com.example.healthwareapplication.databinding.RecyclerCountryItemBinding
-import com.example.healthwareapplication.model.country.CityData
+import com.example.healthwareapplication.model.country.CountryData
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -44,13 +44,13 @@ class CityAdapter (val context: Context, dataArr: JSONArray, val searchStr:Strin
             jsonObject: JSONObject,
             clickListener: RecyclerItemClickListener.OnItemClickListener
         ) {
-            val obj = CityData(jsonObject)
+            val obj = CountryData(jsonObject)
             val originalText = obj.getName()
             val sb: Spannable = SpannableString(originalText)
             sb.setSpan(
-                ForegroundColorSpan(context.resources.getColor(R.color.pink)),
-                originalText!!.toLowerCase().indexOf(searchStr!!.toLowerCase()),
-                originalText.toLowerCase().indexOf(searchStr.toLowerCase()) + searchStr.length,
+                ForegroundColorSpan(ContextCompat.getColor(binding.root.context,R.color.pink)),
+                originalText!!.lowercase().indexOf(searchStr!!.lowercase()),
+                originalText.lowercase().indexOf(searchStr.lowercase()) + searchStr.length,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )
             binding.name.text = sb

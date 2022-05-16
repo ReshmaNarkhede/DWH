@@ -90,11 +90,11 @@ class AppHelper {
             return ageInt.toString()
         }
 
-        fun getDobFormat(dateStr: String?): String? {
+        fun getDobFormat(dateStr: String?): String {
 //            val date1 = SimpleDateFormat("yyyy-MM-dd",Locale.getDefault()).parse(dateStr!!)
             var reformattedStr = ""
             val fromUser = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            val myFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val myFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
             try {
                 reformattedStr = myFormat.format(fromUser.parse(dateStr!!)!!)
             } catch (e: ParseException) {

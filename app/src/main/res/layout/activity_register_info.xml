@@ -81,7 +81,6 @@
                 android:id="@+id/countryTxt"
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
-                android:clickable="false"
                 android:editable="false"
                 android:hint="@string/country"
                 android:paddingStart="@dimen/p47"
@@ -93,6 +92,7 @@
                 android:id="@+id/cityTxt"
                 style="@style/CustomButtonTheme"
                 android:layout_gravity="end"
+                android:editable="false"
                 android:hint="@string/city"
                 android:maxLines="1"
                 android:textColorHint="@color/pink"
@@ -108,7 +108,15 @@
                 android:visibility="visible" />
 
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/errorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/t12"
+            android:visibility="invisible"
+            android:layout_marginStart="@dimen/m10"
+            android:layout_marginEnd="@dimen/m10"
+            android:padding="@dimen/p5"/>
         <include
             android:id="@+id/layout"
             layout="@layout/account_bottom_layout" />

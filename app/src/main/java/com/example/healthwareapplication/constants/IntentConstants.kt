@@ -12,6 +12,8 @@ class IntentConstants {
         const val kDOB_TIME: String = "kDOB_TIME"
 
         const val kSYMPTOM_SELECTED: String = "kSYMPTOM_SELECTED"
+        const val kCOUNTRY_SELECTED: String = "kCOUNTRY_SELECTED"
+        const val kCITY_SELECTED: String = "kCITY_SELECTED"
         const val kUSER_DATA: String = "kUSER_DATA"
         const val kUSER_TYPE: String = "kUSER_TYPE"
         const val kSYMPTOM_DATA: String = "kSYMPTOM_DATA"

@@ -42,7 +42,7 @@
 
     <!--Country Screen-->
     <string name="country_msg">Which country, city or district do you live?</string>
-    <string name="city">City/Town/Village</string>
+    <string name="city">City/Town</string>
     <string name="valid_city">Please enter valid city</string>
     <string name="country">Country</string>
     <string name="valid_country">Please enter valid country</string>
@@ -61,8 +61,10 @@
     <!--Pwd Screen-->
     <string name="password">Password</string>
     <string name="password_limit">Password should contains minimum 8 character with uppercase - lowercase letters, numbers &amp; special characters</string>
+    <string name="cnfm_password_limit">Confirm Password should contains minimum 8 character with uppercase - lowercase letters, numbers &amp; special characters</string>
     <string name="create_your_password">Let\'s create your password</string>
     <string name="weak_password">Your password is weak</string>
+    <string name="weak_cnfm_password">Your confirm password is weak</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="confirm_password">Confirm your password</string>
     <string name="password_not_match">Your password does not match</string>

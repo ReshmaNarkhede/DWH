@@ -16,9 +16,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <!--        <activity-->
-        <!--            android:name=".ui.signup.SignUpActivity"-->
-        <!--            android:exported="false" />-->
+        <activity
+            android:name=".activity.account.register.CountrySearchActivity"
+            android:exported="false" />
+        <!-- <activity -->
+        <!-- android:name=".ui.signup.SignUpActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".activity.account.register.TermsDataActivity"
             android:exported="false"
@@ -110,8 +113,7 @@
         <activity
             android:name=".activity.self_assessment.BodySymptomActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan" >
-        </activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activity.account.register.RegisterTermsActivity"
             android:exported="false"
@@ -126,8 +128,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.dashboard.DashboardActivity"
-            android:exported="false" >
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".activity.account.login.OldLoginActivity"
             android:exported="false"
@@ -137,7 +138,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.account.register.CountryActivity"
+            android:name=".activity.account.register.CitySearchActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
@@ -149,7 +150,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.example.healthwareapplication.activity.splash.SplashActivity"
+            android:name=".activity.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

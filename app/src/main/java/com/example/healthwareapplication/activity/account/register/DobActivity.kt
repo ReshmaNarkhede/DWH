@@ -48,23 +48,25 @@ class DobActivity : AppCompatActivity(),
     }
 
     private fun checkValidation() {
-        var isFlag = false
-        if (binding.emailEdtTxt.text.trim().isEmpty()) {
-            binding.errorText.visibility = View.VISIBLE
-            binding.errorText.text = getString(R.string.valid_email_error)
-            isFlag = false
-        } else {
-            if (binding.emailEdtTxt.text.trim().matches(emailPattern.toRegex())) {
-                isFlag = true
-                binding.errorText.visibility = View.INVISIBLE
-            }else{
+        val email = binding.emailEdtTxt.text.trim().toString()
+        val dob = binding.dobDate.text.trim().toString()
+        when {
+            dob.isEmpty() -> {
                 binding.errorText.visibility = View.VISIBLE
-                binding.errorText.text = getString(R.string.valid_email)
+                binding.errorText.text = "Please enter your date of birth"
             }
-        }
-        if (isFlag) {
-            binding.errorText.visibility = View.INVISIBLE
-            openNextActivity()
+            email.isEmpty() -> {
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text = "Please enter your email"
+            }
+            !email.matches(emailPattern.toRegex())->{
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text = "Please enter your valid email"
+            }
+            else -> {
+                binding.errorText.visibility = View.INVISIBLE
+                openNextActivity()
+            }
         }
     }
 
@@ -114,6 +116,6 @@ class DobActivity : AppCompatActivity(),
     ) {
         val calendar: Calendar = GregorianCalendar(year, monthOfYear, dayOfMonth)
         userDetailModel.dob = simpleDateFormat.format(calendar.time)
-        binding.dobDate.text = AppHelper.getDobFormat(simpleDateFormat.format(calendar.time))
+        binding.dobDate.setText(AppHelper.getDobFormat(simpleDateFormat.format(calendar.time)))
     }
 }

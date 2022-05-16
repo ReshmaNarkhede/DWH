@@ -1,6 +1,5 @@
 package com.example.healthwareapplication.model.user
 
-import com.example.healthwareapplication.model.country.CityData
 import java.io.Serializable
 
 class UserDetailModel:Serializable {

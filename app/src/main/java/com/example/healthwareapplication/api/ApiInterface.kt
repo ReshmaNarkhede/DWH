@@ -6,11 +6,14 @@ import retrofit2.http.*
 
 interface ApiInterface {
 
-    @GET("api/getCountryList")
-    fun getCountry(): Call<JsonObject>
-
     @POST("api/search_city")
     fun getCity(@Body jsonObject: JsonObject?): Call<JsonObject>
+
+    @POST("api/search_country")
+    fun getCountry(@Body jsonObject: JsonObject?): Call<JsonObject>
+
+    @POST("api/search_city_by_country")
+    fun getCityByCountry(@Body jsonObject: JsonObject?): Call<JsonObject>
 
     @POST("api/login")
     fun fetchLogin(@Body jsonObject: JsonObject?): Call<JsonObject>

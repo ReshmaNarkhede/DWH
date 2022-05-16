@@ -46,13 +46,15 @@
                 android:orientation="vertical"
                 android:padding="@dimen/p10">
 
-                <TextView
+                <EditText
                     android:id="@+id/dobDate"
                     style="@style/CustomButtonTheme"
                     android:layout_gravity="end"
+                    android:focusableInTouchMode="false"
                     android:paddingStart="@dimen/p27"
                     android:paddingEnd="@dimen/p27"
-                    android:text="@string/date" />
+                    android:hint="@string/date"
+                    android:textColorHint="@color/pink"/>
 
                 <EditText
                     android:id="@+id/emailEdtTxt"

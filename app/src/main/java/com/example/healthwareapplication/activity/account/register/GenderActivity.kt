@@ -26,8 +26,8 @@ class GenderActivity : AppCompatActivity() {
     private fun initComponents() {
         userDetailModel = intent?.getSerializableExtra(IntentConstants.kUSER_DATA) as UserDetailModel
         binding.welcomeMessage.text = userDetailModel.firstName.plus(getString(R.string.gender_msg))
-        binding.userInfoTxt.text = userDetailModel.firstName.plus(" ").plus(userDetailModel.lastName).plus(" ")
-            .plus(userDetailModel.countryName).plus(" ").plus(userDetailModel.cityName)
+        binding.userInfoTxt.text = userDetailModel.firstName.plus(" ").plus(userDetailModel.lastName).plus(", ")
+            .plus(userDetailModel.countryName).plus(", ").plus(userDetailModel.cityName)
     }
 
     private fun defaultConfiguration() {
